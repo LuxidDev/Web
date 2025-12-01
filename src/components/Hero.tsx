@@ -44,10 +44,18 @@ export default function Hero() {
 
       {/* Floating fox logo */}
       <div className="absolute top-40 right-20 opacity-[0.08]" style={{ transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.02}deg) scale(${1 + mousePos.x * 0.1})` }}>
-        <img src="https://d64gsuwffb70l.cloudfront.net/683ae5af8cbc05c3ab95f288_1764467244379_8e3cf5d0.png" alt="" className="w-80 h-80" />
+        <img
+          src="/images/bg-code.png"
+          alt="Code Background"
+          className="w-80 h-80 object-contain"
+        />
       </div>
       <div className="absolute bottom-40 left-20 opacity-[0.05]" style={{ transform: `translateY(${scrollY * -0.2}px) rotate(${-scrollY * 0.01}deg)` }}>
-        <img src="https://d64gsuwffb70l.cloudfront.net/683ae5af8cbc05c3ab95f288_1764467244379_8e3cf5d0.png" alt="" className="w-48 h-48" />
+        <img
+          src="/images/bg-code.png"
+          alt="Code Background"
+          className="w-48 h-48 object-contain"
+        />
       </div>
 
       {/* Decorative lines */}
