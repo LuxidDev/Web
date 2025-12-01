@@ -46,7 +46,7 @@ export default function Testimonials() {
                 : 'from-zinc-600 to-black'
             }`}>Luxid</span>
             <img
-              src={darkMode ? "../../lion7.svg." : "../../public/lion5.svg"}
+              src={darkMode ? "/lion7.svg" : "/lion5.svg"}
               alt="Luxid"
               className="w-12 h-12 inline"
               />
