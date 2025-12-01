@@ -1,0 +1,423 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono',
+    'Consolas', 'Courier New', monospace;
+}
+
+/* Syntax Highlighting - Base Code Colors */
+.text-code-dark {
+  color: #d4d4d4;
+}
+
+.text-code-light {
+  color: #1e1e1e;
+}
+
+/* Dark Theme - VSCode Dark+ Inspired */
+.dark .token.comment {
+  color: #6A9955;
+  font-style: italic;
+}
+
+.dark .token.keyword {
+  color: #c586c0;
+}
+
+.dark .token.function {
+  color: #dcdcaa;
+}
+
+.dark .token.class-name {
+  color: #4ec9b0;
+}
+
+.dark .token.variable {
+  color: #9cdcfe;
+}
+
+.dark .token.string {
+  color: #ce9178;
+}
+
+.dark .token.number {
+  color: #b5cea8;
+}
+
+.dark .token.constant {
+  color: #4fc1ff;
+}
+
+.dark .token.operator {
+  color: #d4d4d4;
+}
+
+.dark .token.punctuation {
+  color: #d4d4d4;
+}
+
+.dark .token.property {
+  color: #9cdcfe;
+}
+
+.dark .token.namespace {
+  color: #4ec9b0;
+}
+
+/* Nova-specific tokens for Dark Theme */
+.dark .token.directive {
+  color: #c586c0;
+}
+
+.dark .token.tag {
+  color: #569cd6;
+}
+
+.dark .token.attr-name {
+  color: #9cdcfe;
+}
+
+.dark .token.php {
+  color: #c586c0;
+}
+
+/* Light Theme - VSCode Light+ Inspired */
+.light .token.comment {
+  color: #008000;
+  font-style: italic;
+}
+
+.light .token.keyword {
+  color: #0000ff;
+}
+
+.light .token.function {
+  color: #795e26;
+}
+
+.light .token.class-name {
+  color: #267f99;
+}
+
+.light .token.variable {
+  color: #001080;
+}
+
+.light .token.string {
+  color: #a31515;
+}
+
+.light .token.number {
+  color: #098658;
+}
+
+.light .token.constant {
+  color: #0070c1;
+}
+
+.light .token.operator {
+  color: #000000;
+}
+
+.light .token.punctuation {
+  color: #393a34;
+}
+
+.light .token.property {
+  color: #0451a5;
+}
+
+.light .token.namespace {
+  color: #267f99;
+}
+
+/* Nova-specific tokens for Light Theme */
+.light .token.directive {
+  color: #0000ff;
+}
+
+.light .token.tag {
+  color: #800000;
+}
+
+.light .token.attr-name {
+  color: #ff0000;
+}
+
+.light .token.php {
+  color: #0000ff;
+}
+
+/* Code Block Styling */
+pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+code {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Ensure code blocks have proper VSCode-like backgrounds */
+.dark pre[class*="language-"] {
+  background: #1e1e1e !important;
+}
+
+.light pre[class*="language-"] {
+  background: #fffffe !important;
+}
+
+/* Code container backgrounds from your components */
+.dark .bg-\[\#1e1e1e\] {
+  background-color: #1e1e1e !important;
+}
+
+.light .bg-\[\#fffffe\] {
+  background-color: #fffffe !important;
+}
+
+/* Smooth transitions for theme switching */
+.token {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Scrollbar styling for code blocks */
+pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark pre::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+.light pre::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+
+.dark pre::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+.light pre::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Font styling for code */
+.font-mono {
+  font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono',
+    'Consolas', 'Courier New', monospace;
+}
+
+/* Ensure proper line height and spacing */
+.leading-relaxed {
+  line-height: 1.6;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+.dark ::selection {
+  background: #264f78;
+}
+
+.light ::selection {
+  background: #add6ff;
+}
+
+.dark .token ::selection {
+  background: #264f78;
+}
+
+.light .token ::selection {
+  background: #add6ff;
+}
+
+/* Print styles */
+@media print {
+  .dark .token.comment {
+    color: #6a9955 !important;
+  }
+
+  .light .token.comment {
+    color: #008000 !important;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .dark .token.keyword {
+    color: #ffffff;
+  }
+
+  .light .token.keyword {
+    color: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .token {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  pre {
+    font-size: 0.875rem;
+  }
+
+  .text-sm {
+    font-size: 0.75rem;
+  }
+}
+
+/* Custom utilities */
+.code-container {
+  position: relative;
+}
+
+.code-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+.dark .code-container::before {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+.light .code-container::before {
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+}
+
+/* Glass morphism effects for modern look */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Focus visible polyfill */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* Ensure code is selectable but preserves formatting */
+pre {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Code inline styling */
+code:not(pre code) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 0.85em;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+}
+
+.dark code:not(pre code) {
+  background-color: rgba(110, 118, 129, 0.4);
+}
