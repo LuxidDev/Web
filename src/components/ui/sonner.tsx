@@ -1,16 +1,15 @@
-
 import React from "react"
 import { Toaster as Sonner, toast } from "sonner"
-import { useTheme } from "@/components/theme-provider"
+import { useTheme } from "@/contexts/ThemeContext"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme } = useTheme()
+  const { darkMode } = useTheme()
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={darkMode ? "dark" : "light"} // Map boolean to string
       className="toaster group"
       toastOptions={{
         classNames: {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { ThemeProvider, useTheme } from '';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
 import Header from './Header';
 import SpotlightSearch from './SpotlightSearch';

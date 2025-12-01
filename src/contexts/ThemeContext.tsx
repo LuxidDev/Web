@@ -13,12 +13,18 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [darkMode, setDarkMode] = useState(() => {
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    // Only run on client side
     if (typeof window !== 'undefined') {
+      // Check localStorage first
       const saved = localStorage.getItem('luxid-dark-mode');
-      if (saved) return JSON.parse(saved);
+      if (saved !== null) {
+        return JSON.parse(saved);
+      }
+      // Then check system preference
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
+    // Default to dark mode for SSR
     return true;
   });
 
@@ -27,6 +33,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   };
 
   useEffect(() => {
+    // Save to localStorage
     localStorage.setItem('luxid-dark-mode', JSON.stringify(darkMode));
 
     // Update document class for global theme
@@ -37,7 +44,23 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
     }
+
+    // Update favicon dynamically based on theme
+    updateFavicon(darkMode);
   }, [darkMode]);
+
+  // Function to update favicon
+  const updateFavicon = (isDarkMode: boolean) => {
+    if (typeof window === 'undefined') return;
+
+    const favicon = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+    if (favicon) {
+      // Set based on theme:
+      // dark mode -> lion7.svg
+      // light mode -> lion5.svg
+      favicon.href = isDarkMode ? '/lion7.svg' : '/lion5.svg';
+    }
+  };
 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode, toggleTheme }}>
