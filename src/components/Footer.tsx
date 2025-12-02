@@ -51,7 +51,7 @@ export default function Footer() {
               </a>
               <p className="text-zinc-400 text-sm mb-6 leading-relaxed">The PHP Framework for Modern Web. Build elegant applications with the SEA architecture.</p>
               <div className="flex items-center gap-3">
-                {[Github, Twitter, MessageCircle, Youtube].map((Icon, i) => (
+                {[Github, Youtube].map((Icon, i) => (
                   <a
                     key={i}
                     href="#"
@@ -64,6 +64,23 @@ export default function Footer() {
                     <Icon className="w-4 h-4" />
                   </a>
                 ))}
+
+                {/* X Logo (replacing Twitter) */}
+                <a
+                  href="#"
+                  className={`p-2 rounded-lg transition-all ${
+                    darkMode
+                      ? 'bg-zinc-900 hover:bg-zinc-800'
+                      : 'bg-zinc-800 hover:bg-zinc-700'
+                  }`}
+                  title="X"
+                >
+                  <img
+                    src={darkMode ? '/x-white.png' : '/x-black.png'}
+                    alt="X"
+                    className="w-4 h-4"
+                  />
+                </a>
               </div>
             </div>
             {Object.entries(footerLinks).map(([category, links]) => (

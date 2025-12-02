@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
-import Header from './Header';
-import SpotlightSearch from './SpotlightSearch';
-import Hero from './Hero';
-import Sponsors from './Sponsors';
-import Stats from './Stats';
-import Features from './Features';
-import SEASection from './SEASection';
-import NovaShowcase from './NovaShowcase';
-import LORMShowcase from './LORMShowcase';
-import JuiceCLI from './JuiceCLI';
-import CodeShowcase from './CodeShowcase';
-import Testimonials from './Testimonials';
-import BlogPreview from './BlogPreview';
-import CTASection from './CTASection';
-import Footer from './Footer';
-import { ErrorBoundary } from './ErrorBoundary';
+import Header from '@/components/Header';
+import SpotlightSearch from '@/components/SpotlightSearch';
+import Hero from '@/components/Hero';
+import Sponsors from '@/components/Sponsors';
+import Stats from '@/components/Stats';
+import Features from '@/components/Features';
+import SEASection from '@/components/SEASection';
+import NovaShowcase from '@/components/NovaShowcase';
+import LORMShowcase from '@/components/LORMShowcase';
+import JuiceCLI from '@/components/JuiceCLI';
+import CodeShowcase from '@/components/CodeShowcase';
+import Testimonials from '@/components/Testimonials';
+import BlogPreview from '@/components/BlogPreview';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 function AppContent() {
   const [searchOpen, setSearchOpen] = useState(false);

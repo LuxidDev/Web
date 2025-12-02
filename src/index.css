@@ -421,3 +421,72 @@ code:not(pre code) {
 .dark code:not(pre code) {
   background-color: rgba(110, 118, 129, 0.4);
 }
+
+
+/*  FOR ABOUT */
+/* Smooth reveal animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+/* Gradient border animation */
+.gradient-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(black, black) padding-box,
+              linear-gradient(135deg, rgba(245,158,11,0.3), rgba(249,115,22,0.3)) border-box;
+}
+
+.dark .gradient-border {
+  background: linear-gradient(black, black) padding-box,
+              linear-gradient(135deg, rgba(245,158,11,0.3), rgba(249,115,22,0.3)) border-box;
+}
+
+.light .gradient-border {
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, rgba(245,158,11,0.1), rgba(249,115,22,0.1)) border-box;
+}
+
+/* Subtle shimmer effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
