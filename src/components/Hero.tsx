@@ -108,7 +108,7 @@ export default function Hero() {
           darkMode ? 'bg-zinc-900/80 border-zinc-800' : 'bg-zinc-100/80 border-zinc-300'
         }`}>
           <span className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>$</span>
-          <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>composer create-project luxid/luxid myapp</span>
+          <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>composer create-project luxid/framework myapp</span>
         </div>
       </div>
     </section>
