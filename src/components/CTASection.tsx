@@ -5,7 +5,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 export default function CTASection() {
   const [scrollY, setScrollY] = useState(0);
   const [copied, setCopied] = useState(false);
-  const command = 'composer create-project luxid/luxid myapp';
+  const command = 'composer create-project luxid/framework myapp';
   const { darkMode } = useTheme();
 
   useEffect(() => {
