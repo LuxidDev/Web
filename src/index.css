@@ -490,3 +490,45 @@ code:not(pre code) {
   }
 }
 
+.php-variable {
+  color: #9CDCFE; /* Light blue for variables */
+}
+
+.php-comment {
+  color: #6A9955; /* Green for comments */
+  font-style: italic;
+}
+
+.php-class {
+  color: #4EC9B0; /* Teal for class names */
+}
+
+.php-method {
+  color: #DCDCAA; /* Yellow for method names */
+}
+
+.php-property {
+  color: #9CDCFE; /* Light blue for properties */
+}
+
+/* For light mode */
+:not(.dark) .php-variable {
+  color: #001080; /* Dark blue for variables */
+}
+
+:not(.dark) .php-comment {
+  color: #008000; /* Green for comments */
+  font-style: italic;
+}
+
+:not(.dark) .php-class {
+  color: #267F99; /* Teal for class names */
+}
+
+:not(.dark) .php-method {
+  color: #795E26; /* Brown for method names */
+}
+
+:not(.dark) .php-property {
+  color: #001080; /* Dark blue for properties */
+}

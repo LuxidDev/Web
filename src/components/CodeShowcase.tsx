@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { highlightCode } from '@/utils/code-highlighter';
+import MonacoEditor from '@/components/MonacoEditor';
 
 const codeExamples = {
   action: {
@@ -90,8 +90,6 @@ export default function CodeShowcase() {
   const [active, setActive] = useState<'action' | 'entity' | 'screen'>('action');
   const { darkMode } = useTheme();
 
-  const createHighlightedCode = (code: string, language: string) => highlightCode(code, language);
-
   const getLanguage = (key: string) => {
     return key === 'screen' ? 'nova' : 'php';
   };
@@ -135,19 +133,19 @@ export default function CodeShowcase() {
             <div className="w-3 h-3 rounded-full bg-red-500/60" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
             <div className="w-3 h-3 rounded-full bg-green-500/60" />
+            <span className={`ml-2 text-sm font-medium ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              {codeExamples[active].title}
+            </span>
           </div>
-          <div className="p-6 overflow-x-auto">
-            <pre className={`text-sm font-mono leading-relaxed ${
-              darkMode ? 'text-code-dark' : 'text-code-light'
-            }`}>
-              <code
-                className={`language-${getLanguage(active)}`}
-                dangerouslySetInnerHTML={createHighlightedCode(
-                  codeExamples[active].code,
-                  getLanguage(active)
-                )}
-              />
-            </pre>
+          <div className="p-2">
+            <MonacoEditor
+              code={codeExamples[active].code}
+              language={getLanguage(active)}
+              darkMode={darkMode}
+              height="400px"
+              readOnly={true}
+              showLineNumbers={true}
+            />
           </div>
         </div>
       </div>

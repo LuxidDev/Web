@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { highlightCode } from '@/utils/code-highlighter';
+import MonacoEditor from '@/components/MonacoEditor';
 
 const novaCode = `{{-- layouts/app.nova --}}
 <!DOCTYPE html>
@@ -40,16 +40,7 @@ const componentCode = `{{-- components/card.nova --}}
 
 export default function NovaShowcase() {
   const [activeTab, setActiveTab] = useState<'layout' | 'component'>('layout');
-  const [scrollY, setScrollY] = useState(0);
   const { darkMode } = useTheme();
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const createHighlightedCode = (code: string) => highlightCode(code, 'nova');
 
   return (
     <section className={`py-32 relative overflow-hidden ${
@@ -57,7 +48,7 @@ export default function NovaShowcase() {
     }`}>
       <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl rounded-full blur-3xl ${
         darkMode ? 'from-zinc-800/20 to-transparent' : 'from-zinc-300/20 to-transparent'
-      }`} style={{ transform: `translateY(${scrollY * 0.1}px)` }} />
+      }`} />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -115,7 +106,7 @@ export default function NovaShowcase() {
                   activeTab === 'layout'
                     ? darkMode
                       ? 'bg-[#2d2d2d] text-white'
-                      : 'bg-[#f3f3f3] text-black border-b-2 border-blue-500'
+                      : 'bg-[#f3f3f3] text-black'
                     : darkMode
                       ? 'text-zinc-400 hover:text-zinc-200 bg-[#1e1e1e]'
                       : 'text-zinc-600 hover:text-zinc-800 bg-[#fffffe]'
@@ -129,7 +120,7 @@ export default function NovaShowcase() {
                   activeTab === 'component'
                     ? darkMode
                       ? 'bg-[#2d2d2d] text-white'
-                      : 'bg-[#f3f3f3] text-black border-b-2 border-blue-500'
+                      : 'bg-[#f3f3f3] text-black'
                     : darkMode
                       ? 'text-zinc-400 hover:text-zinc-200 bg-[#1e1e1e]'
                       : 'text-zinc-600 hover:text-zinc-800 bg-[#fffffe]'
@@ -138,17 +129,15 @@ export default function NovaShowcase() {
                 Component
               </button>
             </div>
-            <div className="p-6 overflow-x-auto">
-              <pre className={`text-sm font-mono leading-relaxed ${
-                darkMode ? 'text-code-dark' : 'text-code-light'
-              }`}>
-                <code
-                  className="language-nova"
-                  dangerouslySetInnerHTML={createHighlightedCode(
-                    activeTab === 'layout' ? novaCode : componentCode
-                  )}
-                />
-              </pre>
+            <div className="p-0">
+              <MonacoEditor
+                code={activeTab === 'layout' ? novaCode : componentCode}
+                language="nova"
+                darkMode={darkMode}
+                height="400px"
+                readOnly={true}
+                showLineNumbers={true}
+              />
             </div>
           </div>
         </div>

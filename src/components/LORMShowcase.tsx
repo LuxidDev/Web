@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Database, ArrowRight } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { highlightCode } from '@/utils/code-highlighter';
+import MonacoEditor from '@/components/MonacoEditor';
+import SimplePhpCode from './SimplePhpCode';
 
 const ormExamples = {
   basic: `// Basic queries
@@ -26,16 +27,10 @@ $users = User::query()
 
 export default function LORMShowcase() {
   const [activeExample, setActiveExample] = useState<'basic' | 'relations' | 'advanced'>('basic');
-  const [scrollY, setScrollY] = useState(0);
   const { darkMode } = useTheme();
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const createHighlightedCode = (code: string) => highlightCode(code, 'php');
+  // Escape the PHP code properly for display
+  const escapedCode = ormExamples[activeExample];
 
   return (
     <section className={`py-32 relative overflow-hidden ${
@@ -43,7 +38,7 @@ export default function LORMShowcase() {
     }`}>
       <div className={`absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr rounded-full blur-3xl ${
         darkMode ? 'from-zinc-800/20 to-transparent' : 'from-zinc-400/20 to-transparent'
-      }`} style={{ transform: `translateY(${scrollY * -0.1}px)` }} />
+      }`} />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -64,7 +59,7 @@ export default function LORMShowcase() {
                       activeExample === key
                         ? darkMode
                           ? 'bg-[#2d2d2d] text-white'
-                          : 'bg-[#f3f3f3] text-black border-b-2 border-blue-500'
+                          : 'bg-[#f3f3f3] text-black'
                         : darkMode
                           ? 'text-zinc-400 hover:text-zinc-200 bg-[#1e1e1e]'
                           : 'text-zinc-600 hover:text-zinc-800 bg-[#fffffe]'
@@ -74,17 +69,11 @@ export default function LORMShowcase() {
                   </button>
                 ))}
               </div>
-              <div className="p-6 overflow-x-auto">
-                <pre className={`text-sm font-mono leading-relaxed ${
-                  darkMode ? 'text-code-dark' : 'text-code-light'
-                }`}>
-                  <code
-                    className="language-php"
-                    dangerouslySetInnerHTML={createHighlightedCode(
-                      ormExamples[activeExample]
-                    )}
-                  />
-                </pre>
+              <div className="p-0">
+                <SimplePhpCode
+                  code={escapedCode}
+                  darkMode={darkMode}
+                />
               </div>
             </div>
           </div>
