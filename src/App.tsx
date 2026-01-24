@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AboutPage from '@/pages/About';
-import DocPage from '@/pages/Docs';
+import Docs from '@/docs/Docs';
 import BlogPage from '@/pages/Blog';
 import CommunityPage from '@/pages/Community';
 
@@ -24,8 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/docs" element={<DocPage />} />
-            <Route path="/docs/:page" element={<DocPage />} />
+            <Route path="/docs/:chapter?" element={<Docs />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/community" element={<CommunityPage />} />
 

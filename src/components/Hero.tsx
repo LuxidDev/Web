@@ -68,7 +68,7 @@ export default function Hero() {
           darkMode ? 'bg-zinc-900/80 border-zinc-700' : 'bg-zinc-100/80 border-zinc-300'
         }`}>
           <span className="px-2 py-0.5 bg-black text-white text-xs font-bold rounded">New</span>
-          <span className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>Luxid v0.1.0-beta is now available</span>
+          <span className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>Luxid v0.3.8-beta is now available</span>
           <ArrowRight className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-500'} group-hover:translate-x-1 transition-transform`} />
         </div>
 
@@ -108,7 +108,7 @@ export default function Hero() {
           darkMode ? 'bg-zinc-900/80 border-zinc-800' : 'bg-zinc-100/80 border-zinc-300'
         }`}>
           <span className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>$</span>
-          <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>composer create-project luxid/framework myapp</span>
+          <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>composer create-project luxid/framework my_app</span>
         </div>
       </div>
     </section>

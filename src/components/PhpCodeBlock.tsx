@@ -1,4 +1,3 @@
-// src/components/PhpCodeBlock.tsx
 import React from 'react';
 import MonacoEditor from './MonacoEditor';
 

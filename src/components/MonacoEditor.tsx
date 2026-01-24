@@ -1,4 +1,3 @@
-// src/components/MonacoEditor.tsx
 import React from 'react';
 import Editor, { OnMount } from '@monaco-editor/react';
 
