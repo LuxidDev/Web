@@ -3,7 +3,7 @@ import { ArrowRight, Calendar } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const posts = [
-  { title: 'Introducing Luxid 2.0', excerpt: 'The biggest update yet with improved performance, new features, and a refined developer experience.', date: 'Nov 28, 2025', tag: 'Release' },
+  { title: 'Introducing Luxid 1.0', excerpt: 'The biggest update yet with improved performance, new features, and a refined developer experience.', date: 'Nov 28, 2025', tag: 'Release' },
   { title: 'Understanding SEA Architecture', excerpt: 'A deep dive into the Screen, Entities, Actions pattern and why it makes your code better.', date: 'Nov 25, 2025', tag: 'Tutorial' },
   { title: 'Building APIs with Luxid', excerpt: 'Learn how to create robust, scalable APIs using Luxid built-in tools and best practices.', date: 'Nov 20, 2025', tag: 'Guide' },
 ];
