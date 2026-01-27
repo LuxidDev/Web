@@ -16,11 +16,13 @@ export default function IntroductionContent() {
           : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
       }`}>
         <div className="flex items-start gap-4">
-          <Sparkles className={`w-12 h-12 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
           <div>
             <h3 className="text-2xl font-bold mb-2">Welcome to Luxid Framework</h3>
             <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-              The modern PHP framework built for developers who value elegance, performance, and simplicity.
+                Luxid is a modern PHP framework designed for developers who care about clean architecture,
+                expressive code, and real-world performance. It provides a thoughtfully crafted foundation
+                that lets you move fast without sacrificing structure, giving you the tools to build scalable,
+                maintainable applications with confidence and clarity.
             </p>
           </div>
         </div>
@@ -30,11 +32,6 @@ export default function IntroductionContent() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
-            darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
-          }`}>
-            <Brain className={darkMode ? 'text-blue-400' : 'text-blue-600'} />
-          </div>
           <h3 className="text-xl font-bold mb-2">SEA Architecture</h3>
           <p className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
             Screen, Entities, Actions - A modern approach that makes your code intuitive and organized.
@@ -48,11 +45,6 @@ export default function IntroductionContent() {
         </div>
 
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
-            darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-          }`}>
-            <Zap className={darkMode ? 'text-purple-400' : 'text-purple-600'} />
-          </div>
           <h3 className="text-xl font-bold mb-2">Batteries Included</h3>
           <p className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
             Everything you need out of the box: ORM, templating, CLI tools, authentication, and more.

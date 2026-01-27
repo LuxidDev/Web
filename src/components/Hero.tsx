@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -64,13 +65,29 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Announcement badge */}
-        <div className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full mb-8 backdrop-blur-sm hover:border-zinc-500 transition-colors cursor-pointer group ${
-          darkMode ? 'bg-zinc-900/80 border-zinc-700' : 'bg-zinc-100/80 border-zinc-300'
-        }`}>
-          <span className="px-2 py-0.5 bg-black text-white text-xs font-bold rounded">New</span>
-          <span className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>Luxid v0.3.8-beta is now available</span>
-          <ArrowRight className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-500'} group-hover:translate-x-1 transition-transform`} />
-        </div>
+        <Link to="/docs">
+          <div
+            className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full mb-8 backdrop-blur-sm hover:border-zinc-500 transition-colors cursor-pointer group ${
+              darkMode ? 'bg-zinc-900/80 border-zinc-700' : 'bg-zinc-100/80 border-zinc-300'
+            }`}
+          >
+            <span className="px-2 py-0.5 bg-black text-white text-xs font-bold rounded">
+              New
+            </span>
+            <span
+              className={`text-sm ${
+                darkMode ? 'text-zinc-300' : 'text-zinc-700'
+              }`}
+            >
+              Luxid v0.3.8-beta is now available
+            </span>
+            <ArrowRight
+              className={`w-4 h-4 ${
+                darkMode ? 'text-zinc-400' : 'text-zinc-500'
+              } group-hover:translate-x-1 transition-transform`}
+            />
+          </div>
+        </Link>
 
         {/* Main headline */}
         <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-[1.1] ${
@@ -93,9 +110,11 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <a href="#get-started" className="px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-zinc-800 transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/10">
-            Get Started
-          </a>
+          <Link to="/docs/">
+            <span className="px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-zinc-800 transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/10">
+              Get Started
+            </span>
+          </Link>
           <a href="#docs" className={`flex items-center gap-2 px-8 py-4 border rounded-lg hover:bg-zinc-800 hover:border-zinc-600 transition-all ${
             darkMode ? 'bg-zinc-900 text-white border-zinc-700' : 'bg-white text-zinc-900 border-zinc-300 hover:text-white'
           }`}>

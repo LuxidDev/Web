@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Database, Code, Zap, ArrowRight, Globe, Server } from 'lucide-react';
+import { Database, Code, Zap, ArrowRight, Globe, Server, Brain } from 'lucide-react';
 
 interface ArchitectureDiagramProps {
   showFlow?: boolean;
@@ -49,7 +49,7 @@ export default function ArchitectureDiagram({ showFlow = true }: ArchitectureDia
             <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
               darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
             }`}>
-              <Zap className={`w-8 h-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+              <Brain className={`w-8 h-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
             </div>
             <h4 className="text-xl font-bold mb-2">Actions</h4>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
