@@ -10,9 +10,13 @@ interface CodeExampleProps {
   highlightLines?: number[];
 }
 
+const HIGHLIGHT_LANGUAGES = ['php', 'html', 'blade', 'bash'];
+
 export default function CodeExample({ code, language = 'php', title, explanation, highlightLines = [] }: CodeExampleProps) {
   const { darkMode } = useTheme();
   const [copied, setCopied] = useState(false);
+
+  const shouldHighlight = HIGHLIGHT_LANGUAGES.includes(language);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
@@ -21,23 +25,24 @@ export default function CodeExample({ code, language = 'php', title, explanation
   };
 
   // Simple syntax highlighting for Luxid examples
-  const highlightCode = (code: string): string => {
-    const patterns = {
-      'namespace': /(namespace\s+[^\s;]+)/g,
-      'use': /(use\s+[^\s;]+)/g,
-      'class': /(class\s+[^\s{]+)/g,
-      'function': /(function\s+[^\s(]+)/g,
-      'keyword': /\b(abstract|class|extends|implements|interface|trait|public|protected|private|static|final|function|return|if|else|foreach|for|while|do|try|catch|throw|new|instanceof|self|parent|null|true|false|array|string|int|bool|float|void|object|mixed|callable|iterable)\b/g,
-      'string': /(['"`][^'"`]*['"`])/g,
-      'comment': /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)/g,
-      'variable': /\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/g,
-      'constant': /\b([A-Z_][A-Z0-9_]*)\b/g,
-      'number': /\b(\d+\.?\d*|\.\d+)\b/g,
-    };
-
+  const highlightCode = (code: string, language: string): string => {
     let highlighted = code;
 
-    // Apply highlighting in order
+    if (language === 'php') {
+      // your existing PHP highlighting
+      const patterns = {
+        namespace: /(namespace\s+[^\s;]+)/g,
+        use: /(use\s+[^\s;]+)/g,
+        class: /(class\s+[^\s{]+)/g,
+        function: /(function\s+[^\s(]+)/g,
+        keyword: /\b(abstract|class|extends|implements|interface|trait|public|protected|private|static|final|function|return|if|else|foreach|for|while|do|try|catch|throw|new|instanceof|self|parent|null|true|false|array|string|int|bool|float|void|object|mixed|callable|iterable)\b/g,
+        string: /(['"`][^'"`]*['"`])/g,
+        comment: /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)/g,
+        variable: /\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/g,
+        constant: /\b([A-Z_][A-Z0-9_]*)\b/g,
+        number: /\b(\d+\.?\d*|\.\d+)\b/g,
+      };
+
     highlighted = highlighted.replace(patterns.comment, '<span class="text-green-600 dark:text-green-400">$1</span>');
     highlighted = highlighted.replace(patterns.namespace, '<span class="text-purple-600 dark:text-purple-400">$1</span>');
     highlighted = highlighted.replace(patterns.use, '<span class="text-blue-600 dark:text-blue-400">$1</span>');
@@ -49,8 +54,23 @@ export default function CodeExample({ code, language = 'php', title, explanation
     highlighted = highlighted.replace(patterns.variable, '<span class="text-orange-600 dark:text-orange-400">$$1</span>');
     highlighted = highlighted.replace(patterns.number, '<span class="text-blue-600 dark:text-blue-400">$1</span>');
 
+    } else if (language === 'bash') {
+      // Bash / CLI highlighting
+      const patterns = {
+        command: /\b(luxid|php|composer|cd|git|npm|yarn|docker|phpunit)\b/g,
+        flag: /(--[a-zA-Z-]+)/g,
+        comment: /(#.*$)/gm,
+        string: /(["'][^"']*["'])/g,
+      };
+
+      highlighted = highlighted.replace(patterns.comment, '<span class="text-green-500 dark:text-green-400">$1</span>');
+      highlighted = highlighted.replace(patterns.command, '<span class="text-blue-600 dark:text-blue-400">$1</span>');
+      highlighted = highlighted.replace(patterns.flag, '<span class="text-purple-600 dark:text-purple-400">$1</span>');
+      highlighted = highlighted.replace(patterns.string, '<span class="text-yellow-500 dark:text-yellow-400">$1</span>');
+    }
+
     return highlighted;
-  };
+};
 
   return (
     <div className={`my-6 rounded-xl overflow-hidden ${
@@ -82,9 +102,11 @@ export default function CodeExample({ code, language = 'php', title, explanation
       <div className="relative">
         <pre className="font-mono text-sm p-4 overflow-x-auto">
           <code
-            className={darkMode ? 'text-zinc-300' : 'text-zinc-800'}
-            dangerouslySetInnerHTML={{ __html: highlightCode(code) }}
-          />
+              className={darkMode ? 'text-zinc-300' : 'text-zinc-800'}
+              {...(shouldHighlight
+                ? { dangerouslySetInnerHTML: { __html: highlightCode(code, language) } }
+                : { children: code })}
+            />
         </pre>
         {highlightLines.length > 0 && (
           <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500/50"

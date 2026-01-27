@@ -72,12 +72,12 @@ export default function InstallationContent() {
             <div>
               <h4 className="font-bold mb-1">Database (Optional)</h4>
               <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                MySQL, PostgreSQL, or SQLite
+                MySQL
               </p>
               <div className={`mt-2 p-2 rounded text-xs ${
                 darkMode ? 'bg-zinc-800' : 'bg-zinc-100'
               }`}>
-                <strong>For development:</strong> SQLite works out of the box
+                <strong>MySQL only supported,</strong> for now at least.
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function InstallationContent() {
             <div>
               <h4 className="font-bold mb-1">Web Server</h4>
               <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                Apache, Nginx, or built-in PHP server
+                The awesome PHP web server
               </p>
               <div className={`mt-2 p-2 rounded text-xs ${
                 darkMode ? 'bg-zinc-800' : 'bg-zinc-100'
@@ -107,11 +107,19 @@ export default function InstallationContent() {
 
       <div className="space-y-8">
         {/* Step 1 */}
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <div
+          className={`p-6 rounded-xl ${
+            darkMode
+              ? 'bg-zinc-900/50 border border-zinc-800'
+              : 'bg-zinc-50 border border-zinc-200'
+          }`}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-600'
-            }`}>
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                darkMode ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-600'
+              }`}
+            >
               1
             </div>
             <h4 className="text-xl font-bold">Create New Project</h4>
@@ -119,13 +127,26 @@ export default function InstallationContent() {
 
           <div className="mb-6">
             <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-              Use Composer to create a new Luxid project:
+              You can create a new Luxid project using either <strong>Composer</strong> or the
+              official <strong>Luxid CLI</strong>. Choose the approach that fits your workflow.
             </p>
+
+            {/* Composer */}
             <CodeExample
               code="composer create-project luxid/framework myapp"
               language="bash"
-              title="Create Project"
+              title="Using Composer"
               explanation="This downloads the Luxid framework starter template and sets up a new project in the 'myapp' directory."
+            />
+
+            {/* Spacer */}
+            <div className="h-4" />
+            {/* Luxid CLI */}
+            <CodeExample
+              code="luxid new myapp"
+              language="bash"
+              title="Using Luxid CLI"
+              explanation="This uses the Luxid command-line tool to scaffold a fresh project with sensible defaults in seconds."
             />
           </div>
 
