@@ -9,28 +9,24 @@ const codeExamples = {
 
 namespace App\\Actions;
 
-use Luxid\\Http\\Action;
-use App\\Entities\\User;
+use Luxid\\Foundation\\Action;
+use Luxid\\Http\\Request;
+use Luxid\\Http\\Response;
 
 class UserAction extends Action
 {
-    public function index()
+    public function index(Request $request, Response $response): string
     {
-        $users = User::all();
+        $id = $request->query('id');
+        $user = User::find($id);
 
-        return $this->screen('users.index', [
-            'users' => $users
+        if (!$users) {
+            return $response->error('No users found', null, 404);
+        }
+
+        return $response->success('[
+            'users' => $user
         ]);
-    }
-
-    public function store()
-    {
-        $user = User::create([
-            'name' => $this->request->name,
-            'email' => $this->request->email
-        ]);
-
-        return $this->redirect('/users');
     }
 }`
   },
@@ -42,24 +38,41 @@ namespace App\\Entities;
 
 use Luxid\\Database\\Entity;
 
-class User extends Entity
+class User extends UserEntity
 {
-    protected $table = 'users';
+    public int $id = 0;
+    public string $email = '';
+    public string $password = '';
 
-    protected $fillable = [
-        'name', 'email', 'password'
-    ];
-
-    public function posts()
+    public function attributes(): array
     {
-        return $this->hasMany(Post::class);
+        return ['email', 'password'];
     }
 
-    public function profile()
+    public function tableName(): string
     {
-        return $this->hasOne(Profile::class);
+        return 'users';
     }
-}`
+
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
+
+    public function rules(): array
+    {
+        return [
+            'email' => [
+                self::RULE_REQUIRED,
+                self::RULE_EMAIL,
+            ],
+            'password' => [
+                self::RULE_REQUIRED,
+                [self::RULE_MIN, 'min' => 8]
+            ]
+        ];
+    }
+}`,
   },
   screen: {
     title: 'Screens (Views)',

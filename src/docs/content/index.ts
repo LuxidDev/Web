@@ -1,4 +1,3 @@
-// src/docs/content/index.ts
 export { default as IntroductionContent } from './IntroductionContent';
 export { default as InstallationContent } from './InstallationContent';
 export { default as FirstAppContent } from './FirstAppContent';

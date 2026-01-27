@@ -8,7 +8,8 @@ const commands = [
   { cmd: 'juice make:entity User', desc: 'Generate a new Entity (Model)' },
   { cmd: 'juice make:migration create_users', desc: 'Create a database migration' },
   { cmd: 'juice migrate', desc: 'Run all pending migrations' },
-  { cmd: 'juice serve', desc: 'Start the development server' },
+  { cmd: 'juice status', desc: 'Show application current status' },
+  { cmd: 'juice start', desc: 'Start the development server' },
 ];
 
 // Custom highlighter for Juice commands
