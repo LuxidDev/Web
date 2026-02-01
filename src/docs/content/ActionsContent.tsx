@@ -1,10 +1,50 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Zap, Code, ArrowRight, CheckCircle, Terminal, Server } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import MonacoEditor from '@/components/MonacoEditor';
 
 export default function ActionsContent() {
   const { darkMode } = useTheme();
+
+  const CodeExample = ({ code, title, explanation, language = 'php', compact = false }: {
+    code: string;
+    title?: string;
+    explanation?: string;
+    language?: 'php' | 'html' | 'javascript' | 'nova';
+    compact?: boolean;
+  }) => (
+    <div className="mb-8">
+      {title && (
+        <div className={`flex items-center gap-2 px-4 py-3 rounded-t-lg ${
+          darkMode ? 'bg-zinc-800 border border-zinc-700 border-b-0' : 'bg-zinc-100 border border-zinc-300 border-b-0'
+        }`}>
+          <div className="w-3 h-3 rounded-full bg-red-500/60" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+          <div className="w-3 h-3 rounded-full bg-green-500/60" />
+          <span className={`ml-2 text-sm font-medium ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            {title}
+          </span>
+        </div>
+      )}
+      <div className={`rounded-b-lg overflow-hidden border ${
+        darkMode ? 'border-zinc-700' : 'border-zinc-300'
+      } ${!title ? 'rounded-t-lg' : ''}`}>
+        <MonacoEditor
+          code={code}
+          language={language}
+          darkMode={darkMode}
+          height={compact ? '250px' : '400px'}
+          readOnly={true}
+          showLineNumbers={true}
+        />
+      </div>
+      {explanation && (
+        <p className={`mt-3 text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          {explanation}
+        </p>
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -63,31 +103,20 @@ export default function ActionsContent() {
 namespace App\\Actions;
 
 use App\\Entities\\Post;
-use Luxid\\Foundation\\Application;
+use Luxid\\Foundation\\Action;
 
-class PostAction extends \\Luxid\\Foundation\\Action
+class PostAction extends Action
 {
-    /**
-     * GET /posts - List all posts
-     */
+    // List all posts
     public function index()
     {
-        // 1. Fetch data using Entity
         $posts = Post::findAll([], 'created_at DESC');
-
-        // 2. Return JSON response
         return $this->success(['posts' => $posts]);
-
-        // OR return Nova template:
-        // return $this->nova('posts.index', ['posts' => $posts]);
     }
 
-    /**
-     * GET /posts/{id} - Show single post
-     */
+    // Show single post
     public function show($id)
     {
-        // Route parameter $id is automatically injected
         $post = Post::find($id);
 
         if (!$post) {
@@ -97,72 +126,23 @@ class PostAction extends \\Luxid\\Foundation\\Action
         return $this->success(['post' => $post]);
     }
 
-    /**
-     * POST /posts - Create new post
-     */
+    // Create new post
     public function store()
     {
-        // Get request data (works with JSON or form data)
         $data = $this->request()->getBody();
-
-        // Create Entity instance
         $post = new Post();
         $post->loadData($data);
 
-        // Set current user as author
-        if (Application::$app->user) {
-            $post->author = Application::$app->user->getDisplayName();
-        }
-
-        // Validate and save
         if ($post->validate() && $post->save()) {
-            return $this->success(['post' => $post], 'Post created successfully', 201);
+            return $this->success(['post' => $post], 'Post created', 201);
         }
 
         return $this->error('Validation failed', $post->errors, 400);
-    }
-
-    /**
-     * PUT /posts/{id} - Update post
-     */
-    public function update($id)
-    {
-        $post = Post::find($id);
-
-        if (!$post) {
-            return $this->error('Post not found', null, 404);
-        }
-
-        $data = $this->request()->getBody();
-        $post->loadData($data);
-
-        if ($post->validate() && $post->save()) {
-            return $this->success(['post' => $post], 'Post updated successfully');
-        }
-
-        return $this->error('Validation failed', $post->errors, 400);
-    }
-
-    /**
-     * DELETE /posts/{id} - Delete post
-     */
-    public function destroy($id)
-    {
-        $post = Post::find($id);
-
-        if (!$post) {
-            return $this->error('Post not found', null, 404);
-        }
-
-        if ($post->delete()) {
-            return $this->success(null, 'Post deleted successfully');
-        }
-
-        return $this->error('Failed to delete post', null, 500);
     }
 }`}
-        title="app/Actions/PostAction.php - Complete CRUD Action"
-        explanation="This shows a complete RESTful Action for blog posts with all HTTP methods."
+        title="app/Actions/PostAction.php - Basic CRUD Example"
+        explanation="A minimal Action showing index, show, and store methods. Notice the clean separation of concerns."
+        compact={true}
       />
 
       <h3 className="text-2xl font-bold mb-4 mt-8">Action Helpers</h3>
@@ -225,11 +205,7 @@ class PostAction extends \\Luxid\\Foundation\\Action
         code={`// Engine/Foundation/Action.php - Base Action class
 class Action
 {
-    use ActionHelpers; // Import all helper methods
-
-    public string $frame = 'app'; // Default layout frame
-    public string $activity = ''; // Current activity name
-    protected array $middlewares = []; // Middleware stack
+    use ActionHelpers;
 
     // Get the Application instance
     protected function app(): Application
@@ -243,30 +219,6 @@ class Action
         return Application::$app->request;
     }
 
-    // Get the Response instance
-    protected function response(): Response
-    {
-        return Application::$app->response;
-    }
-
-    // Get the Database instance
-    protected function db(): Database
-    {
-        return Application::$app->db;
-    }
-
-    // Get current authenticated user
-    protected function user(): ?DbEntity
-    {
-        return Application::$app->user;
-    }
-
-    // Check if user is guest
-    protected function isGuest(): bool
-    {
-        return Application::isGuest();
-    }
-
     // Send JSON response
     protected function json($data, int $statusCode = 200): string
     {
@@ -276,33 +228,28 @@ class Action
     }
 
     // Send success response
-    protected function success($data = null, string $message = 'Success', int $statusCode = 200): string
+    protected function success($data = null, string $message = 'Success'): string
     {
         return $this->json([
             'success' => true,
             'message' => $message,
             'data' => $data
-        ], $statusCode);
+        ]);
     }
 
     // Send error response
-    protected function error(string $message = 'Error', $errors = null, int $statusCode = 400): string
+    protected function error(string $message = 'Error', $errors = null): string
     {
         return $this->json([
             'success' => false,
             'message' => $message,
             'errors' => $errors
-        ], $statusCode);
-    }
-
-    // Render Nova template
-    protected function nova($screen, $data = [])
-    {
-        return $this->app()->screen->renderScreen($screen, $data);
+        ], 400);
     }
 }`}
         title="Engine/Foundation/Action.php - Core Implementation"
-        explanation="The Action base class provides all the helper methods that make writing actions easy and consistent."
+        explanation="The Action base class provides helper methods that make writing actions consistent."
+        compact={true}
       />
 
       <h3 className="text-2xl font-bold mb-4 mt-8">Advanced Action Patterns</h3>
@@ -324,21 +271,15 @@ class ProductAction extends Action
 {
     // RESTful resource methods
     public function index() {}     // GET /products
-    public function create() {}    // GET /products/create (form)
     public function store() {}     // POST /products
     public function show($id) {}   // GET /products/{id}
-    public function edit($id) {}   // GET /products/{id}/edit
     public function update($id) {} // PUT/PATCH /products/{id}
     public function destroy($id) {} // DELETE /products/{id}
-
-    // Custom actions
-    public function search() {}    // GET /products/search
-    public function export() {}    // GET /products/export
-    public function import() {}    // POST /products/import
 }`}
             language="php"
             title="Resource Action Pattern"
-            explanation="Group all operations for a resource in one Action class for better organization."
+            explanation="Group all operations for a resource in one Action class."
+            compact={true}
           />
         </div>
 
@@ -352,24 +293,13 @@ class ProductAction extends Action
             code={`<?php
 namespace App\\Actions;
 
-// Each Action handles one specific task
 class RegisterUserAction extends Action
 {
     public function __invoke()
     {
-        // Single responsibility: user registration
         $data = $this->request()->getBody();
         // ... registration logic
-    }
-}
-
-class LoginUserAction extends Action
-{
-    public function __invoke()
-    {
-        // Single responsibility: user login
-        $credentials = $this->request()->getBody();
-        // ... login logic
+        return $this->success(['user' => $user], 'User registered');
     }
 }
 
@@ -377,14 +307,14 @@ class LogoutUserAction extends Action
 {
     public function __invoke()
     {
-        // Single responsibility: user logout
         Application::$app->logout();
-        return $this->success(null, 'Logged out successfully');
+        return $this->success(null, 'Logged out');
     }
 }`}
             language="php"
             title="Single Action Pattern"
-            explanation="Create focused Action classes that do one thing well. Use __invoke() for single-method Actions."
+            explanation="Create focused Action classes that do one thing well."
+            compact={true}
           />
         </div>
 
@@ -409,42 +339,11 @@ class ProductApiAction extends Action
         return $this->success(['products' => $products]);
     }
 
-    public function store()
-    {
-        $data = $this->request()->getJson();
-
-        $product = new Product();
-        $product->loadData($data);
-
-        if ($product->save()) {
-            return $this->success(['product' => $product], 'Product created', 201);
-        }
-
-        return $this->error('Failed to create product', $product->errors);
-    }
-
-    // API-specific methods
-    public function bulkUpdate()
-    {
-        $updates = $this->request()->getJson();
-
-        foreach ($updates as $update) {
-            $product = Product::find($update['id']);
-            if ($product) {
-                $product->loadData($update);
-                $product->save();
-            }
-        }
-
-        return $this->success(null, 'Bulk update completed');
-    }
-
     public function statistics()
     {
         $stats = [
             'total' => Product::count(),
-            'active' => Product::count(['active' => true]),
-            'inactive' => Product::count(['active' => false]),
+            'active' => Product::count(['active' => true])
         ];
 
         return $this->success(['statistics' => $stats]);
@@ -452,7 +351,8 @@ class ProductApiAction extends Action
 }`}
             language="php"
             title="API Resource Action Pattern"
-            explanation="API-focused Actions that always return JSON and include API-specific functionality."
+            explanation="API-focused Actions that always return JSON."
+            compact={true}
           />
         </div>
       </div>
@@ -488,14 +388,11 @@ class OrderAction extends Action
         $data = $this->request()->getBody();
         // ... create order logic
     }
-
-    // Route-level middleware example
-    // In routes/api.php:
-    // $router->post('/orders', [OrderAction::class, 'create'])
-    //     ->middleware(new AuthMiddleware());`}
+}`}
         language="php"
         title="Action Middleware"
-        explanation="Actions can have their own middleware or use route-level middleware for authentication, validation, etc."
+        explanation="Actions can have their own middleware for authentication, validation, etc."
+        compact={true}
       />
 
       <h3 className="text-2xl font-bold mb-4">Request Data Handling</h3>
@@ -505,7 +402,7 @@ class OrderAction extends Action
           <div>
             <h4 className="font-bold mb-2">Getting Request Data</h4>
             <CodeExample
-              code={`// Get all request data (JSON or form)
+              code={`// Get all request data
 $data = $this->request()->getBody();
 
 // Get specific value with default
@@ -516,16 +413,10 @@ $jsonData = $this->request()->getJson();
 
 // Get query parameters
 $page = $_GET['page'] ?? 1;
-$limit = $_GET['limit'] ?? 10;
-
-// Get uploaded files
-$file = $_FILES['avatar'] ?? null;
-
-// Get headers
-$authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';`}
+$limit = $_GET['limit'] ?? 10;`}
               language="php"
               title="Accessing Request Data"
-              compact
+              compact={true}
             />
           </div>
 
@@ -542,10 +433,6 @@ public function store()
         return $this->error('Title is required');
     }
 
-    if (strlen($data['title']) < 3) {
-        return $this->error('Title must be at least 3 characters');
-    }
-
     // Use Entity validation (recommended)
     $post = new Post();
     $post->loadData($data);
@@ -554,14 +441,12 @@ public function store()
         return $this->error('Validation failed', $post->errors);
     }
 
-    // Proceed with business logic
     $post->save();
-
     return $this->success(['post' => $post]);
 }`}
               language="php"
               title="Request Validation Patterns"
-              compact
+              compact={true}
             />
           </div>
         </div>
