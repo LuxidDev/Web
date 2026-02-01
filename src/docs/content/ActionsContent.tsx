@@ -1,51 +1,11 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Zap, Code, ArrowRight, CheckCircle, Terminal, Server } from 'lucide-react';
-import MonacoEditor from '@/components/MonacoEditor';
+import CodeExample from '@/components/CodeExample';
+import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function ActionsContent() {
   const { darkMode } = useTheme();
-
-  const CodeExample = ({ code, title, explanation, language = 'php' }: {
-    code: string;
-    title?: string;
-    explanation?: string;
-    language?: 'php' | 'html' | 'javascript' | 'nova';
-  }) => (
-    <div className="mb-8">
-      {title && (
-        <div className={`flex items-center gap-2 px-4 py-3 rounded-t-lg ${
-          darkMode ? 'bg-zinc-800 border border-zinc-700 border-b-0' : 'bg-zinc-100 border border-zinc-300 border-b-0'
-        }`}>
-          <div className="w-3 h-3 rounded-full bg-red-500/60" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-          <div className="w-3 h-3 rounded-full bg-green-500/60" />
-          <span className={`ml-2 text-sm font-medium ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            {title}
-          </span>
-        </div>
-      )}
-      <div className={`rounded-b-lg overflow-hidden border ${
-        darkMode ? 'border-zinc-700' : 'border-zinc-300'
-      } ${!title ? 'rounded-t-lg' : ''}`}>
-        <div className={`${darkMode ? 'bg-[#1e1e1e]' : 'bg-[#fffffe]'} px-6 py-2`}> {/* Add padding here */}
-          <MonacoEditor
-            code={code}
-            language={language}
-            darkMode={darkMode}
-            height="auto"
-            readOnly={true}
-            className="rounded-none" // Remove rounded corners
-          />
-        </div>
-      </div>
-      {explanation && (
-        <p className={`mt-3 text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-          {explanation}
-        </p>
-      )}
-    </div>
-  );
 
   return (
     <>
@@ -148,80 +108,80 @@ class PostAction extends Action
       <h3 className="text-2xl font-bold mb-4 mt-8">Action Helpers</h3>
 
       <div className={`mb-8 p-6 rounded-2xl ${darkMode ? 'bg-gradient-to-br from-blue-900/10 to-purple-900/10 border border-blue-800/20' : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'}`}>
-  <div className="mb-6">
-    <h3 className="text-xl font-bold mb-2 flex items-center gap-3">
-      <div className={`p-2 rounded-lg ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
-        <Code className={`w-5 h-5 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-      </div>
-      <span>ActionHelpers Trait</span>
-    </h3>
-    <p className={`ml-11 ${darkMode ? 'text-blue-200/80' : 'text-blue-700/80'}`}>
-      Convenient methods for common HTTP and response tasks
-    </p>
-  </div>
-
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {/* Request & Response Helpers */}
-    <div className={`p-5 rounded-xl ${darkMode ? 'bg-zinc-900/30 border border-zinc-800' : 'bg-white border border-zinc-200 shadow-sm'}`}>
-      <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-        <div className={`p-1.5 rounded ${darkMode ? 'bg-blue-500/10' : 'bg-blue-50'}`}>
-          <Server className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+        <div className="mb-6">
+          <h3 className="text-xl font-bold mb-2 flex items-center gap-3">
+            <div className={`p-2 rounded-lg ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
+              <Code className={`w-5 h-5 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+            </div>
+            <span>ActionHelpers Trait</span>
+          </h3>
+          <p className={`ml-11 ${darkMode ? 'text-blue-200/80' : 'text-blue-700/80'}`}>
+            Convenient methods for common HTTP and response tasks
+          </p>
         </div>
-        <span>Request & Response</span>
-      </h4>
-      <div className="space-y-3">
-        {[
-          { code: '$this->request()', desc: 'Access request data' },
-          { code: '$this->response()', desc: 'Build responses' },
-          { code: '$this->db()', desc: 'Database access' },
-          { code: '$this->user()', desc: 'Current user' },
-        ].map((item, index) => (
-          <div key={index} className="flex items-start gap-3 group">
-            <ArrowRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-            <div className="flex-1">
-              <code className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-blue-300' : 'bg-blue-50 text-blue-700'}`}>
-                {item.code}
-              </code>
-              <span className={`text-sm ml-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                {item.desc}
-              </span>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Request & Response Helpers */}
+          <div className={`p-5 rounded-xl ${darkMode ? 'bg-zinc-900/30 border border-zinc-800' : 'bg-white border border-zinc-200 shadow-sm'}`}>
+            <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+              <div className={`p-1.5 rounded ${darkMode ? 'bg-blue-500/10' : 'bg-blue-50'}`}>
+                <Server className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+              </div>
+              <span>Request & Response</span>
+            </h4>
+            <div className="space-y-3">
+              {[
+                { code: '$this->request()', desc: 'Access request data' },
+                { code: '$this->response()', desc: 'Build responses' },
+                { code: '$this->db()', desc: 'Database access' },
+                { code: '$this->user()', desc: 'Current user' },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3 group">
+                  <ArrowRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                  <div className="flex-1">
+                    <code className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-blue-300' : 'bg-blue-50 text-blue-700'}`}>
+                      {item.code}
+                    </code>
+                    <span className={`text-sm ml-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                      {item.desc}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
 
-    {/* Response Methods */}
-    <div className={`p-5 rounded-xl ${darkMode ? 'bg-zinc-900/30 border border-zinc-800' : 'bg-white border border-zinc-200 shadow-sm'}`}>
-      <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-        <div className={`p-1.5 rounded ${darkMode ? 'bg-green-500/10' : 'bg-green-50'}`}>
-          <Zap className={`w-4 h-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-        </div>
-        <span>Response Methods</span>
-      </h4>
-      <div className="space-y-3">
-        {[
-          { code: '$this->success()', desc: 'Return success JSON' },
-          { code: '$this->error()', desc: 'Return error JSON' },
-          { code: '$this->json()', desc: 'Return custom JSON' },
-          { code: '$this->nova()', desc: 'Render Nova template' },
-        ].map((item, index) => (
-          <div key={index} className="flex items-start gap-3 group">
-            <ArrowRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-            <div className="flex-1">
-              <code className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-300' : 'bg-green-50 text-green-700'}`}>
-                {item.code}
-              </code>
-              <span className={`text-sm ml-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                {item.desc}
-              </span>
+          {/* Response Methods */}
+          <div className={`p-5 rounded-xl ${darkMode ? 'bg-zinc-900/30 border border-zinc-800' : 'bg-white border border-zinc-200 shadow-sm'}`}>
+            <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+              <div className={`p-1.5 rounded ${darkMode ? 'bg-green-500/10' : 'bg-green-50'}`}>
+                <Zap className={`w-4 h-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+              </div>
+              <span>Response Methods</span>
+            </h4>
+            <div className="space-y-3">
+              {[
+                { code: '$this->success()', desc: 'Return success JSON' },
+                { code: '$this->error()', desc: 'Return error JSON' },
+                { code: '$this->json()', desc: 'Return custom JSON' },
+                { code: '$this->nova()', desc: 'Render Nova template' },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3 group">
+                  <ArrowRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+                  <div className="flex-1">
+                    <code className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-300' : 'bg-green-50 text-green-700'}`}>
+                      {item.code}
+                    </code>
+                    <span className={`text-sm ml-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                      {item.desc}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
       <h3 className="text-2xl font-bold mb-4">Under the Hood: How Actions Work</h3>
 
@@ -413,116 +373,83 @@ class OrderAction extends Action
         language="php"
         title="Action Middleware"
         explanation="Actions can have their own middleware for authentication, validation, etc."
-
       />
 
       <h3 className="text-2xl font-bold mb-4">Request Data Handling</h3>
 
-      <h3 className="text-2xl font-bold mb-4">Request Data Handling</h3>
-
-    <div className="mb-12">
-      <div className="flex items-center gap-3 mb-8">
-        <div className={`p-3 rounded-xl ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
-          <Server className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+      <div className="mb-12">
+        <div className="flex items-center gap-3 mb-8">
+          <div className={`p-3 rounded-xl ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
+            <Server className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+          </div>
+          <div>
+            <h3 className="text-2xl font-bold mb-1">Request Data Handling</h3>
+            <p className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              Access and validate HTTP requests efficiently
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-2xl font-bold mb-1">Request Data Handling</h3>
-          <p className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-            Access and validate HTTP requests efficiently
+
+        <div className="space-y-6">
+          <InlineCodeExample
+            code={`<?php
+// Get all request data
+$data = $this->request()->getBody();
+
+// Get specific value with default
+$name = $this->request()->getBody()['name'] ?? 'Default';
+
+// For JSON API requests
+$jsonData = $this->request()->getJson();
+
+// Get query parameters
+$page = $_GET['page'] ?? 1;
+$limit = $_GET['limit'] ?? 10;`}
+            title="Getting Request Data"
+            description="Access request payload, query parameters, and headers"
+            icon={ArrowRight}
+            color="blue"
+            language="php"
+          />
+
+          <InlineCodeExample
+            code={`<?php
+// Validate in Action before passing to Entity
+public function store()
+{
+    $data = $this->request()->getBody();
+
+    // Simple validation
+    if (empty($data['title'])) {
+        return $this->error('Title is required');
+    }
+
+    // Use Entity validation (recommended)
+    $post = new Post();
+    $post->loadData($data);
+
+    if (!$post->validate()) {
+        return $this->error('Validation failed', $post->errors);
+    }
+
+    $post->save();
+    return $this->success(['post' => $post]);
+}`}
+            title="Request Validation"
+            description="Validate user input with built-in helpers and Entity validation"
+            icon={CheckCircle}
+            color="green"
+            language="php"
+          />
+        </div>
+
+        {/* Quick Notes */}
+        <div className={`mt-6 p-4 rounded-xl ${darkMode ? 'bg-zinc-900/30 border border-zinc-800' : 'bg-zinc-100 border border-zinc-300'}`}>
+          <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <span className="font-bold">Note:</span> Always validate user input on both client and server side for maximum security.
           </p>
         </div>
       </div>
-
-      {/* Getting Request Data - Top */}
-      <div className={`mb-6 p-6 rounded-2xl ${darkMode ? 'bg-gradient-to-br from-blue-900/10 to-blue-800/5 border border-blue-800/20' : 'bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200'}`}>
-        <h4 className="font-bold text-xl mb-3 flex items-center gap-2">
-          <div className={`p-1.5 rounded ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
-            <ArrowRight className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-          </div>
-          Getting Request Data
-        </h4>
-        <p className={`mb-4 text-sm ${darkMode ? 'text-blue-200/80' : 'text-blue-700/80'}`}>
-          Access request payload, query parameters, and headers
-        </p>
-        <div className={`rounded-lg overflow-hidden border ${darkMode ? 'border-zinc-700' : 'border-zinc-300'}`}>
-          <div className={`${darkMode ? 'bg-[#1e1e1e]' : 'bg-[#fffffe]'} px-6 py-2`}>
-            <MonacoEditor
-              code={`<?php
-    // Get all request data
-    $data = $this->request()->getBody();
-
-    // Get specific value with default
-    $name = $this->request()->getBody()['name'] ?? 'Default';
-
-    // For JSON API requests
-    $jsonData = $this->request()->getJson();
-
-    // Get query parameters
-    $page = $_GET['page'] ?? 1;
-    $limit = $_GET['limit'] ?? 10;`}
-              language="php"
-              darkMode={darkMode}
-              height="auto"
-              readOnly={true}
-              className="rounded-none"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Request Validation - Bottom */}
-      <div className={`mb-6 p-6 rounded-2xl ${darkMode ? 'bg-gradient-to-br from-green-900/10 to-green-800/5 border border-green-800/20' : 'bg-gradient-to-br from-green-50 to-green-100/50 border border-green-200'}`}>
-        <h4 className="font-bold text-xl mb-3 flex items-center gap-2">
-          <div className={`p-1.5 rounded ${darkMode ? 'bg-green-500/10' : 'bg-green-100'}`}>
-            <CheckCircle className={`w-4 h-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-          </div>
-          Request Validation
-        </h4>
-        <p className={`mb-4 text-sm ${darkMode ? 'text-green-200/80' : 'text-green-700/80'}`}>
-          Validate user input with built-in helpers and Entity validation
-        </p>
-        <div className={`rounded-lg overflow-hidden border ${darkMode ? 'border-zinc-700' : 'border-zinc-300'}`}>
-          <div className={`${darkMode ? 'bg-[#1e1e1e]' : 'bg-[#fffffe]'} px-6 py-2`}>
-            <MonacoEditor
-              code={`<?php
-    // Validate in Action before passing to Entity
-    public function store()
-    {
-        $data = $this->request()->getBody();
-
-        // Simple validation
-        if (empty($data['title'])) {
-            return $this->error('Title is required');
-        }
-
-        // Use Entity validation (recommended)
-        $post = new Post();
-        $post->loadData($data);
-
-        if (!$post->validate()) {
-            return $this->error('Validation failed', $post->errors);
-        }
-
-        $post->save();
-        return $this->success(['post' => $post]);
-    }`}
-              language="php"
-              darkMode={darkMode}
-              height="auto"
-              readOnly={true}
-              className="rounded-none"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Notes */}
-      <div className={`mt-2 p-4 rounded-xl ${darkMode ? 'bg-zinc-900/30 border border-zinc-800' : 'bg-zinc-100 border border-zinc-300'}`}>
-        <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-          <span className="font-bold">Note:</span> Always validate user input on both client and server side for maximum security.
-        </p>
-      </div>
-    </div>
 
       <div className={`p-6 rounded-xl ${
         darkMode
