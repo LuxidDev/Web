@@ -155,9 +155,8 @@ export default function CodeShowcase() {
               code={codeExamples[active].code}
               language={getLanguage(active)}
               darkMode={darkMode}
-              height="400px"
+              height="auto"
               readOnly={true}
-              showLineNumbers={true}
             />
           </div>
         </div>
