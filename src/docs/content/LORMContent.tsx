@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Database, Link, Search, Settings, Key } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import { Database, Link, Search, Settings, Key, CheckCircle, ArrowRight, Zap } from 'lucide-react';
+import CodeExample from '@/components/CodeExample';
+import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function LORMContent() {
   const { darkMode } = useTheme();
@@ -38,9 +39,15 @@ export default function LORMContent() {
       }`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-bold mb-2">Create & Read</h4>
-            <CodeExample
-              code={`// Create new record
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <div className={`p-1.5 rounded ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
+                <Database className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+              </div>
+              Create & Read
+            </h4>
+            <InlineCodeExample
+              code={`<?php
+// Create new record
 $user = new User();
 $user->name = 'John Doe';
 $user->email = 'john@example.com';
@@ -59,15 +66,24 @@ $count = User::count(['status' => 'active']);
 
 // Pagination
 $users = User::findAll([], 'created_at DESC', 10, 0);`}
-              language="php"
               title="Create and Read Operations"
-              compact
+              description="Basic create and read operations using L ORM"
+              icon={Database}
+              color="blue"
+              language="php"
+              compact={true}
             />
           </div>
           <div>
-            <h4 className="font-bold mb-2">Update & Delete</h4>
-            <CodeExample
-              code={`// Update existing record
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <div className={`p-1.5 rounded ${darkMode ? 'bg-green-500/10' : 'bg-green-100'}`}>
+                <Settings className={`w-4 h-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+              </div>
+              Update & Delete
+            </h4>
+            <InlineCodeExample
+              code={`<?php
+// Update existing record
 $user = User::find(1);
 $user->name = 'Jane Doe';
 $user->save();
@@ -84,9 +100,12 @@ User::deleteAll(['status' => 'banned']);
 
 // Soft delete (if supported)
 $user->softDelete();`}
-              language="php"
               title="Update and Delete Operations"
-              compact
+              description="Update, delete, and bulk operations using L ORM"
+              icon={Settings}
+              color="green"
+              language="php"
+              compact={true}
             />
           </div>
         </div>
@@ -98,12 +117,15 @@ $user->softDelete();`}
         darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'
       }`}>
         <div className="flex items-center gap-3 mb-4">
-          <Search className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+          <div className={`p-2 rounded-lg ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
+            <Search className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+          </div>
           <h4 className="text-xl font-bold">Query Building</h4>
         </div>
 
         <CodeExample
-          code={`// Complex WHERE conditions
+          code={`<?php
+// Complex WHERE conditions
 $users = User::findAll([
     'status' => 'active',
     'created_at' => ['>=', '2024-01-01'],
@@ -149,7 +171,9 @@ $stats = [
         darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'
       }`}>
         <div className="flex items-center gap-3 mb-4">
-          <Link className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+          <div className={`p-2 rounded-lg ${darkMode ? 'bg-purple-500/10' : 'bg-purple-100'}`}>
+            <Link className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+          </div>
           <h4 className="text-xl font-bold">Defining Relationships</h4>
         </div>
 
@@ -198,9 +222,15 @@ class Post extends DbEntity
         />
 
         <div className="mt-6">
-          <h5 className="font-bold mb-2">Using Relationships</h5>
-          <CodeExample
-            code={`// Get user with their posts
+          <h5 className="font-bold mb-2 flex items-center gap-2">
+            <div className={`p-1.5 rounded ${darkMode ? 'bg-purple-500/10' : 'bg-purple-100'}`}>
+              <Link className={`w-4 h-4 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+            </div>
+            Using Relationships
+          </h5>
+          <InlineCodeExample
+            code={`<?php
+// Get user with their posts
 $user = User::find(1);
 $posts = $user->posts; // Automatic loading
 
@@ -222,9 +252,11 @@ $post = $user->posts()->create([
     'title' => 'New Post',
     'content' => 'Post content'
 ]);`}
-            language="php"
             title="Working with Relationships"
-            compact
+            description="Query and manipulate related data using relationship methods"
+            icon={Link}
+            color="purple"
+            language="php"
           />
         </div>
       </div>
@@ -235,7 +267,9 @@ $post = $user->posts()->create([
         darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'
       }`}>
         <div className="flex items-center gap-3 mb-4">
-          <Settings className={`w-6 h-6 ${darkMode ? 'text-yellow-400' : 'text-yellow-600'}`} />
+          <div className={`p-2 rounded-lg ${darkMode ? 'bg-yellow-500/10' : 'bg-yellow-100'}`}>
+            <Settings className={`w-6 h-6 ${darkMode ? 'text-yellow-400' : 'text-yellow-600'}`} />
+          </div>
           <h4 className="text-xl font-bold">Lifecycle Hooks</h4>
         </div>
 
@@ -312,7 +346,9 @@ class User extends DbEntity
         darkMode ? 'bg-red-900/20 border border-red-800' : 'bg-red-50 border border-red-200'
       }`}>
         <div className="flex items-center gap-3 mb-4">
-          <Key className={`w-6 h-6 ${darkMode ? 'text-red-400' : 'text-red-600'}`} />
+          <div className={`p-2 rounded-lg ${darkMode ? 'bg-red-500/10' : 'bg-red-100'}`}>
+            <Key className={`w-6 h-6 ${darkMode ? 'text-red-400' : 'text-red-600'}`} />
+          </div>
           <h4 className="text-xl font-bold">Built-in Validation</h4>
         </div>
 
@@ -391,9 +427,15 @@ class User extends DbEntity
         />
 
         <div className="mt-6">
-          <h5 className="font-bold mb-2">Using Validation</h5>
-          <CodeExample
-            code={`// Validate and save
+          <h5 className="font-bold mb-2 flex items-center gap-2">
+            <div className={`p-1.5 rounded ${darkMode ? 'bg-red-500/10' : 'bg-red-100'}`}>
+              <Key className={`w-4 h-4 ${darkMode ? 'text-red-400' : 'text-red-600'}`} />
+            </div>
+            Using Validation
+          </h5>
+          <InlineCodeExample
+            code={`<?php
+// Validate and save
 $user = new User();
 $user->loadData($_POST);
 
@@ -416,9 +458,12 @@ if ($user->validate()) {
         }
     }
 }`}
-            language="php"
             title="Working with Validation"
-            compact
+            description="Validate Entity data and handle validation errors"
+            icon={Key}
+            color="red"
+            language="php"
+            compact={true}
           />
         </div>
       </div>
@@ -430,29 +475,96 @@ if ($user->validate()) {
       }`}>
         <h3 className="text-xl font-bold mb-4">Performance Tips</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className={`p-4 rounded-lg ${
-            darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'
-          }`}>
-            <h4 className="font-bold mb-2">Eager Loading</h4>
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Zap className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+              <h4 className="font-bold">Eager Loading</h4>
+            </div>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Use <code>with()</code> to load relationships and avoid N+1 queries.
+              Use <code className="font-mono">with()</code> to load relationships and avoid N+1 queries.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${
-            darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'
-          }`}>
-            <h4 className="font-bold mb-2">Select Only Needed</h4>
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Search className={`w-4 h-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+              <h4 className="font-bold">Select Only Needed</h4>
+            </div>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Use <code>select()</code> to fetch only required columns.
+              Use <code className="font-mono">select()</code> to fetch only required columns.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${
-            darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'
-          }`}>
-            <h4 className="font-bold mb-2">Use Indexes</h4>
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Settings className={`w-4 h-4 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+              <h4 className="font-bold">Use Indexes</h4>
+            </div>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
               Ensure database indexes on frequently queried columns.
             </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Best Practices */}
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <h3 className="text-xl font-bold mb-4">L ORM Best Practices</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-500" />
+              Do These
+            </h4>
+            <ul className={`space-y-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              <li className="flex items-start gap-2">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                Use Entity validation for data integrity
+              </li>
+              <li className="flex items-start gap-2">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                Implement relationships for data consistency
+              </li>
+              <li className="flex items-start gap-2">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                Use eager loading to optimize queries
+              </li>
+              <li className="flex items-start gap-2">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                Add indexes to frequently queried columns
+              </li>
+              <li className="flex items-start gap-2">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                Use lifecycle hooks for business logic
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <span className="text-red-500 text-xl">×</span>
+              Avoid These
+            </h4>
+            <ul className={`space-y-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 text-xl">×</span>
+                Don't put business logic in Actions only
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 text-xl">×</span>
+                Avoid raw SQL unless absolutely necessary
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 text-xl">×</span>
+                Don't skip validation rules
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 text-xl">×</span>
+                Avoid SELECT * in production
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 text-xl">×</span>
+                Don't forget to handle database errors
+              </li>
+            </ul>
           </div>
         </div>
       </div>
