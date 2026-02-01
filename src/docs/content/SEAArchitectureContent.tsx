@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Layers, GitBranch, Workflow, Cpu, ArrowRight, CheckCircle, Code, Database, Zap } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import CodeExample from '@/components/CodeExample';
+import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function SEAArchitectureContent() {
   const { darkMode } = useTheme();
@@ -86,7 +87,9 @@ export default function SEAArchitectureContent() {
         {/* Screen */}
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
           <div className="flex items-center gap-3 mb-4">
-            <Code className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+            <div className={`p-2 rounded-lg ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
+              <Code className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+            </div>
             <h4 className="text-xl font-bold">Screen - Presentation Layer</h4>
           </div>
 
@@ -138,8 +141,9 @@ export default function SEAArchitectureContent() {
 
           <div className={`mt-6 p-4 rounded-lg ${darkMode ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
             <h5 className="font-bold mb-2">Example: Screen Implementation</h5>
-            <CodeExample
-              code={`// Engine/Foundation/Screen.php - Core rendering
+            <InlineCodeExample
+              code={`<?php
+// Engine/Foundation/Screen.php - Core rendering
 class Screen
 {
     public function renderScreen($screen, $data = [])
@@ -166,8 +170,11 @@ class Screen
         return str_replace('|| content ||', $screenContent, $frameContent);
     }
 }`}
+              title="Screen Rendering Engine"
+              description="Screens use simple PHP includes with output buffering, making them fast and easy to understand."
+              icon={Code}
+              color="blue"
               language="php"
-              explanation="Screens use simple PHP includes with output buffering, making them fast and easy to understand."
             />
           </div>
         </div>
@@ -175,7 +182,9 @@ class Screen
         {/* Entities */}
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
           <div className="flex items-center gap-3 mb-4">
-            <Database className={`w-6 h-6 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+            <div className={`p-2 rounded-lg ${darkMode ? 'bg-green-500/10' : 'bg-green-100'}`}>
+              <Database className={`w-6 h-6 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+            </div>
             <h4 className="text-xl font-bold">Entities - Data Layer</h4>
           </div>
 
@@ -227,8 +236,9 @@ class Screen
 
           <div className={`mt-6 p-4 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
             <h5 className="font-bold mb-2">Example: Entity Implementation</h5>
-            <CodeExample
-              code={`// Engine/Database/DbEntity.php - Active Record base
+            <InlineCodeExample
+              code={`<?php
+// Engine/Database/DbEntity.php - Active Record base
 abstract class DbEntity extends Entity
 {
     // Save (insert or update)
@@ -280,8 +290,11 @@ abstract class DbEntity extends Entity
         return $statement->fetchObject(static::class) ?: null;
     }
 }`}
+              title="Entity Base Class"
+              description="Entities use PDO prepared statements for security and provide a clean Active Record interface."
+              icon={Database}
+              color="green"
               language="php"
-              explanation="Entities use PDO prepared statements for security and provide a clean Active Record interface."
             />
           </div>
         </div>
@@ -289,7 +302,9 @@ abstract class DbEntity extends Entity
         {/* Actions */}
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
           <div className="flex items-center gap-3 mb-4">
-            <Zap className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+            <div className={`p-2 rounded-lg ${darkMode ? 'bg-purple-500/10' : 'bg-purple-100'}`}>
+              <Zap className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+            </div>
             <h4 className="text-xl font-bold">Actions - Business Logic Layer</h4>
           </div>
 
@@ -341,8 +356,9 @@ abstract class DbEntity extends Entity
 
           <div className={`mt-6 p-4 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
             <h5 className="font-bold mb-2">Example: Action Implementation</h5>
-            <CodeExample
-              code={`// Engine/Foundation/Action.php with helpers
+            <InlineCodeExample
+              code={`<?php
+// Engine/Foundation/Action.php with helpers
 class Action
 {
     use ActionHelpers; // Provides helper methods
@@ -382,8 +398,11 @@ class Action
 // - $this->success()  // Success response helper
 // - $this->error()    // Error response helper
 // - $this->nova()     // Render Nova template`}
+              title="Action Base Class"
+              description="Actions focus on orchestrating the flow: request → entity → validation → persistence → response."
+              icon={Zap}
+              color="purple"
               language="php"
-              explanation="Actions focus on orchestrating the flow: request → entity → validation → persistence → response."
             />
           </div>
         </div>
@@ -428,7 +447,8 @@ class Action
               Pattern 2: Complex Business Process
             </h4>
             <CodeExample
-              code={`// Example: Order processing with multiple Entities
+              code={`<?php
+// Example: Order processing with multiple Entities
 public function processOrder($orderId)
 {
     // 1. Get order from database
@@ -478,6 +498,7 @@ public function processOrder($orderId)
     ], 'Order processed successfully');
 }`}
               language="php"
+              title="Complex Business Process Example"
               explanation="Actions orchestrate complex processes involving multiple Entities while keeping each Entity focused on its own data."
             />
           </div>
@@ -488,7 +509,10 @@ public function processOrder($orderId)
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-          <h4 className="font-bold mb-2">✅ Do These</h4>
+          <h4 className="font-bold mb-2 flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            Do These
+          </h4>
           <ul className={`space-y-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
@@ -514,7 +538,10 @@ public function processOrder($orderId)
         </div>
 
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-          <h4 className="font-bold mb-2">❌ Avoid These</h4>
+          <h4 className="font-bold mb-2 flex items-center gap-2">
+            <span className="text-red-500 text-xl">×</span>
+            Avoid These
+          </h4>
           <ul className={`space-y-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
             <li className="flex items-start gap-2">
               <span className="text-red-500 text-xl">×</span>
@@ -548,7 +575,8 @@ public function processOrder($orderId)
         <h3 className="text-xl font-bold mb-4">Real-World Example: User Registration</h3>
 
         <CodeExample
-          code={`// 1. Entity (app/Entities/User.php)
+          code={`<?php
+// 1. Entity (app/Entities/User.php)
 class User extends DbEntity
 {
     public int $id = 0;
@@ -689,7 +717,10 @@ $router->get('/verify/{token}', [AuthAction::class, 'verify']);`}
         <h3 className="text-xl font-bold mb-4">Summary</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className={`p-4 rounded-lg ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-            <h4 className="font-bold mb-2">Screen</h4>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Code className="w-4 h-4" />
+              Screen
+            </h4>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
               <strong>Responsibility:</strong> Presentation
               <br />
@@ -700,7 +731,10 @@ $router->get('/verify/{token}', [AuthAction::class, 'verify']);`}
           </div>
 
           <div className={`p-4 rounded-lg ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-            <h4 className="font-bold mb-2">Entities</h4>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Database className="w-4 h-4" />
+              Entities
+            </h4>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
               <strong>Responsibility:</strong> Data & Business Logic
               <br />
@@ -711,7 +745,10 @@ $router->get('/verify/{token}', [AuthAction::class, 'verify']);`}
           </div>
 
           <div className={`p-4 rounded-lg ${darkMode ? 'bg-purple-900/20' : 'bg-purple-50'}`}>
-            <h4 className="font-bold mb-2">Actions</h4>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Zap className="w-4 h-4" />
+              Actions
+            </h4>
             <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
               <strong>Responsibility:</strong> HTTP & Orchestration
               <br />
