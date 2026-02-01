@@ -9,7 +9,7 @@ interface InlineCodeExampleProps {
   description: string;
   icon: LucideIcon;
   color?: 'blue' | 'green' | 'purple' | 'red' | 'yellow' | 'indigo';
-  language?: 'php' | 'html' | 'javascript' | 'nova' | 'bash';
+  language?: 'php' | 'html' | 'javascript' | 'nova' | 'bash' | 'ini' | 'json' | 'sql' | 'yaml' | 'markdown' | 'xml' | 'css';
   compact?: boolean;
 }
 

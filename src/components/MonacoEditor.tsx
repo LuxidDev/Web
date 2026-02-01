@@ -3,7 +3,7 @@ import Editor, { OnMount } from "@monaco-editor/react";
 
 interface MonacoEditorProps {
   code: string;
-  language: "php" | "html" | "javascript" | "nova" | "bash";
+  language: "php" | "html" | "javascript" | "nova" | "bash" | "ini" | "json" | "sql" | "yaml" | "markdown" | "xml" | "css";
   darkMode?: boolean;
   height?: string | "auto";
   readOnly?: boolean;
@@ -28,8 +28,9 @@ export default function MonacoEditor({
 
   // Map custom language to Monaco language
   const monacoLanguage = language === "nova" ? "html" :
-                         language === "bash" ? "shell" :
-                         language;
+                        language === "bash" ? "shell" :
+                        language === "ini" ? "ini" :
+                        language;
 
   // Calculate height based on lines
   useEffect(() => {

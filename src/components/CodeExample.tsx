@@ -6,7 +6,7 @@ interface CodeExampleProps {
   code: string;
   title?: string;
   explanation?: string;
-  language?: 'php' | 'html' | 'javascript' | 'nova' | 'bash';
+  language?: 'php' | 'html' | 'javascript' | 'nova' | 'bash' | 'ini' | 'json' | 'sql' | 'yaml' | 'markdown' | 'xml' | 'css';
   compact?: boolean;
   className?: string;
 }

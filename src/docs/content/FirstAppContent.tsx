@@ -1,101 +1,165 @@
-import React from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
-import { Code, Database, Terminal, Zap, CheckCircle, Rocket } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
-import QuickStartExample from '../components/QuickStartExample';
+import React from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+import {
+  Code,
+  Database,
+  Terminal,
+  Zap,
+  CheckCircle,
+  Rocket,
+} from "lucide-react";
+import CodeExample from "@/components/CodeExample";
+import InlineCodeExample from "@/components/InlineCodeExample";
+import QuickStartExample from "../components/QuickStartExample";
 
 export default function FirstAppContent() {
   const { darkMode } = useTheme();
 
   return (
     <>
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
-          : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200'
-      }`}>
+      <div
+        className={`mb-8 p-6 rounded-2xl ${
+          darkMode
+            ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20"
+            : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"
+        }`}
+      >
         <div className="flex items-start gap-4">
-          <Rocket className={`w-12 h-12 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+          <Rocket
+            className={`w-12 h-12 ${darkMode ? "text-purple-400" : "text-purple-600"}`}
+          />
           <div>
-            <h3 className="text-2xl font-bold mb-2">Build Your First Luxid Application</h3>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-              In this tutorial, you'll build a complete blog application using Luxid's SEA architecture.
+            <h3 className="text-2xl font-bold mb-2">
+              Build Your First Luxid Application
+            </h3>
+            <p
+              className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}
+            >
+              In this tutorial, you'll build a complete blog application using
+              Luxid's SEA architecture.
             </p>
           </div>
         </div>
       </div>
 
       <h2 className="text-3xl font-bold mb-6">What You'll Build</h2>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+      <div
+        className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-              darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
-            }`}>
-              <Database className={`w-8 h-8 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+            <div
+              className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                darkMode ? "bg-blue-500/20" : "bg-blue-100"
+              }`}
+            >
+              <Database
+                className={`w-8 h-8 ${darkMode ? "text-blue-400" : "text-blue-600"}`}
+              />
             </div>
             <h4 className="font-bold mb-2">Blog Posts</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Create, read, update, delete posts</p>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
+              Create, read, update, delete posts
+            </p>
           </div>
           <div className="text-center">
-            <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-              darkMode ? 'bg-green-500/20' : 'bg-green-100'
-            }`}>
-              <Zap className={`w-8 h-8 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+            <div
+              className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                darkMode ? "bg-green-500/20" : "bg-green-100"
+              }`}
+            >
+              <Zap
+                className={`w-8 h-8 ${darkMode ? "text-green-400" : "text-green-600"}`}
+              />
             </div>
             <h4 className="font-bold mb-2">REST API</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Complete CRUD operations</p>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
+              Complete CRUD operations
+            </p>
           </div>
           <div className="text-center">
-            <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-              darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-            }`}>
-              <Code className={`w-8 h-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+            <div
+              className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                darkMode ? "bg-purple-500/20" : "bg-purple-100"
+              }`}
+            >
+              <Code
+                className={`w-8 h-8 ${darkMode ? "text-purple-400" : "text-purple-600"}`}
+              />
             </div>
             <h4 className="font-bold mb-2">Nova Templates</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Beautiful frontend with layouts</p>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
+              Beautiful frontend with layouts
+            </p>
           </div>
         </div>
       </div>
 
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+      <div
+        className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-yellow-900/20 border border-yellow-800" : "bg-yellow-50 border border-yellow-200"}`}
+      >
         <div className="flex items-start gap-3">
-          <Terminal className={`w-6 h-6 mt-1 ${darkMode ? 'text-yellow-400' : 'text-yellow-600'}`} />
+          <Terminal
+            className={`w-6 h-6 mt-1 ${darkMode ? "text-yellow-400" : "text-yellow-600"}`}
+          />
           <div>
             <h4 className="font-bold mb-2">Quick Start (Option 1)</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               Use Juice CLI to generate everything automatically:
             </p>
-            <CodeExample
+            <InlineCodeExample
               code="php juice make:api Post"
+              title="Generate API for Posts"
+              description="Generates Entity, Action, Migration, and Routes for blog posts"
+              icon={Terminal}
+              color="yellow"
               language="bash"
-              explanation="Generates Entity, Action, Migration, and Routes for blog posts"
             />
-            <p className={`text-sm mt-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Then run: <code className="font-mono">php juice db:migrate</code> to create the database tables.
+            <p
+              className={`text-sm mt-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
+              Then run: <code className="font-mono">php juice db:migrate</code>{" "}
+              to create the database tables.
             </p>
           </div>
         </div>
       </div>
 
       <h3 className="text-2xl font-bold mb-4">Manual Tutorial (Option 2)</h3>
-      <p className={`mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <p className={`mb-6 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>
         Follow these steps to understand how each component works:
       </p>
 
       <div className="space-y-8">
         {/* Step 1: Entity */}
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <div
+          className={`p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-600'
-            }`}>
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                darkMode
+                  ? "bg-blue-500 text-white"
+                  : "bg-blue-100 text-blue-600"
+              }`}
+            >
               1
             </div>
             <div>
               <h4 className="text-xl font-bold">Create Post Entity</h4>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                Entities represent your data models and handle database operations.
+              <p
+                className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+              >
+                Entities represent your data models and handle database
+                operations.
               </p>
             </div>
           </div>
@@ -161,46 +225,64 @@ class Post extends DbEntity
             explanation="This Entity extends DbEntity which provides automatic CRUD operations, validation, and database interaction."
           />
 
-          <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
+          <div
+            className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-blue-900/20 border border-blue-800" : "bg-blue-50 border border-blue-200"}`}
+          >
             <h5 className="font-bold mb-2 flex items-center gap-2">
               <Database className="w-4 h-4" />
               Under the Hood: How Entities Work
             </h5>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               The <code>DbEntity</code> class in Luxid Engine provides:
             </p>
-            <ul className={`text-sm mt-2 space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <ul
+              className={`text-sm mt-2 space-y-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-3 h-3 mt-1 text-green-500 flex-shrink-0" />
-                <strong>Active Record Pattern:</strong> Each entity instance corresponds to a database row
+                <strong>Active Record Pattern:</strong> Each entity instance
+                corresponds to a database row
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-3 h-3 mt-1 text-green-500 flex-shrink-0" />
-                <strong>Automatic CRUD:</strong> <code>save()</code>, <code>update()</code>, <code>delete()</code> methods
+                <strong>Automatic CRUD:</strong> <code>save()</code>,{" "}
+                <code>update()</code>, <code>delete()</code> methods
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-3 h-3 mt-1 text-green-500 flex-shrink-0" />
-                <strong>Query Building:</strong> <code>find()</code>, <code>findAll()</code>, <code>findOne()</code> methods
+                <strong>Query Building:</strong> <code>find()</code>,{" "}
+                <code>findAll()</code>, <code>findOne()</code> methods
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-3 h-3 mt-1 text-green-500 flex-shrink-0" />
-                <strong>Validation:</strong> Built-in validation rules and error messages
+                <strong>Validation:</strong> Built-in validation rules and error
+                messages
               </li>
             </ul>
           </div>
         </div>
 
         {/* Step 2: Action */}
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <div
+          className={`p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-purple-500 text-white' : 'bg-purple-100 text-purple-600'
-            }`}>
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                darkMode
+                  ? "bg-purple-500 text-white"
+                  : "bg-purple-100 text-purple-600"
+              }`}
+            >
               2
             </div>
             <div>
               <h4 className="text-xl font-bold">Create Post Action</h4>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              <p
+                className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+              >
                 Actions handle HTTP requests and business logic.
               </p>
             </div>
@@ -329,16 +411,22 @@ class PostAction extends \\Luxid\\Foundation\\Action
             explanation="This Action handles all HTTP methods for blog posts. It uses the ActionHelpers trait for convenient response methods."
           />
 
-          <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
+          <div
+            className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-purple-900/20 border border-purple-800" : "bg-purple-50 border border-purple-200"}`}
+          >
             <h5 className="font-bold mb-2 flex items-center gap-2">
               <Zap className="w-4 h-4" />
               Under the Hood: How Actions Work
             </h5>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Actions inherit from the <code>Action</code> base class which provides:
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
+              Actions inherit from the <code>Action</code> base class which
+              provides:
             </p>
-            <CodeExample
-              code={`// Engine/Foundation/Action.php
+            <InlineCodeExample
+              code={`<?php
+// Engine/Foundation/Action.php
 class Action
 {
     use ActionHelpers; // Provides helper methods
@@ -357,23 +445,34 @@ class Action
     // - $this->error()     // Return error response
     // - $this->nova()      // Render Nova template
 }`}
+              title="Action Base Class"
+              description="The Action base class provides all the tools needed to handle HTTP requests"
+              icon={Zap}
+              color="purple"
               language="php"
-              explanation="The Action base class provides all the tools needed to handle HTTP requests"
             />
           </div>
         </div>
 
         {/* Step 3: Screen */}
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <div
+          className={`p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-green-500 text-white' : 'bg-green-100 text-green-600'
-            }`}>
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                darkMode
+                  ? "bg-green-500 text-white"
+                  : "bg-green-100 text-green-600"
+              }`}
+            >
               3
             </div>
             <div>
               <h4 className="text-xl font-bold">Create Post Screens</h4>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              <p
+                className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+              >
                 Screens are Nova templates that render the frontend.
               </p>
             </div>
@@ -534,16 +633,22 @@ class Action
             </div>
           </div>
 
-          <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
+          <div
+            className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-green-900/20 border border-green-800" : "bg-green-50 border border-green-200"}`}
+          >
             <h5 className="font-bold mb-2 flex items-center gap-2">
               <Code className="w-4 h-4" />
               Under the Hood: How Nova Templating Works
             </h5>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              The <code>Screen</code> class in Luxid Engine handles template rendering:
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
+              The <code>Screen</code> class in Luxid Engine handles template
+              rendering:
             </p>
-            <CodeExample
-              code={`// Engine/Foundation/Screen.php
+            <InlineCodeExample
+              code={`<?php
+// Engine/Foundation/Screen.php
 public function renderScreen($screen, $data = [])
 {
     $screenContent = $this->renderOnlyScreen($screen, $data);
@@ -575,23 +680,34 @@ protected function frameContent()
     include_once Application::$ROOT_DIR . "/screens/frames/$frame.nova.php";
     return ob_get_clean();
 }`}
+              title="Screen Rendering Engine"
+              description="Nova uses output buffering and string replacement to create a simple yet powerful templating system."
+              icon={Code}
+              color="green"
               language="php"
-              explanation="Nova uses output buffering and string replacement to create a simple yet powerful templating system."
             />
           </div>
         </div>
 
         {/* Step 4: Routes */}
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <div
+          className={`p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-yellow-500 text-white' : 'bg-yellow-100 text-yellow-600'
-            }`}>
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                darkMode
+                  ? "bg-yellow-500 text-white"
+                  : "bg-yellow-100 text-yellow-600"
+              }`}
+            >
               4
             </div>
             <div>
               <h4 className="text-xl font-bold">Define Routes</h4>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              <p
+                className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+              >
                 Routes connect URLs to Action methods.
               </p>
             </div>
@@ -630,16 +746,21 @@ $router->group([new AuthMiddleware()], function($router) {
             explanation="Routes define the URL patterns and connect them to Action methods. Parameters in curly braces {id} are automatically passed to the Action method."
           />
 
-          <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+          <div
+            className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-yellow-900/20 border border-yellow-800" : "bg-yellow-50 border border-yellow-200"}`}
+          >
             <h5 className="font-bold mb-2 flex items-center gap-2">
               <Zap className="w-4 h-4" />
               Under the Hood: How Routing Works
             </h5>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               The <code>Router</code> class in Luxid Engine:
             </p>
-            <CodeExample
-              code={`// Engine/Routing/Router.php
+            <InlineCodeExample
+              code={`<?php
+// Engine/Routing/Router.php
 public function resolve()
 {
     $path = $this->request->getPath();
@@ -679,30 +800,39 @@ public function resolve()
 
     return call_user_func($callback, $this->request, $this->response);
 }`}
+              title="Router Class"
+              description="The router matches URLs to registered routes, executes middleware, and calls the appropriate Action method with parameters."
+              icon={Zap}
+              color="yellow"
               language="php"
-              explanation="The router matches URLs to registered routes, executes middleware, and calls the appropriate Action method with parameters."
             />
           </div>
         </div>
 
         {/* Step 5: Migration */}
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <div
+          className={`p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-red-500 text-white' : 'bg-red-100 text-red-600'
-            }`}>
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                darkMode ? "bg-red-500 text-white" : "bg-red-100 text-red-600"
+              }`}
+            >
               5
             </div>
             <div>
               <h4 className="text-xl font-bold">Create Database Migration</h4>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              <p
+                className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+              >
                 Migrations create and modify database tables.
               </p>
             </div>
           </div>
 
           <CodeExample
-  code={`<?php
+            code={`<?php
 // Use Juice CLI to generate migration
 php juice make:migration create_posts_table
 
@@ -757,36 +887,58 @@ class m00002_create_posts_table
         }
     }
 }`}
-  title="migrations/m00002_create_posts_table.php"
-  explanation="Migrations are version-controlled database changes. Each migration has apply() (up) and down() (rollback) methods."
-/>
+            title="migrations/m00002_create_posts_table.php"
+            explanation="Migrations are version-controlled database changes. Each migration has apply() (up) and down() (rollback) methods."
+          />
 
           <div className="mt-6">
             <h5 className="font-bold mb-2">Run the Migration</h5>
-            <CodeExample
-              code={`# Run the migration
-php juice db:migrate
-
-# Rollback if needed
-php juice db:rollback
-
-# Check migration status
-php juice db:status`}
-              language="bash"
-              explanation="Use Juice CLI to manage database migrations"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <InlineCodeExample
+                code="php juice db:migrate"
+                title="Run Migration"
+                description="Apply all pending migrations"
+                icon={Database}
+                color="red"
+                language="bash"
+                compact={true}
+              />
+              <InlineCodeExample
+                code="php juice db:rollback"
+                title="Rollback"
+                description="Rollback last migration"
+                icon={Database}
+                color="red"
+                language="bash"
+                compact={true}
+              />
+              <InlineCodeExample
+                code="php juice db:status"
+                title="Check Status"
+                description="View migration status"
+                icon={Database}
+                color="red"
+                language="bash"
+                compact={true}
+              />
+            </div>
           </div>
 
-          <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-red-900/20 border border-red-800' : 'bg-red-50 border border-red-200'}`}>
+          <div
+            className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-red-900/20 border border-red-800" : "bg-red-50 border border-red-200"}`}
+          >
             <h5 className="font-bold mb-2 flex items-center gap-2">
               <Database className="w-4 h-4" />
               Under the Hood: How Migrations Work
             </h5>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <p
+              className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               The <code>Database</code> class manages migrations:
             </p>
-            <CodeExample
-              code={`// Engine/Database/Database.php
+            <InlineCodeExample
+              code={`<?php
+// Engine/Database/Database.php
 public function applyMigrations()
 {
     $this->createMigrationsTable();
@@ -817,74 +969,121 @@ protected function createMigrationsTable()
         ) ENGINE=INNODB;
     ");
 }`}
+              title="Migration Management"
+              description="Luxid tracks applied migrations in a migrations table and only runs new migrations."
+              icon={Database}
+              color="red"
               language="php"
-              explanation="Luxid tracks applied migrations in a migrations table and only runs new migrations."
             />
           </div>
         </div>
       </div>
 
       {/* Testing the Application */}
-      <div className={`mt-8 p-6 rounded-xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
-          : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
-      }`}>
+      <div
+        className={`mt-8 p-6 rounded-xl ${
+          darkMode
+            ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
+            : "bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200"
+        }`}
+      >
         <h3 className="text-2xl font-bold mb-4">Test Your Application</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h4 className="font-bold mb-2">API Endpoints</h4>
-            <div className="space-y-2">
-              <CodeExample
+            <div className="space-y-3">
+              <InlineCodeExample
                 code={`# Get all posts
-curl http://localhost:8000/posts
-
-# Get single post
-curl http://localhost:8000/posts/1
-
-# Create post
+curl http://localhost:8000/posts`}
+                title="Get All Posts"
+                description="Retrieve all blog posts"
+                icon={Terminal}
+                color="blue"
+                language="bash"
+                compact={true}
+              />
+              <InlineCodeExample
+                code={`# Get single post
+curl http://localhost:8000/posts/1`}
+                title="Get Single Post"
+                description="Retrieve a specific post"
+                icon={Terminal}
+                color="blue"
+                language="bash"
+                compact={true}
+              />
+              <InlineCodeExample
+                code={`# Create post
 curl -X POST http://localhost:8000/posts \\
   -H "Content-Type: application/json" \\
   -d '{"title":"My Post","content":"Hello World"}'`}
+                title="Create Post"
+                description="Create a new blog post"
+                icon={Terminal}
+                color="blue"
                 language="bash"
-                title="Test API with curl"
-                compact
+                compact={true}
               />
             </div>
           </div>
 
           <div>
             <h4 className="font-bold mb-2">Web Interface</h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span>Visit <a href="http://localhost:8000/blog" className="text-blue-500 hover:underline">http://localhost:8000/blog</a> to see all posts</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span>Click on a post to view details</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span>Use the API to create new posts</span>
-              </li>
-            </ul>
+            <div
+              className={`p-4 rounded-lg ${darkMode ? "bg-blue-900/20" : "bg-blue-50"}`}
+            >
+              <ul
+                className={`space-y-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}
+              >
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span>
+                    Visit{" "}
+                    <a
+                      href="http://localhost:8000/blog"
+                      className="text-blue-500 hover:underline"
+                    >
+                      http://localhost:8000/blog
+                    </a>{" "}
+                    to see all posts
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span>Click on a post to view details</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span>Use the API to create new posts</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Summary */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+      <div
+        className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-zinc-50 border border-zinc-200"}`}
+      >
         <h3 className="text-xl font-bold mb-4">🎉 Congratulations!</h3>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          You've built a complete blog application with Luxid! Let's review what you've accomplished:
+        <p className={`mb-4 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>
+          You've built a complete blog application with Luxid! Let's review what
+          you've accomplished:
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-            <h4 className="font-bold mb-2">Entity (Model)</h4>
-            <ul className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <div
+            className={`p-4 rounded-lg ${darkMode ? "bg-blue-900/20" : "bg-blue-50"}`}
+          >
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Database className="w-4 h-4" />
+              Entity (Model)
+            </h4>
+            <ul
+              className={`text-sm space-y-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               <li>• Database table definition</li>
               <li>• CRUD operations</li>
               <li>• Validation rules</li>
@@ -892,9 +1091,16 @@ curl -X POST http://localhost:8000/posts \\
             </ul>
           </div>
 
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-purple-900/20' : 'bg-purple-50'}`}>
-            <h4 className="font-bold mb-2">Action (Controller)</h4>
-            <ul className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <div
+            className={`p-4 rounded-lg ${darkMode ? "bg-purple-900/20" : "bg-purple-50"}`}
+          >
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Zap className="w-4 h-4" />
+              Action (Controller)
+            </h4>
+            <ul
+              className={`text-sm space-y-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               <li>• HTTP request handling</li>
               <li>• Business logic</li>
               <li>• JSON API responses</li>
@@ -902,9 +1108,16 @@ curl -X POST http://localhost:8000/posts \\
             </ul>
           </div>
 
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-            <h4 className="font-bold mb-2">Screen (View)</h4>
-            <ul className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <div
+            className={`p-4 rounded-lg ${darkMode ? "bg-green-900/20" : "bg-green-50"}`}
+          >
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Code className="w-4 h-4" />
+              Screen (View)
+            </h4>
+            <ul
+              className={`text-sm space-y-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               <li>• Nova templates</li>
               <li>• Layout system</li>
               <li>• Frontend presentation</li>
@@ -913,30 +1126,54 @@ curl -X POST http://localhost:8000/posts \\
           </div>
         </div>
 
-        <div className={`p-4 rounded-lg ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+        <div
+          className={`p-4 rounded-lg ${darkMode ? "bg-yellow-900/20 border border-yellow-800" : "bg-yellow-50 border border-yellow-200"}`}
+        >
           <h4 className="font-bold mb-2">Next Steps</h4>
-          <p className={`text-sm mb-3 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <p
+            className={`text-sm mb-3 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+          >
             Now that you understand the basics, explore these advanced topics:
           </p>
           <div className="flex flex-wrap gap-2">
-            <a href="/docs/sea-architecture" className={`px-3 py-1 rounded text-sm ${
-              darkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-zinc-200 hover:bg-zinc-300'
-            }`}>
+            <a
+              href="/docs/sea-architecture"
+              className={`px-3 py-1 rounded text-sm ${
+                darkMode
+                  ? "bg-zinc-800 hover:bg-zinc-700"
+                  : "bg-zinc-200 hover:bg-zinc-300"
+              }`}
+            >
               SEA Architecture Deep Dive
             </a>
-            <a href="/docs/l-orm" className={`px-3 py-1 rounded text-sm ${
-              darkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-zinc-200 hover:bg-zinc-300'
-            }`}>
+            <a
+              href="/docs/l-orm"
+              className={`px-3 py-1 rounded text-sm ${
+                darkMode
+                  ? "bg-zinc-800 hover:bg-zinc-700"
+                  : "bg-zinc-200 hover:bg-zinc-300"
+              }`}
+            >
               L ORM Relationships
             </a>
-            <a href="/docs/nova-templating" className={`px-3 py-1 rounded text-sm ${
-              darkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-zinc-200 hover:bg-zinc-300'
-            }`}>
+            <a
+              href="/docs/nova-templating"
+              className={`px-3 py-1 rounded text-sm ${
+                darkMode
+                  ? "bg-zinc-800 hover:bg-zinc-700"
+                  : "bg-zinc-200 hover:bg-zinc-300"
+              }`}
+            >
               Advanced Nova Templates
             </a>
-            <a href="/docs/juice-cli" className={`px-3 py-1 rounded text-sm ${
-              darkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-zinc-200 hover:bg-zinc-300'
-            }`}>
+            <a
+              href="/docs/juice-cli"
+              className={`px-3 py-1 rounded text-sm ${
+                darkMode
+                  ? "bg-zinc-800 hover:bg-zinc-700"
+                  : "bg-zinc-200 hover:bg-zinc-300"
+              }`}
+            >
               Juice CLI Commands
             </a>
           </div>
