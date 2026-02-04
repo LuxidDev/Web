@@ -79,7 +79,7 @@ export default function Hero() {
                 darkMode ? 'text-zinc-300' : 'text-zinc-700'
               }`}
             >
-              Luxid v0.3.8-beta is now available
+              Luxid v0.4.1-beta is now available
             </span>
             <ArrowRight
               className={`w-4 h-4 ${
