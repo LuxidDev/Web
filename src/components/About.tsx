@@ -119,7 +119,7 @@ export default function About() {
               : 'linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.01) 100%)',
             borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
           }}>
-            <Sparkles className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`} />
+            {/* <Sparkles className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`} /> */}
             <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>The Story Behind Luxid</span>
           </div>
 
