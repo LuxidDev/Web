@@ -7,7 +7,7 @@ import Sponsors from '@/components/Sponsors';
 import Stats from '@/components/Stats';
 import Features from '@/components/Features';
 import SEASection from '@/components/SEASection';
-import NovaShowcase from '@/components/NovaShowcase';
+import NovaShowcase from '@/components/RouteShowcase';
 import LORMShowcase from '@/components/LORMShowcase';
 import JuiceCLI from '@/components/JuiceCLI';
 import CodeShowcase from '@/components/CodeShowcase';

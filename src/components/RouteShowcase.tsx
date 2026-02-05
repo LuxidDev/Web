@@ -1,45 +1,34 @@
 import React, { useState } from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
-import MonacoEditor from '@/components/MonacoEditor';
+import CodeExample from '@/components/CodeExample';
 
-const novaCode = `{{-- layouts/app.nova --}}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@yield('title') - Luxid</title>
-    @styles
-</head>
-<body>
-    @include('partials.nav')
+const routeCode = `<?php
+// Application Routes
 
-    <main>
-        @yield('content')
-    </main>
+use App\\Actions\\WelcomeAction;
+use Luxid\\Foundation\\Application;
 
-    @scripts
-</body>
-</html>`;
+route('welcome')
+    ->get('/')
+    ->uses(WelcomeAction::class, 'index')
+    ->open();`;
 
-const componentCode = `{{-- components/card.nova --}}
-@props(['title', 'image', 'price'])
+const componentCode = `<?php
+use App\\Actions\\TodoAction;
 
-<div class="product-card">
-    <img src="{{ $image }}" alt="{{ $title }}">
-    <h3>{{ $title }}</h3>
-    <span class="price">
-        {{ format_currency($price) }}
-    </span>
+route('todos.index')
+    ->get('/api/todos')
+    ->uses(TodoAction::class, 'index')
+    ->open();
 
-    @if($slot)
-        <div class="actions">
-            {{ $slot }}
-        </div>
-    @endif
-</div>`;
+route('todos.show')
+    ->get('/api/todos/{id}')
+    ->uses(TodoAction::class, 'show')
+    ->open();`;
 
-export default function NovaShowcase() {
-  const [activeTab, setActiveTab] = useState<'layout' | 'component'>('layout');
+export default function RouteShowcase() {
+  const [activeTab, setActiveTab] = useState<'SSR' | 'API'>('SSR');
   const { darkMode } = useTheme();
 
   return (
@@ -52,6 +41,7 @@ export default function NovaShowcase() {
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left side explanation */}
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center ${
@@ -65,15 +55,15 @@ export default function NovaShowcase() {
               </div>
               <h2 className={`text-4xl font-bold ${
                 darkMode ? 'text-white' : 'text-black'
-              }`}>Nova Templating</h2>
+              }`}>Routes in Luxid</h2>
             </div>
             <p className={`text-xl mb-8 ${
               darkMode ? 'text-zinc-400' : 'text-zinc-600'
             }`}>
-              A powerful, expressive templating engine that compiles to pure PHP. Write beautiful templates with clean syntax and blazing fast performance.
+              Define your application's HTTP routes using Luxid's expressive routing DSL. Routes can point to Actions and support full CRUD operations.
             </p>
             <ul className="space-y-4 mb-8">
-              {['Blade-inspired syntax', 'Component-based architecture', 'Automatic escaping', 'Template inheritance', 'Slots and props'].map((f, i) => (
+              {['Chainable route methods', 'Supports CRUD', 'Action-based routing', 'Flexible parameters'].map((f, i) => (
                 <li key={i} className={`flex items-center gap-3 ${
                   darkMode ? 'text-zinc-300' : 'text-zinc-700'
                 }`}>
@@ -89,9 +79,11 @@ export default function NovaShowcase() {
                 ? 'text-white hover:text-zinc-300'
                 : 'text-black hover:text-zinc-700'
             }`}>
-              Learn more about Nova <ArrowRight className="w-4 h-4" />
+              Learn more about Routes <ArrowRight className="w-4 h-4" />
             </a>
           </div>
+
+          {/* Right side code example with tabs */}
           <div className={`border rounded-xl overflow-hidden ${
             darkMode
               ? 'bg-[#1e1e1e] border-zinc-700'
@@ -101,9 +93,9 @@ export default function NovaShowcase() {
               darkMode ? 'border-zinc-700' : 'border-zinc-300'
             }`}>
               <button
-                onClick={() => setActiveTab('layout')}
+                onClick={() => setActiveTab('SSR')}
                 className={`px-6 py-3 text-sm font-medium transition-colors ${
-                  activeTab === 'layout'
+                  activeTab === 'SSR'
                     ? darkMode
                       ? 'bg-[#2d2d2d] text-white'
                       : 'bg-[#f3f3f3] text-black'
@@ -112,12 +104,12 @@ export default function NovaShowcase() {
                       : 'text-zinc-600 hover:text-zinc-800 bg-[#fffffe]'
                 }`}
               >
-                Layout
+                SSR
               </button>
               <button
-                onClick={() => setActiveTab('component')}
+                onClick={() => setActiveTab('API')}
                 className={`px-6 py-3 text-sm font-medium transition-colors ${
-                  activeTab === 'component'
+                  activeTab === 'API'
                     ? darkMode
                       ? 'bg-[#2d2d2d] text-white'
                       : 'bg-[#f3f3f3] text-black'
@@ -126,16 +118,18 @@ export default function NovaShowcase() {
                       : 'text-zinc-600 hover:text-zinc-800 bg-[#fffffe]'
                 }`}
               >
-                Component
+                API
               </button>
             </div>
-            <div className="p-0">
-              <MonacoEditor
-                code={activeTab === 'layout' ? novaCode : componentCode}
-                language="nova"
-                darkMode={darkMode}
-                height="400px"
-                readOnly={true}
+
+            <div className="p-6">
+              <CodeExample
+                code={activeTab === 'SSR' ? routeCode : componentCode}
+                title={activeTab === 'SSR' ? 'routes/api.php - Welcome Route' : 'routes/api.php - Todo Routes'}
+                explanation={activeTab === 'SSR'
+                  ? 'A minimal route example pointing to the WelcomeAction, perfoming SSR (Server Side Rendering).'
+                  : 'Todo routes using Action classes for index and show endpoints, using API Endpointing.'
+                }
               />
             </div>
           </div>
