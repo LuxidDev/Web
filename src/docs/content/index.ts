@@ -14,7 +14,28 @@ export { default as ComponentsContent } from './ComponentsContent';
 export { default as JuiceCLIContent } from './JuiceCLIContent';
 export { default as MakeCommandsContent } from './MakeCommandsContent';
 
-import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket } from 'lucide-react';
+/* New additions */
+export { default as EngineFrameworkContent } from './EngineFrameworkContent';
+export { default as RequestLifecycleContent } from './RequestLifecycleContent';
+export { default as QueryBuilderContent } from './QueryBuilderContent';
+export { default as LayoutsContent } from './LayoutsContent';
+export { default as CLIBasicsContent } from './CLIBasicsContent';
+export { default as DatabaseCommandsContent } from './DatabaseCommandsContent';
+export { default as CustomCommandsContent } from './CustomCommandsContent';
+export { default as MiddlewareContent } from './MiddlewareContent';
+export { default as AuthenticationContent } from './AuthenticationContent';
+export { default as ValidationContent } from './ValidationContent';
+export { default as ErrorHandlingContent } from './ErrorHandlingContent';
+export { default as TestingContent } from './TestingContent';
+export { default as ProductionSetupContent } from './ProductionSetupContent';
+export { default as PerformanceContent } from './PerformanceContent';
+export { default as SecurityContent } from './SecurityContent';
+export { default as RoutingReferenceContent } from './RoutingReferenceContent';
+export { default as ORMReferenceContent } from './ORMReferenceContent';
+export { default as CLIReferenceContent } from './CLIReferenceContent';
+
+
+import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
 export const docsChapters = [
   {
@@ -25,28 +46,29 @@ export const docsChapters = [
     chapters: [
       {
         id: 'introduction',
-        title: 'Introduction',
+        title: 'Introduction to Luxid',
         path: '/docs/introduction',
         content: 'IntroductionContent',
         quickStart: true
       },
       {
         id: 'installation',
-        title: 'Installation',
+        title: 'Installation & Setup',
         path: '/docs/installation',
         content: 'InstallationContent'
       },
       {
-        id: 'first-app',
-        title: 'Your First App',
-        path: '/docs/first-app',
-        content: 'FirstAppContent'
+        id: 'juice-cli',
+        title: 'Juice CLI First Look',
+        path: '/docs/juice-cli',
+        content: 'JuiceCLIContent',
+        quickStart: true
       },
       {
-        id: 'architecture',
-        title: 'Architecture',
-        path: '/docs/architecture',
-        content: 'ArchitectureContent'
+        id: 'first-app',
+        title: 'Your First Luxid App',
+        path: '/docs/first-app',
+        content: 'FirstAppContent'
       },
     ]
   },
@@ -63,54 +85,72 @@ export const docsChapters = [
         content: 'SEAArchitectureContent'
       },
       {
+        id: 'engine-framework',
+        title: 'Engine vs Framework',
+        path: '/docs/engine-framework',
+        content: 'EngineFrameworkContent'
+      },
+      {
+        id: 'request-lifecycle',
+        title: 'Request Lifecycle',
+        path: '/docs/request-lifecycle',
+        content: 'RequestLifecycleContent'
+      },
+      {
         id: 'actions',
-        title: 'Actions',
+        title: 'Actions (Controllers)',
         path: '/docs/actions',
         content: 'ActionsContent'
       },
       {
         id: 'entities',
-        title: 'Entities',
+        title: 'Entities (Models)',
         path: '/docs/entities',
         content: 'EntitiesContent'
       },
       {
         id: 'screens',
-        title: 'Screens',
+        title: 'Screens (Views)',
         path: '/docs/screens',
         content: 'ScreensContent'
       },
     ]
   },
   {
-    id: 'database',
-    title: 'Database & ORM',
+    id: 'database-orm',
+    title: 'Database & L ORM',
     icon: Database,
     color: 'from-green-500 to-emerald-500',
     chapters: [
       {
         id: 'l-orm',
-        title: 'L ORM',
+        title: 'L ORM Deep Dive',
         path: '/docs/l-orm',
         content: 'LORMContent'
       },
       {
         id: 'migrations',
-        title: 'Migrations',
+        title: 'Database Migrations',
         path: '/docs/migrations',
         content: 'MigrationsContent'
       },
       {
         id: 'relationships',
-        title: 'Relationships',
+        title: 'Model Relationships',
         path: '/docs/relationships',
         content: 'RelationshipsContent'
+      },
+      {
+        id: 'query-builder',
+        title: 'Query Builder',
+        path: '/docs/query-builder',
+        content: 'QueryBuilderContent'
       },
     ]
   },
   {
     id: 'templating',
-    title: 'Templating',
+    title: 'Templating Engine',
     icon: Code,
     color: 'from-orange-500 to-red-500',
     chapters: [
@@ -122,29 +162,137 @@ export const docsChapters = [
       },
       {
         id: 'components',
-        title: 'Components',
+        title: 'Template Components',
         path: '/docs/components',
         content: 'ComponentsContent'
+      },
+      {
+        id: 'layouts',
+        title: 'Layouts & Frames',
+        path: '/docs/layouts',
+        content: 'LayoutsContent'
       },
     ]
   },
   {
-    id: 'cli',
+    id: 'juice-cli',
     title: 'Juice CLI',
     icon: Terminal,
     color: 'from-yellow-500 to-amber-500',
     chapters: [
       {
-        id: 'juice-cli',
-        title: 'Juice CLI',
-        path: '/docs/juice-cli',
-        content: 'JuiceCLIContent'
+        id: 'cli-basics',
+        title: 'CLI Basics',
+        path: '/docs/cli-basics',
+        content: 'CLIBasicsContent'
       },
       {
         id: 'make-commands',
         title: 'Make Commands',
         path: '/docs/make-commands',
         content: 'MakeCommandsContent'
+      },
+      {
+        id: 'database-commands',
+        title: 'Database Commands',
+        path: '/docs/database-commands',
+        content: 'DatabaseCommandsContent'
+      },
+      {
+        id: 'custom-commands',
+        title: 'Custom Commands',
+        path: '/docs/custom-commands',
+        content: 'CustomCommandsContent'
+      },
+    ]
+  },
+  {
+    id: 'advanced',
+    title: 'Advanced Topics',
+    icon: Zap,
+    color: 'from-indigo-500 to-violet-500',
+    chapters: [
+      {
+        id: 'middleware',
+        title: 'Middleware',
+        path: '/docs/middleware',
+        content: 'MiddlewareContent'
+      },
+      {
+        id: 'authentication',
+        title: 'Authentication',
+        path: '/docs/authentication',
+        content: 'AuthenticationContent'
+      },
+      {
+        id: 'validation',
+        title: 'Validation',
+        path: '/docs/validation',
+        content: 'ValidationContent'
+      },
+      {
+        id: 'error-handling',
+        title: 'Error Handling',
+        path: '/docs/error-handling',
+        content: 'ErrorHandlingContent'
+      },
+      {
+        id: 'testing',
+        title: 'Testing',
+        path: '/docs/testing',
+        content: 'TestingContent'
+      },
+    ]
+  },
+  {
+    id: 'deployment',
+    title: 'Deployment',
+    icon: Server,
+    color: 'from-rose-500 to-pink-500',
+    chapters: [
+      {
+        id: 'production-setup',
+        title: 'Production Setup',
+        path: '/docs/production-setup',
+        content: 'ProductionSetupContent'
+      },
+      {
+        id: 'performance',
+        title: 'Performance Optimization',
+        path: '/docs/performance',
+        content: 'PerformanceContent'
+      },
+      {
+        id: 'security',
+        title: 'Security Best Practices',
+        path: '/docs/security',
+        content: 'SecurityContent'
+      },
+    ]
+  },
+  {
+    id: 'api-reference',
+    title: 'API Reference',
+    icon: Layers,
+    color: 'from-cyan-500 to-teal-500',
+    chapters: [
+      {
+        id: 'routing-reference',
+        title: 'Routing API',
+        path: '/docs/routing-reference',
+        content: 'RoutingReferenceContent'
+      },
+      {
+        id: 'orm-reference',
+        title: 'ORM API',
+        path: '/docs/orm-reference',
+        content: 'ORMReferenceContent'
+      },
+      {
+        id: 'cli-reference',
+        title: 'CLI Reference',
+        path: '/docs/cli-reference',
+        content: 'CLIReferenceContent'
       },
     ]
   },

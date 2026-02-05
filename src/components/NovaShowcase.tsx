@@ -136,7 +136,6 @@ export default function NovaShowcase() {
                 darkMode={darkMode}
                 height="400px"
                 readOnly={true}
-                showLineNumbers={true}
               />
             </div>
           </div>
