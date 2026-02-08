@@ -38,6 +38,7 @@ export { default as IntroductionTutorial } from '../tutorial/IntroductionTutoria
 export { default as UnderstandingSEATutorial } from '../tutorial/UnderstandingSEATutorial';
 export { default as TodoEntityTutorial } from '../tutorial/TodoEntityTutorial';
 export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrationTutorial';
+export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -267,9 +268,9 @@ export const docsChapters = [
         content: 'UnderstandingSEATutorial'
       },
       {
-        id: 'todo',
+        id: 'todoentity',
         title: 'Create the Todo Entity',
-        path: '/docs/todo',
+        path: '/docs/todo-entity',
         content: 'TodoEntityTutorial'
       },
       {
@@ -277,6 +278,12 @@ export const docsChapters = [
         title: 'Create the DB Migration',
         path: '/docs/migration',
         content: 'DatabaseMigrationTutorial'
+      },
+      {
+        id: 'todoaction',
+        title: 'Create the Todo Action',
+        path: '/docs/todo-action',
+        content: 'TodoActionTutorial'
       },
     ]
   },
