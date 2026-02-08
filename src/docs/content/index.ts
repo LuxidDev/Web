@@ -43,6 +43,7 @@ export { default as DefineRoutesTutorial } from '../tutorial/DefineRoutesTutoria
 export { default as TestYourAPITutorial } from '../tutorial/TestYourAPITutorial';
 export { default as HealthCheckEndpointTutorial } from '../tutorial/HealthCheckEndpointTutorial';
 export { default as QuickReferenceCommands } from '../tutorial/QuickReferenceCommands';
+export { default as BestPracticesTutorial } from '../tutorial/BestPracticesTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -306,6 +307,12 @@ export const docsChapters = [
         title: 'Quick Reference Commands',
         path: '/docs/quick-reference-commands',
         content: 'QuickReferenceCommands'
+      },
+      {
+        id: 'bestpractices',
+        title: 'Best Practices',
+        path: '/docs/best-practices',
+        content: 'BestPracticesTutorial'
       },
     ]
   },
