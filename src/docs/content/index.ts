@@ -35,6 +35,7 @@ export { default as CLIReferenceContent } from './CLIReferenceContent';
 
 /* Tutorial Content */
 export { default as IntroductionTutorial } from '../tutorial/IntroductionTutorial';
+export { default as UnderstandingSEATutorial } from '../tutorial/UnderstandingSEATutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -256,6 +257,12 @@ export const docsChapters = [
         title: 'Introduction',
         path: '/docs/tutorial',
         content: 'IntroductionTutorial'
+      },
+      {
+        id: 'sea',
+        title: 'Understanding SEA',
+        path: '/docs/sea',
+        content: 'UnderstandingSEATutorial'
       },
     ]
   },
