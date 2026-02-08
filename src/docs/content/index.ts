@@ -41,6 +41,7 @@ export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrat
 export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
 export { default as DefineRoutesTutorial } from '../tutorial/DefineRoutesTutorial';
 export { default as TestYourAPITutorial } from '../tutorial/TestYourAPITutorial';
+export { default as HealthCheckEndpointTutorial } from '../tutorial/HealthCheckEndpointTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -290,8 +291,14 @@ export const docsChapters = [
       {
         id: 'test',
         title: 'Test Your API',
-        path: '/docs/test',
+        path: '/docs/test-your-api',
         content: 'TestYourAPITutorial'
+      },
+      {
+        id: 'health',
+        title: '(Optional) Add Health Check Endpoint',
+        path: '/docs/health-check-endpoint',
+        content: 'HealthCheckEndpointTutorial'
       },
     ]
   },
