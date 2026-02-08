@@ -37,6 +37,7 @@ export { default as CLIReferenceContent } from './CLIReferenceContent';
 export { default as IntroductionTutorial } from '../tutorial/IntroductionTutorial';
 export { default as UnderstandingSEATutorial } from '../tutorial/UnderstandingSEATutorial';
 export { default as TodoEntityTutorial } from '../tutorial/TodoEntityTutorial';
+export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrationTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -270,6 +271,12 @@ export const docsChapters = [
         title: 'Create the Todo Entity',
         path: '/docs/todo',
         content: 'TodoEntityTutorial'
+      },
+      {
+        id: 'migration',
+        title: 'Create the DB Migration',
+        path: '/docs/migration',
+        content: 'DatabaseMigrationTutorial'
       },
     ]
   },
