@@ -42,6 +42,7 @@ export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
 export { default as DefineRoutesTutorial } from '../tutorial/DefineRoutesTutorial';
 export { default as TestYourAPITutorial } from '../tutorial/TestYourAPITutorial';
 export { default as HealthCheckEndpointTutorial } from '../tutorial/HealthCheckEndpointTutorial';
+export { default as QuickReferenceCommands } from '../tutorial/QuickReferenceCommands';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -299,6 +300,12 @@ export const docsChapters = [
         title: '(Optional) Add Health Check Endpoint',
         path: '/docs/health-check-endpoint',
         content: 'HealthCheckEndpointTutorial'
+      },
+      {
+        id: 'health',
+        title: 'Quick Reference Commands',
+        path: '/docs/quick-reference-commands',
+        content: 'QuickReferenceCommands'
       },
     ]
   },
