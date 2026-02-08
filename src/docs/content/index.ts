@@ -40,6 +40,7 @@ export { default as TodoEntityTutorial } from '../tutorial/TodoEntityTutorial';
 export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrationTutorial';
 export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
 export { default as DefineRoutesTutorial } from '../tutorial/DefineRoutesTutorial';
+export { default as TestYourAPITutorial } from '../tutorial/TestYourAPITutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -285,6 +286,12 @@ export const docsChapters = [
         title: 'Define Luxid Routes',
         path: '/docs/routes',
         content: 'DefineRoutesTutorial'
+      },
+      {
+        id: 'test',
+        title: 'Test Your API',
+        path: '/docs/test',
+        content: 'TestYourAPITutorial'
       },
     ]
   },
