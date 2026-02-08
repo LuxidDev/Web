@@ -44,6 +44,7 @@ export { default as TestYourAPITutorial } from '../tutorial/TestYourAPITutorial'
 export { default as HealthCheckEndpointTutorial } from '../tutorial/HealthCheckEndpointTutorial';
 export { default as QuickReferenceCommands } from '../tutorial/QuickReferenceCommands';
 export { default as BestPracticesTutorial } from '../tutorial/BestPracticesTutorial';
+export { default as ConclusionTutorial } from '../tutorial/ConclusionTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -313,6 +314,12 @@ export const docsChapters = [
         title: 'Best Practices',
         path: '/docs/best-practices',
         content: 'BestPracticesTutorial'
+      },
+      {
+        id: 'conclusion',
+        title: 'Conclusion',
+        path: '/docs/conclusion',
+        content: 'ConclusionTutorial'
       },
     ]
   },
