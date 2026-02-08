@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Database, GitBranch, Clock, History } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import { Database} from 'lucide-react';
 
-export default function MigrationsContent() {  // Make sure it's default export
+export default function MigrationsContent() {
   const { darkMode } = useTheme();
 
   return (

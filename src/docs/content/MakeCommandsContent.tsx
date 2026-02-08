@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Wand2, Sparkles, MagicWand } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import { Wand2 } from 'lucide-react';
 
 export default function MakeCommandsContent() {
   const { darkMode } = useTheme();
@@ -24,7 +23,7 @@ export default function MakeCommandsContent() {
         </div>
       </div>
 
-      {/* Add your make commands content here */}
+      {/* make commands content here */}
     </>
   );
 }

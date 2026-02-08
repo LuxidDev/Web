@@ -1,14 +1,10 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import {
-  Sparkles,
   Layers,
   Zap,
   Database,
   Terminal,
-  Brain,
-  Rocket,
-  CheckCircle,
 } from "lucide-react";
 import ArchitectureDiagram from "../components/ArchitectureDiagram";
 import QuickStartExample from "../components/QuickStartExample";

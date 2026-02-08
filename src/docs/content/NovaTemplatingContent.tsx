@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Code, FileText, Layout } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import { FileText } from 'lucide-react';
 
 export default function NovaTemplatingContent() {
   const { darkMode } = useTheme();

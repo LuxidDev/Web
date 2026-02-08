@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import {
   Check,
-  Copy,
   AlertCircle,
   Terminal,
   Package,
   Server,
   Database,
 } from "lucide-react";
-import CodeExample from "@/components/CodeExample"; // Fixed import path
-import InlineCodeExample from "@/components/InlineCodeExample"; // Added import for InlineCodeExample
+import CodeExample from "@/components/CodeExample";
+import InlineCodeExample from "@/components/InlineCodeExample";
 
 export default function InstallationContent() {
   const { darkMode } = useTheme();

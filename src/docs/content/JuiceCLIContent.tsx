@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Terminal, Command, Zap } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
 
 export default function JuiceCLIContent() {
   const { darkMode } = useTheme();

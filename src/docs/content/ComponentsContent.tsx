@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Package, Grid, Layers } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
 
 export default function ComponentsContent() {
   const { darkMode } = useTheme();

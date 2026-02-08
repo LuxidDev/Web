@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Link, Network, GitBranch } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import { Network } from 'lucide-react';
 
 export default function RelationshipsContent() {
   const { darkMode } = useTheme();

@@ -1,15 +1,6 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-import {
-  Zap,
-  Code,
-  ArrowRight,
-  CheckCircle,
-  Terminal,
-  Server,
-} from "lucide-react";
 import CodeExample from "@/components/CodeExample";
-import InlineCodeExample from "@/components/InlineCodeExample";
 
 export default function HealthCheckEndpointTutorial() {
   const { darkMode } = useTheme();
