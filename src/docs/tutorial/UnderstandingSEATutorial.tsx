@@ -59,7 +59,7 @@ export default function UnderstandingSEATutorial() {
                         logic
                         </span>
                     </li>
-                    </ul>
+                 </ul>
 
                     <p
                     className={`mt-6 text-base ${
