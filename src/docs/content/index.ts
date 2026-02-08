@@ -14,7 +14,6 @@ export { default as ComponentsContent } from './ComponentsContent';
 export { default as JuiceCLIContent } from './JuiceCLIContent';
 export { default as MakeCommandsContent } from './MakeCommandsContent';
 
-/* New additions */
 export { default as EngineFrameworkContent } from './EngineFrameworkContent';
 export { default as RequestLifecycleContent } from './RequestLifecycleContent';
 export { default as QueryBuilderContent } from './QueryBuilderContent';
@@ -34,6 +33,8 @@ export { default as RoutingReferenceContent } from './RoutingReferenceContent';
 export { default as ORMReferenceContent } from './ORMReferenceContent';
 export { default as CLIReferenceContent } from './CLIReferenceContent';
 
+/* Tutorial Content */
+export { default as IntroductionTutorial } from '../tutorial/IntroductionTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -241,6 +242,20 @@ export const docsChapters = [
         title: 'Testing',
         path: '/docs/testing',
         content: 'TestingContent'
+      },
+    ]
+  },
+  {
+    id: 'tutorial',
+    title: 'Tutorial App',
+    icon: Workflow,
+    color: 'from-teal-500 to-sky-500',
+    chapters: [
+      {
+        id: 'introduction',
+        title: 'Introduction',
+        path: '/docs/tutorial',
+        content: 'IntroductionTutorial'
       },
     ]
   },
