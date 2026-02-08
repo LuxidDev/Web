@@ -39,6 +39,7 @@ export { default as UnderstandingSEATutorial } from '../tutorial/UnderstandingSE
 export { default as TodoEntityTutorial } from '../tutorial/TodoEntityTutorial';
 export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrationTutorial';
 export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
+export { default as DefineRoutesTutorial } from '../tutorial/DefineRoutesTutorial';
 
 import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Shield, Server, Workflow } from 'lucide-react';
 
@@ -280,10 +281,10 @@ export const docsChapters = [
         content: 'DatabaseMigrationTutorial'
       },
       {
-        id: 'todoaction',
-        title: 'Create the Todo Action',
-        path: '/docs/todo-action',
-        content: 'TodoActionTutorial'
+        id: 'routes',
+        title: 'Define Luxid Routes',
+        path: '/docs/routes',
+        content: 'DefineRoutesTutorial'
       },
     ]
   },
