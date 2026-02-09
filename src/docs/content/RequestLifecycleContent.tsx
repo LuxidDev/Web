@@ -3,9 +3,11 @@ import { useTheme } from '@/contexts/ThemeContext';
 import {
   Cpu, Package, Layers, Code,
   Terminal, Download, ArrowRight,
-  CheckCircle, AlertCircle
+  CheckCircle, AlertCircle, Server,
+  Database, FileCode, Globe, Shield,
+  Zap, GitBranch, Workflow, Clock
 } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function RequestLifecycleContent() {
@@ -13,508 +15,645 @@ export default function RequestLifecycleContent() {
 
   return (
     <>
-      {/* Hero Section */}
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/20'
-          : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
-      }`}>
+      <div className={`mb-8 p-6 rounded-2xl ${darkMode ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20" : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"}`}>
         <div className="flex items-start gap-4">
-          <Layers className={`w-12 h-12 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Engine vs Framework: Luxid's Unique Architecture</h1>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-600'}`}>
-              Understanding the separation between core engine and starter framework is key to mastering Luxid.
+          <div className="flex-1">
+            <h1 className="text-3xl font-bold mb-3">Request Lifecycle</h1>
+            <p className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>
+              Understanding how Luxid processes HTTP requests from arrival to response. Every request follows a predictable path through the framework's core components.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Introduction */}
-      <h2 className="text-2xl font-bold mb-4">Why Two Packages?</h2>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-600'}`}>
-        Luxid follows a modular architecture where the core functionality (<strong>Engine</strong>) is separate
-        from the starter project (<strong>Framework</strong>). This separation provides flexibility, better
-        dependency management, and easier updates.
-      </p>
+      <h2 className="text-2xl font-bold mb-6">Complete Request Journey</h2>
 
-      {/* Comparison Table */}
-      <div className={`my-8 rounded-xl overflow-hidden ${
-        darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-300'
-      }`}>
-        <div className={`grid grid-cols-1 md:grid-cols-2 divide-x ${darkMode ? 'divide-zinc-800' : 'divide-zinc-300'}`}>
-          {/* Engine Column */}
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
-              }`}>
-                <Cpu className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Luxid Engine</h3>
-                <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  <code className="font-mono">luxid/engine</code>
+      {/* Main Flow Visualization */}
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-zinc-900 border border-zinc-800" : "bg-zinc-100 border border-zinc-300"}`}>
+        <div className="flex flex-col items-center">
+          {/* Flow Steps */}
+          <div className="w-full space-y-8">
+
+            {/* Step 1: HTTP Request */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-blue-500/20 text-blue-300" : "bg-blue-100 text-blue-700"}`}>Step 1</span>
+                  HTTP Request Arrives
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  The request hits <code>web/index.php</code> which bootstraps the application, loads environment variables, and creates the Application instance.
                 </p>
+                <CodeExample
+                  code={`<?php
+// web/index.php - Entry Point
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Luxid\\Foundation\\Application;
+
+// 1. Load environment
+$dotenv = Dotenv\\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+// 2. Load configuration
+$config = require __DIR__ . '/../config/config.php';
+
+// 3. Create Application instance
+$app = new Application(dirname(__DIR__), $config);
+
+// 4. This creates:
+//    - Router with Request/Response
+//    - Database connection
+//    - Session management
+//    - Screen renderer`}
+                  language="php"
+                  compact={true}
+                />
               </div>
             </div>
 
-            <ul className="space-y-3">
-              {[
-                'Core framework classes (Router, ORM, Request, Response)',
-                'Juice CLI tool',
-                'Middleware system',
-                'Database abstraction layer',
-                'Form builders and validation',
-                'Exception handling'
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-                  <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6">
-              <h4 className="font-bold mb-2">Install Engine Only</h4>
-              <InlineCodeExample
-                code="composer require luxid/engine"
-                title="Command"
-                description="Install just the core engine without the starter template"
-                icon={Download}
-                color="blue"
-                language="bash"
-              />
-            </div>
-          </div>
-
-          {/* Framework Column */}
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-              }`}>
-                <Package className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Luxid Framework</h3>
-                <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  <code className="font-mono">luxid/framework</code>
+            {/* Step 2: Application Boot */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-green-500/20 text-green-300" : "bg-green-100 text-green-700"}`}>Step 2</span>
+                  Application Bootstrapping
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  The Application constructor sets up all core components and loads the authenticated user if session exists.
                 </p>
+                <CodeExample
+                  code={`<?php
+// Engine/Foundation/Application.php
+public function __construct($rootPath, array $config)
+{
+    self::$ROOT_DIR = $rootPath;
+    self::$app = $this;
+
+    // Core components initialization
+    $this->request = new Request();
+    $this->response = new Response();
+    $this->session = new Session();
+    $this->router = new Router($this->request, $this->response);
+    $this->screen = new Screen();
+
+    // Database connection
+    if (isset($config['db'])) {
+        $this->db = new Database($config['db']);
+    }
+
+    // User authentication from session
+    $primaryValue = $this->session->get('user');
+    if ($primaryValue !== null) {
+        $primaryKey = $this->userClass::primaryKey();
+        $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+    }
+}`}
+                  language="php"
+                  compact={true}
+                />
               </div>
             </div>
 
-            <ul className="space-y-3">
-              {[
-                'Pre-configured application structure',
-                'Example Actions, Entities, Screens',
-                'Basic authentication setup',
-                'Development environment configuration',
-                '.env.example with common settings',
-                'Basic migrations and seeds',
-                'Tailwind CSS setup',
-                'Welcome page and error templates'
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
-                  <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>{item}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Step 3: Route Loading */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-purple-500/20 text-purple-300" : "bg-purple-100 text-purple-700"}`}>Step 3</span>
+                  Route File Loading
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  Routes are loaded from <code>routes/api.php</code>, registering all endpoint definitions with the Router.
+                </p>
+                <CodeExample
+                  code={`<?php
+// routes/api.php - Route definitions
+require_once __DIR__ . '/../routes/api.php';
 
-            <div className="mt-6">
-              <h4 className="font-bold mb-2">Create Starter Project</h4>
-              <InlineCodeExample
-                code="composer create-project luxid/framework myapp"
-                title="Command"
-                description="Create a complete starter application"
-                icon={Terminal}
-                color="purple"
-                language="bash"
-              />
+// Example routes using Luxid's fluent API:
+route('welcome')
+    ->get('/')
+    ->uses(WelcomeAction::class, 'index')
+    ->open();
+
+route('todos')
+    ->get('/todos')
+    ->uses(TodoAction::class, 'index')
+    ->auth();
+
+// The route() helper creates RouteBuilder instances
+// which register routes with the Router`}
+                  language="php"
+                  compact={true}
+                />
+              </div>
             </div>
+
+            {/* Step 4: Router Resolution */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-yellow-500/20 text-yellow-300" : "bg-yellow-100 text-yellow-700"}`}>Step 4</span>
+                  Router Matching & Execution
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  Router finds the matching route, executes middleware, and calls the Action method.
+                </p>
+                <CodeExample
+                  code={`<?php
+// Engine/Routing/Router.php
+public function resolve()
+{
+    $path = $this->request->getPath();
+    $method = $this->request->method();
+
+    // 1. Find matching route
+    if (isset($this->routes[$method][$path])) {
+        $route = $this->routes[$method][$path];
+    } else {
+        // Try parameterized route matching
+        foreach ($this->routes[$method] as $routePath => $routeData) {
+            if (strpos($routePath, '{') !== false) {
+                $params = $this->extractRouteParams($routePath);
+                if (!empty($params)) {
+                    $route = $routeData;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (!isset($route)) {
+        throw new NotFoundException();
+    }
+
+    $callback = $route['callback'];
+
+    // 2. Execute middleware
+    foreach ($route['middleware'] as $middleware) {
+        $middleware->execute();
+    }
+
+    // 3. Execute Action method
+    if (is_array($callback)) {
+        $action = new $callback[0]();
+        Application::$app->action = $action;
+        $action->activity = $callback[1];
+        $callback[0] = $action;
+    }
+
+    return call_user_func($callback, $this->request, $this->response);
+}`}
+                  language="php"
+                  compact={true}
+                />
+              </div>
+            </div>
+
+            {/* Step 5: Action Processing */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-red-500/20 text-red-300" : "bg-red-100 text-red-700"}`}>Step 5</span>
+                  Action Method Execution
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  The Action method runs business logic, interacts with Entities, and prepares the response.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <CodeExample
+                    code={`<?php
+// Simple Action Example
+class TodoAction extends Action
+{
+    public function index()
+    {
+        // Get current user
+        $userId = $this->user()->id;
+
+        // Query database using Entity
+        $todos = Todo::findAll([
+            'user_id' => $userId,
+            'completed' => false
+        ]);
+
+        // Return JSON response
+        return $this->response()->success([
+            'todos' => $todos,
+            'count' => count($todos)
+        ]);
+    }
+}`}
+                    language="php"
+                    compact={true}
+                    title="Simple GET Action"
+                  />
+                  <CodeExample
+                    code={`<?php
+// Complex Action with Validation
+class AuthAction extends Action
+{
+    public function register()
+    {
+        // Get sanitized request data
+        $data = $this->request()->getBody();
+
+        // Create and validate Entity
+        $user = new User();
+        $user->loadData($data);
+
+        if (!$user->validate()) {
+            return $this->response()->error(
+                'Validation failed',
+                $user->errors,
+                400
+            );
+        }
+
+        // Save to database
+        if ($user->save()) {
+            // Login user
+            Application::$app->login($user);
+
+            return $this->response()->success([
+                'user' => $user,
+                'message' => 'Registration successful'
+            ], 201);
+        }
+
+        return $this->response()->error(
+            'Registration failed',
+            null,
+            500
+        );
+    }
+}`}
+                    language="php"
+                    compact={true}
+                    title="Complex POST Action"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Step 6: Response Handling */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-indigo-500/20 text-indigo-300" : "bg-indigo-100 text-indigo-700"}`}>Step 6</span>
+                  Response Generation
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  Response is generated either as JSON (API) or rendered via Nova templates (Web).
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="font-bold mb-2">JSON Response (API)</h4>
+                    <CodeExample
+                      code={`<?php
+// Engine/Http/Response.php
+public function success($data = null, string $message = 'Success', int $statusCode = 200): string
+{
+    $this->setStatusCode($statusCode);
+    header('Content-Type: application/json');
+
+    return json_encode([
+        'success' => true,
+        'message' => $message,
+        'data' => $data
+    ], JSON_PRETTY_PRINT);
+}
+
+// In Action:
+return $this->response()->success([
+    'todos' => $todos,
+    'count' => count($todos)
+], 'Todos retrieved successfully');`}
+                      language="php"
+                      compact={true}
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-2">HTML Response (Web)</h4>
+                    <CodeExample
+                      code={`<?php
+// Render Nova template
+return $this->nova('todos.index', [
+    'todos' => $todos,
+    'title' => 'My Todo List',
+    'user' => $this->user()
+]);
+
+// Engine/Foundation/Action.php
+public function nova($screen, $data = [])
+{
+    return $this->app()->screen->renderScreen($screen, $data);
+}
+
+// Screens use simple PHP includes:
+// screens/todos/index.nova.php
+<h1><?= htmlspecialchars($title) ?></h1>
+<?php foreach ($todos as $todo): ?>
+    <div class="todo">
+        <?= htmlspecialchars($todo->title) ?>
+    </div>
+<?php endforeach; ?>`}
+                      language="php"
+                      compact={true}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 7: Error Handling */}
+            <div className="flex items-start gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm ${darkMode ? "bg-rose-500/20 text-rose-300" : "bg-rose-100 text-rose-700"}`}>Step 7</span>
+                  Error Handling & Cleanup
+                </h3>
+                <p className={`mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  Any exceptions are caught and converted to proper HTTP error responses.
+                </p>
+                <CodeExample
+                  code={`<?php
+// Engine/Foundation/Application.php - run() method
+public function run()
+{
+    try {
+        echo $this->router->resolve();
+    } catch (\\Exception $e) {
+        // Get exception code
+        $code = $e->getCode();
+
+        // Validate HTTP status code
+        if (!is_int($code) || $code < 100 || $code > 599) {
+            $code = $e instanceof \\PDOException ? 500 : 404;
+        }
+
+        $this->response->setStatusCode($code);
+
+        // Check if API request
+        $path = $this->request->getPath();
+        $isApiRequest = strpos($path, '/api/') === 0;
+
+        if ($isApiRequest) {
+            // JSON error for API
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'message' => $e->getMessage(),
+                'code' => $code
+            ]);
+        } else {
+            // HTML error for web
+            echo $this->screen->renderScreen('_error', [
+                'exception' => $e
+            ]);
+        }
+    }
+}`}
+                  language="php"
+                  compact={true}
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* Directory Structure Comparison */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">Directory Structure</h2>
+      <h2 className="text-2xl font-bold mb-6">Request Lifecycle Visualized</h2>
+
+      {/* Timeline Visualization */}
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-zinc-900 border border-zinc-800" : "bg-white border border-zinc-200 shadow-sm"}`}>
+        <div className="relative">
+          {/* Timeline line */}
+          <div className={`absolute left-6 top-0 bottom-0 w-0.5 ${darkMode ? "bg-zinc-700" : "bg-zinc-300"}`}></div>
+
+          {/* Timeline items */}
+          <div className="space-y-10 relative">
+
+            {/* Item 1 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-blue-500/20 border-2 border-blue-500/40" : "bg-blue-100 border-2 border-blue-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-blue-400" : "bg-blue-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-blue-500/10 border border-blue-500/20" : "bg-blue-50 border border-blue-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">1. HTTP Request</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    Request arrives at <code>web/index.php</code>, starts output buffering, loads Composer autoloader.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 2 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-green-500/20 border-2 border-green-500/40" : "bg-green-100 border-2 border-green-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-green-400" : "bg-green-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-green-500/10 border border-green-500/20" : "bg-green-50 border border-green-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">2. Application Setup</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    <code>Application</code> instance created with Router, Request, Response, Session, Database.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 3 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-purple-500/20 border-2 border-purple-500/40" : "bg-purple-100 border-2 border-purple-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-purple-400" : "bg-purple-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-purple-500/10 border border-purple-500/20" : "bg-purple-50 border border-purple-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">3. Route Loading</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    <code>routes/api.php</code> loaded, registering all routes with the Router.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 4 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-yellow-500/20 border-2 border-yellow-500/40" : "bg-yellow-100 border-2 border-yellow-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-yellow-400" : "bg-yellow-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-yellow-500/10 border border-yellow-500/20" : "bg-yellow-50 border border-yellow-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">4. Router Resolution</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    Router matches URL to route, executes middleware, instantiates Action.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 5 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-red-500/20 border-2 border-red-500/40" : "bg-red-100 border-2 border-red-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-red-400" : "bg-red-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-red-500/10 border border-red-500/20" : "bg-red-50 border border-red-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">5. Action Execution</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    Action method runs, interacts with Entities via L ORM, processes business logic.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 6 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-indigo-500/20 border-2 border-indigo-500/40" : "bg-indigo-100 border-2 border-indigo-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-indigo-400" : "bg-indigo-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-indigo-500/10 border border-indigo-500/20" : "bg-indigo-50 border border-indigo-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">6. Response Generation</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    Response generated as JSON or rendered Nova template, proper headers set.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 7 */}
+            <div className="flex items-start gap-6">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${darkMode ? "bg-rose-500/20 border-2 border-rose-500/40" : "bg-rose-100 border-2 border-rose-300"}`}>
+                <div className={`w-4 h-4 rounded-full ${darkMode ? "bg-rose-400" : "bg-rose-500"}`}></div>
+              </div>
+              <div className="flex-1">
+                <div className={`p-4 rounded-lg ${darkMode ? "bg-rose-500/10 border border-rose-500/20" : "bg-rose-50 border border-rose-200"}`}>
+                  <h4 className="font-bold text-lg mb-2">7. Output & Cleanup</h4>
+                  <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    Response sent to browser, session data saved, output buffer flushed.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold mb-6">Performance Optimizations</h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div>
-          <h3 className="font-bold mb-2 flex items-center gap-2">
-            <Cpu className="w-5 h-5" />
-            Engine Structure
+        <div className={`p-5 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-white border border-zinc-200 shadow-sm"}`}>
+          <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+            <Shield className={`w-5 h-5 ${darkMode ? "text-green-400" : "text-green-600"}`} />
+            Automatic Input Sanitization
           </h3>
-          <CodeExample
-            code={`luxid/engine/
-├── Engine/
-│   ├── Console/          # Juice CLI
-│   ├── Database/         # L ORM
-│   ├── Exceptions/       # Custom exceptions
-│   ├── Facades/          # Facade classes
-│   ├── Foundation/       # Core framework
-│   ├── Form/             # Form builders
-│   ├── Http/             # Request/Response
-│   ├── Middleware/       # Middleware system
-│   ├── ORM/              # Object-Relational Mapping
-│   └── Routing/          # Router system
-├── juice                 # CLI executable
-└── composer.json         # Engine package`}
-            language="bash"
-            title="luxid/engine Package Structure"
-            explanation="The core engine contains all framework logic without any application code."
-          />
-        </div>
-
-        <div>
-          <h3 className="font-bold mb-2 flex items-center gap-2">
-            <Package className="w-5 h-5" />
-            Framework Structure
-          </h3>
-          <CodeExample
-            code={`myapp/                   # Your application
-├── app/
-│   ├── Actions/          # Your Action classes
-│   ├── Entities/         # Your Entity classes
-│   └── Middleware/       # Custom middleware
-├── config/               # Configuration files
-├── migrations/           # Database migrations
-├── routes/               # Route definitions
-├── screens/              # Nova templates
-├── web/                  # Public assets
-├── juice                 # Juice CLI (copied)
-└── composer.json         # Your app dependencies`}
-            language="bash"
-            title="Starter Project Structure"
-            explanation="The framework provides a ready-to-use application structure with the engine as a dependency."
-          />
-        </div>
-      </div>
-
-      {/* Real-World Example */}
-      <h2 className="text-2xl font-bold mb-4">Real-World Usage</h2>
-
-      <div className="space-y-6">
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-          <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <Code className="w-5 h-5" />
-            Scenario 1: Building a Custom Application
-          </h3>
-          <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            You want to build a custom e-commerce platform with specific requirements:
-          </p>
-          <div className="space-y-2">
-            <InlineCodeExample
-              code="composer create-project luxid/framework ecommerce"
-              title="Start with Framework"
-              description="Get the complete starter structure"
-              icon={ArrowRight}
-              color="blue"
-              language="bash"
-            />
-            <InlineCodeExample
-              code="cd ecommerce\nphp juice make:api Product\nphp juice make:api Order"
-              title="Generate Custom Code"
-              description="Use Juice CLI to create your domain-specific code"
-              icon={ArrowRight}
-              color="purple"
-              language="bash"
-            />
-          </div>
-        </div>
-
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-          <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <Terminal className="w-5 h-5" />
-            Scenario 2: Contributing to Luxid Engine
-          </h3>
-          <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            You want to contribute to the Luxid core or extend its functionality:
-          </p>
-          <div className="space-y-2">
-            <InlineCodeExample
-              code="composer require luxid/engine"
-              title="Require Only Engine"
-              description="Add just the engine to your existing project"
-              icon={ArrowRight}
-              color="blue"
-              language="bash"
-            />
-            <InlineCodeExample
-              code="<?php\n// Extend core classes\nclass CustomRouter extends \\Luxid\\Routing\\Router\n{\n    // Custom routing logic\n}"
-              title="Extend Engine Classes"
-              description="Extend and customize core Luxid components"
-              icon={ArrowRight}
-              color="purple"
-              language="php"
-            />
-          </div>
-        </div>
-
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-          <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <AlertCircle className="w-5 h-5" />
-            Scenario 3: Integrating with Existing Systems
-          </h3>
-          <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            You have an existing application and want to use Luxid's ORM or Router:
+          <p className={`text-sm mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            Luxid automatically sanitizes all request data using <code>FILTER_SANITIZE_SPECIAL_CHARS</code>, preventing XSS attacks.
           </p>
           <CodeExample
             code={`<?php
-// Existing legacy application
-require_once 'vendor/autoload.php';
-
-// Use Luxid ORM without the full framework
-use Luxid\\Database\\DbEntity;
-
-class LegacyProduct extends DbEntity
+// Engine/Http/Request.php - Automatic sanitization
+public function getBody()
 {
-    public static function tableName(): string
-    {
-        return 'legacy_products';
+    if ($this->cachedBody !== null) {
+        return $this->cachedBody; // Cached for performance
     }
 
-    // Use L ORM features in legacy app
-    public static function findActiveProducts()
-    {
-        return self::findAll(['active' => 1]);
+    $body = [];
+
+    foreach ($_GET as $key => $value) {
+        $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
     }
+
+    foreach ($_POST as $key => $value) {
+        $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
+    $this->cachedBody = $body; // Cache results
+    return $body;
+}`}
+            language="php"
+            compact={true}
+          />
+        </div>
+
+        <div className={`p-5 rounded-xl ${darkMode ? "bg-zinc-900/50 border border-zinc-800" : "bg-white border border-zinc-200 shadow-sm"}`}>
+          <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+            <Zap className={`w-5 h-5 ${darkMode ? "text-yellow-400" : "text-yellow-600"}`} />
+            Intelligent Caching
+          </h3>
+          <p className={`text-sm mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            Request data, parsed JSON, and route parameters are cached to avoid redundant processing.
+          </p>
+          <CodeExample
+            code={`<?php
+// Performance optimizations in Luxid:
+
+// 1. Request body cached
+private ?array $cachedBody = null;
+public function getBody() {
+    if ($this->cachedBody !== null) return $this->cachedBody;
+    // ... parse and cache
 }
 
-// Use in legacy code
-$products = LegacyProduct::findActiveProducts();`}
+// 2. Route parameters pre-flattened
+private array $flattenedMiddleware = [];
+// Middleware flattened per route for O(1) lookup
+
+// 3. PDO connection reused
+public ?Database $db = null;
+// Single database connection per request
+
+// 4. Compiled route caching
+private array $routeCache = [];
+// Parameterized routes cached for fast matching`}
             language="php"
-            title="Using Engine in Legacy Applications"
-            explanation="The engine can be used independently without the full framework structure."
+            compact={true}
           />
         </div>
       </div>
 
-      {/* Dependency Management */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">Dependency Management</h2>
-
-      <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-300'}`}>
-        <h3 className="text-xl font-bold mb-3">composer.json Comparison</h3>
-
+      <div className={`p-6 rounded-xl my-8 ${darkMode ? "bg-zinc-900 border border-zinc-800" : "bg-zinc-100 border border-zinc-300"}`}>
+        <h3 className="text-xl font-bold mb-4">Key Takeaways</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-bold mb-2">Engine Package</h4>
-            <CodeExample
-              code={`{
-  "name": "luxid/engine",
-  "type": "library",
-  "require": {
-    "php": "^8.0",
-    "vlucas/phpdotenv": "^5.6"
-  },
-  "autoload": {
-    "psr-4": {
-      "Luxid\\\\": "Engine/"
-    }
-  },
-  "bin": ["juice"]
-}`}
-              language="json"
-              title="luxid/engine composer.json"
-              explanation="Minimal dependencies - just PHP 8.0+ and dotenv for environment variables."
-            />
+            <h4 className="font-bold mb-2">For Application Developers</h4>
+            <ul className={`space-y-2 text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <li className="flex items-start gap-2">
+                <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? "text-green-400" : "text-green-600"}`} />
+                <span>All request data is automatically sanitized for security</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? "text-green-400" : "text-green-600"}`} />
+                <span>Middleware runs before your Action methods</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? "text-green-400" : "text-green-600"}`} />
+                <span>User authentication is handled automatically if session exists</span>
+              </li>
+            </ul>
           </div>
-
           <div>
-            <h4 className="font-bold mb-2">Framework Starter</h4>
-            <CodeExample
-              code={`{
-  "name": "luxid/framework",
-  "type": "project",
-  "require": {
-    "php": "^8.0",
-    "luxid/engine": "^1.0",
-    "vlucas/phpdotenv": "^5.6"
-  },
-  "scripts": {
-    "post-create-project-cmd": [
-      "Luxid\\\\Framework\\\\Kernel::postCreateProject"
-    ]
-  }
-}`}
-              language="json"
-              title="luxid/framework composer.json"
-              explanation="Includes luxid/engine as a dependency and adds setup scripts."
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Best Practices */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">Best Practices</h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-          <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            When to Use Framework
-          </h4>
-          <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Starting a new greenfield project
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Learning Luxid for the first time
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Need a complete MVC structure
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Want built-in authentication and examples
-            </li>
-          </ul>
-        </div>
-
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-          <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            When to Use Engine Only
-          </h4>
-          <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Integrating into existing applications
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Building microservices or APIs
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Need only specific components (ORM, Router)
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Contributing to Luxid core development
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Version Management */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-amber-900/20 border border-amber-800' : 'bg-amber-50 border border-amber-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-          <AlertCircle className="w-5 h-5" />
-          Version Management Tips
-        </h3>
-        <div className="space-y-4">
-          <InlineCodeExample
-            code="composer update luxid/engine"
-            title="Update Engine Only"
-            description="Update the core engine independently"
-            icon={Download}
-            color="yellow"
-            language="bash"
-          />
-          <InlineCodeExample
-            code="composer outdated luxid/*"
-            title="Check for Updates"
-            description="See available updates for Luxid packages"
-            icon={Terminal}
-            color="yellow"
-            language="bash"
-          />
-          <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-            <strong>Note:</strong> The framework starter project pins to specific engine versions for stability.
-            Update intentionally and test thoroughly.
-          </p>
-        </div>
-      </div>
-
-      {/* Next Steps */}
-      <div className={`mt-8 p-6 rounded-xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20'
-          : 'bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200'
-      }`}>
-        <h3 className="text-xl font-bold mb-3">What's Next?</h3>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Now that you understand Luxid's dual-package architecture, explore these topics:
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <a
-            href="/docs/juice-cli"
-            className={`p-4 rounded-lg text-center transition-colors ${
-              darkMode
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-            }`}
-          >
-            <Terminal className="w-6 h-6 mx-auto mb-2" />
-            <div className="font-bold">Juice CLI</div>
-            <div className="text-sm opacity-80">Master the command line tool</div>
-          </a>
-          <a
-            href="/docs/sea-architecture"
-            className={`p-4 rounded-lg text-center transition-colors ${
-              darkMode
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-            }`}
-          >
-            <Layers className="w-6 h-6 mx-auto mb-2" />
-            <div className="font-bold">SEA Architecture</div>
-            <div className="text-sm opacity-80">Understand the core pattern</div>
-          </a>
-          <a
-            href="/docs/first-app"
-            className={`p-4 rounded-lg text-center transition-colors ${
-              darkMode
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-            }`}
-          >
-            <Code className="w-6 h-6 mx-auto mb-2" />
-            <div className="font-bold">Your First App</div>
-            <div className="text-sm opacity-80">Build a complete Todo API</div>
-          </a>
-        </div>
-      </div>
-
-      {/* FAQ */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-300'}`}>
-        <h3 className="text-xl font-bold mb-4">Frequently Asked Questions</h3>
-
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-bold mb-1">Can I use multiple engines in one project?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              No, you should only have one <code className="font-mono">luxid/engine</code> package per project.
-              The engine is designed as a singleton foundation.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-1">How do I update the engine in an existing project?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Run <code className="font-mono">composer update luxid/engine</code> and test thoroughly.
-              Breaking changes are documented in release notes.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-1">Can I create my own framework starter?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Absolutely! Fork the <code className="font-mono">luxid/framework</code> repository or create your own
-              Composer package that requires <code className="font-mono">luxid/engine</code> and provides your preferred structure.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-1">What if I only need the ORM or Router?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Install <code className="font-mono">luxid/engine</code> and use only the components you need.
-              The engine is modular, though some components have inter-dependencies.
-            </p>
+            <h4 className="font-bold mb-2">For Performance Tuning</h4>
+            <ul className={`space-y-2 text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <li className="flex items-start gap-2">
+                <Zap className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? "text-yellow-400" : "text-yellow-600"}`} />
+                <span>Request data is cached to avoid repeated parsing</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Zap className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? "text-yellow-400" : "text-yellow-600"}`} />
+                <span>Database connection is reused within the same request</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Zap className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? "text-yellow-400" : "text-yellow-600"}`} />
+                <span>Route matching is optimized with caching</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
