@@ -148,26 +148,33 @@ class Screen
 {
     public function renderScreen($screen, $data = [])
     {
-        // Extract variables for template
+        $screenContent = $this->renderOnlyScreen($screen, $data);
+        $frameContent = $this->frameContent();
+
+        return str_replace('|| content ||', $screenContent, $frameContent);
+    }
+
+    protected function frameContent()
+    {
+        $frame = Application::$app->frame;
+        if (Application::$app->action) {
+            $frame = Application::$app->action->frame;
+        }
+
+        ob_start();
+        include_once Application::$ROOT_DIR . "/screens/frames/$frame.nova.php";
+        return ob_get_clean();
+    }
+
+    protected function renderOnlyScreen($screen, $data)
+    {
         foreach ($data as $key => $value) {
             $$key = $value;
         }
 
-        // Determine which frame to use
-        $frame = Application::$app->action->frame ?? 'app';
-
-        // Render screen content
         ob_start();
-        include Application::$ROOT_DIR . "/screens/$screen.nova.php";
-        $screenContent = ob_get_clean();
-
-        // Render frame/layout
-        ob_start();
-        include Application::$ROOT_DIR . "/screens/frames/$frame.nova.php";
-        $frameContent = ob_get_clean();
-
-        // Inject screen into frame
-        return str_replace('|| content ||', $screenContent, $frameContent);
+        include_once Application::$ROOT_DIR . "/screens/$screen.nova.php";
+        return ob_get_clean();
     }
 }`}
               title="Screen Rendering Engine"
@@ -363,10 +370,18 @@ class Action
 {
     use ActionHelpers; // Provides helper methods
 
-    // Example Action method
+    public string $frame = 'app';
+    public string $activity = '';
+
+    public function nova($screen, $data = [])
+    {
+        return $this->app()->screen->renderScreen($screen, $data);
+    }
+
+    // Example Action method using Luxid's actual methods
     public function store()
     {
-        // 1. Get and validate request data
+        // 1. Get request data (auto-sanitized)
         $data = $this->request()->getBody();
 
         // 2. Create Entity instance
@@ -375,29 +390,32 @@ class Action
 
         // 3. Validate using Entity rules
         if (!$entity->validate()) {
-            return $this->error('Validation failed', $entity->errors, 400);
+            // Return error response via Response class
+            return $this->response()->error('Validation failed', $entity->errors, 400);
         }
 
         // 4. Save using Entity's save method
         if (!$entity->save()) {
-            return $this->error('Failed to save', null, 500);
+            return $this->response()->error('Failed to save', null, 500);
         }
 
-        // 5. Return appropriate response
-        return $this->success(['entity' => $entity], 'Created successfully', 201);
+        // 5. Return success response
+        return $this->response()->success(['entity' => $entity], 'Created successfully', 201);
+
         // OR render Screen:
         // return $this->nova('entity.show', ['entity' => $entity]);
     }
 }
 
-// ActionHelpers trait provides:
-// - $this->request()  // Access HTTP request
-// - $this->response() // Build HTTP response
-// - $this->db()       // Database connection
-// - $this->user()     // Current user
-// - $this->success()  // Success response helper
-// - $this->error()    // Error response helper
-// - $this->nova()     // Render Nova template`}
+// ActionHelpers trait ACTUALLY provides:
+// - $this->app()       // Application instance
+// - $this->request()   // Request object
+// - $this->response()  // Response object
+// - $this->session()   // Session object
+// - $this->db()        // Database connection
+// - $this->router()    // Router instance
+// - $this->user()      // Current authenticated user
+// - $this->isGuest()   // Check if user is guest`}
               title="Action Base Class"
               description="Actions focus on orchestrating the flow: request → entity → validation → persistence → response."
               icon={Zap}
@@ -590,10 +608,19 @@ class User extends DbEntity
     public function rules(): array
     {
         return [
-            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL,
-                       [self::RULE_UNIQUE, 'class' => self::class]],
-            'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8]],
-            'name' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 2]],
+            'email' => [
+                self::RULE_REQUIRED,
+                self::RULE_EMAIL,
+                [self::RULE_UNIQUE, 'class' => self::class]
+            ],
+            'password' => [
+                self::RULE_REQUIRED,
+                [self::RULE_MIN, 'min' => 8]
+            ],
+            'name' => [
+                self::RULE_REQUIRED,
+                [self::RULE_MIN, 'min' => 2]
+            ],
         ];
     }
 
@@ -661,52 +688,73 @@ class AuthAction extends Action
 }
 
 // 3. Screen (screens/auth/register.nova.php)
-@extends('frames.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6 text-center">Create Account</h1>
 
-@section('title', 'Register')
+        <form action="/register" method="POST">
+            <?php if (!empty($errors)): ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                    <ul>
+                        <?php foreach($errors as $field => $fieldErrors): ?>
+                            <?php foreach($fieldErrors as $error): ?>
+                                <li><?= htmlspecialchars($error) ?></li>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
 
-@section('content')
-<div class="max-w-md mx-auto">
-    <h1 class="text-2xl font-bold mb-6">Create Account</h1>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name</label>
+                    <input type="text" name="name" value="<?= htmlspecialchars($name ?? '') ?>"
+                           class="w-full border rounded px-3 py-2">
+                </div>
 
-    <form action="/register" method="POST">
-        @if($errors ?? false)
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                <ul>
-                    @foreach($errors as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <input type="email" name="email" value="<?= htmlspecialchars($email ?? '') ?>"
+                           class="w-full border rounded px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Password</label>
+                    <input type="password" name="password"
+                           class="w-full border rounded px-3 py-2">
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                    Register
+                </button>
             </div>
-        @endif
-
-        <div class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium mb-1">Name</label>
-                <input type="text" name="name" class="w-full border rounded px-3 py-2">
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium mb-1">Email</label>
-                <input type="email" name="email" class="w-full border rounded px-3 py-2">
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium mb-1">Password</label>
-                <input type="password" name="password" class="w-full border rounded px-3 py-2">
-            </div>
-
-            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-                Register
-            </button>
-        </div>
-    </form>
-</div>
-@endsection
+        </form>
+    </div>
+</body>
+</html>
 
 // 4. Route (routes/api.php)
-$router->post('/register', [AuthAction::class, 'register']);
-$router->get('/verify/{token}', [AuthAction::class, 'verify']);`}
+use App\Actions\AuthAction;
+
+// Fluent routing API
+route('register')
+    ->post('/register')
+    ->uses(AuthAction::class, 'register')
+    ->open(); // Public route
+
+route('verify')
+    ->get('/verify/{token}')
+    ->uses(AuthAction::class, 'verify')
+    ->open(); // Public route`}
           language="php"
           title="Complete User Registration with SEA"
           explanation="This shows how each SEA component handles its specific responsibility while working together."
