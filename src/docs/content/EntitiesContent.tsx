@@ -1,8 +1,8 @@
-import React from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
-import { Database, CheckCircle, ArrowRight, Zap, Code } from 'lucide-react';
-import CodeExample from '@/components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
+import React from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Database, CheckCircle, ArrowRight, Zap, Code } from "lucide-react";
+import CodeExample from "@/components/CodeExample";
+import InlineCodeExample from "@/components/InlineCodeExample";
 
 export default function EntitiesContent() {
   const { darkMode } = useTheme();
@@ -13,14 +13,14 @@ export default function EntitiesContent() {
       <div
         className={`mb-8 p-6 rounded-2xl ${
           darkMode
-            ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20'
-            : 'bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200'
+            ? "bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20"
+            : "bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200"
         }`}
       >
         <div className="flex items-start gap-4">
           <Database
             className={`w-12 h-12 ${
-              darkMode ? 'text-green-400' : 'text-green-600'
+              darkMode ? "text-green-400" : "text-green-600"
             }`}
           />
           <div>
@@ -29,7 +29,7 @@ export default function EntitiesContent() {
             </h3>
             <p
               className={`text-lg ${
-                darkMode ? 'text-zinc-300' : 'text-zinc-700'
+                darkMode ? "text-zinc-300" : "text-zinc-700"
               }`}
             >
               Entities represent your data models and handle all database
@@ -43,13 +43,13 @@ export default function EntitiesContent() {
       <h2 className="text-3xl font-bold mb-6">What Are Entities?</h2>
       <p
         className={`text-lg mb-6 ${
-          darkMode ? 'text-zinc-300' : 'text-zinc-700'
+          darkMode ? "text-zinc-300" : "text-zinc-700"
         }`}
       >
-        Entities are Luxid's implementation of the Active Record pattern.
-        Each Entity class represents a database table, and each instance
-        represents a row in that table. Entities handle data validation, business
-        rules, and database operations.
+        Entities are Luxid's implementation of the Active Record pattern. Each
+        Entity class represents a database table, and each instance represents a
+        row in that table. Entities handle data validation, business rules, and
+        database operations.
       </p>
 
       {/* Entity Example */}
@@ -109,26 +109,18 @@ class User extends DbEntity
       />
 
       {/* Usage */}
-      <h3 className="text-2xl font-bold mb-4 mt-8">
-        Entity Methods and Usage
-      </h3>
+      <h3 className="text-2xl font-bold mb-4 mt-8">Entity Methods and Usage</h3>
 
       <div
         className={`mb-8 p-6 rounded-xl ${
           darkMode
-            ? 'bg-zinc-900/50 border border-zinc-800'
-            : 'bg-zinc-50 border border-zinc-200'
+            ? "bg-zinc-900/50 border border-zinc-800"
+            : "bg-zinc-50 border border-zinc-200"
         }`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {/* CRUD */}
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
-              <div className={`p-1.5 rounded ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
-                <Database className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-              </div>
-              CRUD Operations
-            </h4>
             <InlineCodeExample
               code={`<?php
 // Create
@@ -160,12 +152,6 @@ $user->delete();`}
 
           {/* Validation */}
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
-              <div className={`p-1.5 rounded ${darkMode ? 'bg-green-500/10' : 'bg-green-100'}`}>
-                <CheckCircle className={`w-4 h-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-              </div>
-              Validation & Errors
-            </h4>
             <InlineCodeExample
               code={`<?php
 $user = new User();
@@ -200,13 +186,17 @@ if ($user->validate()) {
         <div
           className={`p-6 rounded-xl ${
             darkMode
-              ? 'bg-purple-900/20 border border-purple-800'
-              : 'bg-purple-50 border border-purple-200'
+              ? "bg-purple-900/20 border border-purple-800"
+              : "bg-purple-50 border border-purple-200"
           }`}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`p-2 rounded-lg ${darkMode ? 'bg-purple-500/10' : 'bg-purple-100'}`}>
-              <Zap className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+            <div
+              className={`p-2 rounded-lg ${darkMode ? "bg-purple-500/10" : "bg-purple-100"}`}
+            >
+              <Zap
+                className={`w-6 h-6 ${darkMode ? "text-purple-400" : "text-purple-600"}`}
+              />
             </div>
             <h4 className="text-xl font-bold">Entity Relationships</h4>
           </div>
@@ -268,18 +258,22 @@ $comments = $post->comments(); // Get all comments for this post`}
         <div
           className={`p-6 rounded-xl ${
             darkMode
-              ? 'bg-blue-900/20 border border-blue-800'
-              : 'bg-blue-50 border border-blue-200'
+              ? "bg-blue-900/20 border border-blue-800"
+              : "bg-blue-50 border border-blue-200"
           }`}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`p-2 rounded-lg ${darkMode ? 'bg-blue-500/10' : 'bg-blue-100'}`}>
-              <Code className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+            <div
+              className={`p-2 rounded-lg ${darkMode ? "bg-blue-500/10" : "bg-blue-100"}`}
+            >
+              <Code
+                className={`w-6 h-6 ${darkMode ? "text-blue-400" : "text-blue-600"}`}
+              />
             </div>
             <h4 className="text-xl font-bold">Custom Business Logic</h4>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <InlineCodeExample
               code={`<php
 // Custom query methods
@@ -355,19 +349,23 @@ $recentActiveUsers = User::find()->active()->recent(30)->all();`}
       </div>
 
       {/* Validation Rules */}
-      <h3 className="text-2xl font-bold mb-4 mt-8">Validation Rules Reference</h3>
+      <h3 className="text-2xl font-bold mb-4 mt-8">
+        Validation Rules Reference
+      </h3>
 
       <div
         className={`mb-8 p-6 rounded-xl ${
           darkMode
-            ? 'bg-yellow-900/20 border border-yellow-800'
-            : 'bg-yellow-50 border border-yellow-200'
+            ? "bg-yellow-900/20 border border-yellow-800"
+            : "bg-yellow-50 border border-yellow-200"
         }`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           <div>
             <h4 className="font-bold mb-2">Built-in Validation Rules</h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul
+              className={`space-y-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}
+            >
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-yellow-500" />
                 <code>self::RULE_REQUIRED</code> - Field is required
@@ -444,8 +442,8 @@ public function rules(): array
       <div
         className={`mt-8 p-6 rounded-xl ${
           darkMode
-            ? 'bg-zinc-900/50 border border-zinc-800'
-            : 'bg-zinc-50 border border-zinc-200'
+            ? "bg-zinc-900/50 border border-zinc-800"
+            : "bg-zinc-50 border border-zinc-200"
         }`}
       >
         <h3 className="text-xl font-bold mb-4">Entity Best Practices</h3>
@@ -455,7 +453,9 @@ public function rules(): array
               <CheckCircle className="w-5 h-5 text-green-500" />
               Do These
             </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <ul
+              className={`space-y-2 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
                 Put business logic in Entities
@@ -484,7 +484,9 @@ public function rules(): array
               <span className="text-red-500 text-xl">×</span>
               Avoid These
             </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <ul
+              className={`space-y-2 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}
+            >
               <li className="flex items-start gap-2">
                 <span className="text-red-500 text-xl">×</span>
                 Don't put HTTP logic in Entities
