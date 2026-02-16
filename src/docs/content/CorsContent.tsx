@@ -1,12 +1,9 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Cpu, Package, Layers, Code,
-  Terminal, Download, ArrowRight,
-  CheckCircle, AlertCircle
+  Layers,  ArrowRight,
+  CheckCircle
 } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function CorsContent() {
   const { darkMode } = useTheme();
