@@ -26,6 +26,7 @@ export { default as AuthenticationContent } from './AuthenticationContent';
 export { default as ValidationContent } from './ValidationContent';
 export { default as ErrorHandlingContent } from './ErrorHandlingContent';
 export { default as TestingContent } from './TestingContent';
+export { default as CorsContent } from './CorsContent';
 export { default as ProductionSetupContent } from './ProductionSetupContent';
 export { default as PerformanceContent } from './PerformanceContent';
 export { default as SecurityContent } from './SecurityContent';
@@ -246,6 +247,12 @@ export const docsChapters = [
         title: 'Error Handling',
         path: '/docs/error-handling',
         content: 'ErrorHandlingContent'
+      },
+      {
+        id: 'cors',
+        title: 'Cross-Origin Resource Sharing',
+        path: '/docs/cors',
+        content: 'CorsContent'
       },
       {
         id: 'testing',
