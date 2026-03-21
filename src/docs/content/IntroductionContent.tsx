@@ -20,11 +20,10 @@ export default function IntroductionContent() {
   return (
     <>
       <div
-        className={`mb-8 p-6 rounded-2xl ${
-          darkMode
+        className={`mb-8 p-6 rounded-2xl ${darkMode
             ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
             : "bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200"
-        }`}
+          }`}
       >
         <div className="flex items-start gap-4">
           <div className="flex-1">
@@ -306,7 +305,7 @@ class TodoAction extends Action
         $todos = Todo::findAll(['user_id' => $this->user()->id]);
 
         // Return JSON response or render screen
-        return $this->success(['todos' => $todos]);
+        return Response::success(['todos' => $todos]);
     }
 }`}
                 language="php"
