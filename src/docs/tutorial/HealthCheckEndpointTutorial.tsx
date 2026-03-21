@@ -11,15 +11,14 @@ export default function HealthCheckEndpointTutorial() {
         code={`<?php
 namespace App\Actions;
 
-use Luxid\Foundation\Action;
-use Luxid\Http\Request;
+use Luxid\Foundation\LuxidAction;
 use Luxid\Http\Response;
 
 class HealthCheckerAction extends Action
 {
-    public function index(Request $request, Response $response)
+    public function index()
     {
-        return $this->response()->json([
+        return Response::json([
             'status' => 'healthy',
             'timestamp' => date('Y-m-d H:i:s'),
         ]);
@@ -29,7 +28,7 @@ class HealthCheckerAction extends Action
         explanation=""
       />
 
-     <h4 className="text-xl font-bold mb-4">Add the new routes to your routes file</h4>
+      <h4 className="text-xl font-bold mb-4">Add the new routes to your routes file</h4>
 
       <CodeExample
         code={`<?php
