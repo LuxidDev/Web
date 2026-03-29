@@ -9,24 +9,23 @@ const codeExamples = {
 
 namespace App\\Actions;
 
-use Luxid\\Foundation\\Action;
-use Luxid\\Http\\Request;
-use Luxid\\Http\\Response;
+use Luxid\\Nodes\\Response;
 
-class UserAction extends Action
+class UserAction extends LuxidAction
 {
-    public function index(Request $request, Response $response): string
+    public function index(): string
     {
-        $id = $request->query('id');
+        $id = $this->request()->query('id');
         $user = User::find($id);
 
         if (!$users) {
             return $response->error('No users found', null, 404);
         }
 
-        return $response->success('[
-            'users' => $user
-        ]);
+        return Response::success('[
+            'users' => $user,
+            'message' => 'User found'
+        ], 200);
     }
 }`
   },
@@ -34,68 +33,83 @@ class UserAction extends Action
     title: 'Entities (Models)',
     code: `<?php
 
-namespace App\\Entities;
+use Luxid\ORM\UserEntity;
+use Rocket\Attributes\Entity as EntityAttr;
+use Rocket\Attributes\Column;
+use Rocket\Attributes\Rules\Required;
+use Rocket\Attributes\Rules\Email;
+use Rocket\Attributes\Rules\Min;
+use Rocket\Attributes\Rules\Unique;
 
-use Luxid\\Database\\Entity;
-
+#[EntityAttr(table: 'users')]
 class User extends UserEntity
 {
-    public int $id = 0;
-    public string $email = '';
-    public string $password = '';
+  #[Column(primary: true, autoIncrement: true)]
+  public int $id = 0;
 
-    public function attributes(): array
-    {
-        return ['email', 'password'];
-    }
+  #[Column]
+  #[Required]
+  #[Email]
+  #[Unique]
+  public string $email = '';
 
-    public function tableName(): string
-    {
-        return 'users';
-    }
+  #[Column(hidden: true)]
+  #[Required]
+  #[Min(8)]
+  public string $password = '';
 
-    public function primaryKey(): string
-    {
-        return 'id';
-    }
+  #[Column]
+  #[Required]
+  public string $firstname = '';
 
-    public function rules(): array
-    {
-        return [
-            'email' => [
-                self::RULE_REQUIRED,
-                self::RULE_EMAIL,
-            ],
-            'password' => [
-                self::RULE_REQUIRED,
-                [self::RULE_MIN, 'min' => 8]
-            ]
-        ];
-    }
+  #[Column]
+  #[Required]
+  public string $lastname = '';
+
+  #[Column(autoCreate: true)]
+  public string $created_at = '';
+
+  #[Column(autoCreate: true, autoUpdate: true)]
+  public string $updated_at = '';
+
+  public function getDisplayName(): string
+  {
+    return trim($this->firstname . ' ' . $this->lastname) ?: $this->email;
+  }
 }`,
   },
   screen: {
-    title: 'Screens (Views)',
-    code: `{{-- Nova Templating --}}
+    title: 'Nova (Views)',
+    code: `<?php
 
-@extend('layouts.app')
+component('components/Card', function ($c) {
+  $c->state(function () {
+    return [
+      'title' => 'Tailwind Demo',
+      'content' => 'This card demonstrates Tailwind CSS styling!',
+      'color' => 'blue'
+    ];
+  });
 
-@section('content')
-<div class="container">
-    <h1>{{ $title }}</h1>
+  $c->view(function ($state) {
+    $colorClasses = [
+      'blue' => 'bg-blue-500 hover:bg-blue-600',
+      'green' => 'bg-green-500 hover:bg-green-600',
+      'purple' => 'bg-purple-500 hover:bg-purple-600',
+      'red' => 'bg-red-500 hover:bg-red-600'
+    ];
 
-    @foreach($users as $user)
-        <div class="card">
-            <h2>{{ $user->name }}</h2>
-            <p>{{ $user->email }}</p>
-
-            @if($user->isAdmin())
-                <span class="badge">Admin</span>
-            @endif
-        </div>
-    @endforeach
-</div>
-@endsection`
+    $buttonClass = $colorClasses[$state->color] ?? 'bg-gray-500 hover:bg-gray-600';
+?>
+    <div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white/10 backdrop-blur-sm border border-white/20">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-white">@echo($state->title)</div>
+        <p class="text-gray-300 text-base">@echo($state->content)</p>
+      </div>
+    </div>
+<?php
+  });
+});`
   }
 };
 
@@ -111,9 +125,8 @@ export default function CodeShowcase() {
     <section className={`py-32 ${darkMode ? 'bg-zinc-950' : 'bg-zinc-100'}`}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${
-            darkMode ? 'text-white' : 'text-black'
-          }`}>Beautiful, expressive syntax</h2>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'
+            }`}>Beautiful, expressive syntax</h2>
           <p className={`text-xl ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Write PHP that feels modern and elegant</p>
         </div>
         <div className="flex justify-center gap-2 mb-8">
@@ -121,28 +134,25 @@ export default function CodeShowcase() {
             <button
               key={key}
               onClick={() => setActive(key as any)}
-              className={`px-6 py-2 rounded-lg font-medium transition-all ${
-                active === key
-                  ? darkMode
-                    ? 'bg-white text-black'
-                    : 'bg-black text-white'
-                  : darkMode
-                    ? 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-                    : 'bg-zinc-200 text-zinc-600 hover:bg-zinc-300'
-              }`}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${active === key
+                ? darkMode
+                  ? 'bg-white text-black'
+                  : 'bg-black text-white'
+                : darkMode
+                  ? 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                  : 'bg-zinc-200 text-zinc-600 hover:bg-zinc-300'
+                }`}
             >
               {val.title}
             </button>
           ))}
         </div>
-        <div className={`border rounded-xl overflow-hidden ${
-          darkMode
-            ? 'bg-[#1e1e1e] border-zinc-700'
-            : 'bg-[#fffffe] border-zinc-300'
-        }`}>
-          <div className={`flex items-center gap-2 px-4 py-3 border-b ${
-            darkMode ? 'border-zinc-700' : 'border-zinc-300'
+        <div className={`border rounded-xl overflow-hidden ${darkMode
+          ? 'bg-[#1e1e1e] border-zinc-700'
+          : 'bg-[#fffffe] border-zinc-300'
           }`}>
+          <div className={`flex items-center gap-2 px-4 py-3 border-b ${darkMode ? 'border-zinc-700' : 'border-zinc-300'
+            }`}>
             <div className="w-3 h-3 rounded-full bg-red-500/60" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
             <div className="w-3 h-3 rounded-full bg-green-500/60" />

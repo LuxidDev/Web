@@ -27,9 +27,8 @@ export default function Hero() {
   const lineColor = darkMode ? 'via-zinc-700' : 'via-zinc-300';
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden pt-16 ${
-      darkMode ? 'bg-black' : 'bg-white'
-    }`}>
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden pt-16 ${darkMode ? 'bg-black' : 'bg-white'
+      }`}>
       {/* Animated grid background */}
       <div
         className="absolute inset-0 bg-[size:60px_60px]"
@@ -67,45 +66,39 @@ export default function Hero() {
         {/* Announcement badge */}
         <Link to="/docs">
           <div
-            className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full mb-8 backdrop-blur-sm hover:border-zinc-500 transition-colors cursor-pointer group ${
-              darkMode ? 'bg-zinc-900/80 border-zinc-700' : 'bg-zinc-100/80 border-zinc-300'
-            }`}
+            className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full mb-8 backdrop-blur-sm hover:border-zinc-500 transition-colors cursor-pointer group ${darkMode ? 'bg-zinc-900/80 border-zinc-700' : 'bg-zinc-100/80 border-zinc-300'
+              }`}
           >
             <span className="px-2 py-0.5 bg-black text-white text-xs font-bold rounded">
               New
             </span>
             <span
-              className={`text-sm ${
-                darkMode ? 'text-zinc-300' : 'text-zinc-700'
-              }`}
+              className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'
+                }`}
             >
-              Luxid v0.4.1-beta is now available
+              Luxid v0.7.1-beta is now available
             </span>
             <ArrowRight
-              className={`w-4 h-4 ${
-                darkMode ? 'text-zinc-400' : 'text-zinc-500'
-              } group-hover:translate-x-1 transition-transform`}
+              className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-500'
+                } group-hover:translate-x-1 transition-transform`}
             />
           </div>
         </Link>
 
         {/* Main headline */}
-        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-[1.1] ${
-          darkMode ? 'text-white' : 'text-zinc-900'
-        }`}>
+        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-[1.1] ${darkMode ? 'text-white' : 'text-zinc-900'
+          }`}>
           The PHP Framework<br />
-          <span className={`text-transparent bg-clip-text bg-gradient-to-r ${
-            darkMode
-              ? 'from-zinc-500 via-white to-zinc-500'
-              : 'from-zinc-600 via-zinc-900 to-zinc-600'
-          }`}>for Modern Web</span>
+          <span className={`text-transparent bg-clip-text bg-gradient-to-r ${darkMode
+            ? 'from-zinc-500 via-white to-zinc-500'
+            : 'from-zinc-600 via-zinc-900 to-zinc-600'
+            }`}>for Modern Web</span>
         </h1>
 
-        <p className={`text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed ${
-          darkMode ? 'text-zinc-400' : 'text-zinc-600'
-        }`}>
-          Build elegant, high-performance web applications with the <span className={darkMode ? 'text-white font-medium' : 'text-zinc-900 font-medium'}>SEA architecture</span>.
-          Modern PHP made beautiful with Nova, L ORM, and Juice CLI.
+        <p className={`text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+          }`}>
+          Build elegant, high-performance web applications with the <span className={darkMode ? 'text-white font-medium' : 'text-zinc-900 font-medium'}>AVE architecture</span>.
+          Modern PHP made beautiful with Nova, Rocket ORM, and Juice CLI.
         </p>
 
         {/* CTAs */}
@@ -115,17 +108,15 @@ export default function Hero() {
               Get Started
             </span>
           </Link>
-          <a href="#docs" className={`flex items-center gap-2 px-8 py-4 border rounded-lg hover:bg-zinc-800 hover:border-zinc-600 transition-all ${
-            darkMode ? 'bg-zinc-900 text-white border-zinc-700' : 'bg-white text-zinc-900 border-zinc-300 hover:text-white'
-          }`}>
+          <a href="#docs" className={`flex items-center gap-2 px-8 py-4 border rounded-lg hover:bg-zinc-800 hover:border-zinc-600 transition-all ${darkMode ? 'bg-zinc-900 text-white border-zinc-700' : 'bg-white text-zinc-900 border-zinc-300 hover:text-white'
+            }`}>
             <Play className="w-4 h-4" /> Learn Luxid
           </a>
         </div>
 
         {/* Terminal command */}
-        <div className={`inline-flex items-center gap-3 px-6 py-3 border rounded-lg font-mono text-sm backdrop-blur-sm ${
-          darkMode ? 'bg-zinc-900/80 border-zinc-800' : 'bg-zinc-100/80 border-zinc-300'
-        }`}>
+        <div className={`inline-flex items-center gap-3 px-6 py-3 border rounded-lg font-mono text-sm backdrop-blur-sm ${darkMode ? 'bg-zinc-900/80 border-zinc-800' : 'bg-zinc-100/80 border-zinc-300'
+          }`}>
           <span className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>$</span>
           <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>composer create-project luxid/framework my_app</span>
         </div>

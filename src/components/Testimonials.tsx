@@ -3,9 +3,9 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const testimonials = [
   {
-    name: "Sarah Chen",
-    handle: "@sarahdev",
-    avatar: "SC",
+    name: "Clarence Ahiabor",
+    handle: "@clarnx",
+    avatar: "CA",
     text: "Luxid has completely changed how I write PHP. The SEA architecture just makes sense.",
     col: 1,
   },
@@ -13,41 +13,41 @@ const testimonials = [
     name: "Gideon Allotey",
     handle: "@mkvng",
     avatar: "GA",
-    text: "The L ORM is incredible. Database queries have never been this elegant. Switched from Eloquent and never looked back.",
+    text: "The Rocket-ORM is incredible. Database queries have never been this elegant. Switched from Eloquent and never looked back.",
     col: 2,
   },
   {
     name: "Lawson Buabassah",
     handle: "@eyarko",
-    avatar: "ER",
-    text: "Nova templating is a game changer. Clean, fast, and intuitive.",
+    avatar: "LB",
+    text: "Nova is a game changer. Clean, fast, and intuitive.",
     col: 3,
   },
   {
     name: "Nelson Saake",
     handle: "@nelson",
-    avatar: "DK",
-    text: "Juice CLI saves me hours every week. Scaffolding has never been easier. The DX is unmatched.",
+    avatar: "NS",
+    text: "Juice-CLI saves me hours every week. Scaffolding has never been easier. The DX is unmatched.",
     col: 1,
   },
   {
     name: "Gregory Worlanyo",
     handle: "@greg",
-    avatar: "LT",
+    avatar: "GW",
     text: "Finally a PHP framework that feels modern. Luxid is the future of PHP development.",
     col: 2,
   },
   {
     name: "Sampson Quarmy",
     handle: "@hash",
-    avatar: "AR",
+    avatar: "SQ",
     text: "Switched from Laravel to Luxid. The performance gains are real. Our API response times dropped by 40%.",
     col: 3,
   },
   {
     name: "Raheem Coleman",
     handle: "@boyraheem",
-    avatar: "JW",
+    avatar: "RC",
     text: "The documentation is excellent. Got up and running in minutes.",
     col: 1,
   },
@@ -110,15 +110,13 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 flex flex-wrap items-center justify-center gap-4 ${
-              darkMode ? "text-white" : "text-black"
-            }`}
+            className={`text-4xl md:text-5xl font-bold mb-4 flex flex-wrap items-center justify-center gap-4 ${darkMode ? "text-white" : "text-black"
+              }`}
           >
             What people say about
             <span
-              className={`text-transparent bg-clip-text bg-gradient-to-r ${
-                darkMode ? "from-zinc-400 to-white" : "from-zinc-600 to-black"
-              }`}
+              className={`text-transparent bg-clip-text bg-gradient-to-r ${darkMode ? "from-zinc-400 to-white" : "from-zinc-600 to-black"
+                }`}
             >
               Luxid
             </span>
@@ -141,43 +139,38 @@ export default function Testimonials() {
               {col.map((t, i) => (
                 <div
                   key={i}
-                  className={`p-5 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${
-                    darkMode
-                      ? "bg-zinc-900/50 border-zinc-800 hover:border-zinc-600"
-                      : "bg-zinc-50/50 border-zinc-200 hover:border-zinc-400"
-                  }`}
+                  className={`p-5 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
+                    ? "bg-zinc-900/50 border-zinc-800 hover:border-zinc-600"
+                    : "bg-zinc-50/50 border-zinc-200 hover:border-zinc-400"
+                    }`}
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div
-                      className={`w-10 h-10 rounded-full bg-gradient-to-br flex items-center justify-center text-white font-bold text-sm ${
-                        darkMode
-                          ? "from-zinc-500 to-zinc-700"
-                          : "from-zinc-400 to-zinc-600"
-                      }`}
+                      className={`w-10 h-10 rounded-full bg-gradient-to-br flex items-center justify-center text-white font-bold text-sm ${darkMode
+                        ? "from-zinc-500 to-zinc-700"
+                        : "from-zinc-400 to-zinc-600"
+                        }`}
                     >
                       {t.avatar}
                     </div>
                     <div>
                       <div
-                        className={`font-medium ${
-                          darkMode ? "text-white" : "text-black"
-                        }`}
+                        className={`font-medium ${darkMode ? "text-white" : "text-black"
+                          }`}
                       >
                         {t.name}
                       </div>
                       <div
-                        className={`text-sm ${
-                          darkMode ? "text-zinc-500" : "text-zinc-600"
-                        }`}
+                        className={`text-sm ${darkMode ? "text-zinc-500" : "text-zinc-600"
+                          }`}
                       >
                         {t.handle}
                       </div>
                     </div>
                   </div>
                   <p
-                    className={`leading-relaxed ${
-                      darkMode ? "text-zinc-300" : "text-zinc-700"
-                    }`}
+                    className={`leading-relaxed ${darkMode ? "text-zinc-300" : "text-zinc-700"
+                      }`}
                   >
                     {t.text}
                   </p>

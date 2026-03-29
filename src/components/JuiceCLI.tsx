@@ -3,19 +3,19 @@ import { Terminal, Copy, Check } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const commands = [
-  { cmd: 'juice create:app myproject', desc: 'Create a new Luxid application' },
-  { cmd: 'juice make:action UserAction', desc: 'Generate a new Action (Controller)' },
-  { cmd: 'juice make:entity User', desc: 'Generate a new Entity (Model)' },
-  { cmd: 'juice make:migration create_users', desc: 'Create a database migration' },
-  { cmd: 'juice migrate', desc: 'Run all pending migrations' },
-  { cmd: 'juice status', desc: 'Show application current status' },
-  { cmd: 'juice start', desc: 'Start the development server' },
+  { cmd: 'php juice status', desc: 'Show application current status' },
+  { cmd: 'php juice gen:action UserAction', desc: 'Generate a new Action (Controller)' },
+  { cmd: 'php juice gen:entity User', desc: 'Generate a new Entity (Model)' },
+  { cmd: 'php juice gen:migration create_users', desc: 'Create a database migration' },
+  { cmd: 'php juice db:migrate', desc: 'Run all pending migrations' },
+  { cmd: 'php juice awake', desc: 'Start the development server' },
 ];
 
 // Custom highlighter for Juice commands
 const highlightJuiceCommand = (command: string, darkMode: boolean) => {
   // Define colors based on theme
   const colors = {
+    php: darkMode ? '#d4d4d4' : '#393a34', // Gray in dark, dark gray in light
     juice: darkMode ? '#dcdcaa' : '#795e26', // Yellow in dark, brown in light
     command: darkMode ? '#4ec9b0' : '#267f99', // Teal in dark, blue in light
     subcommand: darkMode ? '#569cd6' : '#0000ff', // Blue in dark, blue in light
@@ -30,12 +30,14 @@ const highlightJuiceCommand = (command: string, darkMode: boolean) => {
   return parts.map((part, index) => {
     let color = colors.argument; // default color
 
-    if (index === 0 && part === 'juice') {
+    if (index === 0 && part === 'php') {
+      color = colors.php; // "php" command
+    } else if (index === 1 && part === 'juice') {
       color = colors.juice; // "juice" command
-    } else if (index === 1) {
-      if (part.startsWith('make:')) {
-        color = colors.command; // "make:" commands
-      } else if (part === 'create:app' || part === 'migrate' || part === 'serve') {
+    } else if (index === 2) {
+      if (part.startsWith('gen:') || part.startsWith('db:')) {
+        color = colors.command; // "gen:" || "db:" commands
+      } else if (part === 'migrate' || part === 'serve' || part === 'awake') {
         color = colors.command; // other main commands
       }
     } else if (index === 2) {
@@ -86,29 +88,24 @@ export default function JuiceCLI() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center ${
-                darkMode
-                  ? 'from-white to-zinc-400'
-                  : 'from-black to-zinc-600'
-              }`}>
-                <Terminal className={`w-6 h-6 ${
-                  darkMode ? 'text-black' : 'text-white'
-                }`} />
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center ${darkMode
+                ? 'from-white to-zinc-400'
+                : 'from-black to-zinc-600'
+                }`}>
+                <Terminal className={`w-6 h-6 ${darkMode ? 'text-black' : 'text-white'
+                  }`} />
               </div>
-              <h2 className={`text-4xl font-bold ${
-                darkMode ? 'text-white' : 'text-black'
-              }`}>Juice CLI</h2>
+              <h2 className={`text-4xl font-bold ${darkMode ? 'text-white' : 'text-black'
+                }`}>Juice CLI</h2>
             </div>
-            <p className={`text-xl mb-8 ${
-              darkMode ? 'text-zinc-400' : 'text-zinc-600'
-            }`}>Powerful command-line tools that make development a breeze. Generate, migrate, and serve with simple commands.</p>
+            <p className={`text-xl mb-8 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+              }`}>Powerful command-line tools that make development a breeze. Generate, migrate, and serve with simple commands.</p>
             <div className="space-y-3">
               {commands.slice(1).map((c, i) => (
-                <div key={i} className={`flex items-center justify-between p-3 border rounded-lg group transition-colors ${
-                  darkMode
-                    ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
-                    : 'bg-zinc-100/50 border-zinc-300 hover:border-zinc-400'
-                }`}>
+                <div key={i} className={`flex items-center justify-between p-3 border rounded-lg group transition-colors ${darkMode
+                  ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
+                  : 'bg-zinc-100/50 border-zinc-300 hover:border-zinc-400'
+                  }`}>
                   <div className="flex-1 min-w-0">
                     <pre className="m-0 p-0 overflow-x-auto">
                       <code
@@ -116,37 +113,32 @@ export default function JuiceCLI() {
                         dangerouslySetInnerHTML={createHighlightedJuiceCommand(c.cmd)}
                       />
                     </pre>
-                    <p className={`text-xs mt-1 ${
-                      darkMode ? 'text-zinc-500' : 'text-zinc-600'
-                    }`}>{c.desc}</p>
+                    <p className={`text-xs mt-1 ${darkMode ? 'text-zinc-500' : 'text-zinc-600'
+                      }`}>{c.desc}</p>
                   </div>
-                  <button onClick={() => handleCopy(i, c.cmd)} className={`p-2 transition-colors flex-shrink-0 ${
-                    darkMode
-                      ? 'text-zinc-500 hover:text-white'
-                      : 'text-zinc-600 hover:text-black'
-                  }`}>
+                  <button onClick={() => handleCopy(i, c.cmd)} className={`p-2 transition-colors flex-shrink-0 ${darkMode
+                    ? 'text-zinc-500 hover:text-white'
+                    : 'text-zinc-600 hover:text-black'
+                    }`}>
                     {copied === i ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
               ))}
             </div>
           </div>
-          <div className={`border rounded-xl overflow-hidden ${
-            darkMode
-              ? 'bg-[#1e1e1e] border-zinc-700'
-              : 'bg-[#fffffe] border-zinc-300'
-          }`}>
-            <div className={`flex items-center gap-2 px-4 py-3 border-b ${
-              darkMode
-                ? 'border-zinc-700 bg-[#1e1e1e]'
-                : 'border-zinc-300 bg-[#fffffe]'
+          <div className={`border rounded-xl overflow-hidden ${darkMode
+            ? 'bg-[#1e1e1e] border-zinc-700'
+            : 'bg-[#fffffe] border-zinc-300'
             }`}>
+            <div className={`flex items-center gap-2 px-4 py-3 border-b ${darkMode
+              ? 'border-zinc-700 bg-[#1e1e1e]'
+              : 'border-zinc-300 bg-[#fffffe]'
+              }`}>
               <div className="w-3 h-3 rounded-full bg-red-500/60" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
               <div className="w-3 h-3 rounded-full bg-green-500/60" />
-              <span className={`ml-2 text-sm ${
-                darkMode ? 'text-zinc-400' : 'text-zinc-600'
-              }`}>Terminal</span>
+              <span className={`ml-2 text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+                }`}>Terminal</span>
             </div>
             <div className="p-6 font-mono text-sm">
               <div className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>
@@ -155,22 +147,24 @@ export default function JuiceCLI() {
                 />
                 <span className="animate-pulse">|</span>
               </div>
-              <div className={`mt-4 ${
-                darkMode ? 'text-zinc-400' : 'text-zinc-600'
-              }`}>Creating new Luxid application...</div>
-              <div className="text-green-500 mt-2">Application created successfully!</div>
-              <div className={`mt-4 ${
-                darkMode ? 'text-zinc-500' : 'text-zinc-600'
-              }`}>
-                $ <span dangerouslySetInnerHTML={createHighlightedJuiceCommand('cd myproject')} />
+              <div className={`mt-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+                }`}>⚡ Creating Action... <br></br>
+                🎉 Action created successfully!
               </div>
+              <div className="text-green-500 mt-2">📁 Location: app/Actions/UserAction.php</div><br></br>
               <div className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>
-                $ <span dangerouslySetInnerHTML={createHighlightedJuiceCommand('juice serve')} />
+                $ <span dangerouslySetInnerHTML={createHighlightedJuiceCommand('juice awake')} />
               </div>
-              <div className={`mt-2 ${
-                darkMode ? 'text-zinc-400' : 'text-zinc-600'
-              }`}>
-                Server running at <span className={darkMode ? 'text-white' : 'text-black'}>http://localhost:8000</span>
+              <div className={`mt-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+                }`}>
+                <p>🚀 Starting Luxid development server...</p>
+                <br></br>
+                <p>🌐 Server running at: http://localhost:8000</p>
+                <p>📁 Serving from: /home/ .../my_app/web</p>
+                <p>🛑 Press Ctrl+C to stop</p>
+                <br></br>
+                <p>Starting PHP built-in server...</p>
+                <p>Development Server <span className={darkMode ? 'text-white' : 'text-black'}>(http://localhost:8000)</span> started</p>
               </div>
             </div>
           </div>
