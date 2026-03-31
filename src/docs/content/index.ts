@@ -1,12 +1,10 @@
 export { default as IntroductionContent } from './IntroductionContent';
 export { default as InstallationContent } from './InstallationContent';
-export { default as FirstAppContent } from './FirstAppContent';
 export { default as ArchitectureContent } from './ArchitectureContent';
-export { default as SEAArchitectureContent } from './SEAArchitectureContent';
 export { default as ActionsContent } from './ActionsContent';
 export { default as EntitiesContent } from './EntitiesContent';
 export { default as ScreensContent } from './ScreensContent';
-export { default as LORMContent } from './LORMContent';
+export { default as RocketORMContent } from './RocketORMContent';
 export { default as MigrationsContent } from './MigrationsContent';
 export { default as RelationshipsContent } from './RelationshipsContent';
 export { default as NovaTemplatingContent } from './NovaTemplatingContent';
@@ -14,8 +12,6 @@ export { default as ComponentsContent } from './ComponentsContent';
 export { default as JuiceCLIContent } from './JuiceCLIContent';
 export { default as MakeCommandsContent } from './MakeCommandsContent';
 
-export { default as EngineFrameworkContent } from './EngineFrameworkContent';
-export { default as RequestLifecycleContent } from './RequestLifecycleContent';
 export { default as QueryBuilderContent } from './QueryBuilderContent';
 export { default as LayoutsContent } from './LayoutsContent';
 export { default as CLIBasicsContent } from './CLIBasicsContent';
@@ -47,7 +43,7 @@ export { default as QuickReferenceCommands } from '../tutorial/QuickReferenceCom
 export { default as BestPracticesTutorial } from '../tutorial/BestPracticesTutorial';
 export { default as ConclusionTutorial } from '../tutorial/ConclusionTutorial';
 
-import { Book, Code, Terminal, Database, Layers, Zap, Brain, Rocket, Server, Workflow } from 'lucide-react';
+import { Code, Terminal, Database, Layers, Zap, Brain, Rocket, Server, Workflow } from 'lucide-react';
 
 export const docsChapters = [
   {
@@ -76,12 +72,6 @@ export const docsChapters = [
         content: 'JuiceCLIContent',
         quickStart: true
       },
-      {
-        id: 'first-app',
-        title: 'Your First Luxid App',
-        path: '/docs/first-app',
-        content: 'FirstAppContent'
-      },
     ]
   },
   {
@@ -91,22 +81,10 @@ export const docsChapters = [
     color: 'from-purple-500 to-pink-500',
     chapters: [
       {
-        id: 'sea-architecture',
-        title: 'SEA Architecture',
-        path: '/docs/sea-architecture',
-        content: 'SEAArchitectureContent'
-      },
-      {
-        id: 'engine-framework',
-        title: 'Engine vs Framework',
-        path: '/docs/engine-framework',
-        content: 'EngineFrameworkContent'
-      },
-      {
-        id: 'request-lifecycle',
-        title: 'Request Lifecycle',
-        path: '/docs/request-lifecycle',
-        content: 'RequestLifecycleContent'
+        id: 'screens',
+        title: 'Views (Nova)',
+        path: '/docs/screens',
+        content: 'ScreensContent'
       },
       {
         id: 'actions',
@@ -120,25 +98,19 @@ export const docsChapters = [
         path: '/docs/entities',
         content: 'EntitiesContent'
       },
-      {
-        id: 'screens',
-        title: 'Screens (Views)',
-        path: '/docs/screens',
-        content: 'ScreensContent'
-      },
     ]
   },
   {
     id: 'database-orm',
-    title: 'Database & L ORM',
+    title: 'Database & Rocket-ORM',
     icon: Database,
     color: 'from-green-500 to-emerald-500',
     chapters: [
       {
         id: 'l-orm',
-        title: 'L ORM Deep Dive',
-        path: '/docs/l-orm',
-        content: 'LORMContent'
+        title: 'Rocket Deep Dive',
+        path: '/docs/rocket-orm',
+        content: 'RocketORMContent'
       },
       {
         id: 'migrations',
@@ -162,7 +134,7 @@ export const docsChapters = [
   },
   {
     id: 'templating',
-    title: 'Templating Engine',
+    title: 'Nova Engine',
     icon: Code,
     color: 'from-orange-500 to-red-500',
     chapters: [

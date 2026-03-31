@@ -9,11 +9,10 @@ export default function ActionsContent() {
 
   return (
     <>
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
-          : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200'
-      }`}>
+      <div className={`mb-8 p-6 rounded-2xl ${darkMode
+        ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
+        : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200'
+        }`}>
         <div className="flex items-start gap-4">
           <Zap className={`w-12 h-12 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
           <div>
@@ -33,9 +32,8 @@ export default function ActionsContent() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
-            darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-          }`}>
+          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
+            }`}>
             <Code className={darkMode ? 'text-purple-400' : 'text-purple-600'} />
           </div>
           <h3 className="text-xl font-bold mb-2">HTTP Request Handlers</h3>
@@ -45,9 +43,8 @@ export default function ActionsContent() {
         </div>
 
         <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
-            darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
-          }`}>
+          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
+            }`}>
             <Server className={darkMode ? 'text-blue-400' : 'text-blue-600'} />
           </div>
           <h3 className="text-xl font-bold mb-2">Business Logic Orchestrators</h3>
@@ -61,44 +58,57 @@ export default function ActionsContent() {
 
       <CodeExample
         code={`<?php
+
 namespace App\\Actions;
 
 use App\\Entities\\Post;
-use Luxid\\Foundation\\Action;
+use App\\Action\\LuxidAction;
+use Luxid\\Nodes\\Response;
 
-class PostAction extends Action
+class PostAction extends LuxidAction
 {
     // List all posts
-    public function index()
+    public function index(): string
     {
-        $posts = Post::findAll([], 'created_at DESC');
-        return $this->success(['posts' => $posts]);
+        $posts = Post::findAll([], ['created_at DESC']);
+        
+        return Response::success([
+            'posts' => $posts
+        ]);
     }
 
     // Show single post
-    public function show($id)
+    public function show(int $id): string
     {
         $post = Post::find($id);
 
         if (!$post) {
-            return $this->error('Post not found', null, 404);
+            return Response::error("Post not found", null, 404);
         }
 
-        return $this->success(['post' => $post]);
+        return Response::success([
+            'post' => $post
+        ]);
     }
 
-    // Create new post
-    public function store()
+    /** 
+    * Create new post
+    */
+    public function store(): string
     {
-        $data = $this->request()->getBody();
+        $data = $this->request()->input();
+
         $post = new Post();
-        $post->loadData($data);
+        $todo->title = $data['title'];
+        $todo->description = $data['description'] ?? '';
 
         if ($post->validate() && $post->save()) {
-            return $this->success(['post' => $post], 'Post created', 201);
+            return Response::success([
+                'post' => $post
+            ], 201);
         }
 
-        return $this->error('Validation failed', $post->errors, 400);
+        return Response::error('Validation failed', $post->getErrors(), 422);
     }
 }`}
         title="app/Actions/PostAction.php - Basic CRUD Example"
@@ -131,10 +141,10 @@ class PostAction extends Action
             </h4>
             <div className="space-y-3">
               {[
-                { code: '$this->request()', desc: 'Access request data' },
-                { code: '$this->response()', desc: 'Build responses' },
-                { code: '$this->db()', desc: 'Database access' },
-                { code: '$this->user()', desc: 'Current user' },
+                { code: 'request()', desc: 'Access request data' },
+                { code: 'response()', desc: 'Build responses' },
+                { code: 'db()', desc: 'Database access' },
+                { code: 'user()', desc: 'Current user' },
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3 group">
                   <ArrowRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
@@ -161,10 +171,10 @@ class PostAction extends Action
             </h4>
             <div className="space-y-3">
               {[
-                { code: '$this->success()', desc: 'Return success JSON' },
-                { code: '$this->error()', desc: 'Return error JSON' },
-                { code: '$this->json()', desc: 'Return custom JSON' },
-                { code: '$this->nova()', desc: 'Render Nova template' },
+                { code: 'success()', desc: 'Return success JSON' },
+                { code: 'error()', desc: 'Return error JSON' },
+                { code: 'json()', desc: 'Return custom JSON' },
+                { code: 'nova()', desc: 'Render Nova template' },
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3 group">
                   <ArrowRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
@@ -451,11 +461,10 @@ public function store()
         </div>
       </div>
 
-      <div className={`p-6 rounded-xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20'
-          : 'bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200'
-      }`}>
+      <div className={`p-6 rounded-xl ${darkMode
+        ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20'
+        : 'bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200'
+        }`}>
         <h3 className="text-xl font-bold mb-4">Best Practices for Actions</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

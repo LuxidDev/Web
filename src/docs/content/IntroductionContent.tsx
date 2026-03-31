@@ -9,7 +9,6 @@ import {
   Server,
 } from "lucide-react";
 import ArchitectureDiagram from "../components/ArchitectureDiagram";
-import QuickStartExample from "../components/QuickStartExample";
 import CodeExample from "@/components/CodeExample";
 
 export default function IntroductionContent() {
@@ -30,13 +29,13 @@ export default function IntroductionContent() {
               className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-700"} mb-4`}
             >
               Luxid (pronounced "Lucid" with an X) is a modern, lightweight PHP framework designed with
-              <strong>clarity and simplicity</strong> at its core. Built for developers who value explicit control and minimal magic,
+              <strong> clarity and simplicity</strong> at its core. Built for developers who value explicit control and minimal magic,
               Luxid introduces the <strong>AVE Architecture</strong>
               — a refreshing approach that makes your code intuitive and maintainable.
             </p>
             <div className="flex items-center gap-4 text-sm">
               <span className={`px-3 py-1 rounded-full ${darkMode ? "bg-blue-500/20 text-blue-300" : "bg-blue-100 text-blue-700"}`}>
-                <strong>Version:</strong> 1.0.0
+                <strong>Version:</strong> 0.7.1
               </span>
               <span className={`px-3 py-1 rounded-full ${darkMode ? "bg-green-500/20 text-green-300" : "bg-green-100 text-green-700"}`}>
                 <strong>PHP:</strong> 8.0+
