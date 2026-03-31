@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Cpu, Package, Layers, Code,
-  Terminal, Download, ArrowRight,
-  CheckCircle, AlertCircle
+  Search, Filter, SortAsc, SortDesc, Hash, Calendar, CheckCircle,
+  ArrowRight, AlertCircle, Code, Layers, Terminal, Database,
+  GitBranch, Settings, Plus, Minus, BarChart, PieChart, TrendingUp
 } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
+import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function QueryBuilderContent() {
@@ -14,508 +14,855 @@ export default function QueryBuilderContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/20'
-          : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
-      }`}>
+      <div className={`mb-8 p-6 rounded-2xl ${darkMode
+        ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
+        : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
+        }`}>
         <div className="flex items-start gap-4">
-          <Layers className={`w-12 h-12 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
           <div>
-            <h1 className="text-3xl font-bold mb-2">Engine vs Framework: Luxid's Unique Architecture</h1>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-600'}`}>
-              Understanding the separation between core engine and starter framework is key to mastering Luxid.
+            <h3 className="text-2xl font-bold mb-2">Rocket Query Builder</h3>
+            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              Build complex database queries with a fluent, intuitive PHP interface.
+              Write safe, expressive queries without writing raw SQL.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Introduction */}
-      <h2 className="text-2xl font-bold mb-4">Why Two Packages?</h2>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-600'}`}>
-        Luxid follows a modular architecture where the core functionality (<strong>Engine</strong>) is separate
-        from the starter project (<strong>Framework</strong>). This separation provides flexibility, better
-        dependency management, and easier updates.
+      {/* Overview */}
+      <h2 className="text-3xl font-bold mb-6">What is the Query Builder?</h2>
+      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        Rocket's Query Builder provides a fluent interface for constructing SQL queries programmatically.
+        It's more flexible than raw SQL and more powerful than simple ORM methods, giving you complete
+        control over your database interactions while maintaining security through automatic parameter binding.
       </p>
+      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        The Query Builder helps you:
+      </p>
+      <ul className={`space-y-2 mb-8 ml-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        <li className="flex items-start gap-2">
+          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+          <span>Build complex queries with conditions, joins, and aggregations</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+          <span>Prevent SQL injection with automatic parameter binding</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+          <span>Write database-agnostic queries that work with MySQL, PostgreSQL, SQLite, and more</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+          <span>Chain methods for readable and maintainable code</span>
+        </li>
+      </ul>
 
-      {/* Comparison Table */}
-      <div className={`my-8 rounded-xl overflow-hidden ${
-        darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-300'
-      }`}>
-        <div className={`grid grid-cols-1 md:grid-cols-2 divide-x ${darkMode ? 'divide-zinc-800' : 'divide-zinc-300'}`}>
-          {/* Engine Column */}
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
-              }`}>
-                <Cpu className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Luxid Engine</h3>
-                <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  <code className="font-mono">luxid/engine</code>
-                </p>
-              </div>
-            </div>
+      {/* Getting Started */}
+      <h3 className="text-2xl font-bold mb-4">Getting Started</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          Access the query builder through your entity's <strong className="font-mono">query()</strong> method.
+        </p>
 
-            <ul className="space-y-3">
-              {[
-                'Core framework classes (Router, ORM, Request, Response)',
-                'Juice CLI tool',
-                'Middleware system',
-                'Database abstraction layer',
-                'Form builders and validation',
-                'Exception handling'
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
-                  <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>{item}</span>
-                </li>
-              ))}
-            </ul>
+        <CodeExample
+          code={`<?php
+use App\\Entities\\User;
 
-            <div className="mt-6">
-              <h4 className="font-bold mb-2">Install Engine Only</h4>
-              <InlineCodeExample
-                code="composer require luxid/engine"
-                title="Command"
-                description="Install just the core engine without the starter template"
-                icon={Download}
-                color="blue"
-                language="bash"
-              />
-            </div>
-          </div>
+// Start building a query
+$query = User::query();
 
-          {/* Framework Column */}
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                darkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-              }`}>
-                <Package className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Luxid Framework</h3>
-                <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  <code className="font-mono">luxid/framework</code>
-                </p>
-              </div>
-            </div>
+// Execute the query
+$users = $query->all();           // Get all records
+$user = $query->first();          // Get first record
+$count = $query->count();         // Get count
+$exists = $query->exists();       // Check if any records exist
 
-            <ul className="space-y-3">
-              {[
-                'Pre-configured application structure',
-                'Example Actions, Entities, Screens',
-                'Basic authentication setup',
-                'Development environment configuration',
-                '.env.example with common settings',
-                'Basic migrations and seeds',
-                'Tailwind CSS setup',
-                'Welcome page and error templates'
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
-                  <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>{item}</span>
-                </li>
-              ))}
-            </ul>
+// Chain methods
+$activeUsers = User::query()
+    ->where('status', '=', 'active')
+    ->orderBy('created_at', 'DESC')
+    ->limit(10)
+    ->all();
 
-            <div className="mt-6">
-              <h4 className="font-bold mb-2">Create Starter Project</h4>
-              <InlineCodeExample
-                code="composer create-project luxid/framework myapp"
-                title="Command"
-                description="Create a complete starter application"
-                icon={Terminal}
-                color="purple"
-                language="bash"
-              />
-            </div>
-          </div>
-        </div>
+// Get raw SQL (for debugging)
+$sql = User::query()
+    ->where('age', '>', 18)
+    ->toSql();
+// Returns: "SELECT * FROM users WHERE age > ?"`}
+          language="php"
+          title="Basic Query Builder Usage"
+          explanation="Start building queries and chain methods for readable code."
+        />
       </div>
 
-      {/* Directory Structure Comparison */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">Directory Structure</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div>
-          <h3 className="font-bold mb-2 flex items-center gap-2">
-            <Cpu className="w-5 h-5" />
-            Engine Structure
-          </h3>
-          <CodeExample
-            code={`luxid/engine/
-├── Engine/
-│   ├── Console/          # Juice CLI
-│   ├── Database/         # L ORM
-│   ├── Exceptions/       # Custom exceptions
-│   ├── Facades/          # Facade classes
-│   ├── Foundation/       # Core framework
-│   ├── Form/             # Form builders
-│   ├── Http/             # Request/Response
-│   ├── Middleware/       # Middleware system
-│   ├── ORM/              # Object-Relational Mapping
-│   └── Routing/          # Router system
-├── juice                 # CLI executable
-└── composer.json         # Engine package`}
-            language="bash"
-            title="luxid/engine Package Structure"
-            explanation="The core engine contains all framework logic without any application code."
-          />
-        </div>
+      {/* Basic Queries */}
+      <h3 className="text-2xl font-bold mb-4">Basic Queries</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
+        <div className="grid grid-cols-1 gap-6">
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Database className="w-4 h-4" />
+              Selecting Data
+            </h4>
+            <CodeExample
+              code={`<?php
+// Select specific columns
+$users = User::query()
+    ->select(['id', 'name', 'email'])
+    ->all();
 
-        <div>
-          <h3 className="font-bold mb-2 flex items-center gap-2">
-            <Package className="w-5 h-5" />
-            Framework Structure
-          </h3>
-          <CodeExample
-            code={`myapp/                   # Your application
-├── app/
-│   ├── Actions/          # Your Action classes
-│   ├── Entities/         # Your Entity classes
-│   └── Middleware/       # Custom middleware
-├── config/               # Configuration files
-├── migrations/           # Database migrations
-├── routes/               # Route definitions
-├── screens/              # Nova templates
-├── web/                  # Public assets
-├── juice                 # Juice CLI (copied)
-└── composer.json         # Your app dependencies`}
-            language="bash"
-            title="Starter Project Structure"
-            explanation="The framework provides a ready-to-use application structure with the engine as a dependency."
-          />
-        </div>
-      </div>
+// Select with aliases
+$users = User::query()
+    ->select(['id', 'name as username', 'email'])
+    ->all();
 
-      {/* Real-World Example */}
-      <h2 className="text-2xl font-bold mb-4">Real-World Usage</h2>
+// Select distinct records
+$users = User::query()
+    ->distinct()
+    ->select(['status'])
+    ->all();
 
-      <div className="space-y-6">
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-          <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <Code className="w-5 h-5" />
-            Scenario 1: Building a Custom Application
-          </h3>
-          <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            You want to build a custom e-commerce platform with specific requirements:
-          </p>
-          <div className="space-y-2">
-            <InlineCodeExample
-              code="composer create-project luxid/framework ecommerce"
-              title="Start with Framework"
-              description="Get the complete starter structure"
-              icon={ArrowRight}
-              color="blue"
-              language="bash"
-            />
-            <InlineCodeExample
-              code="cd ecommerce\nphp juice make:api Product\nphp juice make:api Order"
-              title="Generate Custom Code"
-              description="Use Juice CLI to create your domain-specific code"
-              icon={ArrowRight}
-              color="purple"
-              language="bash"
-            />
-          </div>
-        </div>
+// Select raw expression
+$users = User::query()
+    ->selectRaw('COUNT(*) as total, DATE(created_at) as date')
+    ->groupBy('date')
+    ->all();
 
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-          <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <Terminal className="w-5 h-5" />
-            Scenario 2: Contributing to Luxid Engine
-          </h3>
-          <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            You want to contribute to the Luxid core or extend its functionality:
-          </p>
-          <div className="space-y-2">
-            <InlineCodeExample
-              code="composer require luxid/engine"
-              title="Require Only Engine"
-              description="Add just the engine to your existing project"
-              icon={ArrowRight}
-              color="blue"
-              language="bash"
-            />
-            <InlineCodeExample
-              code="<?php\n// Extend core classes\nclass CustomRouter extends \\Luxid\\Routing\\Router\n{\n    // Custom routing logic\n}"
-              title="Extend Engine Classes"
-              description="Extend and customize core Luxid components"
-              icon={ArrowRight}
-              color="purple"
+// Get single record
+$user = User::query()
+    ->where('id', '=', 1)
+    ->first();
+
+// Get specific column value
+$email = User::query()
+    ->where('id', '=', 1)
+    ->value('email');
+
+// Get list of column values
+$emails = User::query()
+    ->pluck('email');
+
+// Get array of key-value pairs
+$users = User::query()
+    ->pluck('name', 'id');`}
               language="php"
+              title="Select Queries"
+              explanation="Control which columns and how many records to fetch."
             />
           </div>
-        </div>
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Filter className="w-4 h-4" />
+              Basic Where Clauses
+            </h4>
+            <CodeExample
+              code={`<?php
+// Simple where
+$users = User::query()
+    ->where('status', '=', 'active')
+    ->all();
 
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-          <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <AlertCircle className="w-5 h-5" />
-            Scenario 3: Integrating with Existing Systems
-          </h3>
-          <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            You have an existing application and want to use Luxid's ORM or Router:
-          </p>
-          <CodeExample
-            code={`<?php
-// Existing legacy application
-require_once 'vendor/autoload.php';
+// Where with operator
+$users = User::query()
+    ->where('age', '>', 18)
+    ->all();
 
-// Use Luxid ORM without the full framework
-use Luxid\\Database\\DbEntity;
+// Multiple where conditions
+$users = User::query()
+    ->where('status', '=', 'active')
+    ->where('age', '>=', 18)
+    ->all();
 
-class LegacyProduct extends DbEntity
-{
-    public static function tableName(): string
-    {
-        return 'legacy_products';
-    }
+// Or where
+$users = User::query()
+    ->where('status', '=', 'active')
+    ->orWhere('status', '=', 'pending')
+    ->all();
 
-    // Use L ORM features in legacy app
-    public static function findActiveProducts()
-    {
-        return self::findAll(['active' => 1]);
-    }
-}
+// Where in array
+$users = User::query()
+    ->whereIn('id', [1, 2, 3])
+    ->all();
 
-// Use in legacy code
-$products = LegacyProduct::findActiveProducts();`}
-            language="php"
-            title="Using Engine in Legacy Applications"
-            explanation="The engine can be used independently without the full framework structure."
-          />
+// Where not in
+$users = User::query()
+    ->whereNotIn('status', ['banned', 'deleted'])
+    ->all();
+
+// Where between
+$users = User::query()
+    ->whereBetween('age', [18, 65])
+    ->all();
+
+// Where null
+$users = User::query()
+    ->whereNull('deleted_at')
+    ->all();
+
+// Where not null
+$users = User::query()
+    ->whereNotNull('email_verified_at')
+    ->all();`}
+              language="php"
+              title="Where Clauses"
+              explanation="Filter records using various conditions."
+            />
+          </div>
         </div>
       </div>
 
-      {/* Dependency Management */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">Dependency Management</h2>
+      {/* Advanced Where Clauses */}
+      <h3 className="text-2xl font-bold mb-4">Advanced Where Clauses</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
+        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          Build complex conditions using nested groupings and parameter grouping.
+        </p>
 
-      <div className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-300'}`}>
-        <h3 className="text-xl font-bold mb-3">composer.json Comparison</h3>
+        <CodeExample
+          code={`<?php
+// Nested conditions (WHERE (a OR b) AND c)
+$users = User::query()
+    ->where('status', '=', 'active')
+    ->where(function($query) {
+        $query->where('age', '<', 30)
+              ->orWhere('experience', '>', 5);
+    })
+    ->all();
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+// Multiple or conditions
+$users = User::query()
+    ->where('role', '=', 'admin')
+    ->orWhere(function($query) {
+        $query->where('role', '=', 'moderator')
+              ->where('is_active', '=', true);
+    })
+    ->all();
+
+// Where exists
+$users = User::query()
+    ->whereExists(function($query) {
+        $query->select('*')
+              ->from('orders')
+              ->whereRaw('orders.user_id = users.id')
+              ->where('orders.total', '>', 1000);
+    })
+    ->all();
+
+// Where date
+$users = User::query()
+    ->whereDate('created_at', '=', '2024-01-01')
+    ->all();
+
+// Where month
+$users = User::query()
+    ->whereMonth('created_at', '=', 12)
+    ->all();
+
+// Where day
+$users = User::query()
+    ->whereDay('created_at', '=', 25)
+    ->all();
+
+// Where year
+$users = User::query()
+    ->whereYear('created_at', '=', 2024)
+    ->all();
+
+// Where time
+$users = User::query()
+    ->whereTime('created_at', '>=', '14:00:00')
+    ->all();
+
+// Where column comparison
+$users = User::query()
+    ->whereColumn('updated_at', '>', 'created_at')
+    ->all();
+
+// Where raw (use with caution!)
+$users = User::query()
+    ->whereRaw('age > ? AND status = ?', [18, 'active'])
+    ->all();`}
+          language="php"
+          title="Advanced Where Clauses"
+          explanation="Build complex nested conditions and date filters."
+        />
+      </div>
+
+      {/* Ordering, Grouping & Limiting */}
+      <h3 className="text-2xl font-bold mb-4">Ordering, Grouping & Limiting</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
+        <div className="grid grid-cols-1 gap-6">
           <div>
-            <h4 className="font-bold mb-2">Engine Package</h4>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <SortAsc className="w-4 h-4" />
+              Ordering
+            </h4>
             <CodeExample
-              code={`{
-  "name": "luxid/engine",
-  "type": "library",
-  "require": {
-    "php": "^8.0",
-    "vlucas/phpdotenv": "^5.6"
-  },
-  "autoload": {
-    "psr-4": {
-      "Luxid\\\\": "Engine/"
-    }
-  },
-  "bin": ["juice"]
-}`}
-              language="json"
-              title="luxid/engine composer.json"
-              explanation="Minimal dependencies - just PHP 8.0+ and dotenv for environment variables."
+              code={`<?php
+// Order by column
+$users = User::query()
+    ->orderBy('name', 'ASC')
+    ->all();
+
+// Multiple order by
+$users = User::query()
+    ->orderBy('status', 'ASC')
+    ->orderBy('created_at', 'DESC')
+    ->all();
+
+// Order by raw
+$users = User::query()
+    ->orderByRaw('RAND()')
+    ->all();
+
+// Latest first
+$users = User::query()
+    ->latest()
+    ->all();
+
+// Oldest first
+$users = User::query()
+    ->oldest()
+    ->all();
+
+// Random order
+$randomUser = User::query()
+    ->inRandomOrder()
+    ->first();`}
+              language="php"
+              title="Ordering Results"
+              explanation="Sort your query results."
             />
           </div>
-
           <div>
-            <h4 className="font-bold mb-2">Framework Starter</h4>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Hash className="w-4 h-4" />
+              Grouping & Limiting
+            </h4>
             <CodeExample
-              code={`{
-  "name": "luxid/framework",
-  "type": "project",
-  "require": {
-    "php": "^8.0",
-    "luxid/engine": "^1.0",
-    "vlucas/phpdotenv": "^5.6"
-  },
-  "scripts": {
-    "post-create-project-cmd": [
-      "Luxid\\\\Framework\\\\Kernel::postCreateProject"
-    ]
-  }
-}`}
-              language="json"
-              title="luxid/framework composer.json"
-              explanation="Includes luxid/engine as a dependency and adds setup scripts."
+              code={`<?php
+// Group by
+$users = User::query()
+    ->select(['status', 'COUNT(*) as count'])
+    ->groupBy('status')
+    ->all();
+
+// Having
+$users = User::query()
+    ->select(['status', 'COUNT(*) as count'])
+    ->groupBy('status')
+    ->having('count', '>', 10)
+    ->all();
+
+// Limit and offset
+$users = User::query()
+    ->limit(10)
+    ->offset(20)
+    ->all();
+
+// Pagination (page 3 with 15 per page)
+$users = User::query()
+    ->limit(15)
+    ->offset(30)
+    ->all();
+
+// Take and skip (aliases)
+$users = User::query()
+    ->take(10)
+    ->skip(20)
+    ->all();`}
+              language="php"
+              title="Grouping & Limiting"
+              explanation="Group results and control result set size."
             />
+          </div>
+        </div>
+      </div>
+
+      {/* Joins */}
+      <h3 className="text-2xl font-bold mb-4">Joins</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-indigo-900/20 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
+        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          Join tables together to fetch related data in a single query.
+        </p>
+
+        <CodeExample
+          code={`<?php
+// Inner join
+$posts = Post::query()
+    ->select(['posts.*', 'users.name as author_name'])
+    ->join('users', 'posts.user_id', '=', 'users.id')
+    ->all();
+
+// Left join
+$posts = Post::query()
+    ->select(['posts.*', 'users.name as author_name'])
+    ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+    ->all();
+
+// Right join
+$posts = Post::query()
+    ->select(['posts.*', 'users.name as author_name'])
+    ->rightJoin('users', 'posts.user_id', '=', 'users.id')
+    ->all();
+
+// Join with conditions
+$posts = Post::query()
+    ->join('comments', function($join) {
+        $join->on('posts.id', '=', 'comments.post_id')
+             ->where('comments.approved', '=', true);
+    })
+    ->all();
+
+// Multiple joins
+$comments = Comment::query()
+    ->select(['comments.*', 'users.name as author', 'posts.title'])
+    ->join('users', 'comments.user_id', '=', 'users.id')
+    ->join('posts', 'comments.post_id', '=', 'posts.id')
+    ->all();
+
+// Join with aliases
+$posts = Post::query()
+    ->select(['p.*', 'u.name as author'])
+    ->from('posts', 'p')
+    ->join('users as u', 'p.user_id', '=', 'u.id')
+    ->all();
+
+// Cross join
+$products = Product::query()
+    ->crossJoin('categories')
+    ->all();`}
+          language="php"
+          title="Join Queries"
+          explanation="Combine data from multiple tables."
+        />
+      </div>
+
+      {/* Aggregate Functions */}
+      <h3 className="text-2xl font-bold mb-4">Aggregate Functions</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+        <div className="grid grid-cols-1 gap-6">
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <BarChart className="w-4 h-4" />
+              Basic Aggregates
+            </h4>
+            <CodeExample
+              code={`<?php
+// Count
+$total = User::query()->count();
+$active = User::query()->where('status', '=', 'active')->count();
+
+// Sum
+$totalRevenue = Order::query()->sum('total');
+$userTotal = Order::query()->where('user_id', '=', 1)->sum('total');
+
+// Average
+$averageAge = User::query()->avg('age');
+$averageOrder = Order::query()->avg('total');
+
+// Minimum
+$minAge = User::query()->min('age');
+$lowestPrice = Product::query()->min('price');
+
+// Maximum
+$maxAge = User::query()->max('age');
+$highestPrice = Product::query()->max('price');
+
+// Multiple aggregates
+$stats = User::query()
+    ->selectRaw('
+        COUNT(*) as total,
+        AVG(age) as average_age,
+        MIN(age) as youngest,
+        MAX(age) as oldest
+    ')
+    ->first();`}
+              language="php"
+              title="Aggregate Functions"
+              explanation="Calculate statistics from your data."
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" />
+              Advanced Aggregates
+            </h4>
+            <CodeExample
+              code={`<?php
+// Grouped aggregates
+$stats = User::query()
+    ->select(['status', 'COUNT(*) as count', 'AVG(age) as average_age'])
+    ->groupBy('status')
+    ->all();
+
+// Having with aggregates
+$popularCategories = Category::query()
+    ->select(['categories.*', 'COUNT(posts.id) as post_count'])
+    ->join('posts', 'categories.id', '=', 'posts.category_id')
+    ->groupBy('categories.id')
+    ->having('post_count', '>', 10)
+    ->all();
+
+// Multiple aggregates with conditions
+$revenue = Order::query()
+    ->select([
+        'DATE(created_at) as date',
+        'SUM(total) as daily_total',
+        'COUNT(*) as order_count',
+        'AVG(total) as average_order'
+    ])
+    ->where('created_at', '>=', '2024-01-01')
+    ->groupBy('date')
+    ->orderBy('date', 'DESC')
+    ->limit(30)
+    ->all();`}
+              language="php"
+              title="Advanced Aggregates"
+              explanation="Group and filter aggregate data."
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Subqueries */}
+      <h3 className="text-2xl font-bold mb-4">Subqueries</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-red-900/20 border border-red-800' : 'bg-red-50 border border-red-200'}`}>
+        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          Use subqueries to perform complex filtering and calculations.
+        </p>
+
+        <CodeExample
+          code={`<?php
+// Where with subquery
+$users = User::query()
+    ->where('id', '=', function($query) {
+        $query->select('user_id')
+              ->from('orders')
+              ->orderBy('total', 'DESC')
+              ->limit(1);
+    })
+    ->all();
+
+// Select subquery
+$users = User::query()
+    ->select([
+        'users.*',
+        function($query) {
+            return $query->selectRaw('COUNT(*)')
+                         ->from('posts')
+                         ->whereColumn('posts.user_id', 'users.id');
+        }
+    ])
+    ->all();
+
+// From subquery (derived table)
+$sub = Post::query()
+    ->select(['user_id', 'COUNT(*) as post_count'])
+    ->groupBy('user_id');
+
+$users = User::query()
+    ->from($sub, 'post_counts')
+    ->join('users', 'post_counts.user_id', '=', 'users.id')
+    ->all();
+
+// Where in with subquery
+$users = User::query()
+    ->whereIn('id', function($query) {
+        $query->select('user_id')
+              ->from('orders')
+              ->where('total', '>', 1000);
+    })
+    ->all();
+
+// Where exists with subquery
+$users = User::query()
+    ->whereExists(function($query) {
+        $query->select('*')
+              ->from('orders')
+              ->whereColumn('orders.user_id', 'users.id')
+              ->where('orders.total', '>', 1000);
+    })
+    ->all();`}
+          language="php"
+          title="Subqueries"
+          explanation="Embed queries within queries for complex logic."
+        />
+      </div>
+
+      {/* Unions */}
+      <h3 className="text-2xl font-bold mb-4">Unions</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-cyan-900/20 border border-cyan-800' : 'bg-cyan-50 border border-cyan-200'}`}>
+        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          Combine results from multiple queries using unions.
+        </p>
+
+        <CodeExample
+          code={`<?php
+// Basic union
+$activeUsers = User::query()->where('status', '=', 'active');
+$pendingUsers = User::query()->where('status', '=', 'pending');
+
+$users = $activeUsers->union($pendingUsers)->all();
+
+// Union all (includes duplicates)
+$first = User::query()->where('age', '<', 30);
+$second = User::query()->where('age', '>', 50);
+
+$users = $first->unionAll($second)->all();
+
+// Multiple unions
+$admins = User::query()->where('role', '=', 'admin');
+$moderators = User::query()->where('role', '=', 'moderator');
+$editors = User::query()->where('role', '=', 'editor');
+
+$users = $admins
+    ->union($moderators)
+    ->union($editors)
+    ->all();
+
+// Union with ordering
+$users = $activeUsers
+    ->union($pendingUsers)
+    ->orderBy('created_at', 'DESC')
+    ->limit(50)
+    ->all();`}
+          language="php"
+          title="Union Queries"
+          explanation="Combine multiple query results."
+        />
+      </div>
+
+      {/* Insert, Update, Delete */}
+      <h3 className="text-2xl font-bold mb-4">Insert, Update & Delete</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-orange-900/20 border border-orange-800' : 'bg-orange-50 border border-orange-200'}`}>
+        <div className="grid grid-cols-1 gap-6">
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Plus className="w-4 h-4" />
+              Insert Operations
+            </h4>
+            <CodeExample
+              code={`<?php
+// Insert single record
+$id = User::query()->insert([
+    'name' => 'John Doe',
+    'email' => 'john@example.com',
+    'password' => password_hash('secret', PASSWORD_DEFAULT)
+]);
+
+// Insert multiple records
+User::query()->insert([
+    ['name' => 'Jane Doe', 'email' => 'jane@example.com'],
+    ['name' => 'Bob Smith', 'email' => 'bob@example.com']
+]);
+
+// Insert and get ID
+$user = User::query()->create([
+    'name' => 'John Doe',
+    'email' => 'john@example.com'
+]);
+
+// Insert or update (upsert)
+User::query()->upsert([
+    ['id' => 1, 'name' => 'Updated Name', 'email' => 'updated@example.com'],
+    ['id' => 2, 'name' => 'Another Name', 'email' => 'another@example.com']
+], ['id'], ['name', 'email']);`}
+              language="php"
+              title="Insert Operations"
+              explanation="Insert new records into the database."
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2 flex items-center gap-2">
+              <Settings className="w-4 h-4" />
+              Update & Delete
+            </h4>
+            <CodeExample
+              code={`<?php
+// Update records
+User::query()
+    ->where('status', '=', 'inactive')
+    ->update(['status' => 'active']);
+
+// Update with increment/decrement
+User::query()
+    ->where('id', '=', 1)
+    ->increment('login_count');
+
+User::query()
+    ->where('id', '=', 1)
+    ->decrement('points', 10);
+
+// Delete records
+User::query()
+    ->where('status', '=', 'banned')
+    ->delete();
+
+// Delete all
+User::query()->delete();
+
+// Truncate table
+User::query()->truncate();`}
+              language="php"
+              title="Update & Delete"
+              explanation="Update and delete records conditionally."
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Performance Tips */}
+      <div className={`mt-8 p-6 rounded-xl ${darkMode
+        ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
+        : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
+        }`}>
+        <h3 className="text-xl font-bold mb-4">Query Builder Performance Tips</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Database className="w-4 h-4" />
+              <h4 className="font-bold">Use Indexes</h4>
+            </div>
+            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              Ensure columns used in WHERE, JOIN, and ORDER BY clauses are indexed.
+            </p>
+          </div>
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Filter className="w-4 h-4" />
+              <h4 className="font-bold">Select Only Needed</h4>
+            </div>
+            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              Use <strong className="font-mono">select()</strong> to fetch only required columns.
+            </p>
+          </div>
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <GitBranch className="w-4 h-4" />
+              <h4 className="font-bold">Limit Results</h4>
+            </div>
+            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              Always use <strong className="font-mono">limit()</strong> when you don't need all records.
+            </p>
+          </div>
+          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Layers className="w-4 h-4" />
+              <h4 className="font-bold">Avoid N+1</h4>
+            </div>
+            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+              Use eager loading with <strong className="font-mono">with()</strong> for relationships.
+            </p>
           </div>
         </div>
       </div>
 
       {/* Best Practices */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">Best Practices</h2>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+        <h3 className="text-xl font-bold mb-6">Query Builder Best Practices</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Do These Column */}
+          <div className={`p-5 rounded-xl ${darkMode ? 'bg-green-500/5 border border-green-500/20' : 'bg-green-50 border border-green-200'}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
+              <span className={darkMode ? 'text-green-400' : 'text-green-700'}>Do These</span>
+              <CheckCircle className="w-5 h-5 text-green-500" />
+            </h4>
+            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              <li className="flex items-start gap-3">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <span>Always use parameter binding instead of concatenating values</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <span>Use <strong className="font-mono">select()</strong> to limit columns returned</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <span>Chain methods for readability and maintainability</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <span>Use <strong className="font-mono">toSql()</strong> for debugging complex queries</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <span>Add indexes for columns used in WHERE and JOIN clauses</span>
+              </li>
+            </ul>
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-          <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            When to Use Framework
-          </h4>
-          <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Starting a new greenfield project
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Learning Luxid for the first time
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Need a complete MVC structure
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Want built-in authentication and examples
-            </li>
-          </ul>
-        </div>
-
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-          <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            When to Use Engine Only
-          </h4>
-          <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Integrating into existing applications
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Building microservices or APIs
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Need only specific components (ORM, Router)
-            </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-              Contributing to Luxid core development
-            </li>
-          </ul>
+          {/* Avoid These Column */}
+          <div className={`p-5 rounded-xl ${darkMode ? 'bg-red-500/5 border border-red-500/20' : 'bg-red-50 border border-red-200'}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
+              <span className={darkMode ? 'text-red-400' : 'text-red-700'}>Avoid These</span>
+              <span className="text-red-500 text-xl font-bold">×</span>
+            </h4>
+            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
+                <span>Don't use raw SQL unless absolutely necessary</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
+                <span>Avoid <strong className="font-mono">SELECT *</strong> in production queries</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
+                <span>Don't build queries in loops (use batch operations)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
+                <span>Avoid complex joins when simpler queries would work</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Version Management */}
+      {/* Debugging */}
       <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-amber-900/20 border border-amber-800' : 'bg-amber-50 border border-amber-200'}`}>
         <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-          <AlertCircle className="w-5 h-5" />
-          Version Management Tips
+          <Terminal className="w-5 h-5" />
+          Debugging Queries
         </h3>
-        <div className="space-y-4">
-          <InlineCodeExample
-            code="composer update luxid/engine"
-            title="Update Engine Only"
-            description="Update the core engine independently"
-            icon={Download}
-            color="yellow"
-            language="bash"
+        <div className="space-y-3">
+          <CodeExample
+            code={`<?php
+// Get the SQL without executing
+$sql = User::query()
+    ->where('age', '>', 18)
+    ->where('status', '=', 'active')
+    ->toSql();
+// Returns: "SELECT * FROM users WHERE age > ? AND status = ?"
+
+// Get SQL with bound parameters
+$sql = User::query()
+    ->where('age', '>', 18)
+    ->where('status', '=', 'active')
+    ->toSqlWithBindings();
+// Returns: "SELECT * FROM users WHERE age > 18 AND status = 'active'"
+
+// Dump query results (dd = dump and die)
+User::query()
+    ->where('age', '>', 18)
+    ->dd(); // Dumps results and stops execution
+
+// Dump query (dump and continue)
+User::query()
+    ->where('age', '>', 18)
+    ->dump(); // Dumps results and continues
+
+// Log all queries (for development)
+// Add to your configuration
+\\Rocket\\Database\\Connection::listen(function($query) {
+    error_log($query->sql . ' - ' . json_encode($query->bindings));
+});`}
+            language="php"
+            title="Debugging Techniques"
+            explanation="Inspect and debug your queries."
           />
-          <InlineCodeExample
-            code="composer outdated luxid/*"
-            title="Check for Updates"
-            description="See available updates for Luxid packages"
-            icon={Terminal}
-            color="yellow"
-            language="bash"
-          />
-          <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-            <strong>Note:</strong> The framework starter project pins to specific engine versions for stability.
-            Update intentionally and test thoroughly.
-          </p>
-        </div>
-      </div>
-
-      {/* Next Steps */}
-      <div className={`mt-8 p-6 rounded-xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20'
-          : 'bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200'
-      }`}>
-        <h3 className="text-xl font-bold mb-3">What's Next?</h3>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Now that you understand Luxid's dual-package architecture, explore these topics:
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <a
-            href="/docs/juice-cli"
-            className={`p-4 rounded-lg text-center transition-colors ${
-              darkMode
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-            }`}
-          >
-            <Terminal className="w-6 h-6 mx-auto mb-2" />
-            <div className="font-bold">Juice CLI</div>
-            <div className="text-sm opacity-80">Master the command line tool</div>
-          </a>
-          <a
-            href="/docs/sea-architecture"
-            className={`p-4 rounded-lg text-center transition-colors ${
-              darkMode
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-            }`}
-          >
-            <Layers className="w-6 h-6 mx-auto mb-2" />
-            <div className="font-bold">SEA Architecture</div>
-            <div className="text-sm opacity-80">Understand the core pattern</div>
-          </a>
-          <a
-            href="/docs/first-app"
-            className={`p-4 rounded-lg text-center transition-colors ${
-              darkMode
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-            }`}
-          >
-            <Code className="w-6 h-6 mx-auto mb-2" />
-            <div className="font-bold">Your First App</div>
-            <div className="text-sm opacity-80">Build a complete Todo API</div>
-          </a>
-        </div>
-      </div>
-
-      {/* FAQ */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-300'}`}>
-        <h3 className="text-xl font-bold mb-4">Frequently Asked Questions</h3>
-
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-bold mb-1">Can I use multiple engines in one project?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              No, you should only have one <code className="font-mono">luxid/engine</code> package per project.
-              The engine is designed as a singleton foundation.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-1">How do I update the engine in an existing project?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Run <code className="font-mono">composer update luxid/engine</code> and test thoroughly.
-              Breaking changes are documented in release notes.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-1">Can I create my own framework starter?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Absolutely! Fork the <code className="font-mono">luxid/framework</code> repository or create your own
-              Composer package that requires <code className="font-mono">luxid/engine</code> and provides your preferred structure.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-1">What if I only need the ORM or Router?</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Install <code className="font-mono">luxid/engine</code> and use only the components you need.
-              The engine is modular, though some components have inter-dependencies.
-            </p>
-          </div>
         </div>
       </div>
     </>

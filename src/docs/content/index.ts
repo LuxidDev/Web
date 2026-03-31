@@ -120,7 +120,7 @@ export const docsChapters = [
       },
       {
         id: 'relationships',
-        title: 'Model Relationships',
+        title: 'Entity Relationships',
         path: '/docs/relationships',
         content: 'RelationshipsContent'
       },
