@@ -1,9 +1,7 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Network, Link, Users, User, BookOpen, MessageSquare, Tag,
-  CheckCircle, ArrowRight, AlertCircle, Info, Database, Layers,
-  GitBranch, Share2, Heart, Star, Eye
+  CheckCircle, ArrowRight, AlertCircle, Info,
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';

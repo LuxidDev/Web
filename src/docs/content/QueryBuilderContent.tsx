@@ -1,12 +1,11 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Search, Filter, SortAsc, SortDesc, Hash, Calendar, CheckCircle,
-  ArrowRight, AlertCircle, Code, Layers, Terminal, Database,
-  GitBranch, Settings, Plus, Minus, BarChart, PieChart, TrendingUp
+  Filter, SortAsc, Hash, CheckCircle,
+  ArrowRight, Layers, Terminal, Database,
+  GitBranch, Settings, Plus, BarChart, TrendingUp
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function QueryBuilderContent() {
   const { darkMode } = useTheme();
