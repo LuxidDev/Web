@@ -291,7 +291,7 @@ export const docsChapters = [
       },
       {
         id: 'health',
-        title: '(Optional) Add Health Check Endpoint',
+        title: 'Health Check Endpoint',
         path: '/docs/health-check-endpoint',
         content: 'HealthCheckEndpointTutorial'
       },

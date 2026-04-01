@@ -11,11 +11,13 @@ export default function HealthCheckEndpointTutorial() {
         code={`<?php
 namespace App\Actions;
 
-use Luxid\Foundation\LuxidAction;
-use Luxid\Http\Response;
+use Luxid\\Nodes\\Response;
 
-class HealthCheckerAction extends Action
+class HealthCheckerAction extends LuxidAction
 {
+    /**
+    * Get /api/health
+    */
     public function index()
     {
         return Response::json([
@@ -27,23 +29,6 @@ class HealthCheckerAction extends Action
         title="app/Actions/HealthCheckerAction.php"
         explanation=""
       />
-
-      <h4 className="text-xl font-bold mb-4">Add the new routes to your routes file</h4>
-
-      <CodeExample
-        code={`<?php
-use App\Actions\TodoAction;
-
-// Your exisiting routes ...
-
-route('health')
-    ->get('/api/health')
-    ->uses(HealthCheckerAction::class, 'index')
-    ->open();`}
-        title="routes/api.php"
-        explanation=""
-      />
-
     </>
   );
 }
