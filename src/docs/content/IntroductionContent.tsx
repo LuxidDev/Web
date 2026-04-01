@@ -442,20 +442,29 @@ $app->run();`}
             <div className="flex-1">
               <h4 className="font-bold text-lg">Action Processing</h4>
               <p className={`mt-2 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-                Action processes the request, interacts with Entities via L ORM, and prepares data for response.
+                Action processes the request, interacts with Entities via Rocket-ORM, and prepares data for response.
               </p>
               <CodeExample
                 code={`<?php
 // app/Actions/TodoAction.php
-class TodoAction extends Action
+
+namespace App\Actions;
+
+use App\Actions\LuxidAction;
+use App\Entities\Todo;
+use Luxid\Nodes\Response;
+
+class TodoAction extends LuxidAction
 {
     public function index()
     {
-        // Use L ORM to get data
+        // Use Rocket-ORM to get data
         $todos = Todo::findAll(['user_id' => $this->user()->id]);
 
         // Return JSON response or render screen
-        return Response::success(['todos' => $todos]);
+        return Response::success([
+          'todos' => $todos
+        ]);
     }
 }`}
                 language="php"
