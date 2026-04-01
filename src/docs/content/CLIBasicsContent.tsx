@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Terminal, Server, Database, Code, Layers, CheckCircle, ArrowRight,
-  AlertCircle, Info, Plus, Settings, RefreshCw, Trash2, Eye,
-  FileText, HelpCircle, Command, Rocket, Zap, Shield
+  Layers, CheckCircle, ArrowRight,
+  AlertCircle, Eye,
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';

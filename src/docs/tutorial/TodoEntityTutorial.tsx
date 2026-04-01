@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import {
-  CheckCircle, Rocket, Database, Shield, Clock, Code, Zap
+  CheckCircle, Rocket,
 } from "lucide-react";
 import CodeExample from "@/components/CodeExample";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Database, CheckCircle, ArrowRight, Zap, Code } from "lucide-react";
+import { CheckCircle, ArrowRight, } from "lucide-react";
 import CodeExample from "@/components/CodeExample";
 
 export default function EntitiesContent() {

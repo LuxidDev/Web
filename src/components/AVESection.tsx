@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Monitor, Database, Zap, ArrowRight } from 'lucide-react';
+import { Monitor, Database, Zap } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const seaItems = [

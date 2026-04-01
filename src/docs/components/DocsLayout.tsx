@@ -6,7 +6,7 @@ import SpotlightSearch from '@/components/SpotlightSearch';
 import SidebarNav from './SidebarNav';
 import ChapterHeader from './ChapterHeader';
 import { docsChapters } from '../content';
-import { ArrowRight, ExternalLink, Copy, Check } from 'lucide-react';
+import { ArrowRight, Copy, Check } from 'lucide-react';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -122,61 +122,6 @@ export default function DocsLayout({ children, currentDoc, currentSection }: Doc
                 {/* Chapter Content */}
                 <div className="prose prose-lg max-w-none">
                   {children}
-                </div>
-
-                {/* Navigation */}
-                <div className={`mt-12 pt-8 border-t ${darkMode ? 'border-zinc-800' : 'border-zinc-300'
-                  }`}>
-                  <div className="flex justify-between">
-                    <a
-                      href="/docs/introduction"
-                      className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-colors ${darkMode
-                        ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
-                        : 'bg-zinc-200 hover:bg-zinc-300 text-black'
-                        }`}
-                    >
-                      Previous
-                    </a>
-                    <a
-                      href="/docs/installation"
-                      className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-colors ${darkMode
-                        ? 'bg-blue-500 hover:bg-blue-600 text-white'
-                        : 'bg-blue-600 hover:bg-blue-700 text-white'
-                        }`}
-                    >
-                      Next: Installation
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Links Grid */}
-              <div className="mt-8">
-                <h3 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
-                  Continue Learning
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {docsChapters.slice(0, 3).map((section) => (
-                    <a
-                      key={section.id}
-                      href={section.chapters[0].path}
-                      className={`group p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-2 cursor-pointer ${darkMode
-                        ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
-                        : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
-                        }`}
-                    >
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${section.color}`}>
-                        <section.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h4 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>
-                        {section.title}
-                      </h4>
-                      <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                        {section.chapters.length} chapters
-                      </p>
-                    </a>
-                  ))}
                 </div>
               </div>
             </div>

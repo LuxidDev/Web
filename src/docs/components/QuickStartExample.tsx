@@ -1,26 +1,24 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Terminal, CheckCircle, AlertCircle } from "lucide-react";
+import { Terminal, CheckCircle } from "lucide-react";
 import InlineCodeExample from "@/components/InlineCodeExample";
-import CodeExample from "@/components/CodeExample"; // Fixed import path
+import CodeExample from "@/components/CodeExample";
 
 export default function QuickStartExample() {
   const { darkMode } = useTheme();
 
   return (
     <div
-      className={`my-8 rounded-2xl overflow-hidden ${
-        darkMode
+      className={`my-8 rounded-2xl overflow-hidden ${darkMode
           ? "bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20"
           : "bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200"
-      }`}
+        }`}
     >
       <div className="p-6">
         <div className="flex items-center gap-3 mb-4">
           <div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-              darkMode ? "bg-green-500/20" : "bg-green-100"
-            }`}
+            className={`w-12 h-12 rounded-xl flex items-center justify-center ${darkMode ? "bg-green-500/20" : "bg-green-100"
+              }`}
           >
             <CheckCircle
               className={`w-6 h-6 ${darkMode ? "text-green-400" : "text-green-600"}`}
@@ -41,11 +39,10 @@ export default function QuickStartExample() {
           <div>
             <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <span
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-                  darkMode
+                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${darkMode
                     ? "bg-blue-500 text-white"
                     : "bg-blue-100 text-blue-600"
-                }`}
+                  }`}
               >
                 1
               </span>
@@ -99,11 +96,10 @@ class Todo extends DbEntity
           <div>
             <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <span
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-                  darkMode
+                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${darkMode
                     ? "bg-purple-500 text-white"
                     : "bg-purple-100 text-purple-600"
-                }`}
+                  }`}
               >
                 2
               </span>
@@ -179,11 +175,10 @@ class TodoAction extends \\Luxid\\Foundation\\Action
           <div>
             <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <span
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-                  darkMode
+                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${darkMode
                     ? "bg-green-500 text-white"
                     : "bg-green-100 text-green-600"
-                }`}
+                  }`}
               >
                 3
               </span>
@@ -206,11 +201,10 @@ $router->delete('/todos/{id}', [TodoAction::class, 'destroy']);`}
 
           {/* Bonus: Using Juice CLI */}
           <div
-            className={`p-4 rounded-lg ${
-              darkMode
+            className={`p-4 rounded-lg ${darkMode
                 ? "bg-zinc-800/50 border border-zinc-700"
                 : "bg-zinc-100 border border-zinc-300"
-            }`}
+              }`}
           >
             <div className="flex items-center gap-2 mb-2">
               <Terminal

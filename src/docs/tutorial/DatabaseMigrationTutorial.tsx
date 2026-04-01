@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import {
-  CheckCircle, Database, ArrowUp, ArrowDown, Terminal, Rocket, Shield, Clock
+  CheckCircle, Database,
 } from "lucide-react";
 import InlineCodeExample from "@/components/InlineCodeExample";
 import CodeExample from "@/components/CodeExample";

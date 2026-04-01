@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Heart, Users, Globe, Code, Award, Sparkles,
-  Coffee, BookOpen, Terminal, Zap, Shield,
-  Github, Twitter, Linkedin, ExternalLink,
-  Calendar, MapPin, Star, ChevronRight, Building
+  Heart, Users, Globe, Code, BookOpen, Zap,
+  Github, ExternalLink,
+  Star, ChevronRight, Building
 } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -99,16 +98,13 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className={`relative py-32 overflow-hidden ${
-      darkMode ? 'bg-black' : 'bg-white'
-    }`}>
+    <section id="about" className={`relative py-32 overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'
+      }`}>
       {/* Background decoration */}
-      <div className={`absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] ${
-        darkMode ? '' : 'invert opacity-20'
-      }`} />
-      <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-[150px] ${
-        darkMode ? 'bg-zinc-900/20' : 'bg-zinc-300/10'
-      }`} style={{ transform: `translate(${scrollY * 0.02}px, ${scrollY * 0.03}px)` }} />
+      <div className={`absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] ${darkMode ? '' : 'invert opacity-20'
+        }`} />
+      <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-[150px] ${darkMode ? 'bg-zinc-900/20' : 'bg-zinc-300/10'
+        }`} style={{ transform: `translate(${scrollY * 0.02}px, ${scrollY * 0.03}px)` }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Hero Section - Your Story */}
@@ -123,36 +119,32 @@ export default function About() {
             <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>The Story Behind Luxid</span>
           </div>
 
-          <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${
-            darkMode ? 'text-white' : 'text-black'
-          }`}>
+          <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${darkMode ? 'text-white' : 'text-black'
+            }`}>
             Built with Purpose,<br />
             <span className={`${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
               Crafted for Developers
             </span>
           </h1>
 
-          <p className={`text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
-            darkMode ? 'text-zinc-400' : 'text-zinc-600'
-          }`}>
+          <p className={`text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+            }`}>
             Luxid was created as a lightweight and simpler micro-version of an MVC framework for PHP,
             designed to offer a clean, modern, and easy-to-use foundation for building web applications.
           </p>
 
           {/* Creator Card */}
-          <div className={`max-w-2xl mx-auto p-8 rounded-2xl border backdrop-blur-xl mb-12 ${
-            darkMode
+          <div className={`max-w-2xl mx-auto p-8 rounded-2xl border backdrop-blur-xl mb-12 ${darkMode
               ? 'bg-gradient-to-br from-zinc-900/50 to-zinc-800/30 border-zinc-800'
               : 'bg-gradient-to-br from-white/80 to-zinc-50/80 border-zinc-200'
-          }`}>
+            }`}>
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-zinc-700">
                   {/* Replace with actual profile image */}
                   <div
-                    className={`w-full h-full flex items-center justify-center text-2xl font-bold ${
-                      darkMode ? 'bg-zinc-800 text-white' : 'bg-zinc-200 text-zinc-800'
-                    }`}
+                    className={`w-full h-full flex items-center justify-center text-2xl font-bold ${darkMode ? 'bg-zinc-800 text-white' : 'bg-zinc-200 text-zinc-800'
+                      }`}
                   >
                     <img
                       src="/images/profiles/jhay-profile.jpeg"
@@ -161,9 +153,8 @@ export default function About() {
                     />
                   </div>
                 </div>
-                <div className={`absolute -bottom-1 -right-1 w-8 h-8 rounded-full border-2 ${
-                  darkMode ? 'bg-black border-zinc-700' : 'bg-white border-zinc-300'
-                }`}>
+                <div className={`absolute -bottom-1 -right-1 w-8 h-8 rounded-full border-2 ${darkMode ? 'bg-black border-zinc-700' : 'bg-white border-zinc-300'
+                  }`}>
                   <img
                     src={darkMode ? "/lion7.svg" : "/lion5.svg"}
                     alt="Creator"
@@ -177,9 +168,8 @@ export default function About() {
                     Samuel Tagoe (Jhay)
                   </h3>
                   <div className="flex items-center gap-2">
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
-                    }`}>
+                    <span className={`px-2 py-1 text-xs rounded-full ${darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
+                      }`}>
                       Creator & Lead
                     </span>
                     {/* <span className={`px-2 py-1 text-xs rounded-full ${
@@ -187,9 +177,8 @@ export default function About() {
                     }`}>
                       21 y/o
                     </span> */}
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
-                    }`}>
+                    <span className={`px-2 py-1 text-xs rounded-full ${darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
+                      }`}>
                       Ghana 🇬🇭
                     </span>
                   </div>
@@ -203,11 +192,10 @@ export default function About() {
                     href="https://github.com/SinofPride-999"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 rounded-lg transition-all ${
-                      darkMode
+                    className={`p-2 rounded-lg transition-all ${darkMode
                         ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
                         : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
-                    }`}
+                      }`}
                     title="GitHub"
                   >
                     <Github className="w-5 h-5" />
@@ -216,11 +204,10 @@ export default function About() {
                     href="https://x.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 rounded-lg transition-all ${
-                      darkMode
+                    className={`p-2 rounded-lg transition-all ${darkMode
                         ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
                         : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
-                    }`}
+                      }`}
                     title="X"
                   >
                     <img
@@ -233,11 +220,10 @@ export default function About() {
                     href="https://jhayonline.dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 rounded-lg transition-all ${
-                      darkMode
+                    className={`p-2 rounded-lg transition-all ${darkMode
                         ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
                         : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
-                    }`}
+                      }`}
                     title="Website"
                   >
                     <ExternalLink className="w-5 h-5" />
@@ -250,12 +236,10 @@ export default function About() {
 
         {/* Why Luxid Section */}
         <div className="mb-24">
-          <h2 className={`text-4xl font-bold text-center mb-4 ${
-            darkMode ? 'text-white' : 'text-black'
-          }`}>Why Choose Luxid?</h2>
-          <p className={`text-xl text-center mb-12 max-w-3xl mx-auto ${
-            darkMode ? 'text-zinc-400' : 'text-zinc-600'
-          }`}>
+          <h2 className={`text-4xl font-bold text-center mb-4 ${darkMode ? 'text-white' : 'text-black'
+            }`}>Why Choose Luxid?</h2>
+          <p className={`text-xl text-center mb-12 max-w-3xl mx-auto ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+            }`}>
             Built with the developer experience at its core, Luxid offers everything you need
             to build modern PHP applications.
           </p>
@@ -278,21 +262,18 @@ export default function About() {
                 desc: "Optimized for speed with minimal overhead. Build fast applications that scale."
               }
             ].map((item, i) => (
-              <div key={i} className={`p-6 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${
-                darkMode
+              <div key={i} className={`p-6 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
                   ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
                   : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
-              }`}>
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
-                  darkMode
+                }`}>
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${darkMode
                     ? 'bg-zinc-800 text-zinc-300'
                     : 'bg-zinc-200 text-zinc-700'
-                }`}>
+                  }`}>
                   <item.icon className="w-6 h-6" />
                 </div>
-                <h3 className={`text-xl font-semibold mb-3 ${
-                  darkMode ? 'text-white' : 'text-black'
-                }`}>{item.title}</h3>
+                <h3 className={`text-xl font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'
+                  }`}>{item.title}</h3>
                 <p className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
                   {item.desc}
                 </p>
@@ -304,30 +285,26 @@ export default function About() {
         {/* Core Team Section */}
         <div className="mb-24">
           <div className="text-center mb-12">
-            <h2 className={`text-4xl font-bold mb-4 ${
-              darkMode ? 'text-white' : 'text-black'
-            }`}>Meet the Core Team</h2>
-            <p className={`text-xl max-w-3xl mx-auto ${
-              darkMode ? 'text-zinc-400' : 'text-zinc-600'
-            }`}>
+            <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'
+              }`}>Meet the Core Team</h2>
+            <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+              }`}>
               The passionate individuals shaping the future of Luxid.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {coreTeam.map((member, i) => (
-              <div key={i} className={`p-6 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${
-                darkMode
+              <div key={i} className={`p-6 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
                   ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
                   : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
-              }`}>
+                }`}>
                 {/* Profile Picture */}
                 <div className="relative mb-4">
                   <div className="w-20 h-20 rounded-full overflow-hidden border border-zinc-700 mb-3">
                     <div
-                      className={`w-full h-full flex items-center justify-center rounded-full overflow-hidden ${
-                        darkMode ? "bg-zinc-800" : "bg-zinc-200"
-                      }`}
+                      className={`w-full h-full flex items-center justify-center rounded-full overflow-hidden ${darkMode ? "bg-zinc-800" : "bg-zinc-200"
+                        }`}
                     >
                       {member.avatar ? (
                         <img
@@ -347,9 +324,8 @@ export default function About() {
                       {member.name}
                     </h3>
                     {i === 0 && (
-                      <div className={`px-2 py-0.5 text-xs rounded ${
-                        darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
-                      }`}>
+                      <div className={`px-2 py-0.5 text-xs rounded ${darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
+                        }`}>
                         Creator
                       </div>
                     )}
@@ -372,11 +348,10 @@ export default function About() {
                       href={member.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-1.5 rounded transition-all ${
-                        darkMode
+                      className={`p-1.5 rounded transition-all ${darkMode
                           ? 'hover:bg-zinc-800 text-zinc-400 hover:text-white'
                           : 'hover:bg-zinc-200 text-zinc-500 hover:text-zinc-900'
-                      }`}
+                        }`}
                       title="GitHub"
                     >
                       <Github className="w-4 h-4" />
@@ -387,11 +362,10 @@ export default function About() {
                       href={member.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-1.5 rounded transition-all ${
-                        darkMode
+                      className={`p-1.5 rounded transition-all ${darkMode
                           ? 'hover:bg-zinc-800 text-zinc-400 hover:text-white'
                           : 'hover:bg-zinc-200 text-zinc-500 hover:text-zinc-900'
-                      }`}
+                        }`}
                       title="X"
                     >
                       <img
@@ -406,11 +380,10 @@ export default function About() {
                       href={member.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-1.5 rounded transition-all ${
-                        darkMode
+                      className={`p-1.5 rounded transition-all ${darkMode
                           ? 'hover:bg-zinc-800 text-zinc-400 hover:text-white'
                           : 'hover:bg-zinc-200 text-zinc-500 hover:text-zinc-900'
-                      }`}
+                        }`}
                       title="Website"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -426,38 +399,32 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
           {/* Stats */}
           <div>
-            <h3 className={`text-2xl font-bold mb-6 ${
-              darkMode ? 'text-white' : 'text-black'
-            }`}>Our Growing Community</h3>
-            <div className={`p-6 border rounded-xl ${
-              darkMode
+            <h3 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'
+              }`}>Our Growing Community</h3>
+            <div className={`p-6 border rounded-xl ${darkMode
                 ? 'bg-zinc-900/50 border-zinc-800'
                 : 'bg-zinc-50/50 border-zinc-200'
-            }`}>
+              }`}>
               {[
                 { icon: Github, label: "GitHub Stars", value: "12,000+" },
                 { icon: Users, label: "Contributors", value: "500+" },
                 { icon: Globe, label: "Countries", value: "85+" },
                 { icon: BookOpen, label: "Projects Built", value: "2,500+" }
               ].map((stat, i) => (
-                <div key={i} className={`flex items-center justify-between py-4 ${
-                  i !== 3 ? 'border-b' : ''
-                } ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+                <div key={i} className={`flex items-center justify-between py-4 ${i !== 3 ? 'border-b' : ''
+                  } ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${
-                      darkMode ? 'bg-zinc-800' : 'bg-zinc-100'
-                    }`}>
-                      <stat.icon className={`w-4 h-4 ${
-                        darkMode ? 'text-zinc-400' : 'text-zinc-600'
-                      }`} />
+                    <div className={`p-2 rounded-lg ${darkMode ? 'bg-zinc-800' : 'bg-zinc-100'
+                      }`}>
+                      <stat.icon className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+                        }`} />
                     </div>
                     <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>
                       {stat.label}
                     </span>
                   </div>
-                  <span className={`font-bold ${
-                    darkMode ? 'text-white' : 'text-black'
-                  }`}>{stat.value}</span>
+                  <span className={`font-bold ${darkMode ? 'text-white' : 'text-black'
+                    }`}>{stat.value}</span>
                 </div>
               ))}
             </div>
@@ -466,42 +433,36 @@ export default function About() {
           {/* Top Contributors */}
           <div>
             <div className="flex items-center justify-between mb-6">
-              <h3 className={`text-2xl font-bold ${
-                darkMode ? 'text-white' : 'text-black'
-              }`}>Top Contributors</h3>
+              <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'
+                }`}>Top Contributors</h3>
               <a
                 href="#"
-                className={`flex items-center gap-1 text-sm ${
-                  darkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-black'
-                }`}
+                className={`flex items-center gap-1 text-sm ${darkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-black'
+                  }`}
               >
                 View all <ChevronRight className="w-4 h-4" />
               </a>
             </div>
-            <div className={`p-6 border rounded-xl ${
-              darkMode
+            <div className={`p-6 border rounded-xl ${darkMode
                 ? 'bg-zinc-900/50 border-zinc-800'
                 : 'bg-zinc-50/50 border-zinc-200'
-            }`}>
+              }`}>
               {topContributors.map((contributor, i) => (
                 <a
                   key={i}
                   href={contributor.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center justify-between py-3 transition-colors ${
-                    i !== topContributors.length - 1 ? 'border-b' : ''
-                  } ${darkMode ? 'border-zinc-800 hover:bg-zinc-800/50' : 'border-zinc-200 hover:bg-zinc-100/50'}`}
+                  className={`flex items-center justify-between py-3 transition-colors ${i !== topContributors.length - 1 ? 'border-b' : ''
+                    } ${darkMode ? 'border-zinc-800 hover:bg-zinc-800/50' : 'border-zinc-200 hover:bg-zinc-100/50'}`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full overflow-hidden border ${
-                      darkMode ? 'border-zinc-700' : 'border-zinc-300'
-                    }`}>
-                      <div className={`w-full h-full flex items-center justify-center text-sm font-bold ${
-                        darkMode
+                    <div className={`w-10 h-10 rounded-full overflow-hidden border ${darkMode ? 'border-zinc-700' : 'border-zinc-300'
+                      }`}>
+                      <div className={`w-full h-full flex items-center justify-center text-sm font-bold ${darkMode
                           ? 'bg-zinc-800 text-zinc-300'
                           : 'bg-zinc-200 text-zinc-700'
-                      }`}>
+                        }`}>
                         {contributor.avatar}
                       </div>
                     </div>
@@ -509,16 +470,14 @@ export default function About() {
                       <div className={darkMode ? 'text-white' : 'text-black'}>
                         {contributor.name}
                       </div>
-                      <div className={`text-xs flex items-center gap-1 ${
-                        darkMode ? 'text-zinc-500' : 'text-zinc-600'
-                      }`}>
+                      <div className={`text-xs flex items-center gap-1 ${darkMode ? 'text-zinc-500' : 'text-zinc-600'
+                        }`}>
                         <Star className="w-3 h-3 fill-yellow-400 text-yellow-700" /> {contributor.contributions} contributions
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className={`w-4 h-4 ${
-                    darkMode ? 'text-zinc-600' : 'text-zinc-400'
-                  }`} />
+                  <ChevronRight className={`w-4 h-4 ${darkMode ? 'text-zinc-600' : 'text-zinc-400'
+                    }`} />
                 </a>
               ))}
             </div>
@@ -528,21 +487,18 @@ export default function About() {
         {/* Sponsors Section */}
         <div>
           <div className="text-center mb-12">
-            <h2 className={`text-4xl font-bold mb-4 ${
-              darkMode ? 'text-white' : 'text-black'
-            }`}>Our Supporters</h2>
-            <p className={`text-xl max-w-3xl mx-auto ${
-              darkMode ? 'text-zinc-400' : 'text-zinc-600'
-            }`}>
+            <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'
+              }`}>Our Supporters</h2>
+            <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+              }`}>
               Luxid is made possible by the generous support of these amazing sponsors.
             </p>
           </div>
 
           {/* Gold Sponsors */}
           <div className="mb-12">
-            <h3 className={`text-xl font-semibold mb-6 ${
-              darkMode ? 'text-zinc-300' : 'text-zinc-700'
-            }`}>
+            <h3 className={`text-xl font-semibold mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'
+              }`}>
               Gold Sponsors
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -552,28 +508,24 @@ export default function About() {
                   href={sponsor.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-6 border rounded-xl transition-all hover:-translate-y-1 ${
-                    darkMode
+                  className={`p-6 border rounded-xl transition-all hover:-translate-y-1 ${darkMode
                       ? 'bg-zinc-900/30 border-zinc-800 hover:border-zinc-600'
                       : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className={`text-lg font-semibold mb-1 ${
-                        darkMode ? 'text-white' : 'text-black'
-                      }`}>
+                      <div className={`text-lg font-semibold mb-1 ${darkMode ? 'text-white' : 'text-black'
+                        }`}>
                         {sponsor.name}
                       </div>
-                      <div className={`text-sm ${
-                        darkMode ? 'text-zinc-400' : 'text-zinc-600'
-                      }`}>
+                      <div className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+                        }`}>
                         {sponsor.duration}
                       </div>
                     </div>
-                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
-                    }`}>
+                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
+                      }`}>
                       Gold
                     </div>
                   </div>
@@ -586,16 +538,14 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Silver */}
             <div>
-              <h3 className={`text-lg font-semibold mb-4 ${
-                darkMode ? 'text-zinc-300' : 'text-zinc-700'
-              }`}>
+              <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'
+                }`}>
                 Silver Sponsors
               </h3>
-              <div className={`p-6 border rounded-xl space-y-3 ${
-                darkMode
+              <div className={`p-6 border rounded-xl space-y-3 ${darkMode
                   ? 'bg-zinc-900/30 border-zinc-800'
                   : 'bg-zinc-50/50 border-zinc-200'
-              }`}>
+                }`}>
                 {sponsors.filter(s => s.tier === 'silver').map((sponsor, i) => (
                   <div key={i} className="flex items-center justify-between">
                     <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>
@@ -611,16 +561,14 @@ export default function About() {
 
             {/* Individual Sponsors */}
             <div>
-              <h3 className={`text-lg font-semibold mb-4 ${
-                darkMode ? 'text-zinc-300' : 'text-zinc-700'
-              }`}>
+              <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'
+                }`}>
                 Generous Individuals
               </h3>
-              <div className={`p-6 border rounded-xl space-y-3 ${
-                darkMode
+              <div className={`p-6 border rounded-xl space-y-3 ${darkMode
                   ? 'bg-zinc-900/30 border-zinc-800'
                   : 'bg-zinc-50/50 border-zinc-200'
-              }`}>
+                }`}>
                 {sponsors.filter(s => s.tier === 'individual').map((sponsor, i) => (
                   <div key={i} className="flex items-center justify-between">
                     <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>
@@ -636,33 +584,29 @@ export default function About() {
           </div>
 
           {/* CTA to Sponsor */}
-          <div className={`mt-12 p-8 border rounded-2xl text-center ${
-            darkMode
+          <div className={`mt-12 p-8 border rounded-2xl text-center ${darkMode
               ? 'bg-gradient-to-br from-zinc-900/50 to-zinc-800/30 border-zinc-800'
               : 'bg-gradient-to-br from-zinc-50 to-white/80 border-zinc-200'
-          }`}>
+            }`}>
             {/* <Heart
                 className={`w-12 h-12 mx-auto mb-4 fill-red-500 stroke-none ${
                   darkMode ? 'text-red-400' : 'text-red-600'
                 }`}
               /> */}
-            <h3 className={`text-2xl font-bold mb-2 ${
-              darkMode ? 'text-white' : 'text-black'
-            }`}>
+            <h3 className={`text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'
+              }`}>
               Support Luxid's Development
             </h3>
-            <p className={`mb-6 max-w-2xl mx-auto ${
-              darkMode ? 'text-zinc-400' : 'text-zinc-600'
-            }`}>
+            <p className={`mb-6 max-w-2xl mx-auto ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
+              }`}>
               Your sponsorship helps ensure Luxid remains free, open-source, and actively maintained.
             </p>
             <a
               href="#"
-              className={`inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold transition-all hover:scale-105 ${
-                darkMode
+              className={`inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold transition-all hover:scale-105 ${darkMode
                   ? 'bg-white text-black hover:bg-zinc-200'
                   : 'bg-black text-white hover:bg-zinc-800'
-              }`}
+                }`}
             >
               <Heart className="w-5 h-5 fill-red-500 stroke-none" /> Become a Sponsor
             </a>

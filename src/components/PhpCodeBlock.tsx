@@ -18,7 +18,6 @@ export default function PhpCodeBlock({ code, darkMode = false, height = '300px' 
       darkMode={darkMode}
       height={height}
       readOnly={true}
-      showLineNumbers={true}
       minimap={false}
     />
   );

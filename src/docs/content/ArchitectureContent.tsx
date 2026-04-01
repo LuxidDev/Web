@@ -1,17 +1,16 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Layers, Code, Database, Zap } from 'lucide-react';
+import { Layers } from 'lucide-react';
 
 export default function ArchitectureContent() {
   const { darkMode } = useTheme();
 
   return (
     <>
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
+      <div className={`mb-8 p-6 rounded-2xl ${darkMode
           ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
           : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
-      }`}>
+        }`}>
         <div className="flex items-start gap-4">
           <Layers className={`w-12 h-12 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
           <div>

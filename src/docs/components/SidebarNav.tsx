@@ -11,8 +11,6 @@ interface SidebarNavProps {
 }
 
 export default function SidebarNav({
-  currentDoc,
-  currentSection,
   darkMode,
   copiedCommand,
   onCopyCommand,
@@ -20,8 +18,8 @@ export default function SidebarNav({
   return (
     <div
       className={`sticky top-32 rounded-2xl p-6 ${darkMode
-          ? "bg-zinc-900/80 border border-zinc-800 backdrop-blur-xl"
-          : "bg-zinc-100/80 border border-zinc-300 backdrop-blur-xl"
+        ? "bg-zinc-900/80 border border-zinc-800 backdrop-blur-xl"
+        : "bg-zinc-100/80 border border-zinc-300 backdrop-blur-xl"
         }`}
     >
       <h3
@@ -56,12 +54,12 @@ export default function SidebarNav({
                     key={chapter.id}
                     href={chapter.path}
                     className={`block py-2 px-3 rounded-lg text-sm transition-all ${isActive
-                        ? darkMode
-                          ? "bg-white/10 text-white"
-                          : "bg-zinc-200 text-black"
-                        : darkMode
-                          ? "text-zinc-500 hover:text-white hover:bg-white/5"
-                          : "text-zinc-600 hover:text-black hover:bg-zinc-100"
+                      ? darkMode
+                        ? "bg-white/10 text-white"
+                        : "bg-zinc-200 text-black"
+                      : darkMode
+                        ? "text-zinc-500 hover:text-white hover:bg-white/5"
+                        : "text-zinc-600 hover:text-black hover:bg-zinc-100"
                       }`}
                   >
                     {chapter.title}
@@ -69,8 +67,8 @@ export default function SidebarNav({
                     {chapter.quickStart && (
                       <span
                         className={`ml-2 px-2 py-0.5 text-xs rounded-full ${darkMode
-                            ? "bg-blue-500/20 text-blue-400"
-                            : "bg-blue-100 text-blue-600"
+                          ? "bg-blue-500/20 text-blue-400"
+                          : "bg-blue-100 text-blue-600"
                           }`}
                       >
                         Start
@@ -101,19 +99,13 @@ export default function SidebarNav({
             href="/docs/first-app"
             className="block text-sm text-blue-500 hover:text-blue-400"
           >
-            → Build Todo API
+            • Build Todo API
           </a>
           <a
-            href="/docs/make-commands"
+            href="/docs/cli-basics"
             className="block text-sm text-blue-500 hover:text-blue-400"
           >
-            → Code Generation
-          </a>
-          <a
-            href="/docs/authentication"
-            className="block text-sm text-blue-500 hover:text-blue-400"
-          >
-            → User Authentication
+            • Code Generation
           </a>
         </div>
       </div>
@@ -131,30 +123,12 @@ export default function SidebarNav({
         </h4>
 
         <div className="space-y-2">
-          <button
-            onClick={() =>
-              onCopyCommand("composer create-project luxid/framework myapp")
-            }
-            className={`w-full flex items-center justify-between p-3 rounded-lg text-sm transition-colors ${darkMode
-                ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
-                : "bg-zinc-200 hover:bg-zinc-300 text-zinc-700 hover:text-black"
-              }`}
-          >
-            <span className="font-mono">composer create-project...</span>
-            {copiedCommand ===
-              "composer create-project luxid/framework myapp" ? (
-              <Check className="w-4 h-4 text-green-500" />
-            ) : (
-              <Copy className="w-4 h-4" />
-            )}
-          </button>
-
           <a
-            href="https://github.com/luxid/framework"
+            href="https://github.com/LuxidDev/Framework"
             target="_blank"
             className={`w-full flex items-center justify-between p-3 rounded-lg text-sm transition-colors ${darkMode
-                ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
-                : "bg-zinc-200 hover:bg-zinc-300 text-zinc-700 hover:text-black"
+              ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
+              : "bg-zinc-200 hover:bg-zinc-300 text-zinc-700 hover:text-black"
               }`}
           >
             <span>Star on GitHub</span>

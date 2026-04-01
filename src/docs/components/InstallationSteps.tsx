@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
 import { CheckCircle, Terminal, Package, Server, Database, Copy, Check } from 'lucide-react';
 import CodeExample from './CodeExample';
 
@@ -64,11 +63,10 @@ export default function InstallationSteps({ darkMode, onCopyCommand, copiedComma
           {onCopyCommand && (
             <button
               onClick={() => onCopyCommand('composer create-project luxid/framework myapp')}
-              className={`w-full flex items-center justify-between p-4 rounded-lg mb-4 transition-colors ${
-                darkMode
-                  ? 'bg-zinc-800 hover:bg-zinc-700'
-                  : 'bg-zinc-100 hover:bg-zinc-200'
-              }`}
+              className={`w-full flex items-center justify-between p-4 rounded-lg mb-4 transition-colors ${darkMode
+                ? 'bg-zinc-800 hover:bg-zinc-700'
+                : 'bg-zinc-100 hover:bg-zinc-200'
+                }`}
             >
               <code className="font-mono">composer create-project luxid/framework myapp</code>
               {copiedCommand === 'composer create-project luxid/framework myapp' ? (
@@ -99,7 +97,6 @@ cp .env.example .env
 # Edit .env with your database credentials`}
             language="bash"
             explanation="Copy and configure your environment file"
-            compact
           />
         </>
       )
@@ -118,13 +115,11 @@ cp .env.example .env
               code="php juice db:create"
               language="bash"
               explanation="Create database"
-              compact
             />
             <CodeExample
               code="php juice db:migrate"
               language="bash"
               explanation="Run migrations"
-              compact
             />
           </div>
         </>
@@ -143,7 +138,6 @@ cp .env.example .env
             code="php juice start"
             language="bash"
             explanation="Visit http://localhost:8000"
-            compact
           />
           <p className={`text-sm mt-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
             Your Luxid application is now running!
@@ -158,17 +152,14 @@ cp .env.example .env
       {steps.map((step) => (
         <div
           key={step.step}
-          className={`p-6 rounded-xl ${
-            darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'
-          }`}
+          className={`p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'
+            }`}
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-              darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
-            }`}>
-              <step.icon className={`w-6 h-6 ${
-                darkMode ? 'text-blue-400' : 'text-blue-600'
-              }`} />
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center ${darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
+              }`}>
+              <step.icon className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'
+                }`} />
             </div>
             <div>
               <h4 className="text-xl font-bold">

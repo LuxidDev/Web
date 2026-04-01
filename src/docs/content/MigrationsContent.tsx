@@ -3,7 +3,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 import {
   Database, ArrowUp, ArrowDown, RefreshCw, AlertCircle,
   CheckCircle, ArrowRight, Info,
-  Hash, Type, Calendar, Trash2
+  Trash2
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';

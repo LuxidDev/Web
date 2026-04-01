@@ -173,7 +173,7 @@ export const docsChapters = [
       {
         id: 'introduction',
         title: 'Introduction',
-        path: '/docs/tutorial',
+        path: '/docs/first-app',
         content: 'IntroductionTutorial'
       },
       {

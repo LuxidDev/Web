@@ -2,8 +2,8 @@ import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
   Filter, SortAsc, Hash, CheckCircle,
-  ArrowRight, Layers, Terminal, Database,
-  GitBranch, Settings, Plus, BarChart, TrendingUp
+  ArrowRight, Terminal, Database,
+  Settings, Plus, BarChart, TrendingUp
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
 

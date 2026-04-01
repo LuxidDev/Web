@@ -1,12 +1,9 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Cpu, Package, Layers, Code,
-  Terminal, Download, ArrowRight,
+  ArrowRight,
   CheckCircle, AlertCircle
 } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function ErrorHandlingContent() {
   const { darkMode } = useTheme();
@@ -15,8 +12,8 @@ export default function ErrorHandlingContent() {
     <>
       {/* Hero Section */}
       <div className={`mb-8 p-6 rounded-2xl ${darkMode
-          ? "bg-gray-900/50 border border-gray-800"
-          : "bg-gray-50 border border-gray-200"
+        ? "bg-gray-900/50 border border-gray-800"
+        : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
           <AlertCircle className={`w-12 h-12 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />

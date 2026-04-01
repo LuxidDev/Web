@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Cpu, Package, Layers, Code,
-  Terminal, Download, ArrowRight,
-  CheckCircle, AlertCircle
+  Layers,
+  ArrowRight,
+  CheckCircle,
 } from 'lucide-react';
 
 export default function ValidationContent() {

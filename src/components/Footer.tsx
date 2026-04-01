@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Twitter, MessageCircle, Youtube, Heart, ArrowUp } from 'lucide-react';
+import { Github, Youtube, ArrowUp } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const footerLinks = {
@@ -33,11 +33,10 @@ export default function Footer() {
 
   return (
     <>
-      <footer className={`border-t relative ${
-        darkMode
+      <footer className={`border-t relative ${darkMode
           ? 'bg-zinc-950 border-zinc-900'
           : 'bg-zinc-900 border-zinc-800'
-      }`}>
+        }`}>
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
             <div className="col-span-2">
@@ -55,11 +54,10 @@ export default function Footer() {
                   <a
                     key={i}
                     href="#"
-                    className={`p-2 rounded-lg transition-all ${
-                      darkMode
+                    className={`p-2 rounded-lg transition-all ${darkMode
                         ? 'bg-zinc-900 hover:bg-zinc-800 text-zinc-500 hover:text-white'
                         : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -68,11 +66,10 @@ export default function Footer() {
                 {/* X Logo (replacing Twitter) */}
                 <a
                   href="#"
-                  className={`p-2 rounded-lg transition-all ${
-                    darkMode
+                  className={`p-2 rounded-lg transition-all ${darkMode
                       ? 'bg-zinc-900 hover:bg-zinc-800'
                       : 'bg-zinc-800 hover:bg-zinc-700'
-                  }`}
+                    }`}
                   title="X"
                 >
                   <img
@@ -89,11 +86,10 @@ export default function Footer() {
                 <ul className="space-y-2.5">
                   {links.map(link => (
                     <li key={link}>
-                      <a href="#" className={`text-sm transition-colors ${
-                        darkMode
+                      <a href="#" className={`text-sm transition-colors ${darkMode
                           ? 'text-zinc-500 hover:text-white'
                           : 'text-zinc-400 hover:text-white'
-                      }`}>
+                        }`}>
                         {link}
                       </a>
                     </li>
@@ -102,47 +98,40 @@ export default function Footer() {
               </div>
             ))}
           </div>
-          <div className={`pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 ${
-            darkMode ? 'border-zinc-900' : 'border-zinc-800'
-          }`}>
-            <p className={`text-sm flex items-center gap-1 ${
-              darkMode ? 'text-zinc-600' : 'text-zinc-500'
+          <div className={`pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 ${darkMode ? 'border-zinc-900' : 'border-zinc-800'
             }`}>
+            <p className={`text-sm flex items-center gap-1 ${darkMode ? 'text-zinc-600' : 'text-zinc-500'
+              }`}>
               Creator and CEO of Luxid ~
               <a
                 href="https://jhayonline.dev"
-                className={`underline font-semibold transition-colors duration-200 ${
-                  darkMode ? 'text-white hover:text-zinc-300' : 'text-blue-600 hover:text-blue-800'
-                }`}
+                className={`underline font-semibold transition-colors duration-200 ${darkMode ? 'text-white hover:text-zinc-300' : 'text-blue-600 hover:text-blue-800'
+                  }`}
               >
                 jhayonline.dev
               </a>
             </p>
-            <p className={`text-sm ${
-              darkMode ? 'text-zinc-600' : 'text-zinc-500'
-            }`}>
+            <p className={`text-sm ${darkMode ? 'text-zinc-600' : 'text-zinc-500'
+              }`}>
               &copy; 2025 Luxid. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm">
-              <a href="#" className={`transition-colors ${
-                darkMode
+              <a href="#" className={`transition-colors ${darkMode
                   ? 'text-zinc-500 hover:text-white'
                   : 'text-zinc-400 hover:text-white'
-              }`}>
+                }`}>
                 Privacy
               </a>
-              <a href="#" className={`transition-colors ${
-                darkMode
+              <a href="#" className={`transition-colors ${darkMode
                   ? 'text-zinc-500 hover:text-white'
                   : 'text-zinc-400 hover:text-white'
-              }`}>
+                }`}>
                 Terms
               </a>
-              <a href="#" className={`transition-colors ${
-                darkMode
+              <a href="#" className={`transition-colors ${darkMode
                   ? 'text-zinc-500 hover:text-white'
                   : 'text-zinc-400 hover:text-white'
-              }`}>
+                }`}>
                 Cookies
               </a>
             </div>
@@ -152,15 +141,13 @@ export default function Footer() {
         {/* Scroll to Top Button */}
         <button
           onClick={scrollToTop}
-          className={`absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full border transition-all duration-300 hover:scale-110 ${
-            showScrollTop
+          className={`absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full border transition-all duration-300 hover:scale-110 ${showScrollTop
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-4 pointer-events-none'
-          } ${
-            darkMode
+            } ${darkMode
               ? 'bg-zinc-900 border-zinc-700 hover:bg-zinc-800 hover:border-zinc-600 text-white'
               : 'bg-zinc-800 border-zinc-700 hover:bg-zinc-700 hover:border-zinc-600 text-white'
-          }`}
+            }`}
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5 mx-auto" />

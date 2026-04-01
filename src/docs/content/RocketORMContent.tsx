@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Database, Info, CheckCircle, ArrowRight,
-  Rocket, Code, AlertCircle,
+  CheckCircle, ArrowRight,
+  AlertCircle,
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';
