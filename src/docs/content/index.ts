@@ -32,7 +32,7 @@ export { default as CLIReferenceContent } from './CLIReferenceContent';
 
 /* Tutorial Content */
 export { default as IntroductionTutorial } from '../tutorial/IntroductionTutorial';
-export { default as UnderstandingSEATutorial } from '../tutorial/UnderstandingSEATutorial';
+export { default as UnderstandingAVETutorial } from '../tutorial/UnderstandingAVETutorial';
 export { default as TodoEntityTutorial } from '../tutorial/TodoEntityTutorial';
 export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrationTutorial';
 export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
@@ -248,9 +248,9 @@ export const docsChapters = [
       },
       {
         id: 'sea',
-        title: 'Understanding SEA',
-        path: '/docs/sea',
-        content: 'UnderstandingSEATutorial'
+        title: 'Understanding AVE',
+        path: '/docs/ave',
+        content: 'UnderstandingAVETutorial'
       },
       {
         id: 'todoentity',
