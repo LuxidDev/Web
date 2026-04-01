@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useSearch } from '@/contexts/SearchContext';
 import Header from '@/components/Header';
@@ -68,7 +68,6 @@ export default function DocsLayout({ children, currentDoc, currentSection }: Doc
         <div className={`absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[80px] ${orb2Color}`} style={{ transform: `translate(${-mousePos.x * 20}px, ${scrollY * -0.15}px)` }} />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          {/* Announcement badge */}
           <div className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full mb-8 backdrop-blur-sm hover:border-zinc-500 transition-colors cursor-pointer group ${darkMode ? 'bg-zinc-900/80 border-zinc-700' : 'bg-zinc-100/80 border-zinc-300'
             }`}>
             <span className="px-2 py-0.5 bg-black text-white text-xs font-bold rounded">New</span>
@@ -76,7 +75,6 @@ export default function DocsLayout({ children, currentDoc, currentSection }: Doc
             <ArrowRight className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-500'} group-hover:translate-x-1 transition-transform`} />
           </div>
 
-          {/* Main headline */}
           <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-[1.1] ${darkMode ? 'text-white' : 'text-zinc-900'
             }`}>
             Learn<br />
@@ -98,19 +96,21 @@ export default function DocsLayout({ children, currentDoc, currentSection }: Doc
       <section className={`py-20 relative overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'
         }`}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <SidebarNav
-                currentDoc={currentDoc}
-                darkMode={darkMode}
-                copiedCommand={copiedCommand}
-                onCopyCommand={handleCopyCommand}
-              />
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Sidebar - Sticky */}
+            <div className="lg:w-1/4">
+              <div className="sticky top-32">
+                <SidebarNav
+                  currentDoc={currentDoc}
+                  darkMode={darkMode}
+                  copiedCommand={copiedCommand}
+                  onCopyCommand={handleCopyCommand}
+                />
+              </div>
             </div>
 
             {/* Main Content */}
-            <div className="lg:col-span-3">
+            <div className="lg:w-3/4">
               <div className={`rounded-2xl ${darkMode ? 'bg-zinc-900/80 border border-zinc-800' : 'bg-zinc-100/80 border border-zinc-300'
                 } p-8 backdrop-blur-xl`}>
                 <ChapterHeader
@@ -119,7 +119,6 @@ export default function DocsLayout({ children, currentDoc, currentSection }: Doc
                   darkMode={darkMode}
                 />
 
-                {/* Chapter Content */}
                 <div className="prose prose-lg max-w-none">
                   {children}
                 </div>

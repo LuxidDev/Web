@@ -42,22 +42,6 @@ export default function Hero() {
       <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[100px] ${orb1Color}`} style={{ transform: `translate(${mousePos.x * 30}px, ${scrollY * 0.2 + mousePos.y * 30}px)` }} />
       <div className={`absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[80px] ${orb2Color}`} style={{ transform: `translate(${-mousePos.x * 20}px, ${scrollY * -0.15}px)` }} />
 
-      {/* Floating fox logo */}
-      <div className="absolute top-40 right-20 opacity-[0.08]" style={{ transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.02}deg) scale(${1 + mousePos.x * 0.1})` }}>
-        <img
-          src="/images/bg-code.png"
-          alt="Code Background"
-          className="w-80 h-80 object-contain"
-        />
-      </div>
-      <div className="absolute bottom-40 left-20 opacity-[0.05]" style={{ transform: `translateY(${scrollY * -0.2}px) rotate(${-scrollY * 0.01}deg)` }}>
-        <img
-          src="/images/bg-code.png"
-          alt="Code Background"
-          className="w-48 h-48 object-contain"
-        />
-      </div>
-
       {/* Decorative lines */}
       <div className={`absolute top-1/3 left-0 w-32 h-px bg-gradient-to-r from-transparent ${lineColor} to-transparent`} style={{ transform: `translateX(${scrollY * 0.5}px)` }} />
       <div className={`absolute bottom-1/3 right-0 w-32 h-px bg-gradient-to-r from-transparent ${lineColor} to-transparent`} style={{ transform: `translateX(${-scrollY * 0.5}px)` }} />

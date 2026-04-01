@@ -17,9 +17,9 @@ export default function SidebarNav({
 }: SidebarNavProps) {
   return (
     <div
-      className={`sticky top-32 rounded-2xl p-6 ${darkMode
-        ? "bg-zinc-900/80 border border-zinc-800 backdrop-blur-xl"
-        : "bg-zinc-100/80 border border-zinc-300 backdrop-blur-xl"
+      className={`rounded-2xl p-6 ${darkMode
+          ? "bg-zinc-900/80 border border-zinc-800 backdrop-blur-xl"
+          : "bg-zinc-100/80 border border-zinc-300 backdrop-blur-xl"
         }`}
     >
       <h3
@@ -30,7 +30,7 @@ export default function SidebarNav({
         Chapters
       </h3>
 
-      <div className="space-y-6">
+      <div className="space-y-6 max-h-[calc(100vh-200px)] overflow-y-auto">
         {docsChapters.map((section) => (
           <div key={section.id}>
             <div className="flex items-center gap-2 mb-3">
@@ -54,12 +54,12 @@ export default function SidebarNav({
                     key={chapter.id}
                     href={chapter.path}
                     className={`block py-2 px-3 rounded-lg text-sm transition-all ${isActive
-                      ? darkMode
-                        ? "bg-white/10 text-white"
-                        : "bg-zinc-200 text-black"
-                      : darkMode
-                        ? "text-zinc-500 hover:text-white hover:bg-white/5"
-                        : "text-zinc-600 hover:text-black hover:bg-zinc-100"
+                        ? darkMode
+                          ? "bg-white/10 text-white"
+                          : "bg-zinc-200 text-black"
+                        : darkMode
+                          ? "text-zinc-500 hover:text-white hover:bg-white/5"
+                          : "text-zinc-600 hover:text-black hover:bg-zinc-100"
                       }`}
                   >
                     {chapter.title}
@@ -67,8 +67,8 @@ export default function SidebarNav({
                     {chapter.quickStart && (
                       <span
                         className={`ml-2 px-2 py-0.5 text-xs rounded-full ${darkMode
-                          ? "bg-blue-500/20 text-blue-400"
-                          : "bg-blue-100 text-blue-600"
+                            ? "bg-blue-500/20 text-blue-400"
+                            : "bg-blue-100 text-blue-600"
                           }`}
                       >
                         Start
@@ -127,8 +127,8 @@ export default function SidebarNav({
             href="https://github.com/LuxidDev/Framework"
             target="_blank"
             className={`w-full flex items-center justify-between p-3 rounded-lg text-sm transition-colors ${darkMode
-              ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
-              : "bg-zinc-200 hover:bg-zinc-300 text-zinc-700 hover:text-black"
+                ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
+                : "bg-zinc-200 hover:bg-zinc-300 text-zinc-700 hover:text-black"
               }`}
           >
             <span>Star on GitHub</span>

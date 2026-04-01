@@ -1,95 +1,155 @@
-import React, { useEffect, useState } from "react";
-import { useTheme } from "@/contexts/ThemeContext";
+import React, { useState, useEffect } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useSearch } from '@/contexts/SearchContext';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import SpotlightSearch from '@/components/SpotlightSearch';
 
 const testimonials = [
   {
-    name: "Clarence Ahiabor",
-    handle: "@clarnx",
-    avatar: "CA",
-    text: "Luxid has completely changed how I write PHP. The SEA architecture just makes sense.",
+    name: "Luciano Sánchez",
+    handle: "@lucianosanchez",
+    company: "Emplag",
+    text: "We use NativePHP Mobile at Emplag and it's been incredibly fast to work with. The community is amazing, the developer experience feels natural, and it made building much easier for us.",
     col: 1,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
   {
-    name: "Gideon Allotey",
-    handle: "@mkvng",
-    avatar: "GA",
-    text: "The Rocket-ORM is incredible. Database queries have never been this elegant. Switched from Eloquent and never looked back.",
+    name: "Anzar Syahid",
+    handle: "@anzarsyahid",
+    text: "NativePHP extends what I can do with Laravel beyond the web in a way that just feels right.",
     col: 2,
+    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop",
   },
   {
-    name: "Lawson Buabassah",
-    handle: "@eyarko",
-    avatar: "LB",
-    text: "Nova is a game changer. Clean, fast, and intuitive.",
+    name: "Martin Blagoev",
+    handle: "@martinblagoev",
+    company: "MBSoft",
+    text: "I've lived in Laravel for over a decade now. NativePHP means I never have to leave. Same tools, same flow, infinite new canvas.",
     col: 3,
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
   },
   {
-    name: "Nelson Saake",
-    handle: "@nelson",
-    avatar: "NS",
-    text: "Juice-CLI saves me hours every week. Scaffolding has never been easier. The DX is unmatched.",
+    name: "Mark Nuijens",
+    handle: "@marknuijens",
+    company: "Digiplan",
+    text: "PHP can now run on mobile phones. Take that, Apple and Google! There's no stopping it now.",
     col: 1,
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
   },
   {
-    name: "Gregory Worlanyo",
-    handle: "@greg",
-    avatar: "GW",
-    text: "Finally a PHP framework that feels modern. Luxid is the future of PHP development.",
+    name: "Abishek R Srikanth",
+    handle: "@abisheksrikanth",
+    text: "Moving beyond the web felt intimidating due to the learning curve. NativePHP changed that completely.",
     col: 2,
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
   },
   {
-    name: "Sampson Quarmy",
-    handle: "@hash",
-    avatar: "SQ",
-    text: "Switched from Laravel to Luxid. The performance gains are real. Our API response times dropped by 40%.",
+    name: "Jose Espinal",
+    handle: "@joseespinal",
+    company: "Industria Creativa",
+    text: "I code for a hobby and love how with NativePHP I am implementing mobile apps internally to solve everyday problems at my business",
     col: 3,
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop",
   },
   {
-    name: "Raheem Coleman",
-    handle: "@boyraheem",
-    avatar: "RC",
-    text: "The documentation is excellent. Got up and running in minutes.",
+    name: "Giancarlo Di Massa",
+    handle: "@giancarlodimassa",
+    company: "digitalit.it",
+    text: "After years of working in the Laravel ecosystem, I always felt limited by the gap between web and native environments. NativePHP removes that barrier... with no need to rewrite everything in another language",
     col: 1,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
   {
-    name: "Nina Patel",
-    handle: "@ninapatel",
-    avatar: "NP",
-    text: "Love how modular everything is. Pick what you need, nothing more. Perfect for microservices.",
+    name: "Michael Guimaraes",
+    handle: "@michaelguimaraes",
+    company: "FlowBridge AI, Inc.",
+    text: "NativePHP is allowing us to create amazing AI driven mobile applications",
     col: 2,
+    avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop",
   },
   {
-    name: "Chris Anderson",
-    handle: "@chrisand",
-    avatar: "CA",
-    text: "Security features out of the box. One less thing to worry about.",
+    name: "Nick Poulos",
+    handle: "@nickpoulos",
+    company: "Beneath The Surface LLC",
+    text: "We always appreciate projects that continue to push the boundaries and provide best in class developer experiences. It is these types of efforts that will keep PHP alive",
     col: 3,
+    avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100&h=100&fit=crop",
   },
   {
-    name: "Maya Foster",
-    handle: "@mayacode",
-    avatar: "MF",
-    text: "The best PHP DX I have ever experienced. Highly recommend to any PHP developer.",
+    name: "Ed Grosvenor",
+    handle: "@edgrosvenor",
+    company: "Artisan Build",
+    text: "As a Laravel-only agency, we've turned down projects for years because we didn't want to have to learn and manage a different tech stack. NativePHP has let us add a whole new category to our offering with almost no effort on our part.",
     col: 1,
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
   },
   {
-    name: "Ryan Cooper",
-    handle: "@ryanc",
-    avatar: "RC",
-    text: "Luxid single-handedly made me enjoy PHP again. The syntax is beautiful.",
+    name: "Muhamad Zidane Arfani",
+    handle: "@zidanearfani",
+    text: "Excited to see how it transforms the way we build apps with PHP.",
     col: 2,
+    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop",
   },
   {
-    name: "Sophie Martin",
-    handle: "@sophiem",
-    avatar: "SM",
-    text: "Building APIs with Luxid is a breeze. Clean, fast, and well-documented.",
+    name: "Michael Biljleven",
+    handle: "@michaelbiljleven",
+    company: "Coding Monkeys",
+    text: "Building apps is just such a breeze using NativePHP. We've worked with Swift and Flutter before, but this makes our lives just so much easier.",
     col: 3,
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Robert Kas",
+    handle: "@robertkas",
+    company: "Improvo Software",
+    text: "I used to build desktop applications with Visual Studio and C#. When I first heard about NativePHP, I didn't hesitate to try it out. I really like how simple it makes building desktop apps in a language I'm already familiar with",
+    col: 1,
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Okoye Divine Chideibere",
+    handle: "@okoyedivine",
+    company: "Divplanet Technologies",
+    text: "Being able to create mobile and desktop apps using the language I love the most is like a super power",
+    col: 2,
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Jagdeep Singh",
+    handle: "@jagdeepsingh",
+    text: "I've been writing web apps for over two decades, and couldn't create a mobile app - now I can.",
+    col: 3,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Martin Gauthier",
+    handle: "@martingauthier",
+    company: "Pixel Trail | Codemoutain",
+    text: "We ported everything we had in Flutter back into our battle tested Laravel app and this is sooooo much better to manage and iterate with. Awesome work Simon and Shane.",
+    col: 1,
+    avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Nick Dillon",
+    handle: "@nickdillon",
+    text: "I never thought I'd be able to build a mobile app without diving into Flutter or React Native. NativePHP changed that - now I'm building native apps in Laravel, and it feels like magic",
+    col: 2,
+    avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Yves Engetschwiler",
+    handle: "@yvesengetschwiler",
+    company: "Prolifictech",
+    text: "I developed Popcorn Movies with NativePHP, which is available on the App Store, Play Store, and as a desktop application. Many more apps to come!",
+    col: 3,
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
   },
 ];
 
 export default function Testimonials() {
   const [scrollY, setScrollY] = useState(0);
+  const { searchOpen, setSearchOpen } = useSearch();
   const { darkMode } = useTheme();
 
   useEffect(() => {
@@ -103,83 +163,99 @@ export default function Testimonials() {
   const col3 = testimonials.filter((t) => t.col === 3);
 
   return (
-    <section
-      id="community"
-      className={`py-32 overflow-hidden ${darkMode ? "bg-black" : "bg-white"}`}
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 flex flex-wrap items-center justify-center gap-4 ${darkMode ? "text-white" : "text-black"
-              }`}
-          >
-            What people say about
-            <span
-              className={`text-transparent bg-clip-text bg-gradient-to-r ${darkMode ? "from-zinc-400 to-white" : "from-zinc-600 to-black"
+    <div className={darkMode ? "min-h-screen bg-black text-white" : "min-h-screen bg-white text-zinc-900"}>
+      <Header onSearchClick={() => setSearchOpen(true)} />
+      <SpotlightSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <section
+        id="community"
+        className={`py-32 overflow-hidden ${darkMode ? "bg-black" : "bg-white"}`}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2
+              className={`text-4xl md:text-5xl font-bold mb-4 flex flex-wrap items-center justify-center gap-4 ${darkMode ? "text-white" : "text-black"
                 }`}
             >
-              Luxid
-            </span>
-            <img
-              src={darkMode ? "/lion7.svg" : "/lion5.svg"}
-              alt="Luxid"
-              className="w-12 h-12 inline"
-            />
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[col1, col2, col3].map((col, colIdx) => (
-            <div
-              key={colIdx}
-              className="space-y-4"
-              style={{
-                transform: `translateY(${colIdx === 1 ? scrollY * 0.02 : 0}px)`,
-              }}
-            >
-              {col.map((t, i) => (
-                <div
-                  key={i}
-                  className={`p-5 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
-                    ? "bg-zinc-900/50 border-zinc-800 hover:border-zinc-600"
-                    : "bg-zinc-50/50 border-zinc-200 hover:border-zinc-400"
-                    }`}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div
-                      className={`w-10 h-10 rounded-full bg-gradient-to-br flex items-center justify-center text-white font-bold text-sm ${darkMode
-                        ? "from-zinc-500 to-zinc-700"
-                        : "from-zinc-400 to-zinc-600"
-                        }`}
-                    >
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <div
-                        className={`font-medium ${darkMode ? "text-white" : "text-black"
-                          }`}
-                      >
-                        {t.name}
-                      </div>
-                      <div
-                        className={`text-sm ${darkMode ? "text-zinc-500" : "text-zinc-600"
-                          }`}
-                      >
-                        {t.handle}
-                      </div>
-                    </div>
-                  </div>
-                  <p
-                    className={`leading-relaxed ${darkMode ? "text-zinc-300" : "text-zinc-700"
+              What people say about
+              <span
+                className={`text-transparent bg-clip-text bg-gradient-to-r ${darkMode ? "from-zinc-400 to-white" : "from-zinc-600 to-black"
+                  }`}
+              >
+                Luxid
+              </span>
+              <img
+                src={darkMode ? "/lion7.svg" : "/lion5.svg"}
+                alt="Luxid"
+                className="w-12 h-12 inline"
+              />
+            </h2>
+            <p className={`text-lg ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              Join thousands of developers building amazing applications with Luxid
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[col1, col2, col3].map((col, colIdx) => (
+              <div
+                key={colIdx}
+                className="space-y-4"
+                style={{
+                  transform: `translateY(${colIdx === 1 ? scrollY * 0.02 : 0}px)`,
+                }}
+              >
+                {col.map((t, i) => (
+                  <div
+                    key={i}
+                    className={`p-5 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
+                      ? "bg-zinc-900/50 border-zinc-800 hover:border-zinc-600"
+                      : "bg-zinc-50/50 border-zinc-200 hover:border-zinc-400"
                       }`}
                   >
-                    {t.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          ))}
+                    <div className="flex items-center gap-3 mb-3">
+                      <img
+                        src={t.avatar}
+                        alt={t.name}
+                        className="w-10 h-10 rounded-full object-cover border border-zinc-700"
+                      />
+                      <div>
+                        <div
+                          className={`font-medium ${darkMode ? "text-white" : "text-black"
+                            }`}
+                        >
+                          {t.name}
+                        </div>
+                        <div
+                          className={`text-sm ${darkMode ? "text-zinc-500" : "text-zinc-600"
+                            }`}
+                        >
+                          {t.handle}
+                          {t.company && (
+                            <span className="ml-1">
+                              • {t.company}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <p
+                      className={`leading-relaxed ${darkMode ? "text-zinc-300" : "text-zinc-700"
+                        }`}
+                    >
+                      "{t.text}"
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-16">
+            <p className={`text-sm ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
+              We're here to help you make your dreams a reality.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </div>
   );
 }
+
