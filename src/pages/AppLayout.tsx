@@ -8,7 +8,7 @@ import Stats from '@/components/Stats';
 import Features from '@/components/Features';
 import AVESection from '@/components/AVESection';
 import NovaShowcase from '@/components/RouteShowcase';
-import LORMShowcase from '@/components/LORMShowcase';
+import RocketORMShowcase from '@/components/RocketORMShowcase';
 import JuiceCLI from '@/components/JuiceCLI';
 import CodeShowcase from '@/components/CodeShowcase';
 import Testimonials from '@/components/Testimonials';
@@ -47,7 +47,7 @@ function AppContent() {
       <AVESection />
       <NovaShowcase />
       <ErrorBoundary>
-        <LORMShowcase />
+        <RocketORMShowcase />
       </ErrorBoundary>
       <JuiceCLI />
       <CodeShowcase />

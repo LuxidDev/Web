@@ -28,7 +28,7 @@ $users = User::query()
 `
 };
 
-export default function LORMShowcase() {
+export default function RocketORMShowcase() {
   const [activeExample, setActiveExample] = useState<'basic' | 'relations' | 'advanced'>('basic');
   const { darkMode } = useTheme();
 
