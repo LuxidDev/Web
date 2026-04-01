@@ -30,7 +30,7 @@ export { default as QuickReferenceCommands } from '../tutorial/QuickReferenceCom
 export { default as BestPracticesTutorial } from '../tutorial/BestPracticesTutorial';
 export { default as ConclusionTutorial } from '../tutorial/ConclusionTutorial';
 
-import { Code, Terminal, Database, Zap, Brain, Rocket, Server, Workflow } from 'lucide-react';
+import { Code, Terminal, Database, Zap, Brain, Rocket, Workflow } from 'lucide-react';
 
 export const docsChapters = [
   {
