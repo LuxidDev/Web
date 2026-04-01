@@ -36,6 +36,7 @@ export { default as UnderstandingAVETutorial } from '../tutorial/UnderstandingAV
 export { default as TodoEntityTutorial } from '../tutorial/TodoEntityTutorial';
 export { default as DatabaseMigrationTutorial } from '../tutorial/DatabaseMigrationTutorial';
 export { default as TodoActionTutorial } from '../tutorial/TodoActionTutorial';
+export { default as LuxidActionTutorial } from '../tutorial/LuxidActionTutorial';
 export { default as DefineRoutesTutorial } from '../tutorial/DefineRoutesTutorial';
 export { default as TestYourAPITutorial } from '../tutorial/TestYourAPITutorial';
 export { default as HealthCheckEndpointTutorial } from '../tutorial/HealthCheckEndpointTutorial';
@@ -257,6 +258,18 @@ export const docsChapters = [
         title: 'Create the Todo Entity',
         path: '/docs/todo-entity',
         content: 'TodoEntityTutorial'
+      },
+      {
+        id: 'luxidaction',
+        title: 'Create the Luxid Action',
+        path: '/docs/luxid-action',
+        content: 'LuxidActionTutorial'
+      },
+      {
+        id: 'todoaction',
+        title: 'Create the Todo Action',
+        path: '/docs/todo-action',
+        content: 'TodoActionTutorial'
       },
       {
         id: 'migration',
