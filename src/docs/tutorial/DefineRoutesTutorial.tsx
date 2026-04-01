@@ -13,8 +13,8 @@ export default function DefineRoutesTutorial() {
     <>
       <div
         className={`mb-8 p-6 rounded-2xl ${darkMode
-            ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20"
-            : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"
+          ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20"
+          : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"
           }`}
       >
         <div className="flex items-start gap-4">
@@ -22,11 +22,11 @@ export default function DefineRoutesTutorial() {
             <p
               className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}
             >
-              Actions are where you handle HTTP requests. <br />
-              Create
-              <code className={`font-mono px-2 py-1 rounded ${darkMode ? "bg-zinc-800/50 text-blue-300" : "bg-blue-50 text-blue-700"}`}>
-                app/Actions/TodoAction.php
-              </code>{" "}
+              Routes are where you map incoming HTTP requests and map them to actions that process the request and returhn a response. <br />
+              Find this file here:
+              <strong className={`font-mono px-2 py-1 rounded ${darkMode ? "bg-zinc-800/50 text-blue-300" : "bg-blue-50 text-blue-700"}`}>
+                routes/api.php
+              </strong>{" "}
             </p>
           </div>
         </div>
@@ -91,7 +91,7 @@ route('api.todos.bulk-update')
   ->open();
 
 `}
-        title="app/Actions/TodoAction.php"
+        title="routes/api.php"
         explanation=""
       />
 
