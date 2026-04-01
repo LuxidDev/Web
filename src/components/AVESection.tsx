@@ -8,7 +8,7 @@ const seaItems = [
   { letter: 'E', title: 'Entities', subtitle: 'Models', icon: Database, desc: 'Elegant data models with L ORM. Define relationships and queries with fluent methods that feel natural.', features: ['Fluent queries', 'Relationships', 'Model events'] },
 ];
 
-export default function SEASection() {
+export default function AVESection() {
   const [scrollY, setScrollY] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const { darkMode } = useTheme();

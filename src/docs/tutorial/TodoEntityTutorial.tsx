@@ -12,18 +12,18 @@ export default function TodoEntityTutorial() {
     <>
       <div
         className={`mb-8 p-6 rounded-2xl ${darkMode
-          ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20"
-          : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"
+          ? "bg-gray-900/50 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
           }`}
       >
         <div className="flex items-start gap-4">
           <div>
-            <p className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
-              Entities in Luxid extend Rocket's <strong className="font-mono">Entity</strong> class for modern,
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+              Entities in Luxid extend Rocket's <strong className="font-mono text-gray-900 dark:text-white">Entity</strong> class for modern,
               attribute-based Active Record functionality. Create
-              <code className={`font-mono px-2 py-1 rounded mx-1 ${darkMode ? "bg-zinc-800/50 text-purple-300" : "bg-purple-50 text-purple-700"}`}>
+              <strong className={`font-mono px-2 py-1 rounded mx-1 ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>
                 app/Entities/Todo.php
-              </code>
+              </strong>
             </p>
           </div>
         </div>
@@ -231,63 +231,63 @@ class Todo extends Entity
         explanation="A complete Todo entity demonstrating Rocket ORM features: PHP 8 attributes for mapping, validation rules, computed properties, and lifecycle hooks."
       />
 
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-gray-900 dark:text-white">
           <Rocket className="w-5 h-5" />
           Key Rocket ORM Concepts
         </h3>
         <ul className="space-y-4">
           <li className="flex items-start gap-3">
             <div>
-              <strong className={darkMode ? "text-blue-400" : "text-blue-700"}>#[EntityAttr(table: 'todos')]</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[EntityAttr(table: 'todos')]</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 PHP 8 attribute that defines which database table this entity maps to. No need for a separate
-                <code className="font-mono">tableName()</code> method - the attribute keeps the declaration close to the class.
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>tableName()</strong> method - the attribute keeps the declaration close to the class.
               </p>
             </div>
           </li>
 
           <li className="flex items-start gap-3">
             <div>
-              <strong className={darkMode ? "text-green-400" : "text-green-700"}>#[Column(...)] Attributes</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-                Properties are mapped to database columns using the <code className="font-mono">#[Column]</code> attribute.
-                No need for an <code className="font-mono">attributes()</code> method - the mapping is declared directly on the property.
+              <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(...)] Attributes</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                Properties are mapped to database columns using the <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column]</strong> attribute.
+                No need for an <strong className={darkMode ? "text-white font-mono" : "font-mono"}>attributes()</strong> method - the mapping is declared directly on the property.
               </p>
-              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-zinc-500" : "text-zinc-500"}`}>
-                <p>• <code className="font-mono">#[Column(primary: true, autoIncrement: true)]</code> - Primary key with auto-increment</p>
-                <p>• <code className="font-mono">#[Column(hidden: true)]</code> - Exclude from JSON serialization</p>
-                <p>• <code className="font-mono">#[Column(autoCreate: true)]</code> - Automatically set on create</p>
-                <p>• <code className="font-mono">#[Column(autoUpdate: true)]</code> - Automatically update on every save</p>
-                <p>• <code className="font-mono">#[Column(default: 'value')]</code> - Set default value</p>
+              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(primary: true, autoIncrement: true)]</strong> - Primary key with auto-increment</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(hidden: true)]</strong> - Exclude from JSON serialization</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(autoCreate: true)]</strong> - Automatically set on create</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(autoUpdate: true)]</strong> - Automatically update on every save</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(default: 'value')]</strong> - Set default value</p>
               </div>
             </div>
           </li>
 
           <li className="flex items-start gap-3">
             <div>
-              <strong className={darkMode ? "text-purple-400" : "text-purple-700"}>Validation Rules as Attributes</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Validation Rules as Attributes</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Validation rules are applied directly to properties using PHP 8 attributes. No separate
-                <code className="font-mono">rules()</code> method needed - validation is declared where it belongs.
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>rules()</strong> method needed - validation is declared where it belongs.
               </p>
-              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-zinc-500" : "text-zinc-500"}`}>
-                <p>• <code className="font-mono">#[Required]</code> - Field cannot be empty</p>
-                <p>• <code className="font-mono">#[Min(3)]</code> - Minimum length or value</p>
-                <p>• <code className="font-mono">#[Max(255)]</code> - Maximum length or value</p>
-                <p>• <code className="font-mono">#[Email]</code> - Must be valid email format</p>
-                <p>• <code className="font-mono">#[Unique]</code> - Must be unique in table</p>
-                <p>• <code className="font-mono">#[In(['pending', 'completed'])]</code> - Must be in allowed values</p>
+              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Required]</strong> - Field cannot be empty</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Min(3)]</strong> - Minimum length or value</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Max(255)]</strong> - Maximum length or value</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Email]</strong> - Must be valid email format</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Unique]</strong> - Must be unique in table</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[In(['pending', 'completed'])]</strong> - Must be in allowed values</p>
               </div>
             </div>
           </li>
 
           <li className="flex items-start gap-3">
             <div>
-              <strong className={darkMode ? "text-yellow-400" : "text-yellow-700"}>Computed Properties (get* methods)</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-                Methods prefixed with <code className="font-mono">get</code> become readable properties.
-                <code className="font-mono">getSummary()</code> is accessed as <code className="font-mono">{'$todo->summary'}</code>.
+              <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Computed Properties (get* methods)</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                Methods prefixed with <strong className={darkMode ? "text-white font-mono" : "font-mono"}>get</strong> become readable properties.
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getSummary()</strong> is accessed as <code className="font-mono">{'$todo->summary'}</code>.
                 These are not stored in the database but are available when working with the entity.
               </p>
             </div>
@@ -295,70 +295,70 @@ class Todo extends Entity
 
           <li className="flex items-start gap-3">
             <div>
-              <strong className={darkMode ? "text-orange-400" : "text-orange-700"}>Lifecycle Hooks</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-                Override <code className="font-mono">beforeSave()</code> and <code className="font-mono">afterSave()</code>
+              <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Lifecycle Hooks</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                Override <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeSave()</strong> and <code className="font-mono">afterSave()</code>
                 to add custom logic at specific points. No need to manually handle timestamps - use
-                <code className="font-mono">autoCreate</code> and <code className="font-mono">autoUpdate</code> column attributes.
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>autoCreate</strong> and <code className="font-mono">autoUpdate</code> column attributes.
               </p>
-              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-zinc-500" : "text-zinc-500"}`}>
-                <p>• <code className="font-mono">beforeSave()</code> - Runs before any save operation</p>
-                <p>• <code className="font-mono">afterSave()</code> - Runs after successful save</p>
-                <p>• <code className="font-mono">beforeDelete()</code> - Runs before deletion</p>
-                <p>• <code className="font-mono">afterDelete()</code> - Runs after deletion</p>
+              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeSave()</strong> - Runs before any save operation</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>afterSave()</strong> - Runs after successful save</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeDelete()</strong> - Runs before deletion</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>afterDelete()</strong> - Runs after deletion</p>
               </div>
             </div>
           </li>
 
           <li className="flex items-start gap-3">
             <div>
-              <strong className={darkMode ? "text-green-400" : "text-green-700"}>Active Record Operations</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Active Record Operations</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Rocket provides a full Active Record implementation with intuitive methods:
               </p>
-              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-zinc-500" : "text-zinc-500"}`}>
-                <p>• <code className="font-mono">{'$todo->save()'}</code> - Insert or update the record</p>
-                <p>• <code className="font-mono">{'Todo::find(1)'}</code> - Find by primary key</p>
-                <p>• <code className="font-mono">{`Todo::findOne(['status' => 'pending'])`}</code> - Find one record</p>
-                <p>• <code className="font-mono">{'Todo::findAll()'}</code> - Find multiple records</p>
-                <p>• <code className="font-mono">{'$todo->delete()'}</code> - Delete the record</p>
-                <p>• <code className="font-mono">{'Todo::query()'}</code> - Access the query builder for complex queries</p>
+              <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$todo->save()'}</strong> - Insert or update the record</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'Todo::find(1)'}</strong> - Find by primary key</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{`Todo::findOne(['status' => 'pending'])`}</strong> - Find one record</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'Todo::findAll()'}</strong> - Find multiple records</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$todo->delete()'}</strong> - Delete the record</p>
+                <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'Todo::query()'}</strong> - Access the query builder for complex queries</p>
               </div>
             </div>
           </li>
         </ul>
       </div>
 
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           <CheckCircle className="w-5 h-5 text-green-500" />
           What Makes Rocket Different?
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">Declarative Syntax</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Declarative Syntax</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               PHP 8 attributes replace separate methods. Everything is declared where it belongs -
               table mapping on the class, column mapping on properties, validation rules on properties.
             </p>
           </div>
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">Type Safety</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Type Safety</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Typed properties ensure data integrity. Rocket respects your PHP types and provides
               proper type hints throughout.
             </p>
           </div>
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">Automatic Timestamps</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-              Use <code className="font-mono">autoCreate</code> and <code className="font-mono">autoUpdate</code>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Automatic Timestamps</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}> autoCreate</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>autoUpdate</strong>
               column attributes instead of manually setting timestamps in lifecycle hooks.
             </p>
           </div>
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">Better IDE Support</h4>
-            <p className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Better IDE Support</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Attributes are first-class PHP features. Your IDE understands them, providing better
               autocomplete, refactoring, and documentation.
             </p>

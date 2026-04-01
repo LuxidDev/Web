@@ -7,21 +7,13 @@ export { default as NovaContent } from './NovaContent';
 export { default as RocketORMContent } from './RocketORMContent';
 export { default as MigrationsContent } from './MigrationsContent';
 export { default as RelationshipsContent } from './RelationshipsContent';
-export { default as NovaTemplatingContent } from './NovaTemplatingContent';
-export { default as ComponentsContent } from './ComponentsContent';
-export { default as JuiceCLIContent } from './JuiceCLIContent';
-export { default as MakeCommandsContent } from './MakeCommandsContent';
 
 export { default as QueryBuilderContent } from './QueryBuilderContent';
-export { default as LayoutsContent } from './LayoutsContent';
 export { default as CLIBasicsContent } from './CLIBasicsContent';
-export { default as DatabaseCommandsContent } from './DatabaseCommandsContent';
-export { default as CustomCommandsContent } from './CustomCommandsContent';
 export { default as MiddlewareContent } from './MiddlewareContent';
 export { default as AuthenticationContent } from './AuthenticationContent';
 export { default as ValidationContent } from './ValidationContent';
 export { default as ErrorHandlingContent } from './ErrorHandlingContent';
-export { default as TestingContent } from './TestingContent';
 export { default as CorsContent } from './CorsContent';
 
 /* Tutorial Content */
@@ -38,7 +30,7 @@ export { default as QuickReferenceCommands } from '../tutorial/QuickReferenceCom
 export { default as BestPracticesTutorial } from '../tutorial/BestPracticesTutorial';
 export { default as ConclusionTutorial } from '../tutorial/ConclusionTutorial';
 
-import { Code, Terminal, Database, Layers, Zap, Brain, Rocket, Server, Workflow } from 'lucide-react';
+import { Code, Terminal, Database, Zap, Brain, Rocket, Server, Workflow } from 'lucide-react';
 
 export const docsChapters = [
   {
@@ -59,13 +51,6 @@ export const docsChapters = [
         title: 'Installation & Setup',
         path: '/docs/installation',
         content: 'InstallationContent'
-      },
-      {
-        id: 'juice-cli',
-        title: 'Juice CLI First Look',
-        path: '/docs/juice-cli',
-        content: 'JuiceCLIContent',
-        quickStart: true
       },
     ]
   },
@@ -102,7 +87,7 @@ export const docsChapters = [
     color: 'from-green-500 to-emerald-500',
     chapters: [
       {
-        id: 'l-orm',
+        id: 'rocket-orm',
         title: 'Rocket Deep Dive',
         path: '/docs/rocket-orm',
         content: 'RocketORMContent'
@@ -128,32 +113,6 @@ export const docsChapters = [
     ]
   },
   {
-    id: 'templating',
-    title: 'Nova Engine',
-    icon: Code,
-    color: 'from-orange-500 to-red-500',
-    chapters: [
-      {
-        id: 'nova-templating',
-        title: 'Nova Templating',
-        path: '/docs/nova-templating',
-        content: 'NovaTemplatingContent'
-      },
-      {
-        id: 'components',
-        title: 'Template Components',
-        path: '/docs/components',
-        content: 'ComponentsContent'
-      },
-      {
-        id: 'layouts',
-        title: 'Layouts & Frames',
-        path: '/docs/layouts',
-        content: 'LayoutsContent'
-      },
-    ]
-  },
-  {
     id: 'juice-cli',
     title: 'Juice CLI',
     icon: Terminal,
@@ -164,24 +123,6 @@ export const docsChapters = [
         title: 'CLI Basics',
         path: '/docs/cli-basics',
         content: 'CLIBasicsContent'
-      },
-      {
-        id: 'make-commands',
-        title: 'Make Commands',
-        path: '/docs/make-commands',
-        content: 'MakeCommandsContent'
-      },
-      {
-        id: 'database-commands',
-        title: 'Database Commands',
-        path: '/docs/database-commands',
-        content: 'DatabaseCommandsContent'
-      },
-      {
-        id: 'custom-commands',
-        title: 'Custom Commands',
-        path: '/docs/custom-commands',
-        content: 'CustomCommandsContent'
       },
     ]
   },
@@ -220,12 +161,6 @@ export const docsChapters = [
         title: 'Cross-Origin Resource Sharing',
         path: '/docs/cors',
         content: 'CorsContent'
-      },
-      {
-        id: 'testing',
-        title: 'Testing',
-        path: '/docs/testing',
-        content: 'TestingContent'
       },
     ]
   },

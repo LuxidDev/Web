@@ -14,13 +14,13 @@ export default function QueryBuilderContent() {
     <>
       {/* Hero Section */}
       <div className={`mb-8 p-6 rounded-2xl ${darkMode
-        ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
-        : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
+        ? "bg-gray-900/50 border border-gray-800"
+        : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-2xl font-bold mb-2">Rocket Query Builder</h3>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Rocket Query Builder</h3>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               Build complex database queries with a fluent, intuitive PHP interface.
               Write safe, expressive queries without writing raw SQL.
             </p>
@@ -29,16 +29,16 @@ export default function QueryBuilderContent() {
       </div>
 
       {/* Overview */}
-      <h2 className="text-3xl font-bold mb-6">What is the Query Builder?</h2>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">What is the Query Builder?</h2>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         Rocket's Query Builder provides a fluent interface for constructing SQL queries programmatically.
         It's more flexible than raw SQL and more powerful than simple ORM methods, giving you complete
         control over your database interactions while maintaining security through automatic parameter binding.
       </p>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         The Query Builder helps you:
       </p>
-      <ul className={`space-y-2 mb-8 ml-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <ul className={`space-y-2 mb-8 ml-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         <li className="flex items-start gap-2">
           <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
           <span>Build complex queries with conditions, joins, and aggregations</span>
@@ -58,10 +58,10 @@ export default function QueryBuilderContent() {
       </ul>
 
       {/* Getting Started */}
-      <h3 className="text-2xl font-bold mb-4">Getting Started</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Access the query builder through your entity's <strong className="font-mono">query()</strong> method.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Getting Started</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          Access the query builder through your entity's <strong className="font-mono text-gray-900 dark:text-white">query()</strong> method.
         </p>
 
         <CodeExample
@@ -96,11 +96,11 @@ $sql = User::query()
       </div>
 
       {/* Basic Queries */}
-      <h3 className="text-2xl font-bold mb-4">Basic Queries</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Basic Queries</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="grid grid-cols-1 gap-6">
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <Database className="w-4 h-4" />
               Selecting Data
             </h4>
@@ -151,7 +151,7 @@ $users = User::query()
             />
           </div>
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <Filter className="w-4 h-4" />
               Basic Where Clauses
             </h4>
@@ -212,9 +212,9 @@ $users = User::query()
       </div>
 
       {/* Advanced Where Clauses */}
-      <h3 className="text-2xl font-bold mb-4">Advanced Where Clauses</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Advanced Where Clauses</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Build complex conditions using nested groupings and parameter grouping.
         </p>
 
@@ -289,11 +289,11 @@ $users = User::query()
       </div>
 
       {/* Ordering, Grouping & Limiting */}
-      <h3 className="text-2xl font-bold mb-4">Ordering, Grouping & Limiting</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ordering, Grouping & Limiting</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="grid grid-cols-1 gap-6">
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <SortAsc className="w-4 h-4" />
               Ordering
             </h4>
@@ -335,7 +335,7 @@ $randomUser = User::query()
             />
           </div>
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <Hash className="w-4 h-4" />
               Grouping & Limiting
             </h4>
@@ -380,9 +380,9 @@ $users = User::query()
       </div>
 
       {/* Joins */}
-      <h3 className="text-2xl font-bold mb-4">Joins</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-indigo-900/20 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Joins</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Join tables together to fetch related data in a single query.
         </p>
 
@@ -439,11 +439,11 @@ $products = Product::query()
       </div>
 
       {/* Aggregate Functions */}
-      <h3 className="text-2xl font-bold mb-4">Aggregate Functions</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Aggregate Functions</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="grid grid-cols-1 gap-6">
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <BarChart className="w-4 h-4" />
               Basic Aggregates
             </h4>
@@ -484,7 +484,7 @@ $stats = User::query()
             />
           </div>
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <TrendingUp className="w-4 h-4" />
               Advanced Aggregates
             </h4>
@@ -526,9 +526,9 @@ $revenue = Order::query()
       </div>
 
       {/* Subqueries */}
-      <h3 className="text-2xl font-bold mb-4">Subqueries</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-red-900/20 border border-red-800' : 'bg-red-50 border border-red-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Subqueries</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Use subqueries to perform complex filtering and calculations.
         </p>
 
@@ -591,9 +591,9 @@ $users = User::query()
       </div>
 
       {/* Unions */}
-      <h3 className="text-2xl font-bold mb-4">Unions</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-cyan-900/20 border border-cyan-800' : 'bg-cyan-50 border border-cyan-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Unions</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Combine results from multiple queries using unions.
         </p>
 
@@ -634,11 +634,11 @@ $users = $activeUsers
       </div>
 
       {/* Insert, Update, Delete */}
-      <h3 className="text-2xl font-bold mb-4">Insert, Update & Delete</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-orange-900/20 border border-orange-800' : 'bg-orange-50 border border-orange-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Insert, Update & Delete</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="grid grid-cols-1 gap-6">
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <Plus className="w-4 h-4" />
               Insert Operations
             </h4>
@@ -674,7 +674,7 @@ User::query()->upsert([
             />
           </div>
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               <Settings className="w-4 h-4" />
               Update & Delete
             </h4>
@@ -713,69 +713,62 @@ User::query()->truncate();`}
       </div>
 
       {/* Performance Tips */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode
-        ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
-        : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
-        }`}>
-        <h3 className="text-xl font-bold mb-4">Query Builder Performance Tips</h3>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Query Builder Performance Tips</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <Database className="w-4 h-4" />
-              <h4 className="font-bold">Use Indexes</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Use Indexes</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Ensure columns used in WHERE, JOIN, and ORDER BY clauses are indexed.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <Filter className="w-4 h-4" />
-              <h4 className="font-bold">Select Only Needed</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Select Only Needed</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Use <strong className="font-mono">select()</strong> to fetch only required columns.
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>select()</strong> to fetch only required columns.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <GitBranch className="w-4 h-4" />
-              <h4 className="font-bold">Limit Results</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Limit Results</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Always use <strong className="font-mono">limit()</strong> when you don't need all records.
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Always use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>limit()</strong> when you don't need all records.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <Layers className="w-4 h-4" />
-              <h4 className="font-bold">Avoid N+1</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Avoid N+1</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Use eager loading with <strong className="font-mono">with()</strong> for relationships.
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use eager loading with <strong className={darkMode ? "text-white font-mono" : "font-mono"}>with()</strong> for relationships.
             </p>
           </div>
         </div>
       </div>
 
       {/* Best Practices */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <h3 className="text-xl font-bold mb-6">Query Builder Best Practices</h3>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Query Builder Best Practices</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Do These Column */}
-          <div className={`p-5 rounded-xl ${darkMode ? 'bg-green-500/5 border border-green-500/20' : 'bg-green-50 border border-green-200'}`}>
-            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
-              <span className={darkMode ? 'text-green-400' : 'text-green-700'}>Do These</span>
+          <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg text-gray-900 dark:text-white">
+              Do These
               <CheckCircle className="w-5 h-5 text-green-500" />
             </h4>
-            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul className={`space-y-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
                 <span>Always use parameter binding instead of concatenating values</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Use <strong className="font-mono">select()</strong> to limit columns returned</span>
+                <span>Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>select()</strong> to limit columns returned</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
@@ -783,7 +776,7 @@ User::query()->truncate();`}
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Use <strong className="font-mono">toSql()</strong> for debugging complex queries</span>
+                <span>Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>toSql()</strong> for debugging complex queries</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
@@ -793,19 +786,19 @@ User::query()->truncate();`}
           </div>
 
           {/* Avoid These Column */}
-          <div className={`p-5 rounded-xl ${darkMode ? 'bg-red-500/5 border border-red-500/20' : 'bg-red-50 border border-red-200'}`}>
-            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
-              <span className={darkMode ? 'text-red-400' : 'text-red-700'}>Avoid These</span>
+          <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg text-gray-900 dark:text-white">
+              Avoid These
               <span className="text-red-500 text-xl font-bold">×</span>
             </h4>
-            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul className={`space-y-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
                 <span>Don't use raw SQL unless absolutely necessary</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
-                <span>Avoid <strong className="font-mono">SELECT *</strong> in production queries</span>
+                <span>Avoid <strong className={darkMode ? "text-white font-mono" : "font-mono"}>SELECT *</strong> in production queries</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
@@ -821,9 +814,9 @@ User::query()->truncate();`}
       </div>
 
       {/* Debugging */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-amber-900/20 border border-amber-800' : 'bg-amber-50 border border-amber-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-          <Terminal className="w-5 h-5" />
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+          <Terminal className="w-5 h-5 text-gray-500" />
           Debugging Queries
         </h3>
         <div className="space-y-3">

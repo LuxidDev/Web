@@ -5,8 +5,6 @@ import {
   Terminal, Download, ArrowRight,
   CheckCircle, AlertCircle
 } from 'lucide-react';
-import CodeExample from '../components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
 
 export default function AuthenticationContent() {
   const { darkMode } = useTheme();
@@ -14,64 +12,88 @@ export default function AuthenticationContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/20'
-          : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
-      }`}>
+      <div className={`mb-8 p-6 rounded-2xl ${darkMode
+        ? "bg-gray-900/50 border border-gray-800"
+        : "bg-gray-50 border border-gray-200"
+        }`}>
         <div className="flex items-start gap-4">
-          <Layers className={`w-12 h-12 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+          <Layers className={`w-12 h-12 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
           <div>
-            <h1 className="text-3xl font-bold mb-2">Luxid CORS Middleware</h1>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-600'}`}>
-              Luxid includes automatic CORS (<strong>Cross-Origin Resource Sharing</strong>) support for all applications built on the framework. This ensures that APIs and web apps built with Luxid can securely handle requests from different origins without requiring manual configuration from the developer.
+            <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Luxid Authentication</h1>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+              Luxid includes built-in authentication support, making it easy to secure your applications.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Best Practices */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">How CORS Works in Luxid</h2>
+      {/* How Authentication Works */}
+      <h2 className="text-2xl font-bold mb-4 mt-8 text-gray-900 dark:text-white">How Authentication Works in Luxid</h2>
 
-    <div className="flex flex-col gap-6">
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-            <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            Automatic Injection
-            </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <div className="flex flex-col gap-6">
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            Session-Based Authentication
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                The CorsMiddleware is included in Luxid's core engine and automatically added to the middleware stack.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Luxid uses PHP's built-in session management for web applications.
             </li>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                During route resolution, Luxid executes all global middleware, which now includes CORS by default.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              User authentication state persists across requests automatically.
             </li>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                This means every Luxid app immediately has CORS enabled without the user needing to configure anything.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              The `Auth` helper provides convenient methods for checking authentication status.
             </li>
-            </ul>
+          </ul>
         </div>
 
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-            <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            Applied to All Routes
-            </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            Authentication Middleware
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                The middleware is executed for both standard web routes and API routes.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Use the `auth()` middleware to protect routes that require authentication.
             </li>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                API requests (/api/... or requests with application/json headers) trigger the CORS middleware automatically.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              The middleware redirects unauthenticated users to the login page.
             </li>
-            </ul>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Apply to individual routes or entire route groups.
+            </li>
+          </ul>
         </div>
-    </div>
+
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            User Entity
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Extend the base `User` entity to add custom authentication logic.
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              The entity includes methods for password hashing and verification.
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Built-in validation rules ensure data integrity.
+            </li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }

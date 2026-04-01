@@ -10,13 +10,13 @@ export default function QuickReferenceCommands() {
       {/* Start Server Section */}
       <div
         className={`mb-8 p-6 rounded-2xl ${darkMode
-          ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
-          : "bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200"
+          ? "bg-gray-900/50 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
           }`}
       >
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-2xl font-bold mb-2">
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
               Use Juice CLI for rapid development:
             </h3>
           </div>

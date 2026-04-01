@@ -14,14 +14,13 @@ export default function RocketORMContent() {
     <>
       {/* Hero Section */}
       <div className={`mb-8 p-6 rounded-2xl ${darkMode
-        ? 'bg-gradient-to-br from-orange-500/10 to-red-500/10 border border-orange-500/20'
-        : 'bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200'
+        ? "bg-gray-900/50 border border-gray-800"
+        : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
-          <Rocket className={`w-12 h-12 ${darkMode ? 'text-orange-400' : 'text-orange-600'}`} />
           <div>
-            <h3 className="text-2xl font-bold mb-2">Rocket ORM: Modern Database Layer</h3>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Rocket ORM: Modern Database Layer</h3>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               Rocket is a modern, attribute-based ORM for the Luxid Framework. It leverages PHP 8 attributes for a clean,
               intuitive, and type-safe way to interact with your database.
             </p>
@@ -30,24 +29,24 @@ export default function RocketORMContent() {
       </div>
 
       {/* Overview */}
-      <h2 className="text-3xl font-bold mb-6">Rocket ORM Overview</h2>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Rocket ORM Overview</h2>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         Rocket ORM is a powerful and expressive way to manage
         your database interactions. It follows the Active Record pattern but enhances it with modern PHP features
         like attributes, providing a more declarative and less verbose syntax.
       </p>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         Each Entity class corresponds to a database table, and each instance represents a row. Rocket handles
         automatic CRUD operations, validation, relationship management, and includes a powerful query builder,
         all while maintaining security through parameter binding and data sanitization.
       </p>
 
       {/* Installation & Configuration */}
-      <h3 className="text-2xl font-bold mb-4 mt-8">Installation & Configuration</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 mt-8 text-gray-900 dark:text-white">Installation & Configuration</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Rocket is automatically included when you create a new Luxid Framework project. The database connection
-          is configured using environment variables in your <strong className="font-mono">.env</strong> file.
+          is configured using environment variables in your <strong className="font-mono text-gray-900 dark:text-white">.env</strong> file.
         </p>
         <CodeExample
           code={`# Database Configuration
@@ -67,15 +66,15 @@ DB_PASSWORD=secret
       </div>
 
       {/* Defining Entities */}
-      <h3 className="text-2xl font-bold mb-4">Defining Entities</h3>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Defining Entities</h3>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         Entities are PHP classes that represent database tables. Use PHP 8 attributes to define the table structure,
         columns, and validation rules. This declarative approach keeps your code clean and focused.
       </p>
 
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Basic Entity Example</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Basic Entity Example</h4>
         </div>
 
         <CodeExample
@@ -126,43 +125,43 @@ class User extends Entity
           explanation="Define your table structure using PHP 8 attributes."
         />
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-6 grid grid-cols-1 gap-6">
           <div>
-            <h5 className="font-bold mb-2">Column Attributes</h5>
-            <div className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              <p><strong>#[Column(primary: true)]</strong> - Sets column as primary key</p>
-              <p><strong>#[Column(autoIncrement: true)]</strong> - Auto-incrementing integer</p>
-              <p><strong>#[Column(hidden: true)]</strong> - Excludes from JSON serialization</p>
-              <p><strong>#[Column(autoCreate: true)]</strong> - Automatically sets on create</p>
-              <p><strong>#[Column(autoUpdate: true)]</strong> - Automatically updates on every save</p>
-              <p><strong>#[Column(nullable: true)]</strong> - Allows NULL values</p>
-              <p><strong>#[Column(default: value)]</strong> - Sets default value</p>
+            <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Column Attributes</h5>
+            <div className={`text-sm space-y-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(primary: true)]</strong> - Sets column as primary key</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(autoIncrement: true)]</strong> - Auto-incrementing integer</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(hidden: true)]</strong> - Excludes from JSON serialization</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(autoCreate: true)]</strong> - Automatically sets on create</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(autoUpdate: true)]</strong> - Automatically updates on every save</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(nullable: true)]</strong> - Allows NULL values</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Column(default: value)]</strong> - Sets default value</p>
             </div>
           </div>
           <div>
-            <h5 className="font-bold mb-2">Validation Rules</h5>
-            <div className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              <p><strong>#[Required]</strong> - Field cannot be empty</p>
-              <p><strong>#[Email]</strong> - Must be valid email</p>
-              <p><strong>#[Min(8)]</strong> - Minimum length/value</p>
-              <p><strong>#[Max(100)]</strong> - Maximum length/value</p>
-              <p><strong>#[Unique]</strong> - Must be unique in table</p>
-              <p><strong>#[In(['a', 'b'])]</strong> - Must be in allowed values</p>
+            <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Validation Rules</h5>
+            <div className={`text-sm space-y-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              <p><strong className="text-gray-900 dark:text-white">#[Required]</strong> - Field cannot be empty</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Email]</strong> - Must be valid email</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Min(8)]</strong> - Minimum length/value</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Max(100)]</strong> - Maximum length/value</p>
+              <p><strong className="text-gray-900 dark:text-white">#[Unique]</strong> - Must be unique in table</p>
+              <p><strong className="text-gray-900 dark:text-white">#[In(['a', 'b'])]</strong> - Must be in allowed values</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Basic CRUD Operations */}
-      <h3 className="text-2xl font-bold mb-4">Basic CRUD Operations</h3>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Basic CRUD Operations</h3>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         Rocket provides a simple and intuitive interface for creating, reading, updating, and deleting records.
       </p>
 
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="grid grid-cols-1 gap-6">
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               Create & Read
             </h4>
             <CodeExample
@@ -196,7 +195,7 @@ $count = User::count(['status' => 'active']);`}
             />
           </div>
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
               Update & Delete
             </h4>
             <CodeExample
@@ -224,10 +223,10 @@ User::truncate();`}
       </div>
 
       {/* Query Builder */}
-      <h3 className="text-2xl font-bold mb-4">Advanced Query Builder</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Advanced Query Builder</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Fluent Query Building</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Fluent Query Building</h4>
         </div>
 
         <CodeExample
@@ -281,10 +280,10 @@ $exists = User::exists();          // Check if any records exist`}
       </div>
 
       {/* Relationships */}
-      <h3 className="text-2xl font-bold mb-4">Relationships</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-indigo-900/20 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Relationships</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Defining Relationships</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Defining Relationships</h4>
         </div>
 
         <CodeExample
@@ -324,7 +323,7 @@ class Profile extends Entity
         />
 
         <div className="mt-6">
-          <h5 className="font-bold mb-2 flex items-center gap-2">
+          <h5 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
             Using Relationships
           </h5>
           <CodeExample
@@ -359,10 +358,10 @@ $posts = $user->posts()
       </div>
 
       {/* Computed Properties */}
-      <h3 className="text-2xl font-bold mb-4">Computed Properties</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-teal-900/20 border border-teal-800' : 'bg-teal-50 border border-teal-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Use the <strong className="font-mono">get</strong> prefix to create computed properties that aren't stored in the database.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Computed Properties</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          Use the <strong className="font-mono text-gray-900 dark:text-white">get</strong> prefix to create computed properties that aren't stored in the database.
         </p>
         <CodeExample
           code={`<?php
@@ -397,10 +396,10 @@ echo $user->initials;  // "JD"`}
       </div>
 
       {/* Lifecycle Hooks */}
-      <h3 className="text-2xl font-bold mb-4">Lifecycle Hooks</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Lifecycle Hooks</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Entity Lifecycle Events</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Entity Lifecycle Events</h4>
         </div>
 
         <CodeExample
@@ -451,21 +450,21 @@ class User extends Entity
       </div>
 
       {/* Migrations */}
-      <h3 className="text-2xl font-bold mb-4">Database Migrations</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-cyan-900/20 border border-cyan-800' : 'bg-cyan-50 border border-cyan-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Database Migrations</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Version Control for Your Database</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Version Control for Your Database</h4>
         </div>
 
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Migrations allow you to version control your database schema changes.
         </p>
 
         <InlineCodeExample
           code={`php juice make:migration create_users_table`}
-          title="Create a Migration"
-          description="Generate migration files using the CLI."
-          color="red"
+          title=""
+          description="Create a Migration. Generate migration files using the CLI."
+          color="gray"
           language="bash"
         />
 
@@ -502,49 +501,49 @@ class m00001_create_users_table extends Migration
         </div>
 
         <div className="mt-6">
-          <h5 className="font-bold mb-2">Column Types</h5>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
-            <div><strong>id()</strong> - Auto-incrementing primary key</div>
-            <div><strong>string()</strong> - VARCHAR</div>
-            <div><strong>text()</strong> - TEXT</div>
-            <div><strong>integer()</strong> - INT</div>
-            <div><strong>float()</strong> - FLOAT</div>
-            <div><strong>decimal(10,2)</strong> - DECIMAL</div>
-            <div><strong>boolean()</strong> - BOOLEAN</div>
-            <div><strong>datetime()</strong> - DATETIME</div>
-            <div><strong>timestamps()</strong> - created_at + updated_at</div>
-            <div><strong>softDeletes()</strong> - deleted_at column</div>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Column Types</h5>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-2 text-sm">
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">id()</strong> - Auto-incrementing primary key</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">string()</strong> - VARCHAR</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">text()</strong> - TEXT</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">integer()</strong> - INT</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">float()</strong> - FLOAT</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">decimal(10,2)</strong> - DECIMAL</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">boolean()</strong> - BOOLEAN</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">datetime()</strong> - DATETIME</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">timestamps()</strong> - created_at + updated_at</div>
+            <div className={darkMode ? "text-white" : ""}><strong className="text-gray-900 dark:text-white">softDeletes()</strong> - deleted_at column</div>
           </div>
         </div>
 
         <div className="mt-6">
-          <h5 className="font-bold mb-2">Running Migrations</h5>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Running Migrations</h5>
           <div className="space-y-2">
-            <InlineCodeExample code="php juice db:migrate" title="Run pending migrations" description="Update, delete, and bulk operations using L ORM" language="bash" compact={true} />
-            <InlineCodeExample code="php juice db:rollback" title="Rollback last batch" description="Update, delete, and bulk operations using L ORM" language="bash" compact={true} />
-            <InlineCodeExample code="php juice db:reset" title="Rollback all migrations" description="Update, delete, and bulk operations using L ORM" language="bash" compact={true} />
-            <InlineCodeExample code="php juice db:fresh --seed" title="Reset, re-run all migrations, and seed" description="Update, delete, and bulk operations using L ORM" language="bash" compact={true} />
+            <InlineCodeExample code="php juice db:migrate" title="" description="Run all pending database migrations" language="bash" compact={true} />
+            <InlineCodeExample code="php juice db:rollback" title="" description="Rollback the most recent migration batch" language="bash" compact={true} />
+            <InlineCodeExample code="php juice db:reset" title="" description="Rollback all migrations (reset database)" language="bash" compact={true} />
+            <InlineCodeExample code="php juice db:fresh --seed" title="" description="Reset, re-run all migrations, and seed. Fresh migrate and seed database" language="bash" compact={true} />
           </div>
         </div>
       </div>
 
       {/* Seeding */}
-      <h3 className="text-2xl font-bold mb-4">Database Seeding</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Database Seeding</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Populate Your Database with Test Data</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Populate Your Database with Test Data</h4>
         </div>
 
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Seeders allow you to populate your database with test or default data. Use factories to generate consistent data.
         </p>
 
         <InlineCodeExample
           code={`php juice make:factory UserFactory
 php juice make:seeder UserSeeder`}
-          title="Create Factory and Seeder"
-          description="Generate a factory for fake data and a seeder to populate it."
-          color="green"
+          title=""
+          description="Create Factory and Seeder. Generate a factory for fake data and a seeder to populate it."
+          color="gray"
           language="bash"
         />
 
@@ -631,23 +630,23 @@ class UserSeeder extends Seeder
         </div>
 
         <div className="mt-4">
-          <h5 className="font-bold mb-2">Running Seeders</h5>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Running Seeders</h5>
           <div className="space-y-2">
-            <InlineCodeExample code="php juice seed" title="Run all seeders" description="Update, delete, and bulk operations using L ORM" language="bash" compact={true} />
-            <InlineCodeExample code="php juice seed UserSeeder" title="Run a specific seeder" description="Update, delete, and bulk operations using L ORM" language="bash" compact={true} />
+            <InlineCodeExample code="php juice seed" title="" description="Run all seeders. Execute all database seeders" language="bash" compact={true} />
+            <InlineCodeExample code="php juice seed UserSeeder" title="" description="Run a specific seeder. Execute a specific seeder class" language="bash" compact={true} />
           </div>
         </div>
       </div>
 
       {/* Validation */}
-      <h3 className="text-2xl font-bold mb-4">Validation</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-red-900/20 border border-red-800' : 'bg-red-50 border border-red-200'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Validation</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-center gap-3 mb-4">
-          <h4 className="text-xl font-bold">Built-in & Custom Validation</h4>
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white">Built-in & Custom Validation</h4>
         </div>
 
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Validation runs automatically when calling <strong className="font-mono">save()</strong>. You can also validate manually.
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          Validation runs automatically when calling <strong className="font-mono text-gray-900 dark:text-white">save()</strong>. You can also validate manually.
         </p>
 
         <CodeExample
@@ -692,33 +691,30 @@ if (!$user->validate()) {
       </div>
 
       {/* Performance Tips */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode
-        ? 'bg-gradient-to-br from-orange-500/10 to-red-500/10 border border-orange-500/20'
-        : 'bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200'
-        }`}>
-        <h3 className="text-xl font-bold mb-4">Rocket ORM Performance Tips</h3>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Rocket ORM Performance Tips</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <h4 className="font-bold">Eager Loading</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Eager Loading</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Use <strong className="font-mono">with()</strong> to load relationships and avoid N+1 queries.
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>with()</strong> to load relationships and avoid N+1 queries.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <h4 className="font-bold">Select Only Needed</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Select Only Needed</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Use <strong className="font-mono">select()</strong> to fetch only required columns.
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>select()</strong> to fetch only required columns.
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${darkMode ? 'bg-zinc-800/50' : 'bg-zinc-100'}`}>
+          <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <div className="flex items-center gap-2 mb-2">
-              <h4 className="font-bold">Use Indexes</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Use Indexes</h4>
             </div>
-            <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Ensure database indexes on frequently queried columns.
             </p>
           </div>
@@ -726,23 +722,23 @@ if (!$user->validate()) {
       </div>
 
       {/* Best Practices */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <h3 className="text-xl font-bold mb-6">Rocket ORM Best Practices</h3>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Rocket ORM Best Practices</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Do These Column */}
-          <div className={`p-5 rounded-xl ${darkMode ? 'bg-green-500/5 border border-green-500/20' : 'bg-green-50 border border-green-200'}`}>
-            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
-              <span className={darkMode ? 'text-green-400' : 'text-green-700'}>Do These</span>
+          <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg text-gray-900 dark:text-white">
+              Do These
               <CheckCircle className="w-5 h-5 text-green-500" />
             </h4>
-            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul className={`space-y-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Always set default values for typed properties <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-green-100 text-green-800'}`}>public int $id = 0;</strong></span>
+                <span>Always set default values for typed properties <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? "bg-gray-800 text-green-400" : "bg-gray-200 text-green-800"}`}>public int $id = 0;</strong></span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Use <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-green-100 text-green-800'}`}>hidden: true</strong> for sensitive data (passwords, tokens)</span>
+                <span>Use <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? "bg-gray-800 text-green-400" : "bg-gray-200 text-green-800"}`}>hidden: true</strong> for sensitive data (passwords, tokens)</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
@@ -760,20 +756,16 @@ if (!$user->validate()) {
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
                 <span>Use the query builder for complex queries instead of raw SQL</span>
               </li>
-              <li className="flex items-start gap-3">
-                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Use eager loading with <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-green-100 text-green-800'}`}>with()</strong> to avoid N+1 queries</span>
-              </li>
             </ul>
           </div>
 
           {/* Avoid These Column */}
-          <div className={`p-5 rounded-xl ${darkMode ? 'bg-red-500/5 border border-red-500/20' : 'bg-red-50 border border-red-200'}`}>
-            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
-              <span className={darkMode ? 'text-red-400' : 'text-red-700'}>Avoid These</span>
+          <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg text-gray-900 dark:text-white">
+              Avoid These
               <span className="text-red-500 text-xl font-bold">×</span>
             </h4>
-            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul className={`space-y-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
                 <span>Don't put business logic in Actions only - keep it in Entities</span>
@@ -788,7 +780,7 @@ if (!$user->validate()) {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
-                <span>Avoid <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? 'bg-zinc-800 text-red-400' : 'bg-red-100 text-red-800'}`}>SELECT *</strong> in production - specify only needed columns</span>
+                <span>Avoid <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? "bg-gray-800 text-red-400" : "bg-gray-200 text-red-800"}`}>SELECT *</strong> in production</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
@@ -796,11 +788,7 @@ if (!$user->validate()) {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
-                <span>Avoid N+1 queries - always use eager loading when accessing relationships in loops</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
-                <span>Don't store raw passwords - always hash them in <strong className={`px-1.5 py-0.5 rounded text-xs font-mono ${darkMode ? 'bg-zinc-800 text-red-400' : 'bg-red-100 text-red-800'}`}>beforeSave()</strong></span>
+                <span>Avoid N+1 queries - use eager loading</span>
               </li>
             </ul>
           </div>
@@ -808,45 +796,44 @@ if (!$user->validate()) {
       </div>
 
       {/* CLI Commands Reference */}
-      <div className={`mt-8 rounded-xl overflow-hidden ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <div className={`p-6 border-b ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
-          <h3 className="text-xl font-bold flex items-center gap-2">
+      <div className={`mt-8 rounded-xl overflow-hidden ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <div className={`p-6 border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
+          <h3 className="text-xl font-bold flex items-center gap-2 text-gray-900 dark:text-white">
             Rocket CLI Commands Reference
           </h3>
         </div>
 
         <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {/* Database Commands */}
             <div>
-              <h4 className="font-bold mb-4 flex items-center gap-2 text-base">
-                <Database className="w-4 h-4" />
+              <h4 className="font-bold mb-4 flex items-center gap-2 text-base text-gray-900 dark:text-white">
                 Database Commands
               </h4>
               <div className="space-y-2">
-                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-zinc-200 text-green-700'}`}>php juice db:create</strong>
-                  <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Create database</span>
+                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice db:create</strong>
+                  <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Create database</span>
                 </div>
-                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-zinc-200 text-green-700'}`}>php juice db:migrate</strong>
-                  <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Run migrations</span>
+                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice db:migrate</strong>
+                  <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Run migrations</span>
                 </div>
-                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-zinc-200 text-green-700'}`}>php juice db:rollback</strong>
-                  <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Rollback last batch</span>
+                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice db:rollback</strong>
+                  <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Rollback last batch</span>
                 </div>
-                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-zinc-200 text-green-700'}`}>php juice db:reset</strong>
-                  <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Rollback all migrations</span>
+                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice db:reset</strong>
+                  <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Rollback all migrations</span>
                 </div>
-                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-zinc-200 text-green-700'}`}>php juice db:fresh --seed</strong>
-                  <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Reset and re-migrate with seed</span>
+                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice db:fresh --seed</strong>
+                  <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Reset and re-migrate with seed</span>
                 </div>
-                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-green-400' : 'bg-zinc-200 text-green-700'}`}>php juice seed</strong>
-                  <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Run all seeders</span>
+                <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                  <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice seed</strong>
+                  <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Run all seeders</span>
                 </div>
               </div>
             </div>
@@ -854,43 +841,41 @@ if (!$user->validate()) {
             {/* Code Generation & Info Commands */}
             <div>
               <div className="mb-6">
-                <h4 className="font-bold mb-4 flex items-center gap-2 text-base">
-                  <Code className="w-4 h-4" />
+                <h4 className="font-bold mb-4 flex items-center gap-2 text-base text-gray-900 dark:text-white">
                   Code Generation
                 </h4>
                 <div className="space-y-2">
-                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-purple-400' : 'bg-zinc-200 text-purple-700'}`}>php juice make:entity Product</strong>
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Create entity</span>
+                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice make:entity Product</strong>
+                    <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Create entity</span>
                   </div>
-                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-purple-400' : 'bg-zinc-200 text-purple-700'}`}>php juice make:migration</strong>
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Create migration</span>
+                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice make:migration</strong>
+                    <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Create migration</span>
                   </div>
-                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-purple-400' : 'bg-zinc-200 text-purple-700'}`}>php juice make:seeder</strong>
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Create seeder</span>
+                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice make:seeder</strong>
+                    <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Create seeder</span>
                   </div>
-                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-purple-400' : 'bg-zinc-200 text-purple-700'}`}>php juice make:factory</strong>
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Create factory</span>
+                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice make:factory</strong>
+                    <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Create factory</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-bold mb-4 flex items-center gap-2 text-base">
-                  <Info className="w-4 h-4" />
+                <h4 className="font-bold mb-4 flex items-center gap-2 text-base text-gray-900 dark:text-white">
                   Info Commands
                 </h4>
                 <div className="space-y-2">
-                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-blue-400' : 'bg-zinc-200 text-blue-700'}`}>php juice status</strong>
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Check application status</span>
+                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice status</strong>
+                    <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Check application status</span>
                   </div>
-                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? 'hover:bg-zinc-800/50' : 'hover:bg-zinc-100'}`}>
-                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? 'bg-zinc-800 text-blue-400' : 'bg-zinc-200 text-blue-700'}`}>php juice routes</strong>
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>List all routes</span>
+                  <div className={`flex items-baseline gap-3 p-2 rounded-lg ${darkMode ? "hover:bg-gray-800/50" : "hover:bg-gray-100"}`}>
+                    <strong className={`font-mono text-sm px-2 py-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>php juice routes</strong>
+                    <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>List all routes</span>
                   </div>
                 </div>
               </div>
@@ -900,34 +885,34 @@ if (!$user->validate()) {
       </div>
 
       {/* Troubleshooting */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-amber-900/20 border border-amber-800' : 'bg-amber-50 border border-amber-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-          <AlertCircle className="w-5 h-5" />
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+          <AlertCircle className="w-5 h-5 text-gray-500" />
           Troubleshooting
         </h3>
         <div className="space-y-3">
           <div>
-            <h4 className="font-bold mb-1">"Typed property must not be accessed before initialization"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-              Add default values to all typed properties: <strong className="font-mono">public int $id = 0;</strong>
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"Typed property must not be accessed before initialization"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Add default values to all typed properties: <strong className={darkMode ? "text-white font-mono" : "font-mono"}>public int $id = 0;</strong>
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-1">"Class not found"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-              Run <strong className="font-mono">composer dump-autoload</strong> to regenerate the autoloader.
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"Class not found"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Run <strong className={darkMode ? "text-white font-mono" : "font-mono"}>composer dump-autoload</strong> to regenerate the autoloader.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-1">"Validation failed"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-              Check <strong className="font-mono">{'$entity -> getErrors()'}</strong> for detailed error messages.
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"Validation failed"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Check <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$entity->getErrors()'}</strong> for detailed error messages.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-1">"Connection failed"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-              Verify your <strong className="font-mono">.env</strong> database configuration and ensure the database server is running.
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"Connection failed"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Verify your <strong className={darkMode ? "text-white font-mono" : "font-mono"}>.env</strong> database configuration and ensure the database server is running.
             </p>
           </div>
         </div>

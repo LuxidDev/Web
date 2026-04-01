@@ -10,14 +10,15 @@ export default function NovaContent() {
 
   return (
     <>
+      {/* Hero Section */}
       <div className={`mb-8 p-6 rounded-2xl ${darkMode
-        ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20'
-        : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
+        ? "bg-gray-900/50 border border-gray-800"
+        : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-2xl font-bold mb-2">Nova: Luxid's Component-Based Templating Engine</h3>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Nova: Luxid's Component-Based Templating Engine</h3>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               Nova is Luxid's modern templating system that works like React but with PHP on the server.
               It combines reactive components, state management, and Blade-inspired syntax to build dynamic web interfaces.
             </p>
@@ -26,27 +27,27 @@ export default function NovaContent() {
       </div>
 
       {/* Understanding Nova: React-like but Server-Side */}
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-indigo-900/20 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-xl font-bold mb-2">How Nova Works: Like React, but on the Server</h3>
-            <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">How Nova Works: Like React, but on the Server</h3>
+            <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               If you've used React, you'll find Nova very familiar. The key difference is that Nova components
               render on the server (PHP) while React renders in the browser (JavaScript).
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-              <div className={`p-3 rounded-lg ${darkMode ? 'bg-indigo-900/30' : 'bg-indigo-100'}`}>
-                <h4 className="font-bold mb-2">React (Client-side)</h4>
-                <ul className="text-sm space-y-1">
+              <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <h4 className="font-bold mb-2 text-gray-900 dark:text-white">React (Client-side)</h4>
+                <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
                   <li>• State is stored in the browser</li>
                   <li>• Components re-render on the client</li>
                   <li>• Uses JSX for templating</li>
                   <li>• Uses `useState` and `useEffect`</li>
                 </ul>
               </div>
-              <div className={`p-3 rounded-lg ${darkMode ? 'bg-indigo-900/30' : 'bg-indigo-100'}`}>
-                <h4 className="font-bold mb-2">Nova (Server-side)</h4>
-                <ul className="text-sm space-y-1">
+              <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Nova (Server-side)</h4>
+                <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
                   <li>• State is stored on the server (session)</li>
                   <li>• Components re-render on the server</li>
                   <li>• Uses @echo, @if, @foreach directives</li>
@@ -59,10 +60,10 @@ export default function NovaContent() {
       </div>
 
       {/* Nova Directory Structure */}
-      <h2 className="text-3xl font-bold mb-6">Nova Directory Structure</h2>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Nova templates are organized in the <strong className="font-mono">nova/</strong> directory. This structure is similar to how React apps organize components in a <strong className="font-mono">components/</strong> folder:
+      <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Nova Directory Structure</h2>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          Nova templates are organized in the <strong className="font-mono text-gray-900 dark:text-white">nova/</strong> directory. This structure is similar to how React apps organize components in a <strong className="font-mono text-gray-900 dark:text-white">components/</strong> folder:
         </p>
         <CodeExample
           code={`nova/
@@ -81,10 +82,10 @@ export default function NovaContent() {
           explanation="Think of this like a React app: components/ for reusable pieces, pages/ for routes, layouts/ for page wrappers"
         />
 
-        <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
-          <h4 className="font-bold mb-2">nova.json: The Component Configuration</h4>
-          <p className={`text-sm mb-3 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-            This is like <strong className="font-mono">package.json</strong> for your Nova components:
+        <div className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+          <h4 className="font-bold mb-2 text-gray-900 dark:text-white">nova.json: The Component Configuration</h4>
+          <p className={`text-sm mb-3 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+            This is like <strong className="font-mono text-gray-900 dark:text-white">package.json</strong> for your Nova components:
           </p>
           <CodeExample
             code={`{
@@ -110,34 +111,34 @@ export default function NovaContent() {
       </div>
 
       {/* Understanding Nova Components: The Three Parts */}
-      <h2 className="text-3xl font-bold mb-6">Understanding Nova Components</h2>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Understanding Nova Components</h2>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Every Nova component has three parts, similar to React hooks:
         </p>
         <div className="grid grid-cols-1 gap-4 mb-6">
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">1. State (like useState)</h4>
-            <p className="text-sm">Data that can change and cause re-renders</p>
-            <strong className="text-xs block mt-2">state() - {`{ count: 0 }`}</strong>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">1. State (like useState)</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Data that can change and cause re-renders</p>
+            <strong className="text-xs block mt-2 text-gray-700 dark:text-gray-300">state() -- {`{ count: 0 }`}</strong>
           </div>
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">2. Actions (like event handlers)</h4>
-            <p className="text-sm">Functions that update state</p>
-            <strong className="text-xs block mt-2">actions() - increment()</strong>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">2. Actions (like event handlers)</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Functions that update state</p>
+            <strong className="text-xs block mt-2 text-gray-700 dark:text-gray-300">actions() -- increment()</strong>
           </div>
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-100'}`}>
-            <h4 className="font-bold mb-2">3. View (like JSX)</h4>
-            <p className="text-sm">HTML template with directives</p>
-            <strong className="text-xs block mt-2">view() - HTML + @echo</strong>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">3. View (like JSX)</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">HTML template with directives</p>
+            <strong className="text-xs block mt-2 text-gray-700 dark:text-gray-300">view() -- HTML + @echo</strong>
           </div>
         </div>
       </div>
 
       {/* Real-World Component Example: Button */}
-      <h3 className="text-2xl font-bold mb-4">Real-World Example 1: Button Component</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Real-World Example 1: Button Component</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Here's a Button component. Notice how it mirrors React's component pattern:
         </p>
         <CodeExample
@@ -197,15 +198,15 @@ component('components/Button', function ($c) {
           explanation="A reusable button component. Notice the similarity to React: state (useState), actions (event handlers), view (JSX)"
         />
 
-        <div className={`mt-4 p-3 rounded-lg ${darkMode ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
+        <div className={`mt-4 p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
           <div className="flex items-start gap-2">
             <div>
-              <h4 className="font-bold mb-1">How This Compares to React</h4> <br></br>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                React Version:<br></br> <strong className="font-mono">const [label, setLabel] = useState('Click Me')</strong><br />
-                Nova Version: <br></br> <strong className="font-mono">$state['label'] = 'Click Me'</strong><br />
-                React Event:<br></br>  <strong className="font-mono">{`onClick={handleClick}`}</strong><br />
-                Nova Event: <br></br> <strong className="font-mono">@click="click"</strong>
+              <h4 className="font-bold mb-1 text-gray-900 dark:text-white">How This Compares to React</h4>
+              <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                <strong>React Version:</strong> <code className="font-mono">const [label, setLabel] = useState('Click Me')</code><br />
+                <strong>Nova Version:</strong> <code className="font-mono">$state['label'] = 'Click Me'</code><br />
+                <strong>React Event:</strong> <code className="font-mono">{`onClick={handleClick}`}</code><br />
+                <strong>Nova Event:</strong> <code className="font-mono">@click="click"</code>
               </p>
             </div>
           </div>
@@ -213,9 +214,9 @@ component('components/Button', function ($c) {
       </div>
 
       {/* Card Component Example */}
-      <h3 className="text-2xl font-bold mb-4">Real-World Example 2: Card Component with Tailwind</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Real-World Example 2: Card Component with Tailwind</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Cards are reusable containers that can display any content. This is similar to React's Card component pattern:
         </p>
         <CodeExample
@@ -260,10 +261,10 @@ component('components/Card', function ($c) {
       </div>
 
       {/* Layout Template with Slots */}
-      <h3 className="text-2xl font-bold mb-4">Layouts: Like React Router Layouts</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Layouts are like React's layout components that wrap pages. They use <strong>slots</strong> - which work like React's <strong className="font-mono">children</strong> prop:
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Layouts: Like React Router Layouts</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          Layouts are like React's layout components that wrap pages. They use <strong>slots</strong> - which work like React's <strong className="font-mono text-gray-900 dark:text-white">children</strong> prop:
         </p>
         <CodeExample
           code={`<?php
@@ -305,9 +306,9 @@ component('layouts/AppLayout', function ($c) {
       </div>
 
       {/* Page Component with State & Actions */}
-      <h3 className="text-2xl font-bold mb-4">Pages: Like React Router Pages with Hooks</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-orange-900/20 border border-orange-800' : 'bg-orange-50 border border-orange-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Pages: Like React Router Pages with Hooks</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Pages are like React Router pages. They can have their own state and actions, just like React components with hooks:
         </p>
         <CodeExample
@@ -391,50 +392,48 @@ component('pages/Welcome', function ($c) {
       </div>
 
       {/* Nova Directives Reference */}
-      <h3 className="text-2xl font-bold mb-4">Nova Directives: Your JSX Alternative</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Nova Directives: Your JSX Alternative</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Nova directives work like JSX but are easier to read for PHP developers. Here's how they compare to React:
         </p>
 
         <div className="overflow-x-auto">
-          <table className={`w-full text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+          <table className={`w-full text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             <thead>
-              <tr className={`border-b ${darkMode ? 'border-zinc-700' : 'border-zinc-300'}`}>
+              <tr className={`border-b ${darkMode ? "border-gray-700" : "border-gray-300"}`}>
                 <th className="py-2 px-3 text-left">What it does</th>
                 <th className="py-2 px-3 text-left">React (JSX)</th>
                 <th className="py-2 px-3 text-left">Nova (Directives)</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={`border-b ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <tr className={`border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
                 <td className="py-2 px-3">Output variable</td>
                 <td className="py-2 px-3 font-mono text-xs">{'{variable}'}</td>
                 <td className="py-2 px-3 font-mono text-xs">@echo($variable)</td>
               </tr>
-              <tr className={`border-b ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <tr className={`border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
                 <td className="py-2 px-3">Raw HTML</td>
                 <td className="py-2 px-3 font-mono text-xs">{'{dangerouslySetInnerHTML}'}</td>
                 <td className="py-2 px-3 font-mono text-xs">@raw($html)</td>
               </tr>
-              <tr className={`border-b ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <tr className={`border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
                 <td className="py-2 px-3">Conditional</td>
-                <td className="py-2 px-3 font-mono text-xs">
-                  {`{condition && <div>...}`}
-                </td>
+                <td className="py-2 px-3 font-mono text-xs">{`{condition && <div>...}`}</td>
                 <td className="py-2 px-3 font-mono text-xs">@if($condition) ... @endif</td>
               </tr>
-              <tr className={`border-b ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <tr className={`border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
                 <td className="py-2 px-3">Loop</td>
                 <td className="py-2 px-3 font-mono text-xs">{'items.map(item => ...)'}</td>
                 <td className="py-2 px-3 font-mono text-xs">@foreach($items as $item) ... @endforeach</td>
               </tr>
-              <tr className={`border-b ${darkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <tr className={`border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
                 <td className="py-2 px-3">Event handler</td>
                 <td className="py-2 px-3 font-mono text-xs">{`onClick={handleClick}`}</td>
                 <td className="py-2 px-3 font-mono text-xs">@click="actionName"</td>
               </tr>
-              <tr>
+              <tr className={`border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
                 <td className="py-2 px-3">Render component</td>
                 <td className="py-2 px-3 font-mono text-xs">{'<Card title="Hello" />'}</td>
                 <td className="py-2 px-3 font-mono text-xs">{`@component('components/Card', ['title' => 'Hello'])`}</td>
@@ -443,23 +442,23 @@ component('pages/Welcome', function ($c) {
           </table>
         </div>
 
-        <div className={`mt-4 p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
+        <div className={`mt-4 p-3 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
           <div className="flex items-start gap-2">
             <div>
-              <h4 className="font-bold mb-1">Key Difference: Server vs Client</h4>
-              <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                <strong>React:</strong> JavaScript runs in the browser. State is client-side. Components re-render in the browser.<br />
-                <strong>Nova:</strong> PHP runs on the server. State is stored in the session. Components re-render on the server and send HTML to the browser.
+              <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Key Difference: Server vs Client</h4>
+              <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                <strong className={darkMode ? "text-white" : ""}>React:</strong> JavaScript runs in the browser. State is client-side. Components re-render in the browser.<br />
+                <strong className={darkMode ? "text-white" : ""}>Nova:</strong> PHP runs on the server. State is stored in the session. Components re-render on the server and send HTML to the browser.
               </p>
             </div>
           </div>
         </div>
-      </div >
+      </div>
 
       {/* Rendering Nova from Actions */}
-      < h3 className="text-2xl font-bold mb-4" > Using Nova in Actions(like React Router)</h3 >
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-indigo-900/20 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Using Nova in Actions (like React Router)</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           In your Actions, you render Nova components - similar to how React Router renders components for routes:
         </p>
         <CodeExample
@@ -497,44 +496,37 @@ class HomeAction extends Action
       </div>
 
       {/* Best Practices */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode
-        ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20'
-        : 'bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200'
-        }`}>
-        <h3 className="text-xl font-bold mb-4">Nova Best Practices (Same as React!)</h3>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Nova Best Practices (Same as React!)</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
-              Do These (like React best practices)
-            </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">Do These (like React best practices)</h4>
+            <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />
                 Keep components small and focused (one responsibility)
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />
                 Use slots for flexible content (like React's children)
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />
                 Always escape output with <code className="font-mono">@echo</code> (like {`{variable}`} in React)
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />
                 Give components unique instance IDs (like React keys)
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
+                <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />
                 Use Tailwind CSS for styling (just like in React)
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-2 flex items-center gap-2">
-              Avoid These (same as React anti-patterns)
-            </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">Avoid These (same as React anti-patterns)</h4>
+            <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-2">
                 <span className="text-red-500 text-xl">×</span>
                 Complex logic in views (keep in actions - like keeping logic out of JSX)
@@ -557,21 +549,21 @@ class HomeAction extends Action
       </div>
 
       {/* Summary */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-cyan-900/20 border border-cyan-800' : 'bg-cyan-50 border border-cyan-200'}`}>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="flex items-start gap-3">
           <div>
-            <h3 className="text-xl font-bold mb-2">Summary: Nova = React for PHP</h3>
-            <p className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Summary: Nova = React for PHP</h3>
+            <p className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               If you know React, you already understand Nova! Both share the same component-based philosophy:
             </p>
-            <ul className={`mt-3 space-y-1 text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+            <ul className={`mt-3 space-y-1 text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               <li>✓ Components with state, props, and lifecycle</li>
               <li>✓ Conditional rendering and loops</li>
               <li>✓ Event handlers that update state</li>
               <li>✓ Composition through nesting and slots (children)</li>
               <li>✓ Layouts that wrap pages</li>
             </ul>
-            <p className={`mt-3 text-sm ${darkMode ? 'text-cyan-400' : 'text-cyan-700'}`}>
+            <p className={`mt-3 text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               The main difference? Nova runs on the server (PHP), giving you access to databases, sessions, and all PHP features,
               while delivering HTML to the browser. It's the best of both worlds!
             </p>

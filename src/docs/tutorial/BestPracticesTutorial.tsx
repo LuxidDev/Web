@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import {
-  CheckCircle, Shield, AlertCircle, Code, ArrowRight
+  CheckCircle, AlertCircle, Code, ArrowRight
 } from "lucide-react";
 
 export default function BestPracticesTutorial() {
@@ -9,12 +9,11 @@ export default function BestPracticesTutorial() {
 
   return (
     <>
-      <div className={`mb-6 p-5 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-          <Shield className="w-5 h-5" />
+      <div className={`mb-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           Best Practices for Building APIs
         </h3>
-        <p className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+        <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
           Follow these best practices to build secure, maintainable, and professional APIs with Luxid.
         </p>
       </div>
@@ -23,12 +22,12 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Validation</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <strong className="text-gray-900 dark:text-white">Validation</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Always validate input data in your Entity using PHP 8 attributes like
-              <code className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-zinc-800/50 text-green-300" : "bg-green-100 text-green-700"}`}>#[Required]</code>,
-              <code className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-zinc-800/50 text-green-300" : "bg-green-100 text-green-700"}`}>#[Email]</code>, and
-              <code className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-zinc-800/50 text-green-300" : "bg-green-100 text-green-700"}`}>#[Min(3)]</code>.
+              <strong className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>#[Required]</strong>,
+              <strong className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>#[Email]</strong>, and
+              <strong className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>#[Min(3)]</strong>.
               Never trust user input - validate before saving to the database.
             </p>
           </div>
@@ -37,9 +36,9 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Error Handling</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-              Use <code className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-zinc-800/50 text-green-300" : "bg-green-100 text-green-700"}`}>Response::error()</code> for consistent error responses.
+            <strong className="text-gray-900 dark:text-white">Error Handling</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>Response::error()</strong> for consistent error responses.
               Include meaningful error messages and validation details to help API consumers debug issues.
             </p>
           </div>
@@ -48,28 +47,28 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>HTTP Status Codes</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-              Return appropriate HTTP status codes:
+            <strong className="text-gray-900 dark:text-white">HTTP Status strongs</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Return appropriate HTTP status strongs:
             </p>
             <div className={`mt-2 grid grid-cols-2 md:grid-cols-3 gap-2 text-xs`}>
-              <div className={`p-1.5 rounded ${darkMode ? "bg-zinc-800/50" : "bg-gray-100"}`}>
-                <code className="font-mono">200 OK</code> - Success
+              <div className={`p-1.5 rounded ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>200 OK</strong> - Success
               </div>
-              <div className={`p-1.5 rounded ${darkMode ? "bg-zinc-800/50" : "bg-gray-100"}`}>
-                <code className="font-mono">201 Created</code> - Resource created
+              <div className={`p-1.5 rounded ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>201 Created</strong> - Resource created
               </div>
-              <div className={`p-1.5 rounded ${darkMode ? "bg-zinc-800/50" : "bg-gray-100"}`}>
-                <code className="font-mono">400 Bad Request</code> - Invalid request
+              <div className={`p-1.5 rounded ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>400 Bad Request</strong> - Invalid request
               </div>
-              <div className={`p-1.5 rounded ${darkMode ? "bg-zinc-800/50" : "bg-gray-100"}`}>
-                <code className="font-mono">404 Not Found</code> - Resource not found
+              <div className={`p-1.5 rounded ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>404 Not Found</strong> - Resource not found
               </div>
-              <div className={`p-1.5 rounded ${darkMode ? "bg-zinc-800/50" : "bg-gray-100"}`}>
-                <code className="font-mono">422 Unprocessable Entity</code> - Validation errors
+              <div className={`p-1.5 rounded ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>422 Unprocessable Entity</strong> - Validation errors
               </div>
-              <div className={`p-1.5 rounded ${darkMode ? "bg-zinc-800/50" : "bg-gray-100"}`}>
-                <code className="font-mono">500 Internal Server Error</code> - Server error
+              <div className={`p-1.5 rounded ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>500 Internal Server Error</strong> - Server error
               </div>
             </div>
           </div>
@@ -78,26 +77,26 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Security First</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <strong className="text-gray-900 dark:text-white">Security First</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Never trust user input. Always:
             </p>
-            <ul className={`mt-2 space-y-1 text-sm ml-5 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <ul className={`mt-2 space-y-1 text-sm ml-5 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0" />
+                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
                 <span>Validate data through Entity attributes</span>
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0" />
-                <span>Hash passwords using <code className="font-mono">password_hash()</code> in <code className="font-mono">beforeSave()</code></span>
+                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
+                <span>Hash passwords using <strong className="font-mono">password_hash()</strong> in <code className="font-mono">beforeSave()</code></span>
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0" />
+                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
                 <span>Use parameter binding in queries (Rocket does this automatically)</span>
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0" />
-                <span>Hide sensitive data with <code className="font-mono">#[Column(hidden: true)]</code></span>
+                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
+                <span>Hide sensitive data with <strong className="font-mono">#[Column(hidden: true)]</strong></span>
               </li>
             </ul>
           </div>
@@ -106,11 +105,11 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Consistent API Responses</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-              Use <code className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-zinc-800/50 text-green-300" : "bg-green-100 text-green-700"}`}>Response::success()</code> helper to maintain a consistent response structure:
+            <strong className="text-gray-900 dark:text-white">Consistent API Responses</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={`font-mono px-1 mx-1 rounded ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>Response::success()</strong> helper to maintain a consistent response structure:
             </p>
-            <div className={`mt-2 p-2 rounded text-xs font-mono ${darkMode ? "bg-zinc-800" : "bg-gray-100"}`}>
+            <div className={`mt-2 p-2 rounded text-xs font-mono ${darkMode ? "bg-gray-800 text-gray-300 border border-gray-700" : "bg-gray-100 text-gray-800 border border-gray-200"}`}>
               {`{
   "success": true,
   "message": "Todo created successfully",
@@ -123,17 +122,17 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Keep Actions Focused</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <strong className="text-gray-900 dark:text-white">Keep Actions Focused</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Actions should handle HTTP concerns (request/response). Keep business logic in Entities:
             </p>
-            <ul className={`mt-2 space-y-1 text-sm ml-5 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <ul className={`mt-2 space-y-1 text-sm ml-5 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0" />
+                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
                 <span>Entities: Validation rules, computed properties, lifecycle hooks</span>
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0" />
+                <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
                 <span>Actions: Request handling, response formatting, orchestration</span>
               </li>
             </ul>
@@ -143,13 +142,13 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Use LuxidAction for Filtering</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-              Extend <code className="font-mono">LuxidAction</code> to get automatic filtering, pagination, and sorting:
+            <strong className="text-gray-900 dark:text-white">Use LuxidAction for Filtering</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Extend <strong className="font-mono">LuxidAction</strong> to get automatic filtering, pagination, and sorting:
             </p>
-            <pre
+            <div
               className={`mt-2 p-3 rounded text-xs font-mono whitespace-pre-wrap border ${darkMode
-                ? "bg-zinc-900 text-zinc-200 border-zinc-700"
+                ? "bg-gray-800 text-gray-300 border-gray-700"
                 : "bg-gray-100 text-gray-800 border-gray-200"
                 }`}
             >
@@ -157,9 +156,9 @@ export default function BestPracticesTutorial() {
     'status' => ['column' => 'status'],
     'search' => ['column' => ['title', 'description'], 'operator' => 'LIKE']
 ];`}
-            </pre>
-            <p className={`text-xs mt-1 ${darkMode ? "text-zinc-500" : "text-zinc-500"}`}>
-              Then use <code className="font-mono">?status=pending&search=work</code> in your API calls.
+            </div>
+            <p className={`text-xs mt-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+              Then use <strong className="font-mono">?status=pending&search=work</strong> in your API calls.
             </p>
           </div>
         </li>
@@ -167,29 +166,29 @@ export default function BestPracticesTutorial() {
         <li className="flex items-start gap-3">
           <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-green-400" : "text-green-700"}>Database Indexes</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <strong className="text-gray-900 dark:text-white">Database Indexes</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Add indexes to columns used in WHERE, ORDER BY, and JOIN clauses for better performance:
             </p>
-            <pre
+            <div
               className={`mt-2 p-3 rounded text-xs font-mono whitespace-pre-wrap border ${darkMode
-                ? "bg-zinc-900 text-zinc-200 border-zinc-700"
+                ? "bg-gray-800 text-gray-300 border-gray-700"
                 : "bg-gray-100 text-gray-800 border-gray-200"
                 }`}
             >
               {`$column->string('email')->unique()->index();
 $column->string('status')->index();`}
-            </pre>
+            </div>
           </div>
         </li>
       </ul>
 
-      <div className={`mt-6 p-4 rounded-lg ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
+      <div className={`mt-6 p-4 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
         <div className="flex items-start gap-3">
-          <AlertCircle className="mt-0.5 h-5 w-5 text-yellow-500 flex-shrink-0" />
+          <AlertCircle className="mt-0.5 h-5 w-5 text-gray-500 flex-shrink-0" />
           <div className="flex-1">
-            <strong className={darkMode ? "text-yellow-400" : "text-yellow-700"}>Remember</strong>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <strong className="text-gray-900 dark:text-white">Remember</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Good APIs are predictable, secure, and well-documented. Follow these practices to build
               professional applications that are easy to maintain and scale.
             </p>

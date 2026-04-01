@@ -27,10 +27,10 @@ export default function MonacoEditor({
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Map custom language to Monaco language
-  const monacoLanguage = language === "nova" ? "html" :
-                        language === "bash" ? "shell" :
-                        language === "ini" ? "ini" :
-                        language;
+  const monacoLanguage = language === "nova" ? "php" :
+    language === "bash" ? "shell" :
+      language === "ini" ? "ini" :
+        language;
 
   // Calculate height based on lines
   useEffect(() => {

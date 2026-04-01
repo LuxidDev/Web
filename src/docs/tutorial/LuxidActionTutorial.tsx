@@ -12,14 +12,14 @@ export default function LuxidActionTutorial() {
     <>
       <div
         className={`mb-8 p-6 rounded-2xl ${darkMode
-          ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20"
-          : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"
+          ? "bg-gray-900/50 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
           }`}
       >
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-2xl font-bold mb-2">LuxidAction: Your Base Action Class</h3>
-            <p className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">LuxidAction: Your Base Action Class</h3>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
               Every action in your app will extend this class. It provides automatic filtering, pagination,
               and sorting for all your API endpoints.
             </p>
@@ -27,22 +27,22 @@ export default function LuxidActionTutorial() {
         </div>
       </div>
 
-      <div className={`mb-6 p-5 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mb-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           What is LuxidAction?
         </h3>
-        <p className={`mb-4 ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
           It gives you powerful query filtering, pagination, and sorting capabilities out of the box.
         </p>
-        <p className={`mb-4 ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
-          <strong>Why use it?</strong> Instead of writing the same filtering and pagination logic for every endpoint,
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+          <strong className="text-gray-900 dark:text-white">Why use it?</strong> Instead of writing the same filtering and pagination logic for every endpoint,
           you define your filters once and they're automatically applied. This keeps your actions clean and focused
           on business logic.
         </p>
-        <div className={`p-3 rounded-lg ${darkMode ? 'bg-blue-900/30' : 'bg-blue-100'}`}>
-          <p className={`text-sm ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>
-            <strong>This file is already created</strong> for you in <strong className="font-mono">app/Actions/LuxidAction.php</strong>,
-            then all your resource actions (like <code className="font-mono">TodoAction</code>) will extend it.
+        <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+          <p className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+            <strong className="text-gray-900 dark:text-white">This file is already created</strong> for you in <strong className="font-mono text-gray-900 dark:text-white">app/Actions/LuxidAction.php</strong>,
+            then all your resource actions (like <code className="font-mono text-gray-900 dark:text-white">TodoAction</code>) will extend it.
           </p>
         </div>
       </div>
@@ -171,45 +171,45 @@ abstract class LuxidAction extends Action
       />
 
       {/* How to Use Section */}
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           <CheckCircle className="w-5 h-5 text-green-500" />
           How to Use LuxidAction
         </h3>
 
         <div className="space-y-4">
           <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold mt-0.5">1</div>
+            <div className="w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">1</div>
             <div>
-              <strong className={darkMode ? "text-green-400" : "text-green-700"}>Create the Base Class</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <strong className="text-gray-900 dark:text-white">Create the Base Class</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Save the code above as <code className="font-mono">app/Actions/LuxidAction.php</code>.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold mt-0.5">2</div>
+            <div className="w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">2</div>
             <div>
-              <strong className={darkMode ? "text-green-400" : "text-green-700"}>Extend It in Your Resource Actions</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <strong className="text-gray-900 dark:text-white">Extend It in Your Resource Actions</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 In your <code className="font-mono">TodoAction.php</code>, extend <code className="font-mono">LuxidAction</code> instead of the base <code className="font-mono">Action</code>
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold mt-0.5">3</div>
+            <div className="w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">3</div>
             <div>
-              <strong className={darkMode ? "text-green-400" : "text-green-700"}>Use the API with Filters</strong>
-              <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+              <strong className="text-gray-900 dark:text-white">Use the API with Filters</strong>
+              <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Now your API automatically supports filtering via URL parameters:
               </p>
               <div className="space-y-1 mt-2 text-sm">
-                <code className="block p-2 rounded bg-black/10 font-mono text-xs">GET /api/todos?status=pending</code>
-                <code className="block p-2 rounded bg-black/10 font-mono text-xs">GET /api/todos?search=work</code>
-                <code className="block p-2 rounded bg-black/10 font-mono text-xs">GET /api/todos?status=in_progress&search=project</code>
-                <code className="block p-2 rounded bg-black/10 font-mono text-xs">GET /api/todos?limit=20&offset=0</code>
+                <strong className={darkMode ? "text-white font-mono block p-2" : "font-mono block p-2"}>GET /api/todos?status=pending</strong>
+                <strong className={darkMode ? "text-white font-mono block p-2" : "font-mono block p-2"}>GET /api/todos?search=work</strong>
+                <strong className={darkMode ? "text-white font-mono block p-2" : "font-mono block p-2"}>GET /api/todos?status=in_progress&search=project</strong>
+                <strong className={darkMode ? "text-white font-mono block p-2" : "font-mono block p-2"}>GET /api/todos?limit=20&offset=0</strong>
               </div>
             </div>
           </div>
@@ -217,50 +217,50 @@ abstract class LuxidAction extends Action
       </div>
 
       {/* Key Methods Explained */}
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           Key Methods You'll Use
         </h3>
 
         <div className="grid grid-cols-1 gap-3">
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
-            <code className="font-mono text-purple-600">getEntityClass()</code>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getEntityClass()</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Override this to tell LuxidAction which Entity to use.
             </p>
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
-            <code className="font-mono text-purple-600">$filters</code>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <strong className={darkMode ? "text-white font-mono" : "font-mono"}>$filters</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Define what filters your API supports. These map URL parameters to database columns.
             </p>
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
-            <code className="font-mono text-purple-600">$defaultOrder</code>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <strong className={darkMode ? "text-white font-mono" : "font-mono"}>$defaultOrder</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Set the default sorting for your results.
             </p>
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
-            <code className="font-mono text-purple-600">getFilteredResults()</code>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-              Returns filtered, sorted, and paginated results. Use this in your <code className="font-mono">index()</code> method.
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getFilteredResults()</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Returns filtered, sorted, and paginated results. Use this in your <strong className={darkMode ? "text-white font-mono" : "font-mono"}>index()</strong> method.
             </p>
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
-            <code className="font-mono text-purple-600">getFilteredCount()</code>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getFilteredCount()</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Returns total count of records matching filters (useful for pagination metadata).
             </p>
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'}`}>
-            <code className="font-mono text-purple-600">getQueryParams()</code>
-            <p className={`text-sm mt-1 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getQueryParams()</strong>
+            <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Returns current filter parameters being used (great for debugging or API responses).
             </p>
           </div>
@@ -268,14 +268,14 @@ abstract class LuxidAction extends Action
       </div>
 
       {/* Filter Configuration Examples */}
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-cyan-900/20 border border-cyan-800' : 'bg-cyan-50 border border-cyan-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           Filter Configuration Examples
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-cyan-900/30' : 'bg-cyan-100'}`}>
-            <h4 className="font-bold mb-2">Simple Status Filter</h4>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Simple Status Filter</h4>
             <CodeExample
               code={`'status' => [
     'column' => 'status',
@@ -288,8 +288,8 @@ abstract class LuxidAction extends Action
             />
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-cyan-900/30' : 'bg-cyan-100'}`}>
-            <h4 className="font-bold mb-2">Search Across Columns</h4>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Search Across Columns</h4>
             <CodeExample
               code={`'search' => [
     'column' => ['title', 'description'],
@@ -302,8 +302,8 @@ abstract class LuxidAction extends Action
             />
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-cyan-900/30' : 'bg-cyan-100'}`}>
-            <h4 className="font-bold mb-2">Range Filter</h4>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Range Filter</h4>
             <CodeExample
               code={`'price' => [
     'column' => 'price',
@@ -316,8 +316,8 @@ abstract class LuxidAction extends Action
             />
           </div>
 
-          <div className={`p-3 rounded-lg ${darkMode ? 'bg-cyan-900/30' : 'bg-cyan-100'}`}>
-            <h4 className="font-bold mb-2">Date Filter</h4>
+          <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Date Filter</h4>
             <CodeExample
               code={`'created_at' => [
     'column' => 'created_at',
@@ -333,8 +333,8 @@ abstract class LuxidAction extends Action
       </div>
 
       {/* Benefits */}
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           <CheckCircle className="w-5 h-5 text-green-500" />
           Benefits
         </h3>
@@ -342,26 +342,26 @@ abstract class LuxidAction extends Action
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex items-start gap-2">
             <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>Less boilerplate code</span>
+            <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Less boilerplate code</span>
           </div>
           <div className="flex items-start gap-2">
             <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>Consistent API across endpoints</span>
+            <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Consistent API across endpoints</span>
           </div>
           <div className="flex items-start gap-2">
             <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>Automatic validation of filter values</span>
+            <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Automatic validation of filter values</span>
           </div>
           <div className="flex items-start gap-2">
             <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span className={`text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>Built-in pagination and sorting</span>
+            <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Built-in pagination and sorting</span>
           </div>
         </div>
       </div>
 
       {/* Best Practices */}
-      <div className={`mt-6 p-5 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+      <div className={`mt-6 p-5 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
           <CheckCircle className="w-5 h-5 text-green-500" />
           Best Practices
         </h3>

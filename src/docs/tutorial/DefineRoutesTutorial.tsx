@@ -4,7 +4,6 @@ import {
   CheckCircle,
 } from "lucide-react";
 import CodeExample from "@/components/CodeExample";
-import InlineCodeExample from "@/components/InlineCodeExample";
 
 export default function DefineRoutesTutorial() {
   const { darkMode } = useTheme();
@@ -13,20 +12,20 @@ export default function DefineRoutesTutorial() {
     <>
       <div
         className={`mb-8 p-6 rounded-2xl ${darkMode
-          ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20"
-          : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200"
+          ? "bg-gray-900/50 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
           }`}
       >
         <div className="flex items-start gap-4">
           <div>
             <p
-              className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}
+              className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}
             >
-              Routes are where you map incoming HTTP requests and map them to actions that process the request and returhn a response. <br />
+              Routes are where you map incoming HTTP requests and map them to actions that process the request and return a response. <br />
               Find this file here:
-              <strong className={`font-mono px-2 py-1 rounded ${darkMode ? "bg-zinc-800/50 text-blue-300" : "bg-blue-50 text-blue-700"}`}>
+              <strong className={`font-mono px-2 py-1 rounded mx-1 ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>
                 routes/api.php
-              </strong>{" "}
+              </strong>
             </p>
           </div>
         </div>
@@ -95,52 +94,52 @@ route('api.todos.bulk-update')
         explanation=""
       />
 
-      <h3 className="text-2xl font-bold mb-4">Route Features:</h3>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Route Features:</h3>
 
       <ul className="mt-4 space-y-3">
         <li className="flex items-start gap-3">
-          <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-          <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-            <strong>Fluent API: </strong>
+          <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+          <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+            <strong className="text-gray-900 dark:text-white">Fluent API: </strong>
             Each method handles a specific HTTP verb
           </span>
         </li>
 
         <li className="flex items-start gap-3">
-          <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-          <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-            <strong>Named Routes: </strong>
+          <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+          <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+            <strong className="text-gray-900 dark:text-white">Named Routes: </strong>
             First parameter names the route for easy reference
           </span>
         </li>
 
         <li className="flex items-start gap-3">
-          <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-          <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-            <strong>Method Binding: </strong>
-            <code className={`font-mono px-2 py-1 rounded ${darkMode ? "bg-zinc-800/50 text-blue-300" : "bg-blue-50 text-blue-700"}`}>
+          <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+          <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+            <strong className="text-gray-900 dark:text-white">Method Binding: </strong>
+            <strong className={`font-mono px-2 py-1 rounded mx-1 ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>
               uses()
-            </code>{" "}
+            </strong>
             connects to specific Action class and method
           </span>
         </li>
 
         <li className="flex items-start gap-3">
-          <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-          <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-            <strong>Route Parameters: </strong>
+          <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+          <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+            <strong className="text-gray-900 dark:text-white">Route Parameters: </strong>
             Use
-            <code className={`font-mono px-2 py-1 rounded ${darkMode ? "bg-zinc-800/50 text-blue-300" : "bg-blue-50 text-blue-700"}`}>
+            <strong className={`font-mono px-2 py-1 rounded mx-1 ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"}`}>
               {"{id}"}
-            </code>{" "}
-            connects to specific Action class and method
+            </strong>
+            to capture dynamic URL segments
           </span>
         </li>
 
         <li className="flex items-start gap-3">
-          <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-          <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-            <strong>open(): </strong>
+          <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+          <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+            <strong className="text-gray-900 dark:text-white">open(): </strong>
             Marks route as publicly accessible (no authentication needed)
           </span>
         </li>

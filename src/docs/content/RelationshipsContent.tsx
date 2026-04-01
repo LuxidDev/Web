@@ -13,13 +13,13 @@ export default function RelationshipsContent() {
     <>
       {/* Hero Section */}
       <div className={`mb-8 p-6 rounded-2xl ${darkMode
-        ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
-        : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200'
+        ? "bg-gray-900/50 border border-gray-800"
+        : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-2xl font-bold mb-2">Entity Relationships</h3>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Entity Relationships</h3>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               Define and work with relationships between entities in Rocket ORM. Connect your data
               and build powerful, expressive queries with ease.
             </p>
@@ -28,46 +28,46 @@ export default function RelationshipsContent() {
       </div>
 
       {/* Overview */}
-      <h2 className="text-3xl font-bold mb-6">Understanding Relationships</h2>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Understanding Relationships</h2>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         Relationships are the heart of any database-driven application. Rocket ORM provides a clean,
         intuitive way to define relationships between your entities using PHP 8 attributes.
       </p>
-      <p className={`text-lg mb-6 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <p className={`text-lg mb-6 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
         There are three main types of relationships:
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div className={`p-4 rounded-lg ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
+        <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
           <div className="flex items-center gap-2 mb-2">
-            <h4 className="font-bold">HasOne / BelongsTo</h4>
+            <h4 className="font-bold text-gray-900 dark:text-white">HasOne / BelongsTo</h4>
           </div>
-          <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
             One-to-one relationships where one entity belongs to another.
           </p>
         </div>
-        <div className={`p-4 rounded-lg ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
+        <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
           <div className="flex items-center gap-2 mb-2">
-            <h4 className="font-bold">HasMany / BelongsTo</h4>
+            <h4 className="font-bold text-gray-900 dark:text-white">HasMany / BelongsTo</h4>
           </div>
-          <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
             One-to-many relationships where one entity has many related entities.
           </p>
         </div>
-        <div className={`p-4 rounded-lg ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
+        <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
           <div className="flex items-center gap-2 mb-2">
-            <h4 className="font-bold">BelongsToMany</h4>
+            <h4 className="font-bold text-gray-900 dark:text-white">BelongsToMany</h4>
           </div>
-          <p className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
             Many-to-many relationships using a pivot table.
           </p>
         </div>
       </div>
 
       {/* HasOne Relationship */}
-      <h3 className="text-2xl font-bold mb-4">HasOne Relationship</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          A <strong className="font-mono">HasOne</strong> relationship defines that an entity has one related entity.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">HasOne Relationship</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          A <strong className="font-mono text-gray-900 dark:text-white">HasOne</strong> relationship defines that an entity has one related entity.
           For example, a user has one profile.
         </p>
 
@@ -137,9 +137,9 @@ $user->profile()->create([
         />
 
         <div className="mt-4">
-          <h5 className="font-bold mb-2">Relationship Parameters</h5>
-          <div className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-            <p><strong className="font-mono">#[HasOne(Profile::class, 'user_id', 'id')]</strong></p>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Relationship Parameters</h5>
+          <div className={`text-sm space-y-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+            <p><strong className="font-mono text-gray-900 dark:text-white">#[HasOne(Profile::class, 'user_id', 'id')]</strong></p>
             <p className="ml-4">1. Related entity class</p>
             <p className="ml-4">2. Foreign key on the related table</p>
             <p className="ml-4">3. Local key on the current table</p>
@@ -148,10 +148,10 @@ $user->profile()->create([
       </div>
 
       {/* HasMany Relationship */}
-      <h3 className="text-2xl font-bold mb-4">HasMany Relationship</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          A <strong className="font-mono">HasMany</strong> relationship defines that an entity has many related entities.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">HasMany Relationship</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          A <strong className="font-mono text-gray-900 dark:text-white">HasMany</strong> relationship defines that an entity has many related entities.
           For example, a user has many posts.
         </p>
 
@@ -251,27 +251,27 @@ $activePosts = $user->posts()->where('status', '=', 'published')->count();`}
         />
 
         <div className="mt-4">
-          <h5 className="font-bold mb-2">Common HasMany Operations</h5>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Common HasMany Operations</h5>
           <div className="space-y-2">
             <InlineCodeExample
               code="$user->posts()->count()"
-              title="Count related records"
-              description="Get the number of posts for a user"
-              color="green"
+              title=""
+              description="Cound related records. Get the number of posts for a user"
+              color="gray"
               compact={true}
             />
             <InlineCodeExample
               code="$user->posts()->where('published', true)->all()"
-              title="Filtered query"
-              description="Get only published posts"
-              color="green"
+              title=""
+              description="Filtered query. Get only published posts"
+              color="gray"
               compact={true}
             />
             <InlineCodeExample
               code="$user->posts()->orderBy('created_at', 'DESC')->limit(5)->all()"
-              title="Latest posts"
-              description="Get the 5 most recent posts"
-              color="green"
+              title=""
+              description="Latest posts. Get the 5 most recent posts"
+              color="gray"
               compact={true}
             />
           </div>
@@ -279,10 +279,10 @@ $activePosts = $user->posts()->where('status', '=', 'published')->count();`}
       </div>
 
       {/* BelongsTo Relationship */}
-      <h3 className="text-2xl font-bold mb-4">BelongsTo Relationship</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-indigo-900/20 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          A <strong className="font-mono">BelongsTo</strong> relationship is the inverse of HasOne and HasMany.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">BelongsTo Relationship</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          A <strong className="font-mono text-gray-900 dark:text-white">BelongsTo</strong> relationship is the inverse of HasOne and HasMany.
           It defines that an entity belongs to another entity.
         </p>
 
@@ -359,10 +359,10 @@ foreach ($posts as $post) {
       </div>
 
       {/* BelongsToMany Relationship */}
-      <h3 className="text-2xl font-bold mb-4">BelongsToMany Relationship</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          A <strong className="font-mono">BelongsToMany</strong> relationship defines a many-to-many relationship.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">BelongsToMany Relationship</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          A <strong className="font-mono text-gray-900 dark:text-white">BelongsToMany</strong> relationship defines a many-to-many relationship.
           For example, a user can have many roles, and a role can belong to many users.
         </p>
 
@@ -466,9 +466,9 @@ $posts = Post::with('tags')->whereHas('tags', function($query) {
         />
 
         <div className="mt-4">
-          <h5 className="font-bold mb-2">BelongsToMany Parameters</h5>
-          <div className={`text-sm space-y-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-            <p><strong className="font-mono">#[BelongsToMany(Role::class, 'user_roles', 'user_id', 'role_id')]</strong></p>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">BelongsToMany Parameters</h5>
+          <div className={`text-sm space-y-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+            <p><strong className="font-mono text-gray-900 dark:text-white">#[BelongsToMany(Role::class, 'user_roles', 'user_id', 'role_id')]</strong></p>
             <p className="ml-4">1. Related entity class</p>
             <p className="ml-4">2. Pivot table name</p>
             <p className="ml-4">3. Foreign key on pivot table for current entity</p>
@@ -477,41 +477,41 @@ $posts = Post::with('tags')->whereHas('tags', function($query) {
         </div>
 
         <div className="mt-4">
-          <h5 className="font-bold mb-2">Pivot Table Operations</h5>
+          <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Pivot Table Operations</h5>
           <div className="space-y-2">
             <InlineCodeExample
               code="$user->roles()->attach(1)"
-              title="Attach"
-              description="Add a relationship without checking for duplicates"
-              color="purple"
+              title=""
+              description="Attach. Add a relationship without checking for duplicates"
+              color="gray"
               compact={true}
             />
             <InlineCodeExample
               code="$user->roles()->attach([1, 2, 3])"
-              title="Attach multiple"
-              description="Attach multiple roles at once"
-              color="purple"
+              title=""
+              description="Attach multiple. Attach multiple roles at once"
+              color="gray"
               compact={true}
             />
             <InlineCodeExample
               code="$user->roles()->detach(2)"
-              title="Detach"
-              description="Remove a specific relationship"
-              color="purple"
+              title=""
+              description="Detach. Remove a specific relationship"
+              color="gray"
               compact={true}
             />
             <InlineCodeExample
               code="$user->roles()->sync([1, 3])"
-              title="Sync"
-              description="Synchronize relationships (adds missing, removes extras)"
-              color="purple"
+              title=""
+              description="Sync. Synchronize relationships (adds missing, removes extras)"
+              color="gray"
               compact={true}
             />
             <InlineCodeExample
               code="$user->roles()->toggle([1, 2])"
-              title="Toggle"
-              description="Attach if not attached, detach if attached"
-              color="purple"
+              title=""
+              description="Toggle. Attach if not attached, detach if attached"
+              color="gray"
               compact={true}
             />
           </div>
@@ -519,11 +519,11 @@ $posts = Post::with('tags')->whereHas('tags', function($query) {
       </div>
 
       {/* Eager Loading */}
-      <h3 className="text-2xl font-bold mb-4">Eager Loading</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-yellow-900/20 border border-yellow-800' : 'bg-yellow-50 border border-yellow-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Eager Loading</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Eager loading helps you avoid the N+1 query problem by loading relationships upfront.
-          Use the <strong className="font-mono">with()</strong> method to specify which relationships to load.
+          Use the <strong className={darkMode ? "text-white font-mono" : "font-mono"}>with()</strong> method to specify which relationships to load.
         </p>
 
         <CodeExample
@@ -562,24 +562,24 @@ $users = User::with(['posts' => function($query) {
           explanation="Optimize your queries by loading relationships upfront."
         />
 
-        <div className={`mt-4 p-4 rounded-lg ${darkMode ? 'bg-blue-900/20 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
-          <h5 className="font-bold mb-2 flex items-center gap-2">
+        <div className={`mt-4 p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+          <h5 className="font-bold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
             <Info className="w-4 h-4" />
             Performance Tip
           </h5>
-          <p className={`text-sm ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-            Always use eager loading when accessing relationships in loops. A simple <strong className="font-mono">with()</strong>
+          <p className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+            Always use eager loading when accessing relationships in loops. A simple <strong className={darkMode ? "text-white font-mono" : "font-mono"}>with()</strong>
             can reduce dozens of queries to just a few!
           </p>
         </div>
       </div>
 
       {/* Querying Relationships */}
-      <h3 className="text-2xl font-bold mb-4">Querying Relationships</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-cyan-900/20 border border-cyan-800' : 'bg-cyan-50 border border-cyan-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
-          Filter and query based on relationships using <strong className="font-mono">whereHas()</strong>
-          and <strong className="font-mono">orWhereHas()</strong> methods.
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Querying Relationships</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+          Filter and query based on relationships using <strong className={darkMode ? "text-white font-mono" : "font-mono"}>whereHas()</strong>
+          and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>orWhereHas()</strong> methods.
         </p>
 
         <CodeExample
@@ -630,9 +630,9 @@ $posts = Post::whereHas('author', function($query) {
       </div>
 
       {/* Polymorphic Relationships */}
-      <h3 className="text-2xl font-bold mb-4">Polymorphic Relationships</h3>
-      <div className={`mb-8 p-6 rounded-xl ${darkMode ? 'bg-red-900/20 border border-red-800' : 'bg-red-50 border border-red-200'}`}>
-        <p className={`mb-4 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Polymorphic Relationships</h3>
+      <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
           Polymorphic relationships allow an entity to belong to multiple other entities on a single association.
           For example, a comment can belong to either a post or a video.
         </p>
@@ -720,23 +720,23 @@ if ($comment->commentable instanceof Post) {
       </div>
 
       {/* Best Practices */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-zinc-900/50 border border-zinc-800' : 'bg-zinc-50 border border-zinc-200'}`}>
-        <h3 className="text-xl font-bold mb-6">Relationship Best Practices</h3>
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Relationship Best Practices</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Do These Column */}
-          <div className={`p-5 rounded-xl ${darkMode ? 'bg-green-500/5 border border-green-500/20' : 'bg-green-50 border border-green-200'}`}>
-            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
-              <span className={darkMode ? 'text-green-400' : 'text-green-700'}>Do These</span>
+          <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg text-gray-900 dark:text-white">
+              Do These
               <CheckCircle className="w-5 h-5 text-green-500" />
             </h4>
-            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul className={`space-y-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
                 <span>Always define inverse relationships for consistency</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Use eager loading with <strong className="font-mono">with()</strong> to prevent N+1 queries</span>
+                <span>Use eager loading with <strong className={darkMode ? "text-white font-mono" : "font-mono"}>with()</strong> to prevent N+1 queries</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
@@ -744,7 +744,7 @@ if ($comment->commentable instanceof Post) {
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
-                <span>Use <strong className="font-mono">whereHas()</strong> for relationship filtering</span>
+                <span>Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>whereHas()</strong> for relationship filtering</span>
               </li>
               <li className="flex items-start gap-3">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
@@ -754,12 +754,12 @@ if ($comment->commentable instanceof Post) {
           </div>
 
           {/* Avoid These Column */}
-          <div className={`p-5 rounded-xl ${darkMode ? 'bg-red-500/5 border border-red-500/20' : 'bg-red-50 border border-red-200'}`}>
-            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg">
-              <span className={darkMode ? 'text-red-400' : 'text-red-700'}>Avoid These</span>
+          <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+            <h4 className="font-bold mb-4 flex items-center gap-2 text-lg text-gray-900 dark:text-white">
+              Avoid These
               <span className="text-red-500 text-xl font-bold">×</span>
             </h4>
-            <ul className={`space-y-3 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            <ul className={`space-y-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 text-lg font-bold mt-0.5">×</span>
                 <span>Don't forget to define foreign key constraints in migrations</span>
@@ -782,27 +782,27 @@ if ($comment->commentable instanceof Post) {
       </div>
 
       {/* Troubleshooting */}
-      <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-amber-900/20 border border-amber-800' : 'bg-amber-50 border border-amber-200'}`}>
-        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-          <AlertCircle className="w-5 h-5" />
+      <div className={`mt-8 p-6 rounded-xl ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+          <AlertCircle className="w-5 h-5 text-gray-500" />
           Troubleshooting
         </h3>
         <div className="space-y-3">
           <div>
-            <h4 className="font-bold mb-1">"Relationship method not found"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-              Ensure you've imported the relationship attributes and defined them as <strong className="font-mono">protected</strong> properties.
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"Relationship method not found"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Ensure you've imported the relationship attributes and defined them as <strong className={darkMode ? "text-white font-mono" : "font-mono"}>protected</strong> properties.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-1">"N+1 query problem"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
-              Use <strong className="font-mono">with()</strong> to eager load relationships. Check your logs for repeated queries.
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"N+1 query problem"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>with()</strong> to eager load relationships. Check your logs for repeated queries.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-1">"Foreign key constraint fails"</h4>
-            <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
+            <h4 className="font-bold mb-1 text-gray-900 dark:text-white">"Foreign key constraint fails"</h4>
+            <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               Ensure the referenced record exists and the foreign key columns are properly indexed.
             </p>
           </div>

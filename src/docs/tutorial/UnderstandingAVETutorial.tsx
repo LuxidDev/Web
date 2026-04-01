@@ -11,55 +11,53 @@ export default function UnderstandingAVETutorial() {
     <>
       <div
         className={`mb-8 p-6 rounded-2xl ${darkMode
-          ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
-          : "bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200"
+          ? "bg-gray-900/50 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
           }`}
       >
         <div className="flex items-start gap-4">
           <div>
-            <h3 className="text-2xl font-bold mb-2">
+            <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
               Understanding the AVE Architecture
             </h3>
             <p
-              className={`text-lg ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}
+              className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}
             >
               Luxid uses a unique AVE architecture:
             </p>
 
             <ul className="mt-4 space-y-3">
               <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-                <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-                  <strong>Actions (Controllers):</strong> Handle HTTP requests and business
+                <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+                <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+                  <strong className="text-gray-900 dark:text-white">Actions (Controllers):</strong> Handle HTTP requests and business
                   logic
                 </span>
               </li>
 
               <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-                <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-                  <strong>Views (Nova):</strong> Your frontend templates
-                  <strong className="mx-1">(.nova.php)</strong> files
+                <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+                <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+                  <strong className="text-gray-900 dark:text-white">Views (Nova):</strong> Your frontend templates
+                  <strong className="mx-1 text-gray-900 dark:text-white">(.nova.php)</strong> files
                 </span>
               </li>
 
               <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-cyan-500 flex-shrink-0" />
-                <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>
-                  <strong>Entities (Models):</strong> Your data models using the Active
+                <CheckCircle className="mt-1 h-5 w-5 text-green-500 flex-shrink-0" />
+                <span className={darkMode ? "text-gray-300" : "text-gray-700"}>
+                  <strong className="text-gray-900 dark:text-white">Entities (Models):</strong> Your data models using the Active
                   Record pattern
                 </span>
               </li>
-
-
             </ul>
 
             <p
-              className={`mt-6 text-base ${darkMode ? "text-zinc-300" : "text-zinc-700"
+              className={`mt-6 text-base ${darkMode ? "text-gray-300" : "text-gray-700"
                 }`}
             >
-              For our <strong>headless API</strong>, we’ll focus mainly on
-              <strong> Entities</strong> and <strong>Actions</strong>.
+              For our <strong className="text-gray-900 dark:text-white">headless API</strong>, we'll focus mainly on
+              <strong className="text-gray-900 dark:text-white"> Entities</strong> and <strong className="text-gray-900 dark:text-white">Actions</strong>.
             </p>
           </div>
         </div>

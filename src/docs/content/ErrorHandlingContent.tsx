@@ -14,64 +14,109 @@ export default function ErrorHandlingContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className={`mb-8 p-6 rounded-2xl ${
-        darkMode
-          ? 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/20'
-          : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
-      }`}>
+      <div className={`mb-8 p-6 rounded-2xl ${darkMode
+          ? "bg-gray-900/50 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
+        }`}>
         <div className="flex items-start gap-4">
-          <Layers className={`w-12 h-12 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+          <AlertCircle className={`w-12 h-12 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
           <div>
-            <h1 className="text-3xl font-bold mb-2">Luxid CORS Middleware</h1>
-            <p className={`text-lg ${darkMode ? 'text-zinc-300' : 'text-zinc-600'}`}>
-              Luxid includes automatic CORS (<strong>Cross-Origin Resource Sharing</strong>) support for all applications built on the framework. This ensures that APIs and web apps built with Luxid can securely handle requests from different origins without requiring manual configuration from the developer.
+            <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Error Handling in Luxid</h1>
+            <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+              Luxid provides robust error handling mechanisms to catch and manage exceptions gracefully.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Best Practices */}
-      <h2 className="text-2xl font-bold mb-4 mt-8">How CORS Works in Luxid</h2>
+      {/* How Error Handling Works */}
+      <h2 className="text-2xl font-bold mb-4 mt-8 text-gray-900 dark:text-white">How Error Handling Works in Luxid</h2>
 
-    <div className="flex flex-col gap-6">
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-green-900/20 border border-green-800' : 'bg-green-50 border border-green-200'}`}>
-            <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            Automatic Injection
-            </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+      <div className="flex flex-col gap-6">
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            Global Exception Handler
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                The CorsMiddleware is included in Luxid's core engine and automatically added to the middleware stack.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Luxid catches all unhandled exceptions and converts them to formatted responses.
             </li>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                During route resolution, Luxid executes all global middleware, which now includes CORS by default.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              In development mode, detailed error information is shown for debugging.
             </li>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                This means every Luxid app immediately has CORS enabled without the user needing to configure anything.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              In production, generic error messages are displayed for security.
             </li>
-            </ul>
+          </ul>
         </div>
 
-        <div className={`p-6 rounded-xl ${darkMode ? 'bg-purple-900/20 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
-            <h4 className="font-bold mb-3 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5" />
-            Applied to All Routes
-            </h4>
-            <ul className={`space-y-2 ${darkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            HTTP Exceptions
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                The middleware is executed for both standard web routes and API routes.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              HTTP-specific exceptions (404, 403, 500) are handled with appropriate responses.
             </li>
             <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0" />
-                API requests (/api/... or requests with application/json headers) trigger the CORS middleware automatically.
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Custom error pages can be created in the `nova/errors/` directory.
             </li>
-            </ul>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              API requests return JSON error responses with appropriate status codes.
+            </li>
+          </ul>
         </div>
-    </div>
+
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            Custom Error Handling
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Create custom exception classes by extending the base Exception class.
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Use try-catch blocks in your Actions to handle specific error cases.
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              The `Response::error()` helper provides consistent error responses.
+            </li>
+          </ul>
+        </div>
+
+        <div className={`p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
+          <h4 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            Validation Errors
+          </h4>
+          <ul className={`space-y-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Entity validation errors are collected and can be returned to the client.
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$entity->getErrors()'}</strong> to access validation failures.
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-green-500" />
+              Return 422 status codes with validation error details.
+            </li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }

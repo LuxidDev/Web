@@ -6,7 +6,7 @@ import Hero from '@/components/Hero';
 import Sponsors from '@/components/Sponsors';
 import Stats from '@/components/Stats';
 import Features from '@/components/Features';
-import SEASection from '@/components/SEASection';
+import AVESection from '@/components/AVESection';
 import NovaShowcase from '@/components/RouteShowcase';
 import LORMShowcase from '@/components/LORMShowcase';
 import JuiceCLI from '@/components/JuiceCLI';
@@ -44,7 +44,7 @@ function AppContent() {
       <Sponsors />
       <Stats />
       <Features />
-      <SEASection />
+      <AVESection />
       <NovaShowcase />
       <ErrorBoundary>
         <LORMShowcase />
