@@ -9,11 +9,10 @@ export default function QuickReferenceCommands() {
     <>
       {/* Start Server Section */}
       <div
-        className={`mb-8 p-6 rounded-2xl ${
-          darkMode
-            ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
-            : "bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200"
-        }`}
+        className={`mb-8 p-6 rounded-2xl ${darkMode
+          ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
+          : "bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200"
+          }`}
       >
         <div className="flex items-start gap-4">
           <div>
@@ -23,10 +22,7 @@ export default function QuickReferenceCommands() {
           </div>
         </div>
         <CodeExample
-          code={`# Create everything automatically
-php juice make:todo
-
-# Or create components individually
+          code={`# create components
 php juice make:action TodoAction
 php juice make:entity Todo
 php juice make:migration create_todos_table
@@ -36,8 +32,8 @@ php juice db:migrate
 php juice db:status
 
 # Development
-php juice start
 php juice routes
+php juice start
         `}
           language="bash"
           explanation=""
