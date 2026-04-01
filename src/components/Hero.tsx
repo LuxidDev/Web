@@ -97,8 +97,8 @@ export default function Hero() {
 
         <p className={`text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
           }`}>
-          Build elegant, high-performance web applications with the <span className={darkMode ? 'text-white font-medium' : 'text-zinc-900 font-medium'}>AVE architecture</span>.
-          Modern PHP made beautiful with Nova, Rocket ORM, and Juice CLI.
+          Build high-performant full-stack web applications with the <span className={darkMode ? 'text-white font-medium' : 'text-zinc-900 font-medium'}>AVE architecture</span>.
+          Modern PHP made beautiful with <span className={darkMode ? 'text-white font-medium' : 'text-zinc-900 font-medium'}>Nova Component, Rocket ORM, and Juice CLI.</span>
         </p>
 
         {/* CTAs */}

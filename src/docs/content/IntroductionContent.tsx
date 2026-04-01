@@ -332,22 +332,103 @@ $app->run();`}
               <CodeExample
                 code={`<?php
 // Engine/Routing/Router.php
-public function resolve()
-{
+  public function resolve()
+  {
     $path = $this->request->getPath();
     $method = $this->request->method();
 
-    // Find route
-    $callback = $this->routes[$method][$path]['callback'];
+    if (isset($this->routes[$method][$path])) {
+      $route = $this->routes[$method][$path];
+      $callback = $route['callback'];
+      $params = [];
+      $matchedRoutePath = $path;
+    } else {
+      // Try to find a parameterized route match
+      $foundRoute = null;
+      $params = [];
+      $matchedRoutePath = null;
 
-    // Execute middleware
-    foreach ($middleware as $mw) {
-        $mw->execute();
+      foreach ($this->routes[$method] as $routePath => $routeData) {
+        // Only check routes with parameters
+        if (strpos($routePath, '{') === false) {
+          continue;
+        }
+
+        // Try to extract parameters using the ROUTE PATTERN
+        $extractedParams = $this->extractRouteParams($routePath);
+        if (!empty($extractedParams)) {
+          $foundRoute = $routeData;
+          $params = $extractedParams;
+          $matchedRoutePath = $routePath;
+          break;
+        }
+      }
+
+      if (!$foundRoute) {
+        throw new NotFoundException();
+      }
+
+      $route = $foundRoute;
+      $callback = $route['callback'];
     }
 
-    // Execute action
-    return call_user_func($callback, $this->request, $this->response);
-}`}
+    // Determine if this is an API request
+    $isApiRequest = strpos($path, '/api/') === 0 ||
+      (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false) ||
+      (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false);
+
+    // Run global middleware (for all requests)
+    foreach ($this->globalMiddleware as $middleware) {
+      $middleware->execute();
+    }
+
+    // Run API-only global middleware if this is an API request
+    if ($isApiRequest) {
+      foreach ($this->apiGlobalMiddleware as $middleware) {
+        $middleware->execute();
+      }
+    }
+
+    // Combine flattened route middleware
+    $cacheKey = $method . ':' . $path;
+    $middlewares = isset($this->flattenedMiddleware[$cacheKey])
+      ? array_merge($this->flattenedMiddleware[$cacheKey], $route['middleware'])
+      : array_merge($this->middlewareStack, $route['groupMiddleware'] ?? [], $route['middleware']);
+
+    if (is_string($callback)) {
+      return Application::$app->screen->renderScreen($callback);
+    }
+
+    if (is_array($callback)) {
+      // Validate callback class exists and is instantiable
+      if (!class_exists($callback[0])) {
+        throw new \RuntimeException(
+          sprintf('Action class "%s" does not exist', $callback[0])
+        );
+      }
+
+      if (!is_subclass_of($callback[0], '\\Luxid\\Foundation\\Action')) {
+        throw new \RuntimeException(
+          sprintf('Class "%s" must extend \\Luxid\\Foundation\\Action', $callback[0])
+        );
+      }
+
+      $action = new $callback[0]();
+      Application::$app->action = $action;
+      $action->activity = $callback[1];
+      $callback[0] = $action;
+
+      // Execute route middleware
+      foreach ($middlewares as $middleware) {
+        $middleware->execute();
+      }
+
+      // Execute action middleware
+      foreach ($action->getMiddlewares() as $middleware) {
+        $middleware->execute();
+      }
+    }
+`}
                 language="php"
                 compact={true}
               />
