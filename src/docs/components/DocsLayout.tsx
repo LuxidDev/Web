@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useSearch } from '@/contexts/SearchContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SpotlightSearch from '@/components/SpotlightSearch';
 import SidebarNav from './SidebarNav';
 import ChapterHeader from './ChapterHeader';
-import { docsChapters } from '../content';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 
 interface DocsLayoutProps {
@@ -16,7 +16,7 @@ interface DocsLayoutProps {
 
 export default function DocsLayout({ children, currentDoc, currentSection }: DocsLayoutProps) {
   const { darkMode } = useTheme();
-  const [searchOpen, setSearchOpen] = useState(false);
+  const { searchOpen, setSearchOpen } = useSearch();
   const [scrollY, setScrollY] = useState(0);
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });

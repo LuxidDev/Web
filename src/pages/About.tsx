@@ -1,12 +1,13 @@
 import React from 'react';
-import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useSearch } from '@/contexts/SearchContext';
 import Header from '@/components/Header';
 import SpotlightSearch from '@/components/SpotlightSearch';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
 
 export default function AboutPage() {
-  const [searchOpen, setSearchOpen] = React.useState(false);
+  const { searchOpen, setSearchOpen } = useSearch();
   const { darkMode } = useTheme();
 
   return (

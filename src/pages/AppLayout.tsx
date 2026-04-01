@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
+import React from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useSearch } from '@/contexts/SearchContext';
 import Header from '@/components/Header';
 import SpotlightSearch from '@/components/SpotlightSearch';
 import Hero from '@/components/Hero';
@@ -18,19 +19,8 @@ import Footer from '@/components/Footer';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 function AppContent() {
-  const [searchOpen, setSearchOpen] = useState(false);
+  const { searchOpen, setSearchOpen } = useSearch();
   const { darkMode } = useTheme();
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        setSearchOpen(true);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   const mainClass = darkMode
     ? "min-h-screen bg-black text-white"
@@ -60,9 +50,5 @@ function AppContent() {
 }
 
 export default function AppLayout() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
+  return <AppContent />;
 }
