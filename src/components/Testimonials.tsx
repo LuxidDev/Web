@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useSearch } from '@/contexts/SearchContext';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import SpotlightSearch from '@/components/SpotlightSearch';
 
 const testimonials = [
@@ -254,7 +253,6 @@ export default function Testimonials() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

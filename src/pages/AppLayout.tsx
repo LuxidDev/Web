@@ -13,6 +13,7 @@ import RocketORMShowcase from '@/components/RocketORMShowcase';
 import JuiceCLI from '@/components/JuiceCLI';
 import CodeShowcase from '@/components/CodeShowcase';
 import Testimonials from '@/components/Testimonials';
+import Community from '@/components/Community';
 import BlogPreview from '@/components/BlogPreview';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
@@ -43,6 +44,7 @@ function AppContent() {
       <CodeShowcase />
       <Testimonials />
       <BlogPreview />
+      <Community />
       <CTASection />
       <Footer />
     </div>
