@@ -3,7 +3,7 @@ export { default as InstallationContent } from './InstallationContent';
 export { default as ArchitectureContent } from './ArchitectureContent';
 export { default as ActionsContent } from './ActionsContent';
 export { default as EntitiesContent } from './EntitiesContent';
-export { default as ScreensContent } from './ScreensContent';
+export { default as NovaContent } from './NovaContent';
 export { default as RocketORMContent } from './RocketORMContent';
 export { default as MigrationsContent } from './MigrationsContent';
 export { default as RelationshipsContent } from './RelationshipsContent';
@@ -23,12 +23,6 @@ export { default as ValidationContent } from './ValidationContent';
 export { default as ErrorHandlingContent } from './ErrorHandlingContent';
 export { default as TestingContent } from './TestingContent';
 export { default as CorsContent } from './CorsContent';
-export { default as ProductionSetupContent } from './ProductionSetupContent';
-export { default as PerformanceContent } from './PerformanceContent';
-export { default as SecurityContent } from './SecurityContent';
-export { default as RoutingReferenceContent } from './RoutingReferenceContent';
-export { default as ORMReferenceContent } from './ORMReferenceContent';
-export { default as CLIReferenceContent } from './CLIReferenceContent';
 
 /* Tutorial Content */
 export { default as IntroductionTutorial } from '../tutorial/IntroductionTutorial';
@@ -82,22 +76,22 @@ export const docsChapters = [
     color: 'from-purple-500 to-pink-500',
     chapters: [
       {
-        id: 'screens',
+        id: 'nova',
         title: 'Views (Nova)',
-        path: '/docs/screens',
-        content: 'ScreensContent'
-      },
-      {
-        id: 'actions',
-        title: 'Actions (Controllers)',
-        path: '/docs/actions',
-        content: 'ActionsContent'
+        path: '/docs/nova',
+        content: 'NovaContent'
       },
       {
         id: 'entities',
         title: 'Entities (Models)',
         path: '/docs/entities',
         content: 'EntitiesContent'
+      },
+      {
+        id: 'actions',
+        title: 'Actions (Controllers)',
+        path: '/docs/actions',
+        content: 'ActionsContent'
       },
     ]
   },
@@ -312,58 +306,6 @@ export const docsChapters = [
         title: 'Conclusion',
         path: '/docs/conclusion',
         content: 'ConclusionTutorial'
-      },
-    ]
-  },
-  {
-    id: 'deployment',
-    title: 'Deployment',
-    icon: Server,
-    color: 'from-rose-500 to-pink-500',
-    chapters: [
-      {
-        id: 'production-setup',
-        title: 'Production Setup',
-        path: '/docs/production-setup',
-        content: 'ProductionSetupContent'
-      },
-      {
-        id: 'performance',
-        title: 'Performance Optimization',
-        path: '/docs/performance',
-        content: 'PerformanceContent'
-      },
-      {
-        id: 'security',
-        title: 'Security Best Practices',
-        path: '/docs/security',
-        content: 'SecurityContent'
-      },
-    ]
-  },
-  {
-    id: 'api-reference',
-    title: 'API Reference',
-    icon: Layers,
-    color: 'from-cyan-500 to-teal-500',
-    chapters: [
-      {
-        id: 'routing-reference',
-        title: 'Routing API',
-        path: '/docs/routing-reference',
-        content: 'RoutingReferenceContent'
-      },
-      {
-        id: 'orm-reference',
-        title: 'ORM API',
-        path: '/docs/orm-reference',
-        content: 'ORMReferenceContent'
-      },
-      {
-        id: 'cli-reference',
-        title: 'CLI Reference',
-        path: '/docs/cli-reference',
-        content: 'CLIReferenceContent'
       },
     ]
   },
