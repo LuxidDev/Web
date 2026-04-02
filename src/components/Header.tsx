@@ -33,10 +33,10 @@ export default function Header({ onSearchClick }: Props) {
   }, [mobileMenuOpen]);
 
   const headerClass = `fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${scrolled
-      ? darkMode
-        ? 'bg-black/60 backdrop-blur-xl border-b border-zinc-800'
-        : 'bg-white/80 backdrop-blur-xl border-b border-zinc-200'
-      : 'bg-transparent'
+    ? darkMode
+      ? 'bg-black/60 backdrop-blur-xl border-b border-zinc-800'
+      : 'bg-white/80 backdrop-blur-xl border-b border-zinc-200'
+    : 'bg-transparent'
     }`;
 
   const logoClass = darkMode
@@ -63,8 +63,6 @@ export default function Header({ onSearchClick }: Props) {
     { label: 'Home', path: '/', icon: Home },
     { label: 'Docs', path: '/docs', icon: BookOpen },
     { label: 'About', path: '/about', icon: User },
-    { label: 'Blog', path: '/blog', icon: MessageSquare },
-    { label: 'Community', path: '/community', icon: Users },
   ];
 
   return (
@@ -91,8 +89,8 @@ export default function Header({ onSearchClick }: Props) {
               <Search className={`w-4 h-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-500'}`} />
               <span className={`hidden sm:inline text-xs ${darkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>Search</span>
               <kbd className={`hidden lg:inline px-1.5 py-0.5 rounded text-xs border ${darkMode
-                  ? 'bg-black/20 text-zinc-500 border-white/10'
-                  : 'bg-white/50 text-zinc-600 border-zinc-300'
+                ? 'bg-black/20 text-zinc-500 border-white/10'
+                : 'bg-white/50 text-zinc-600 border-zinc-300'
                 }`}>
                 Ctrl K
               </kbd>
@@ -148,8 +146,8 @@ export default function Header({ onSearchClick }: Props) {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`md:hidden p-2 rounded-lg transition-all ${darkMode
-                  ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
-                  : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
+                ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
+                : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
                 }`}
               aria-label="Toggle menu"
             >
@@ -170,8 +168,8 @@ export default function Header({ onSearchClick }: Props) {
 
       {/* Mobile Menu Overlay */}
       <div className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${mobileMenuOpen
-          ? 'opacity-100 visible'
-          : 'opacity-0 invisible delay-300'
+        ? 'opacity-100 visible'
+        : 'opacity-0 invisible delay-300'
         }`}>
         {/* Backdrop */}
         <div
@@ -199,14 +197,14 @@ export default function Header({ onSearchClick }: Props) {
                   key={label}
                   href={path}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${darkMode
-                      ? 'hover:bg-white/5 text-zinc-300 hover:text-white'
-                      : 'hover:bg-zinc-100 text-zinc-700 hover:text-black'
+                    ? 'hover:bg-white/5 text-zinc-300 hover:text-white'
+                    : 'hover:bg-zinc-100 text-zinc-700 hover:text-black'
                     }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <div className={`p-2 rounded-lg transition-colors ${darkMode
-                      ? 'group-hover:bg-white/10 bg-white/5'
-                      : 'group-hover:bg-zinc-200 bg-zinc-100'
+                    ? 'group-hover:bg-white/10 bg-white/5'
+                    : 'group-hover:bg-zinc-200 bg-zinc-100'
                     }`}>
                     <Icon className="w-4 h-4" />
                   </div>
@@ -226,8 +224,8 @@ export default function Header({ onSearchClick }: Props) {
                 onSearchClick?.();
               }}
               className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all mb-4 ${darkMode
-                  ? 'hover:bg-white/5 text-zinc-300 hover:text-white'
-                  : 'hover:bg-zinc-100 text-zinc-700 hover:text-black'
+                ? 'hover:bg-white/5 text-zinc-300 hover:text-white'
+                : 'hover:bg-zinc-100 text-zinc-700 hover:text-black'
                 }`}
             >
               <div className="flex items-center gap-3">
@@ -238,8 +236,8 @@ export default function Header({ onSearchClick }: Props) {
                 <span>Search</span>
               </div>
               <kbd className={`px-2 py-1 rounded text-xs border ${darkMode
-                  ? 'bg-white/5 text-zinc-500 border-white/10'
-                  : 'bg-zinc-100 text-zinc-600 border-zinc-300'
+                ? 'bg-white/5 text-zinc-500 border-white/10'
+                : 'bg-zinc-100 text-zinc-600 border-zinc-300'
                 }`}>
                 Ctrl K
               </kbd>
@@ -258,8 +256,8 @@ export default function Header({ onSearchClick }: Props) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`p-2 rounded-lg transition-colors ${darkMode
-                        ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
-                        : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
+                      ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
+                      : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
                       }`}
                     aria-label="GitHub"
                   >
@@ -270,8 +268,8 @@ export default function Header({ onSearchClick }: Props) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`p-2 rounded-lg transition-colors ${darkMode
-                        ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
-                        : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
+                      ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
+                      : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
                       }`}
                     aria-label="Twitter"
                   >
@@ -280,8 +278,8 @@ export default function Header({ onSearchClick }: Props) {
                   <button
                     onClick={toggleTheme}
                     className={`p-2 rounded-lg transition-colors ${darkMode
-                        ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
-                        : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
+                      ? 'hover:bg-white/10 text-zinc-400 hover:text-white'
+                      : 'hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900'
                       }`}
                     aria-label="Toggle theme"
                   >
