@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Heart, Users, Globe, Code, BookOpen, Zap,
-  Github, ExternalLink,
-  Star, ChevronRight, Building
+  Heart, Users, Globe, Code, Award, Sparkles,
+  Coffee, BookOpen, Terminal, Zap, Shield,
+  Github, Twitter, Linkedin, ExternalLink,
+  Calendar, MapPin, Star, ChevronRight, Building
 } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -135,8 +136,8 @@ export default function About() {
 
           {/* Creator Card */}
           <div className={`max-w-2xl mx-auto p-8 rounded-2xl border backdrop-blur-xl mb-12 ${darkMode
-              ? 'bg-gradient-to-br from-zinc-900/50 to-zinc-800/30 border-zinc-800'
-              : 'bg-gradient-to-br from-white/80 to-zinc-50/80 border-zinc-200'
+            ? 'bg-gradient-to-br from-zinc-900/50 to-zinc-800/30 border-zinc-800'
+            : 'bg-gradient-to-br from-white/80 to-zinc-50/80 border-zinc-200'
             }`}>
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="relative">
@@ -193,8 +194,8 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`p-2 rounded-lg transition-all ${darkMode
-                        ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
-                        : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
+                      ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                      : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
                       }`}
                     title="GitHub"
                   >
@@ -205,8 +206,8 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`p-2 rounded-lg transition-all ${darkMode
-                        ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
-                        : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
+                      ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                      : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
                       }`}
                     title="X"
                   >
@@ -221,8 +222,8 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`p-2 rounded-lg transition-all ${darkMode
-                        ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
-                        : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
+                      ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                      : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900'
                       }`}
                     title="Website"
                   >
@@ -263,12 +264,12 @@ export default function About() {
               }
             ].map((item, i) => (
               <div key={i} className={`p-6 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
-                  ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
-                  : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
+                ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
+                : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
                 }`}>
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${darkMode
-                    ? 'bg-zinc-800 text-zinc-300'
-                    : 'bg-zinc-200 text-zinc-700'
+                  ? 'bg-zinc-800 text-zinc-300'
+                  : 'bg-zinc-200 text-zinc-700'
                   }`}>
                   <item.icon className="w-6 h-6" />
                 </div>
@@ -282,119 +283,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Core Team Section */}
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'
-              }`}>Meet the Core Team</h2>
-            <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
-              }`}>
-              The passionate individuals shaping the future of Luxid.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreTeam.map((member, i) => (
-              <div key={i} className={`p-6 border rounded-xl transition-all duration-300 hover:-translate-y-1 ${darkMode
-                  ? 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-600'
-                  : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
-                }`}>
-                {/* Profile Picture */}
-                <div className="relative mb-4">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border border-zinc-700 mb-3">
-                    <div
-                      className={`w-full h-full flex items-center justify-center rounded-full overflow-hidden ${darkMode ? "bg-zinc-800" : "bg-zinc-200"
-                        }`}
-                    >
-                      {member.avatar ? (
-                        <img
-                          src={member.avatar}
-                          alt={member.name}
-                          className="w-full h-full object-cover scale-95 rounded-full shadow-md"
-                        />
-                      ) : (
-                        <span className="text-lg font-bold text-zinc-700">
-                          {member.name.split(" ").map((n) => n[0]).join("")}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className={`font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
-                      {member.name}
-                    </h3>
-                    {i === 0 && (
-                      <div className={`px-2 py-0.5 text-xs rounded ${darkMode ? 'bg-zinc-800 text-zinc-300' : 'bg-zinc-200 text-zinc-700'
-                        }`}>
-                        Creator
-                      </div>
-                    )}
-                  </div>
-                  <p className={`text-sm mb-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                    {member.role}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <Building className={`w-3 h-3 ${darkMode ? 'text-zinc-500' : 'text-zinc-600'}`} />
-                    <span className={`text-sm ${darkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                      {member.company}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="flex items-center gap-2">
-                  {member.github && (
-                    <a
-                      href={member.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-1.5 rounded transition-all ${darkMode
-                          ? 'hover:bg-zinc-800 text-zinc-400 hover:text-white'
-                          : 'hover:bg-zinc-200 text-zinc-500 hover:text-zinc-900'
-                        }`}
-                      title="GitHub"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                  )}
-                  {member.twitter && (
-                    <a
-                      href={member.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-1.5 rounded transition-all ${darkMode
-                          ? 'hover:bg-zinc-800 text-zinc-400 hover:text-white'
-                          : 'hover:bg-zinc-200 text-zinc-500 hover:text-zinc-900'
-                        }`}
-                      title="X"
-                    >
-                      <img
-                        src={darkMode ? '/x-white.png' : '/x-black.png'}
-                        alt="X"
-                        className="w-4 h-4"
-                      />
-                    </a>
-                  )}
-                  {member.website && (
-                    <a
-                      href={member.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-1.5 rounded transition-all ${darkMode
-                          ? 'hover:bg-zinc-800 text-zinc-400 hover:text-white'
-                          : 'hover:bg-zinc-200 text-zinc-500 hover:text-zinc-900'
-                        }`}
-                      title="Website"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Community Stats & Contributors */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
           {/* Stats */}
@@ -402,8 +290,8 @@ export default function About() {
             <h3 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'
               }`}>Our Growing Community</h3>
             <div className={`p-6 border rounded-xl ${darkMode
-                ? 'bg-zinc-900/50 border-zinc-800'
-                : 'bg-zinc-50/50 border-zinc-200'
+              ? 'bg-zinc-900/50 border-zinc-800'
+              : 'bg-zinc-50/50 border-zinc-200'
               }`}>
               {[
                 { icon: Github, label: "GitHub Stars", value: "12,000+" },
@@ -444,8 +332,8 @@ export default function About() {
               </a>
             </div>
             <div className={`p-6 border rounded-xl ${darkMode
-                ? 'bg-zinc-900/50 border-zinc-800'
-                : 'bg-zinc-50/50 border-zinc-200'
+              ? 'bg-zinc-900/50 border-zinc-800'
+              : 'bg-zinc-50/50 border-zinc-200'
               }`}>
               {topContributors.map((contributor, i) => (
                 <a
@@ -460,8 +348,8 @@ export default function About() {
                     <div className={`w-10 h-10 rounded-full overflow-hidden border ${darkMode ? 'border-zinc-700' : 'border-zinc-300'
                       }`}>
                       <div className={`w-full h-full flex items-center justify-center text-sm font-bold ${darkMode
-                          ? 'bg-zinc-800 text-zinc-300'
-                          : 'bg-zinc-200 text-zinc-700'
+                        ? 'bg-zinc-800 text-zinc-300'
+                        : 'bg-zinc-200 text-zinc-700'
                         }`}>
                         {contributor.avatar}
                       </div>
@@ -509,8 +397,8 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`p-6 border rounded-xl transition-all hover:-translate-y-1 ${darkMode
-                      ? 'bg-zinc-900/30 border-zinc-800 hover:border-zinc-600'
-                      : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
+                    ? 'bg-zinc-900/30 border-zinc-800 hover:border-zinc-600'
+                    : 'bg-zinc-50/50 border-zinc-200 hover:border-zinc-400'
                     }`}
                 >
                   <div className="flex items-center justify-between">
@@ -543,8 +431,8 @@ export default function About() {
                 Silver Sponsors
               </h3>
               <div className={`p-6 border rounded-xl space-y-3 ${darkMode
-                  ? 'bg-zinc-900/30 border-zinc-800'
-                  : 'bg-zinc-50/50 border-zinc-200'
+                ? 'bg-zinc-900/30 border-zinc-800'
+                : 'bg-zinc-50/50 border-zinc-200'
                 }`}>
                 {sponsors.filter(s => s.tier === 'silver').map((sponsor, i) => (
                   <div key={i} className="flex items-center justify-between">
@@ -566,8 +454,8 @@ export default function About() {
                 Generous Individuals
               </h3>
               <div className={`p-6 border rounded-xl space-y-3 ${darkMode
-                  ? 'bg-zinc-900/30 border-zinc-800'
-                  : 'bg-zinc-50/50 border-zinc-200'
+                ? 'bg-zinc-900/30 border-zinc-800'
+                : 'bg-zinc-50/50 border-zinc-200'
                 }`}>
                 {sponsors.filter(s => s.tier === 'individual').map((sponsor, i) => (
                   <div key={i} className="flex items-center justify-between">
@@ -585,8 +473,8 @@ export default function About() {
 
           {/* CTA to Sponsor */}
           <div className={`mt-12 p-8 border rounded-2xl text-center ${darkMode
-              ? 'bg-gradient-to-br from-zinc-900/50 to-zinc-800/30 border-zinc-800'
-              : 'bg-gradient-to-br from-zinc-50 to-white/80 border-zinc-200'
+            ? 'bg-gradient-to-br from-zinc-900/50 to-zinc-800/30 border-zinc-800'
+            : 'bg-gradient-to-br from-zinc-50 to-white/80 border-zinc-200'
             }`}>
             {/* <Heart
                 className={`w-12 h-12 mx-auto mb-4 fill-red-500 stroke-none ${
@@ -604,8 +492,8 @@ export default function About() {
             <a
               href="#"
               className={`inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold transition-all hover:scale-105 ${darkMode
-                  ? 'bg-white text-black hover:bg-zinc-200'
-                  : 'bg-black text-white hover:bg-zinc-800'
+                ? 'bg-white text-black hover:bg-zinc-200'
+                : 'bg-black text-white hover:bg-zinc-800'
                 }`}
             >
               <Heart className="w-5 h-5 fill-red-500 stroke-none" /> Become a Sponsor
