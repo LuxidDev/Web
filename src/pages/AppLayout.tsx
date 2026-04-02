@@ -43,7 +43,7 @@ function AppContent() {
       <JuiceCLI />
       <CodeShowcase />
       <Testimonials />
-      <BlogPreview />
+      {/*<BlogPreview />*/}
       <Community />
       <CTASection />
       <Footer />
