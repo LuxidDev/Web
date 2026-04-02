@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
-  Layers, ArrowRight,
+  ArrowRight,
   CheckCircle
 } from 'lucide-react';
 
@@ -16,7 +16,6 @@ export default function CorsContent() {
         : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
-          <Layers className={`w-12 h-12 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
           <div>
             <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Luxid CORS Middleware</h1>
             <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>

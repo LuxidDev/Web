@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
   ArrowRight,
-  CheckCircle, AlertCircle
+  CheckCircle,
 } from 'lucide-react';
 
 export default function ErrorHandlingContent() {
@@ -16,7 +16,6 @@ export default function ErrorHandlingContent() {
         : "bg-gray-50 border border-gray-200"
         }`}>
         <div className="flex items-start gap-4">
-          <AlertCircle className={`w-12 h-12 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
           <div>
             <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Error Handling in Luxid</h1>
             <p className={`text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
