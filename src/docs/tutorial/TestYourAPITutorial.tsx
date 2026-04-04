@@ -2,6 +2,7 @@ import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import CodeExample from "@/components/CodeExample";
 import InlineCodeExample from "@/components/InlineCodeExample";
+import TerminalCommand from "@/components/TerminalCommand";
 
 export default function TestYourAPITutorial() {
   const { darkMode } = useTheme();
@@ -32,13 +33,9 @@ export default function TestYourAPITutorial() {
           First, let's start the server. Make sure you're in your Luxid project directory:
         </p>
 
-        <InlineCodeExample
-          code={`php juice start`}
-          language="bash"
-          title=""
+        <TerminalCommand
+          command="php juice start"
           description="Starts the development server at http://localhost:8000"
-          color="gray"
-          compact={true}
         />
       </div>
 
@@ -124,12 +121,9 @@ export default function TestYourAPITutorial() {
           {/* 2. Get All Todos */}
           <div className="space-y-3">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white">2. GET /api/todos — List all todos</h4>
-            <InlineCodeExample
-              code={`curl http://localhost:8000/api/todos`}
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="curl http://localhost:8000/api/todos"
               description="Get all todos"
-              color="gray"
               compact={true}
             />
 
@@ -168,21 +162,18 @@ export default function TestYourAPITutorial() {
               <strong className="text-gray-900 dark:text-white">With Query Parameters:</strong>
             </p>
             <div className="space-y-1">
-              <InlineCodeExample code={`curl "http://localhost:8000/api/todos?status=pending"`} language="bash" title="" description="Filter by status" color="gray" compact={true} />
-              <InlineCodeExample code={`curl "http://localhost:8000/api/todos?search=learn"`} language="bash" title="" description="Search by keyword" color="gray" compact={true} />
-              <InlineCodeExample code={`curl "http://localhost:8000/api/todos?status=pending&search=documentation"`} language="bash" title="" description="Combine filters" color="gray" compact={true} />
+              <TerminalCommand command="curl 'http://localhost:8000/api/todos?status=pending'" description="Filter by status" compact={true} />
+              <TerminalCommand command="curl 'http://localhost:8000/api/todos?search=learn'" description="Search by keyword" compact={true} />
+              <TerminalCommand command="curl 'http://localhost:8000/api/todos?status=pending&search=documentation'" description="Combine filters" compact={true} />
             </div>
           </div>
 
           {/* 3. Get Single Todo */}
           <div className="space-y-3">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white">3. GET /api/todos/{'{id}'} — Get single todo</h4>
-            <InlineCodeExample
-              code={`curl http://localhost:8000/api/todos/1`}
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="curl http://localhost:8000/api/todos/1"
               description="Get Todo by ID"
-              color="gray"
               compact={true}
             />
 
@@ -209,12 +200,9 @@ export default function TestYourAPITutorial() {
             <p className={`text-sm mt-2 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               <strong className="text-gray-900 dark:text-white">Error Case (Non-existent ID):</strong>
             </p>
-            <InlineCodeExample
-              code={`curl http://localhost:8000/api/todos/999`}
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="curl http://localhost:8000/api/todos/999"
               description="Not Found"
-              color="gray"
               compact={true}
             />
             <CodeExample
@@ -293,12 +281,9 @@ export default function TestYourAPITutorial() {
           {/* 5. Delete Todo */}
           <div className="space-y-3">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white">5. DELETE /api/todos/{'{id}'} — Delete todo</h4>
-            <InlineCodeExample
-              code={`curl -X DELETE http://localhost:8000/api/todos/4`}
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="curl -X DELETE http://localhost:8000/api/todos/4"
               description="Delete Todo"
-              color="gray"
               compact={true}
             />
 
@@ -359,9 +344,9 @@ export default function TestYourAPITutorial() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Filtering with Query Parameters</h4>
             <div className="space-y-1">
-              <InlineCodeExample code={`curl "http://localhost:8000/api/todos?status=completed"`} language="bash" title="" description="Get completed todos" color="gray" compact={true} />
-              <InlineCodeExample code={`curl "http://localhost:8000/api/todos?search=Luxid"`} language="bash" title="" description="Search for Luxid" color="gray" compact={true} />
-              <InlineCodeExample code={`curl "http://localhost:8000/api/todos?status=pending&search=documentation"`} language="bash" title="" description="Combine filters" color="gray" compact={true} />
+              <TerminalCommand command="curl 'http://localhost:8000/api/todos?status=completed'" description="Get completed todos" compact={true} />
+              <TerminalCommand command="curl 'http://localhost:8000/api/todos?search=Luxid'" description="Search for Luxid" compact={true} />
+              <TerminalCommand command="curl 'http://localhost:8000/api/todos?status=pending&search=documentation'" description="Combine filters" compact={true} />
             </div>
           </div>
 

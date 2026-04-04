@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-import InlineCodeExample from "@/components/InlineCodeExample";
+import TerminalCommand from "@/components/TerminalCommand";
 
 export default function IntroductionTutorial() {
   const { darkMode } = useTheme();
@@ -67,12 +67,9 @@ export default function IntroductionTutorial() {
                 </strong>{' '}
                 For this tutorial, let's use composer.
               </p>
-              <InlineCodeExample
-                code={`composer create-project luxid/framework todo_api`}
-                language="bash"
-                title=""
+              <TerminalCommand
+                command="composer create-project luxid/framework todo_api"
                 description="Create a new luxid project."
-                compact={true}
               />
             </div>
           </div>
@@ -106,12 +103,9 @@ export default function IntroductionTutorial() {
                 </strong>{' '}
                 into it.
               </p>
-              <InlineCodeExample
-                code={`cp .env.example .env`}
-                language="bash"
-                title=""
+              <TerminalCommand
+                command="cp .env.example .env"
                 description="Edit .env with your database credentials. Luxid only supports MySQL 'FOR NOW'"
-                compact={true}
               />
             </div>
           </div>

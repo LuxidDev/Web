@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
 import InlineCodeExample from '@/components/InlineCodeExample';
+import TerminalCommand from '@/components/TerminalCommand';
 
 export default function RocketORMContent() {
   const { darkMode } = useTheme();
@@ -460,12 +461,9 @@ class User extends Entity
           Migrations allow you to version control your database schema changes.
         </p>
 
-        <InlineCodeExample
-          code={`php juice make:migration create_users_table`}
-          title=""
+        <TerminalCommand
+          command="php juice make:migration create_users_table"
           description="Create a Migration. Generate migration files using the CLI."
-          color="gray"
-          language="bash"
         />
 
         <div className="mt-4">
@@ -519,10 +517,10 @@ class m00001_create_users_table extends Migration
         <div className="mt-6">
           <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Running Migrations</h5>
           <div className="space-y-2">
-            <InlineCodeExample code="php juice db:migrate" title="" description="Run all pending database migrations" language="bash" compact={true} />
-            <InlineCodeExample code="php juice db:rollback" title="" description="Rollback the most recent migration batch" language="bash" compact={true} />
-            <InlineCodeExample code="php juice db:reset" title="" description="Rollback all migrations (reset database)" language="bash" compact={true} />
-            <InlineCodeExample code="php juice db:fresh --seed" title="" description="Reset, re-run all migrations, and seed. Fresh migrate and seed database" language="bash" compact={true} />
+            <TerminalCommand command="php juice db:migrate" description="Run all pending database migrations" />
+            <TerminalCommand command="php juice db:rollback" description="Rollback the most recent migration batch" />
+            <TerminalCommand command="php juice db:reset" description="Rollback all migrations (reset database)" />
+            <TerminalCommand command="php juice db:fresh --seed" description="Reset, re-run all migrations, and seed. Fresh migrate and seed database" />
           </div>
         </div>
       </div>
@@ -538,13 +536,10 @@ class m00001_create_users_table extends Migration
           Seeders allow you to populate your database with test or default data. Use factories to generate consistent data.
         </p>
 
-        <InlineCodeExample
-          code={`php juice make:factory UserFactory
-php juice make:seeder UserSeeder`}
-          title=""
+        <TerminalCommand
+          command="php juice make:factory UserFactory
+php juice make:seeder UserSeeder"
           description="Create Factory and Seeder. Generate a factory for fake data and a seeder to populate it."
-          color="gray"
-          language="bash"
         />
 
         <div className="mt-4">
@@ -632,8 +627,8 @@ class UserSeeder extends Seeder
         <div className="mt-4">
           <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Running Seeders</h5>
           <div className="space-y-2">
-            <InlineCodeExample code="php juice seed" title="" description="Run all seeders. Execute all database seeders" language="bash" compact={true} />
-            <InlineCodeExample code="php juice seed UserSeeder" title="" description="Run a specific seeder. Execute a specific seeder class" language="bash" compact={true} />
+            <TerminalCommand command="php juice seed" description="Run all seeders. Execute all database seeders" />
+            <TerminalCommand command="php juice seed UserSeeder" description="Run a specific seeder. Execute a specific seeder class" />
           </div>
         </div>
       </div>

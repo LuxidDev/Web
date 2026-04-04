@@ -6,7 +6,7 @@ import {
   Trash2
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
+import TerminalCommand from '@/components/TerminalCommand';
 
 export default function MigrationsContent() {
   const { darkMode } = useTheme();
@@ -68,26 +68,17 @@ export default function MigrationsContent() {
         </p>
 
         <div className="space-y-2 mb-6">
-          <InlineCodeExample
-            code="php juice make:migration create_users_table"
-            title=""
+          <TerminalCommand
+            command="php juice make:migration create_users_table"
             description="Create a migration. Generates a new migration file for creating a users table"
-            color="gray"
-            compact={true}
           />
-          <InlineCodeExample
-            code="php juice make:migration add_email_to_users"
-            title=""
+          <TerminalCommand
+            command="php juice make:migration add_email_to_users"
             description="Add column to exisiting table. Creates a migration to add an email column to users table"
-            color="gray"
-            compact={true}
           />
-          <InlineCodeExample
-            code="php juice make:migration create_products_table"
-            title=""
+          <TerminalCommand
+            command="php juice make:migration create_products_table"
             description="Create another table. Generates a migration for a products table"
-            color="gray"
-            compact={true}
           />
         </div>
       </div>

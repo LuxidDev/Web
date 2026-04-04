@@ -14,6 +14,7 @@ const drawThreeGeo = ({
 }) => {
   const container = new THREE.Object3D();
 
+  // Brighter country outlines
   const lineColor = darkMode ? 0x88aaff : 0x3366cc;
   const mat = new THREE.LineBasicMaterial({
     color: lineColor,
@@ -119,13 +120,11 @@ export default function Globe() {
     controls.target.set(0, 0, 0);
 
     // Invert rotation by rotating the entire globe scene
-    // This makes dragging down rotate the globe down
     const globeGroup = new THREE.Group();
-    // Apply initial rotation to invert the axis
     globeGroup.rotation.x = Math.PI;
     scene.add(globeGroup);
 
-    // Add all objects to the globeGroup instead of scene
+    // Globe sphere
     const sphereGeo = new THREE.SphereGeometry(1, 128, 128);
     const sphereMat = new THREE.MeshStandardMaterial({
       color: darkMode ? 0x1a2a4a : 0xe8f0ff,
@@ -139,7 +138,7 @@ export default function Globe() {
     const sphere = new THREE.Mesh(sphereGeo, sphereMat);
     globeGroup.add(sphere);
 
-    // Lighting - add to scene (not globeGroup to keep lights fixed)
+    // Lighting
     const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
     scene.add(ambientLight);
 
@@ -151,11 +150,11 @@ export default function Globe() {
     backLight.position.set(-3, -2, -4);
     scene.add(backLight);
 
-    // Grid lines - add to globeGroup
+    // Grid lines - Deep black on light theme, bright white on dark theme
     const gridMat = new THREE.LineBasicMaterial({
-      color: darkMode ? 0x88aaff : 0x4488cc,
+      color: darkMode ? 0xffffff : 0x000000, // White in dark mode, Black in light mode
       transparent: true,
-      opacity: darkMode ? 0.15 : 0.12,
+      opacity: darkMode ? 0.35 : 0.25, // Slightly higher opacity for visibility
     });
 
     // Latitude lines
@@ -197,7 +196,7 @@ export default function Globe() {
       })
       .catch(err => console.error('GeoJSON load error:', err));
 
-    // Stars - add to scene (background)
+    // Stars - only in dark mode
     if (darkMode) {
       const verts: number[] = [];
       const colors: number[] = [];

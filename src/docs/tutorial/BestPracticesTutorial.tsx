@@ -88,7 +88,7 @@ export default function BestPracticesTutorial() {
               </li>
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
-                <span>Hash passwords using <strong className="font-mono">password_hash()</strong> in <code className="font-mono">beforeSave()</code></span>
+                <span>Hash passwords using <strong className={darkMode ? "text-white font-mono" : "font-mono"}>password_hash()</strong> in <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeSave()</strong></span>
               </li>
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
@@ -96,7 +96,7 @@ export default function BestPracticesTutorial() {
               </li>
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-3 h-3 mt-1 flex-shrink-0 text-gray-500" />
-                <span>Hide sensitive data with <strong className="font-mono">#[Column(hidden: true)]</strong></span>
+                <span>Hide sensitive data with <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Column(hidden: true)]</strong></span>
               </li>
             </ul>
           </div>
@@ -144,7 +144,7 @@ export default function BestPracticesTutorial() {
           <div className="flex-1">
             <strong className="text-gray-900 dark:text-white">Use LuxidAction for Filtering</strong>
             <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-              Extend <strong className="font-mono">LuxidAction</strong> to get automatic filtering, pagination, and sorting:
+              Extend <strong className={darkMode ? "text-white font-mono" : "font-mono"}>LuxidAction</strong> to get automatic filtering, pagination, and sorting:
             </p>
             <div
               className={`mt-2 p-3 rounded text-xs font-mono whitespace-pre-wrap border ${darkMode
@@ -158,7 +158,7 @@ export default function BestPracticesTutorial() {
 ];`}
             </div>
             <p className={`text-xs mt-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
-              Then use <strong className="font-mono">?status=pending&search=work</strong> in your API calls.
+              Then use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>?status=pending&search=work</strong> in your API calls.
             </p>
           </div>
         </li>

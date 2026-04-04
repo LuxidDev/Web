@@ -4,7 +4,7 @@ import {
   CheckCircle, ArrowRight,
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
+import TerminalCommand from '@/components/TerminalCommand';
 
 export default function AuthenticationContent() {
   const { darkMode } = useTheme();
@@ -71,25 +71,17 @@ export default function AuthenticationContent() {
         <div className="space-y-4">
           <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Step 1: Install via Composer</h4>
-            <InlineCodeExample
-              code="composer require luxid/haven"
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="composer require luxid/haven"
               description="Install Haven. Adds the Haven package to your Luxid project"
-              color="gray"
-              compact={true}
             />
           </div>
 
           <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Step 2: Run the Installer</h4>
-            <InlineCodeExample
-              code="php juice haven:install"
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="php juice haven:install"
               description="Run Haven Installer. Generates all authentication files and configurations"
-              color="gray"
-              compact={true}
             />
             <p className={`text-sm mt-2 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               The installer will publish the config file, create the User entity, generate the AuthAction,
@@ -99,13 +91,9 @@ export default function AuthenticationContent() {
 
           <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Step 3: Run Migrations</h4>
-            <InlineCodeExample
-              code="php juice db:migrate"
-              language="bash"
-              title=""
+            <TerminalCommand
+              command="php juice db:migrate"
               description="Run migrations. Creates the users table in your database"
-              color="gray"
-              compact={true}
             />
           </div>
         </div>

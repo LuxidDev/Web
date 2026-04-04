@@ -241,8 +241,7 @@ class Todo extends Entity
             <div>
               <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[EntityAttr(table: 'todos')]</strong>
               <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                PHP 8 attribute that defines which database table this entity maps to. No need for a separate
-                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>tableName()</strong> method - the attribute keeps the declaration close to the class.
+                PHP 8 attribute that defines which database table this entity maps to. No need for a separate <strong className={darkMode ? "text-white font-mono" : "font-mono"}>tableName()</strong> method - the attribute keeps the declaration close to the class.
               </p>
             </div>
           </li>
@@ -268,8 +267,7 @@ class Todo extends Entity
             <div>
               <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Validation Rules as Attributes</strong>
               <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                Validation rules are applied directly to properties using PHP 8 attributes. No separate
-                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>rules()</strong> method needed - validation is declared where it belongs.
+                Validation rules are applied directly to properties using PHP 8 attributes. No separate <strong className={darkMode ? "text-white font-mono" : "font-mono"}>rules()</strong> method needed - validation is declared where it belongs.
               </p>
               <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
                 <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>#[Required]</strong> - Field cannot be empty</p>
@@ -287,7 +285,7 @@ class Todo extends Entity
               <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Computed Properties (get* methods)</strong>
               <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Methods prefixed with <strong className={darkMode ? "text-white font-mono" : "font-mono"}>get</strong> become readable properties.
-                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getSummary()</strong> is accessed as <code className="font-mono">{'$todo->summary'}</code>.
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getSummary()</strong> is accessed as <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$todo->summary'}</strong>.
                 These are not stored in the database but are available when working with the entity.
               </p>
             </div>
@@ -297,9 +295,7 @@ class Todo extends Entity
             <div>
               <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Lifecycle Hooks</strong>
               <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                Override <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeSave()</strong> and <code className="font-mono">afterSave()</code>
-                to add custom logic at specific points. No need to manually handle timestamps - use
-                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>autoCreate</strong> and <code className="font-mono">autoUpdate</code> column attributes.
+                Override <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeSave()</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>afterSave()</strong> to add custom logic at specific points. No need to manually handle timestamps - use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>autoCreate</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>autoUpdate</strong> column attributes.
               </p>
               <div className={`mt-2 text-xs space-y-1 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
                 <p>• <strong className={darkMode ? "text-white font-mono" : "font-mono"}>beforeSave()</strong> - Runs before any save operation</p>

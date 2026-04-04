@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Copy, Check } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [copied, setCopied] = useState(false);
   const { darkMode } = useTheme();
 
   useEffect(() => {
@@ -26,6 +27,15 @@ export default function Hero() {
   const orb2Color = darkMode ? 'bg-zinc-700/15' : 'bg-zinc-300/40';
   const lineColor = darkMode ? 'via-zinc-700' : 'via-zinc-300';
 
+
+  const installCommand = 'composer create-project luxid/framework my_app';
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(installCommand);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section className={`relative min-h-screen flex items-center justify-center overflow-hidden pt-16 ${darkMode ? 'bg-black' : 'bg-white'
       }`}>
@@ -41,6 +51,22 @@ export default function Hero() {
       {/* Gradient orbs with parallax */}
       <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[100px] ${orb1Color}`} style={{ transform: `translate(${mousePos.x * 30}px, ${scrollY * 0.2 + mousePos.y * 30}px)` }} />
       <div className={`absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[80px] ${orb2Color}`} style={{ transform: `translate(${-mousePos.x * 20}px, ${scrollY * -0.15}px)` }} />
+
+      {/* Floating fox logo */}
+      <div className="absolute top-40 right-20 opacity-[0.08]" style={{ transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.02}deg) scale(${1 + mousePos.x * 0.1})` }}>
+        <img
+          src="/images/bg-code.png"
+          alt="Code Background"
+          className="w-80 h-80 object-contain"
+        />
+      </div>
+      <div className="absolute bottom-40 left-20 opacity-[0.05]" style={{ transform: `translateY(${scrollY * -0.2}px) rotate(${-scrollY * 0.01}deg)` }}>
+        <img
+          src="/images/bg-code.png"
+          alt="Code Background"
+          className="w-48 h-48 object-contain"
+        />
+      </div>
 
       {/* Decorative lines */}
       <div className={`absolute top-1/3 left-0 w-32 h-px bg-gradient-to-r from-transparent ${lineColor} to-transparent`} style={{ transform: `translateX(${scrollY * 0.5}px)` }} />
@@ -103,6 +129,15 @@ export default function Hero() {
           }`}>
           <span className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>$</span>
           <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>composer create-project luxid/framework my_app</span>
+          <button
+            onClick={handleCopy}
+            className={`p-1.5 rounded-md transition-all hover:scale-105 ${darkMode
+              ? 'text-zinc-500 hover:text-white hover:bg-zinc-800'
+              : 'text-zinc-600 hover:text-black hover:bg-zinc-200'
+              }`}
+          >
+            {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+          </button>
         </div>
       </div>
     </section>

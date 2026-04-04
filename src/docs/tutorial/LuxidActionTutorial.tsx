@@ -183,7 +183,7 @@ abstract class LuxidAction extends Action
             <div>
               <strong className="text-gray-900 dark:text-white">Create the Base Class</strong>
               <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                Save the code above as <code className="font-mono">app/Actions/LuxidAction.php</code>.
+                Save the code above as <strong className={darkMode ? "text-white font-mono" : "font-mono"}>app/Actions/LuxidAction.php</strong>.
               </p>
             </div>
           </div>
@@ -193,7 +193,7 @@ abstract class LuxidAction extends Action
             <div>
               <strong className="text-gray-900 dark:text-white">Extend It in Your Resource Actions</strong>
               <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                In your <code className="font-mono">TodoAction.php</code>, extend <code className="font-mono">LuxidAction</code> instead of the base <code className="font-mono">Action</code>
+                In your <strong className={darkMode ? "text-white font-mono" : "font-mono"}>TodoAction.php</strong>, extend <strong className={darkMode ? "text-white font-mono" : "font-mono"}>LuxidAction</strong> instead of the base <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Action</strong>
               </p>
             </div>
           </div>
@@ -368,23 +368,23 @@ abstract class LuxidAction extends Action
         <ul className="space-y-2">
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Always override <code className="font-mono">getEntityClass()</code> in your child actions</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Always override <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getEntityClass()</strong> in your child actions</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Use <code className="font-mono">$filters</code> to define all filterable fields</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>$filters</strong> to define all filterable fields</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Set <code className="font-mono">$defaultOrder</code> to a sensible default</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Set <strong className={darkMode ? "text-white font-mono" : "font-mono"}>$defaultOrder</strong> to a sensible default</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Return both results and total count for proper pagination</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Return both results and total count for proper pagination</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Add database indexes for columns you filter on</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Add database indexes for columns you filter on</span>
           </li>
         </ul>
       </div>

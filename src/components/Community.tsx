@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Globe from '@/components/Globe';
-import { Users, Globe2, Award, MapPin, TrendingUp, Code2, Heart, ArrowRight } from 'lucide-react';
+import { MapPin, Code2, Heart, ArrowRight } from 'lucide-react';
 
 export default function Community() {
   const { darkMode } = useTheme();

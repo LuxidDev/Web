@@ -203,10 +203,10 @@ component('components/Button', function ($c) {
             <div>
               <h4 className="font-bold mb-1 text-gray-900 dark:text-white">How This Compares to React</h4>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                <strong>React Version:</strong> <code className="font-mono">const [label, setLabel] = useState('Click Me')</code><br />
-                <strong>Nova Version:</strong> <code className="font-mono">$state['label'] = 'Click Me'</code><br />
-                <strong>React Event:</strong> <code className="font-mono">{`onClick={handleClick}`}</code><br />
-                <strong>Nova Event:</strong> <code className="font-mono">@click="click"</code>
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>React Version:</strong> <span className="font-mono">const [label, setLabel] = useState('Click Me')</span><br />
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Nova Version:</strong> <span className="font-mono">$state['label'] = 'Click Me'</span><br />
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>React Event:</strong> <span className="font-mono">{`onClick={handleClick}`}</span><br />
+                <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Nova Event:</strong> <span className="font-mono">@click="click"</span>
               </p>
             </div>
           </div>
@@ -264,7 +264,7 @@ component('components/Card', function ($c) {
       <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Layouts: Like React Router Layouts</h3>
       <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
-          Layouts are like React's layout components that wrap pages. They use <strong>slots</strong> - which work like React's <strong className="font-mono text-gray-900 dark:text-white">children</strong> prop:
+          Layouts are like React's layout components that wrap pages. They use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>slots</strong> - which work like React's <strong className="font-mono text-gray-900 dark:text-white">children</strong> prop:
         </p>
         <CodeExample
           code={`<?php
@@ -512,7 +512,7 @@ class HomeAction extends Action
               </li>
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />
-                Always escape output with <code className="font-mono">@echo</code> (like {`{variable}`} in React)
+                Always escape output with @echo (like {`{variable}`} in React)
               </li>
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-500" />

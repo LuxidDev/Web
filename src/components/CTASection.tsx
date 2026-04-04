@@ -22,8 +22,8 @@ export default function CTASection() {
 
   return (
     <section id="get-started" className={`py-32 bg-gradient-to-b relative overflow-hidden ${darkMode
-        ? 'from-zinc-950 to-black'
-        : 'from-zinc-100 to-white'
+      ? 'from-zinc-950 to-black'
+      : 'from-zinc-100 to-white'
       }`}>
       {/* Background decoration */}
       <div className={`absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px] ${darkMode ? '' : 'invert'
@@ -42,8 +42,8 @@ export default function CTASection() {
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
           Ready to build something<br />
           <span className={`text-transparent bg-clip-text bg-gradient-to-r ${darkMode
-              ? 'from-zinc-500 via-white to-zinc-500'
-              : 'from-zinc-600 via-black to-zinc-600'
+            ? 'from-zinc-500 via-white to-zinc-500'
+            : 'from-zinc-600 via-black to-zinc-600'
             }`}>amazing?</span>
         </h2>
         <p className={`text-xl mb-12 max-w-2xl mx-auto ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
@@ -51,25 +51,28 @@ export default function CTASection() {
           Join thousands of developers who are building modern PHP applications with Luxid. Get started in minutes.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <a href="#" className="flex items-center gap-2 px-8 py-4 bg-black text-white font-semibold rounded-xl hover:bg-zinc-800 transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/10">
+          <a href="docs/" className="flex items-center gap-2 px-8 py-4 bg-black text-white font-semibold rounded-xl hover:bg-zinc-800 transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/10">
             Get Started <ArrowRight className="w-5 h-5" />
           </a>
-          <a href="#" className={`flex items-center gap-2 px-8 py-4 border rounded-xl transition-all ${darkMode
-              ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800 hover:border-zinc-600'
-              : 'bg-white text-black border-zinc-300 hover:bg-zinc-100 hover:border-zinc-400'
+          <a href="docs/" className={`flex items-center gap-2 px-8 py-4 border rounded-xl transition-all ${darkMode
+            ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800 hover:border-zinc-600'
+            : 'bg-white text-black border-zinc-300 hover:bg-zinc-100 hover:border-zinc-400'
             }`}>
             <Book className="w-5 h-5" /> Documentation
           </a>
-          <a href="#" className={`flex items-center gap-2 px-8 py-4 border rounded-xl transition-all ${darkMode
-              ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800 hover:border-zinc-600'
-              : 'bg-white text-black border-zinc-300 hover:bg-zinc-100 hover:border-zinc-400'
-            }`}>
+          <a href="https://github.com/LuxidDev/Framework" className={`flex items-center gap-2 px-8 py-4 border rounded-xl transition-all ${darkMode
+            ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800 hover:border-zinc-600'
+            : 'bg-white text-black border-zinc-300 hover:bg-zinc-100 hover:border-zinc-400'
+            }`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Github className="w-5 h-5" /> Star on GitHub
           </a>
         </div>
         <div className={`inline-flex items-center gap-3 px-6 py-4 border rounded-xl font-mono text-sm backdrop-blur-sm group hover:border-zinc-400 transition-colors ${darkMode
-            ? 'bg-zinc-900/80 border-zinc-800'
-            : 'bg-white/80 border-zinc-300'
+          ? 'bg-zinc-900/80 border-zinc-800'
+          : 'bg-white/80 border-zinc-300'
           }`}>
           <span className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>$</span>
           <span className={darkMode ? 'text-zinc-300' : 'text-zinc-700'}>{command}</span>

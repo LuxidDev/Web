@@ -543,27 +543,27 @@ class TodoAction extends LuxidAction
         <ul className="space-y-2">
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Keep actions focused - one action per resource when possible</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Keep actions focused - one action per resource when possible</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getEntityClass()</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$filters'}</strong> for automatic filtering</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Use <strong className={darkMode ? "text-white font-mono" : "font-mono"}>getEntityClass()</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>{'$filters'}</strong> for automatic filtering</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Always validate data before saving (use entity's <strong className={darkMode ? "text-white font-mono" : "font-mono"}>validate()</strong> method)</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Always validate data before saving (use entity's <strong className={darkMode ? "text-white font-mono" : "font-mono"}>validate()</strong> method)</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Return consistent responses using <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Response::success()</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Response::error()</strong></span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Return consistent responses using <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Response::success()</strong> and <strong className={darkMode ? "text-white font-mono" : "font-mono"}>Response::error()</strong></span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Use appropriate HTTP status codes (200 for success, 201 for created, 404 for not found, 422 for validation errors)</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Use appropriate HTTP status codes (200 for success, 201 for created, 404 for not found, 422 for validation errors)</span>
           </li>
           <li className="flex items-start gap-2">
             <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-            <span>Keep business logic in Entities, not in Actions</span>
+            <span className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>Keep business logic in Entities, not in Actions</span>
           </li>
         </ul>
       </div>

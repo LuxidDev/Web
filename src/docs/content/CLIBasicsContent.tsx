@@ -5,7 +5,7 @@ import {
   AlertCircle, Eye,
 } from 'lucide-react';
 import CodeExample from '@/components/CodeExample';
-import InlineCodeExample from '@/components/InlineCodeExample';
+import TerminalCommand from '@/components/TerminalCommand';
 
 export default function JuiceCLIContent() {
   const { darkMode } = useTheme();
@@ -70,26 +70,17 @@ export default function JuiceCLIContent() {
           Juice CLI is automatically available in any Luxid project. To see available commands:
         </p>
         <div className="space-y-2">
-          <InlineCodeExample
-            code="php juice"
-            title=""
+          <TerminalCommand
+            command="php juice"
             description="List all commands. Show all available Juice CLI commands"
-            color="gray"
-            compact={true}
           />
-          <InlineCodeExample
-            code="php juice help <command>"
-            title=""
+          <TerminalCommand
+            command="php juice help <command>"
             description="Get command help. Show detailed help for a specific command"
-            color="gray"
-            compact={true}
           />
-          <InlineCodeExample
-            code="php juice version"
-            title=""
+          <TerminalCommand
+            command="php juice version"
             description="Check version. Show Juice CLI and Luxid version information"
-            color="gray"
-            compact={true}
           />
         </div>
       </div>
@@ -106,19 +97,13 @@ export default function JuiceCLIContent() {
               Start the built-in PHP development server.
             </p>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice start"
-                title=""
+              <TerminalCommand
+                command="php juice start"
                 description="Starts server at http://localhost:8000"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice start --host=127.0.0.1 --port=8080"
-                title=""
+              <TerminalCommand
+                command="php juice start --host=127.0.0.1 --port=8080"
                 description="Custom host and port. Start server on specific host and port"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -130,12 +115,9 @@ export default function JuiceCLIContent() {
             <p className={`mb-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               Fresh install - clears cache, runs migrations, and seeds the database.
             </p>
-            <InlineCodeExample
-              code="php juice fresh"
-              title=""
+            <TerminalCommand
+              command="php juice fresh"
               description="Fresh install. Complete project reset for new installations"
-              color="gray"
-              compact={true}
             />
           </div>
         </div>
@@ -180,33 +162,21 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Creation & Status</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice db:create"
-                title=""
+              <TerminalCommand
+                command="php juice db:create"
                 description="Create database from .env configuration"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:drop"
-                title=""
+              <TerminalCommand
+                command="php juice db:drop"
                 description="Drop entire database (with confirmation)"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:reset"
-                title=""
+              <TerminalCommand
+                command="php juice db:reset"
                 description="Drop and recreate database"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:status"
-                title=""
+              <TerminalCommand
+                command="php juice db:status"
                 description="Show database info, tables, and migrations"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -214,33 +184,21 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Migrations</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice db:migrate"
-                title=""
+              <TerminalCommand
+                command="php juice db:migrate"
                 description="Run all pending migrations"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:migrate --fresh"
-                title=""
+              <TerminalCommand
+                command="php juice db:migrate --fresh"
                 description="Drop all tables and re-run migrations"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:rollback"
-                title=""
+              <TerminalCommand
+                command="php juice db:rollback"
                 description="Rollback the last migration"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:refresh"
-                title=""
+              <TerminalCommand
+                command="php juice db:refresh"
                 description="Rollback all and migrate again"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -254,26 +212,17 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Core Components</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice make:action TodoAction"
-                title=""
+              <TerminalCommand
+                command="php juice make:action TodoAction"
                 description="Generate a new Action class"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice make:entity User"
-                title=""
+              <TerminalCommand
+                command="php juice make:entity User"
                 description="Generate a new Entity with basic CRUD"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice make:middleware AuthMiddleware"
-                title=""
+              <TerminalCommand
+                command="php juice make:middleware AuthMiddleware"
                 description="Generate a new Middleware class"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -281,26 +230,17 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Database & Resources</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice make:migration create_users_table"
-                title=""
+              <TerminalCommand
+                command="php juice make:migration create_users_table"
                 description="Generate a new migration file"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice make:seeder UserSeeder"
-                title=""
+              <TerminalCommand
+                command="php juice make:seeder UserSeeder"
                 description="Generate a new database seeder"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice make:factory UserFactory"
-                title=""
+              <TerminalCommand
+                command="php juice make:factory UserFactory"
                 description="Generate a new model factory"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -310,12 +250,9 @@ export default function JuiceCLIContent() {
           <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Quick Generators</h4>
           <div className="space-y-2">
             <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
-              <InlineCodeExample
-                code="php juice make:api Product"
-                title=""
+              <TerminalCommand
+                command="php juice make:api Product"
                 description="Generate complete API. Creates Entity, Action, Migration, and Routes for a resource"
-                color="gray"
-                compact={true}
               />
               <p className={`text-xs mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Generates: Entity class, CRUD Actions, Migration file, Route definitions, and Factory
@@ -323,12 +260,9 @@ export default function JuiceCLIContent() {
             </div>
 
             <div className={`p-3 rounded-lg ${darkMode ? "bg-gray-800/30 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
-              <InlineCodeExample
-                code="php juice make:todo"
-                title=""
+              <TerminalCommand
+                command="php juice make:todo"
                 description="Create a Todo example. Generate a complete working Todo CRUD example"
-                color="gray"
-                compact={true}
               />
               <p className={`text-xs mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 Perfect for learning or starting a new feature
@@ -342,19 +276,13 @@ export default function JuiceCLIContent() {
       <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Help Commands</h3>
       <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <div className="space-y-2">
-          <InlineCodeExample
-            code="php juice help"
-            title=""
+          <TerminalCommand
+            command="php juice help"
             description="General help. Show all available commands grouped by category"
-            color="gray"
-            compact={true}
           />
-          <InlineCodeExample
-            code="php juice help make:action"
-            title=""
+          <TerminalCommand
+            command="php juice help make:action"
             description="Command help. Show detailed help for a specific command"
-            color="gray"
-            compact={true}
           />
         </div>
       </div>
@@ -363,7 +291,7 @@ export default function JuiceCLIContent() {
       <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Directory Structure Created by Juice</h3>
       <div className={`mb-8 p-6 rounded-xl ${darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"}`}>
         <CodeExample
-          code={`myapp/
+          code={`my_app/
 ├── app/
 │   ├── Actions/          # Action classes (generated by make:action)
 │   ├── Entities/         # Entity classes (generated by make:entity)
@@ -391,33 +319,21 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Start a new project:</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="composer create-project luxid/framework my_app"
-                title=""
+              <TerminalCommand
+                command="composer create-project luxid/framework my_app"
                 description="Create a new Luxid application"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="cd my_app"
-                title=""
+              <TerminalCommand
+                command="cd my_app"
                 description="Enter your project directory"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice status"
-                title=""
+              <TerminalCommand
+                command="php juice status"
                 description="Checks current status of the app (.env, routes, etc)"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice start"
-                title=""
+              <TerminalCommand
+                command="php juice start"
                 description="Launch the development server"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -425,26 +341,17 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Create a blog system:</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice make:api Post"
-                title=""
+              <TerminalCommand
+                command="php juice make:api Post"
                 description="Create Post API. Generate complete CRUD for posts"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice make:api Comment"
-                title=""
+              <TerminalCommand
+                command="php juice make:api Comment"
                 description="Create Comment API. Generate complete CRUD for comments"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:migrate"
-                title=""
+              <TerminalCommand
+                command="php juice db:migrate"
                 description="Run migrations. Create database tables"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>
@@ -452,26 +359,17 @@ export default function JuiceCLIContent() {
           <div>
             <h4 className="font-bold mb-2 text-gray-900 dark:text-white">Check everything is working:</h4>
             <div className="space-y-2">
-              <InlineCodeExample
-                code="php juice status"
-                title=""
+              <TerminalCommand
+                command="php juice status"
                 description="Application status. Check environment and setup"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice db:status"
-                title=""
+              <TerminalCommand
+                command="php juice db:status"
                 description="Database status. Check database and tables"
-                color="gray"
-                compact={true}
               />
-              <InlineCodeExample
-                code="php juice routes"
-                title=""
+              <TerminalCommand
+                command="php juice routes"
                 description="List routes. See all registered routes"
-                color="gray"
-                compact={true}
               />
             </div>
           </div>

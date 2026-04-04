@@ -194,11 +194,10 @@ export default function Footer() {
               }`}>
               Creator and CEO of Luxid ~
               <a
-                href="https://jhayonline.dev"
+                href="https://www.jhayonline.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`underline font-semibold transition-colors duration-200 ${darkMode ? 'text-white hover:text-zinc-300' : 'text-blue-600 hover:text-blue-800'
-                  }`}
+                className={"text-white font-mono"}
               >
                 jhayonline.dev
               </a>

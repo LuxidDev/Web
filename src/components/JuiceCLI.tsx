@@ -1,58 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Copy, Check } from 'lucide-react';
+import { Terminal, ArrowRight } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import TerminalCommand from '@/components/TerminalCommand';
 
 const commands = [
   { cmd: 'php juice status', desc: 'Show application current status' },
-  { cmd: 'php juice gen:action UserAction', desc: 'Generate a new Action (Controller)' },
-  { cmd: 'php juice gen:entity User', desc: 'Generate a new Entity (Model)' },
-  { cmd: 'php juice gen:migration create_users', desc: 'Create a database migration' },
+  { cmd: 'php juice make:action UserAction', desc: 'Generate a new Action (Controller)' },
+  { cmd: 'php juice make:entity User', desc: 'Generate a new Entity (Model)' },
+  { cmd: 'php juice make:migration create_users', desc: 'Create a database migration' },
   { cmd: 'php juice db:migrate', desc: 'Run all pending migrations' },
-  { cmd: 'php juice awake', desc: 'Start the development server' },
+  { cmd: 'php juice start', desc: 'Start the development server' },
 ];
-
-// Custom highlighter for Juice commands
-const highlightJuiceCommand = (command: string, darkMode: boolean) => {
-  // Define colors based on theme
-  const colors = {
-    php: darkMode ? '#d4d4d4' : '#393a34', // Gray in dark, dark gray in light
-    juice: darkMode ? '#dcdcaa' : '#795e26', // Yellow in dark, brown in light
-    command: darkMode ? '#4ec9b0' : '#267f99', // Teal in dark, blue in light
-    subcommand: darkMode ? '#569cd6' : '#0000ff', // Blue in dark, blue in light
-    argument: darkMode ? '#9cdcfe' : '#001080', // Light blue in dark, dark blue in light
-    string: darkMode ? '#ce9178' : '#a31515', // Orange in dark, red in light
-    punctuation: darkMode ? '#d4d4d4' : '#393a34', // Gray in dark, dark gray in light
-  };
-
-  // Split the command into parts
-  const parts = command.split(' ');
-
-  return parts.map((part, index) => {
-    let color = colors.argument; // default color
-
-    if (index === 0 && part === 'php') {
-      color = colors.php; // "php" command
-    } else if (index === 1 && part === 'juice') {
-      color = colors.juice; // "juice" command
-    } else if (index === 2) {
-      if (part.startsWith('gen:') || part.startsWith('db:')) {
-        color = colors.command; // "gen:" || "db:" commands
-      } else if (part === 'migrate' || part === 'serve' || part === 'awake') {
-        color = colors.command; // other main commands
-      }
-    } else if (index === 2) {
-      if (part.includes('_')) {
-        color = colors.string; // snake_case names (migrations)
-      } else if (part === part.toUpperCase()) {
-        color = colors.subcommand; // PascalCase (class names)
-      } else {
-        color = colors.argument; // regular arguments
-      }
-    }
-
-    return `<span style="color: ${color}">${part}</span>`;
-  }).join('<span style="color: ' + colors.punctuation + '"> </span>');
-};
 
 export default function JuiceCLI() {
   const [copied, setCopied] = useState<number | null>(null);
@@ -70,17 +28,6 @@ export default function JuiceCLI() {
       return () => clearTimeout(timer);
     }
   }, [typedIndex]);
-
-  // Function to create highlighted HTML for Juice commands
-  const createHighlightedJuiceCommand = (command: string) => {
-    return { __html: highlightJuiceCommand(command, darkMode) };
-  };
-
-  const handleCopy = (index: number, cmd: string) => {
-    navigator.clipboard.writeText(cmd);
-    setCopied(index);
-    setTimeout(() => setCopied(null), 2000);
-  };
 
   return (
     <section className={`py-32 ${darkMode ? 'bg-black' : 'bg-white'}`}>
@@ -107,21 +54,10 @@ export default function JuiceCLI() {
                   : 'bg-zinc-100/50 border-zinc-300 hover:border-zinc-400'
                   }`}>
                   <div className="flex-1 min-w-0">
-                    <pre className="m-0 p-0 overflow-x-auto">
-                      <code
-                        className={`font-mono text-sm ${darkMode ? '' : ''}`}
-                        dangerouslySetInnerHTML={createHighlightedJuiceCommand(c.cmd)}
-                      />
-                    </pre>
+                    <TerminalCommand command={c.cmd} />
                     <p className={`text-xs mt-1 ${darkMode ? 'text-zinc-500' : 'text-zinc-600'
                       }`}>{c.desc}</p>
                   </div>
-                  <button onClick={() => handleCopy(i, c.cmd)} className={`p-2 transition-colors flex-shrink-0 ${darkMode
-                    ? 'text-zinc-500 hover:text-white'
-                    : 'text-zinc-600 hover:text-black'
-                    }`}>
-                    {copied === i ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
-                  </button>
                 </div>
               ))}
             </div>
@@ -142,10 +78,7 @@ export default function JuiceCLI() {
             </div>
             <div className="p-6 font-mono text-sm">
               <div className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>
-                $ <span
-                  dangerouslySetInnerHTML={createHighlightedJuiceCommand(typedText)}
-                />
-                <span className="animate-pulse">|</span>
+                $ <TerminalCommand command={typedText} />
               </div>
               <div className={`mt-4 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
                 }`}>⚡ Creating Action... <br></br>
@@ -153,7 +86,7 @@ export default function JuiceCLI() {
               </div>
               <div className="text-green-500 mt-2">📁 Location: app/Actions/UserAction.php</div><br></br>
               <div className={darkMode ? 'text-zinc-500' : 'text-zinc-600'}>
-                $ <span dangerouslySetInnerHTML={createHighlightedJuiceCommand('juice awake')} />
+                $ <TerminalCommand command="juice start" />
               </div>
               <div className={`mt-2 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'
                 }`}>
@@ -166,26 +99,17 @@ export default function JuiceCLI() {
                 <p>Starting PHP built-in server...</p>
                 <p>Development Server <span className={darkMode ? 'text-white' : 'text-black'}>(http://localhost:8000)</span> started</p>
               </div>
+
             </div>
           </div>
+          <a href="docs/cli-basics" className={`inline-flex items-center gap-2 transition-colors ${darkMode
+            ? 'text-white hover:text-zinc-300'
+            : 'text-black hover:text-zinc-700'
+            }`}>
+            Learn more about Juice-CLI <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
-
-      {/* Custom Juice CLI Syntax Highlighting */}
-      <style>{`
-        /* Ensure proper code styling */
-        pre[class*="language-"] {
-          background: transparent !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          box-shadow: none !important;
-        }
-
-        code[class*="language-"] {
-          background: transparent !important;
-          text-shadow: none !important;
-        }
-      `}</style>
     </section>
   );
 }

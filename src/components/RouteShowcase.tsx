@@ -66,7 +66,7 @@ export default function RouteShowcase() {
                 </li>
               ))}
             </ul>
-            <a href="#" className={`inline-flex items-center gap-2 transition-colors ${darkMode
+            <a href="docs/routes" className={`inline-flex items-center gap-2 transition-colors ${darkMode
               ? 'text-white hover:text-zinc-300'
               : 'text-black hover:text-zinc-700'
               }`}>

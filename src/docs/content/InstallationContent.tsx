@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import CodeExample from "@/components/CodeExample";
 import InlineCodeExample from "@/components/InlineCodeExample";
+import TerminalCommand from "@/components/TerminalCommand";
 
 export default function InstallationContent() {
   const { darkMode } = useTheme();
@@ -41,12 +42,6 @@ export default function InstallationContent() {
         <div className="grid grid-cols-1 gap-4">
           {/* PHP */}
           <div className="flex items-start gap-3">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${darkMode ? "bg-gray-800" : "bg-gray-200"
-                }`}
-            >
-              <Terminal className={`w-4 h-4 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
-            </div>
             <div>
               <h4 className="font-bold mb-1 text-gray-900 dark:text-white">PHP 8.0 or higher</h4>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -62,12 +57,6 @@ export default function InstallationContent() {
 
           {/* Composer */}
           <div className="flex items-start gap-3">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${darkMode ? "bg-gray-800" : "bg-gray-200"
-                }`}
-            >
-              <Package className={`w-4 h-4 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
-            </div>
             <div>
               <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Composer</h4>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -83,12 +72,6 @@ export default function InstallationContent() {
 
           {/* Database */}
           <div className="flex items-start gap-3">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${darkMode ? "bg-gray-800" : "bg-gray-200"
-                }`}
-            >
-              <Database className={`w-4 h-4 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
-            </div>
             <div>
               <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Database (Optional)</h4>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -103,12 +86,6 @@ export default function InstallationContent() {
 
           {/* Web Server */}
           <div className="flex items-start gap-3">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${darkMode ? "bg-gray-800" : "bg-gray-200"
-                }`}
-            >
-              <Server className={`w-4 h-4 ${darkMode ? "text-gray-400" : "text-gray-600"}`} />
-            </div>
             <div>
               <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Web Server</h4>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -149,22 +126,16 @@ export default function InstallationContent() {
               <strong className="text-gray-900 dark:text-white">Luxid CLI</strong>.
             </p>
 
-            <InlineCodeExample
-              code="composer create-project luxid/framework myapp"
-              title="Using Composer"
-              description="Downloads the Luxid framework starter template and sets up a new project"
-              color="gray"
-              language="bash"
+            <TerminalCommand
+              command="composer create-project luxid/framework my_app"
+              description="Downloads the Luxid framework starter template and sets up a new project."
             />
 
             <div className="h-4" />
 
-            <InlineCodeExample
-              code="luxid new myapp"
-              title="Using Luxid CLI"
+            <TerminalCommand
+              command="luxid new my_app"
               description="Uses the Luxid command-line tool to scaffold a fresh project"
-              color="gray"
-              language="bash"
             />
           </div>
 
@@ -217,7 +188,7 @@ export default function InstallationContent() {
             </p>
             <CodeExample
               code={`# Navigate to your project
-cd myapp
+cd my_app
 
 # Copy environment file
 cp .env.example .env
@@ -234,17 +205,21 @@ code .env`}
             <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Environment Configuration Options</h5>
             <CodeExample
               code={`# Database Configuration
+
+# This works on Windows, macOS with XAMPP, and most Linux distributions
 DB_DSN=mysql:host=localhost;port=3306;dbname=luxid
 DB_USER=root
 DB_PASSWORD=
 
-# Application Settings
-APP_ENV=local
-APP_DEBUG=true
-APP_URL=http://localhost:8000
+# 🐧 Arch Linux (MariaDB)
+DB_DSN=mysql:unix_socket=/run/mysqld/mysqld.sock;dbname=luxid
 
-# Session
-SESSION_LIFETIME=120`}
+# 🐧 Ubuntu / Debian / Pop!_OS (MySQL)
+DB_DSN=mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=luxid
+
+# 🍎 macOS with Homebrew MySQL
+DB_DSN=mysql:host=127.0.0.1;port=3306;dbname=luxid
+`}
               language="ini"
               title=".env File Example"
               explanation="Update these values according to your environment"
@@ -297,25 +272,17 @@ $app = new Application(dirname(__DIR__), $config);`}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
                 <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Create Database</h5>
-                <InlineCodeExample
-                  code="php juice db:create"
-                  title="Create Database"
-                  description="Creates the database specified in your .env file"
-                  color="gray"
-                  language="bash"
-                  compact={true}
+                <TerminalCommand
+                  command="php juice db:create"
+                  description="Specified in your .env file"
                 />
               </div>
 
               <div className={`p-4 rounded-lg ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
                 <h5 className="font-bold mb-2 text-gray-900 dark:text-white">Run Migrations</h5>
-                <InlineCodeExample
-                  code="php juice db:migrate"
-                  title="Run Migrations"
+                <TerminalCommand
+                  command="php juice db:migrate"
                   description="Runs database migrations to create tables"
-                  color="gray"
-                  language="bash"
-                  compact={true}
                 />
               </div>
             </div>
@@ -371,24 +338,18 @@ class Database
             <p className={`mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               Start the built-in PHP development server:
             </p>
-            <InlineCodeExample
-              code="php juice start"
-              title="Start Server"
+            <TerminalCommand
+              command="php juice start"
               description="Starts the server at http://localhost:8000 by default"
-              color="gray"
-              language="bash"
             />
 
             <div className="mt-4">
               <p className={`mb-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
                 Optional: Specify host and port:
               </p>
-              <InlineCodeExample
-                code="php juice start --host=127.0.0.1 --port=8080"
-                title="Custom Host and Port"
+              <TerminalCommand
+                command="php juice start --host=127.0.0.1 --port=8080"
                 description="Start server with custom host and port"
-                color="gray"
-                language="bash"
               />
             </div>
           </div>
@@ -440,12 +401,15 @@ public function handle(array $argv): int
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className={`p-4 rounded-lg flex flex-col ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}>
             <h4 className="font-bold mb-3 text-lg text-gray-900 dark:text-white">Check Application Status</h4>
             <div className="mb-4">
               <div className={`font-mono text-sm ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"} px-3 py-2 rounded`}>
-                <strong>php juice status</strong>
+                <TerminalCommand
+                  command="php juice status"
+                  description=""
+                />
               </div>
             </div>
             <p className={`text-sm mt-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -457,7 +421,10 @@ public function handle(array $argv): int
             <h4 className="font-bold mb-3 text-lg text-gray-900 dark:text-white">List Routes</h4>
             <div className="mb-4">
               <div className={`font-mono text-sm ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"} px-3 py-2 rounded`}>
-                <strong>php juice routes</strong>
+                <TerminalCommand
+                  command="php juice routes"
+                  description=""
+                />
               </div>
             </div>
             <p className={`text-sm mt-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -469,7 +436,10 @@ public function handle(array $argv): int
             <h4 className="font-bold mb-3 text-lg text-gray-900 dark:text-white">Check Environment</h4>
             <div className="mb-4">
               <div className={`font-mono text-sm ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"} px-3 py-2 rounded`}>
-                <strong>php juice env:check</strong>
+                <TerminalCommand
+                  command="php juice env:check"
+                  description=""
+                />
               </div>
             </div>
             <p className={`text-sm mt-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
@@ -534,12 +504,9 @@ public function handle(array $argv): int
             <p className={`text-sm mb-2 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
               If port 8000 is already in use:
             </p>
-            <InlineCodeExample
-              code="php juice start --port=8080"
-              title=""
+            <TerminalCommand
+              command="php juice start --port=5000"
               description="Use different port. Start server on a different port"
-              color="gray"
-              language="bash"
             />
           </div>
         </div>
