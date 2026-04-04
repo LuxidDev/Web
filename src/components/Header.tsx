@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Search, Github, Twitter, Sun, Moon,
-  Menu, X, Home, BookOpen, User, MessageSquare, Users
+  Menu, X, Home, BookOpen, User, UserPlus
 } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -62,8 +62,18 @@ export default function Header({ onSearchClick }: Props) {
   const routes = [
     { label: 'Home', path: '/', icon: Home },
     { label: 'Docs', path: '/docs', icon: BookOpen },
+    { label: 'Community', path: '/', icon: UserPlus },
     { label: 'About', path: '/about', icon: User },
   ];
+
+  const handleNavigation = (path: string, label: string) => {
+    if (label === "Community") {
+      window.location.href = "/#community";
+      return;
+    }
+
+    window.location.href = path;
+  };
 
   return (
     <>
@@ -101,7 +111,11 @@ export default function Header({ onSearchClick }: Props) {
               {/* Desktop Navigation links */}
               <nav className="flex items-center gap-1">
                 {routes.map(({ label, path }) => (
-                  <a key={label} href={path} className={navLinkClass}>
+                  <a
+                    key={label}
+                    onClick={() => handleNavigation(path, label)}
+                    className={navLinkClass}
+                  >
                     {label}
                   </a>
                 ))}

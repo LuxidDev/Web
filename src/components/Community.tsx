@@ -60,9 +60,9 @@ export default function Community() {
             <span className={`text-transparent bg-clip-text bg-gradient-to-r ${darkMode
               ? 'from-zinc-500 via-white to-zinc-500'
               : 'from-zinc-600 via-zinc-900 to-zinc-600'}`}>
-              thousands
+              developers
             </span>
-            <br />of developers
+            <br />accross the globe
           </h1>
 
           <p className={`text-lg md:text-xl mb-10 leading-relaxed ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
@@ -74,9 +74,9 @@ export default function Community() {
           {/* Feature list */}
           <div className="space-y-2.5 mb-10">
             {[
-              { icon: MapPin, text: 'Active in over 100 countries worldwide' },
-              { icon: Code2, text: 'Open source contributions from 200+ developers' },
-              { icon: Heart, text: 'Active community support on Discord and GitHub' },
+              { icon: MapPin, text: 'Active in countries worldwide' },
+              { icon: Code2, text: 'Open source contributions from developers' },
+              { icon: Heart, text: 'Active community support on GitHub' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 border ${darkMode

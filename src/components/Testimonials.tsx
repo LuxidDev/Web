@@ -53,6 +53,26 @@ const testimonials = [
     text: "I built my first API in less than 30 minutes. Luxid does the heavy lifting.",
     avatar: "https://media.licdn.com/dms/image/v2/D4E03AQHum9yd5S59uw/profile-displayphoto-scale_100_100/B4EZrQR8b.IUAc-/0/1764430957184?e=1776902400&v=beta&t=mvJZNt6J6IXWb2n0g1oB7TyJwQ8RSGLxclk3qWnxNLk",
   },
+  {
+    name: "Benedict Gbogr",
+    handle: "@dejaguarkyng",
+    company: "tokenated",
+    text: "The architecture in Luxid is solid. It enforces good patterns without getting in your way, which is rare in PHP frameworks.",
+    avatar: "https://avatars.githubusercontent.com/u/154946539?v=4"
+  },
+  {
+    name: "Daniel Olasupo",
+    handle: "@danny",
+    text: "Luxid removes a lot of the guesswork. The conventions are smart, and the developer experience feels intentional from start to finish.",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQEF_JrjS0D7fA/profile-displayphoto-scale_200_200/B4EZnsbRjpHEAY-/0/1760608198714?e=1776902400&v=beta&t=9bPAQ2rkPZBJ62B2eNxx4y8UUbbSutohUFiDmmGkDQQ"
+  },
+  {
+    name: "Osborn Nkansah",
+    handle: "@kwaku",
+    company: "darkarmy",
+    text: "I love how opinionated Luxid is. It gives clear patterns and conventions, so I spend less time debating structure and more time building features.",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQEi3e4Al4HNLg/profile-displayphoto-shrink_200_200/B4EZS3hzgGHgAY-/0/1738245886175?e=1776902400&v=beta&t=QflOdYkBBlBFyNcQbMoWQHgsybigp_kf4G9U6nFDTHM"
+  },
 ];
 
 export default function Testimonials() {
@@ -139,7 +159,7 @@ export default function Testimonials() {
 
           <div className="text-center mt-12 md:mt-16">
             <p className={`text-sm ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
-              We're here to help you make your dreams a reality.
+              Build your next dream app with confidence.
             </p>
           </div>
         </div>
