@@ -17,7 +17,7 @@ export default function Community() {
   const bgGridColor = darkMode ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)';
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative overflow-hidden py-16">
       {/* Grid background */}
       <div
         className="absolute inset-0 bg-[size:60px_60px] pointer-events-none"
@@ -37,7 +37,7 @@ export default function Community() {
       />
 
       {/* Two-column grid */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Content */}
         <div>
           {/* Badge */}

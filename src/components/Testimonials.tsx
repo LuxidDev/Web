@@ -60,7 +60,7 @@ export default function Testimonials() {
   const { searchOpen, setSearchOpen } = useSearch();
 
   return (
-    <div className={darkMode ? "min-h-screen bg-black text-white" : "min-h-screen bg-white text-zinc-900"}>
+    <div className={darkMode ? "bg-black text-white" : "bg-white text-zinc-900"}>
       <Header onSearchClick={() => setSearchOpen(true)} />
       <SpotlightSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       <section
