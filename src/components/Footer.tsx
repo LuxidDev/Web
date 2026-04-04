@@ -147,7 +147,7 @@ export default function Footer() {
                   <Github className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://youtube.com/@luxid"
+                  href="https://www.youtube.com/@LuxidDev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`p-2 rounded-lg transition-all ${darkMode

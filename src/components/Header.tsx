@@ -127,7 +127,7 @@ export default function Header({ onSearchClick }: Props) {
 
               {/* Icon buttons */}
               <a
-                href="https://github.com"
+                href="https://github.com/LuxidDev/Framework"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={iconButtonClass}

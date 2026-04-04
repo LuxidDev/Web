@@ -118,8 +118,12 @@ export default function Hero() {
               Get Started
             </span>
           </Link>
-          <a href="#docs" className={`flex items-center gap-2 px-8 py-4 border rounded-lg hover:bg-zinc-800 hover:border-zinc-600 transition-all ${darkMode ? 'bg-zinc-900 text-white border-zinc-700' : 'bg-white text-zinc-900 border-zinc-300 hover:text-white'
-            }`}>
+          <a
+            href="https://www.youtube.com/@LuxidDev"
+            className={`flex items-center gap-2 px-8 py-4 border rounded-lg hover:bg-zinc-800 hover:border-zinc-600 transition-all ${darkMode ? 'bg-zinc-900 text-white border-zinc-700' : 'bg-white text-zinc-900 border-zinc-300 hover:text-white'
+              }`}
+            target="_blank"
+          >
             <Play className="w-4 h-4" /> Learn Luxid
           </a>
         </div>
