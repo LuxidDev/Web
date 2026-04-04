@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Earcut } from 'three/src/extras/Earcut.js';
 
 const drawThreeGeo = ({
   json,
@@ -14,12 +15,24 @@ const drawThreeGeo = ({
 }) => {
   const container = new THREE.Object3D();
 
-  // Brighter country outlines
+  // Solid land fill colors
+  const landColor = darkMode ? 0x2a4a6a : 0x4a8cba;
   const lineColor = darkMode ? 0x88aaff : 0x3366cc;
-  const mat = new THREE.LineBasicMaterial({
+
+  // Material for filled land polygons
+  const fillMat = new THREE.MeshBasicMaterial({
+    color: landColor,
+    transparent: true,
+    opacity: 0.95,
+    side: THREE.DoubleSide,
+    depthWrite: true,
+  });
+
+  // Material for country outlines
+  const lineMat = new THREE.LineBasicMaterial({
     color: lineColor,
     transparent: true,
-    opacity: 0.85,
+    opacity: 0.9,
   });
 
   const latLonToVec3 = (lon: number, lat: number, r: number): THREE.Vector3 => {
@@ -57,11 +70,42 @@ const drawThreeGeo = ({
     return out;
   };
 
-  const makeLine = (coords: number[][]) => {
+  const makePolygon = (coords: number[][]) => {
     const pts = buildCoords(coords);
-    const positions = pts.map(c => latLonToVec3(c[0], c[1], radius));
-    const geo = new THREE.BufferGeometry().setFromPoints(positions);
-    container.add(new THREE.Line(geo, mat));
+    if (pts.length < 3) return;
+
+    // Fix anti-meridian: normalize all longitudes relative to the first point
+    const refLon = pts[0][0];
+    const normalized = pts.map(([lon, lat]) => {
+      let dlon = lon - refLon;
+      while (dlon > 180) dlon -= 360;
+      while (dlon < -180) dlon += 360;
+      return [refLon + dlon, lat];
+    });
+
+    // Flatten to [x, y, x, y, ...] for earcut
+    const flat = normalized.flatMap(c => [c[0], c[1]]);
+
+    // Run earcut (operates in 2D lon/lat space)
+    const indices = Earcut.triangulate(flat, undefined, 2);
+    if (!indices || indices.length === 0) return;
+
+    // Map triangulated 2D points back to 3D sphere positions
+    const positions = normalized.map(c => latLonToVec3(c[0], c[1], radius));
+    const vertices: number[] = [];
+    positions.forEach(v => vertices.push(v.x, v.y, v.z));
+
+    const shapeGeo = new THREE.BufferGeometry();
+    shapeGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(vertices), 3));
+    shapeGeo.setIndex(indices);
+    shapeGeo.computeVertexNormals();
+
+    container.add(new THREE.Mesh(shapeGeo, fillMat));
+
+    // Outline
+    const positions3D = pts.map(c => latLonToVec3(c[0], c[1], radius));
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(positions3D);
+    container.add(new THREE.Line(lineGeo, lineMat));
   };
 
   const getGeometries = (geoJson: any): any[] => {
@@ -72,15 +116,11 @@ const drawThreeGeo = ({
 
   for (const geom of getGeometries(json)) {
     if (!geom) continue;
-    if (geom.type === 'LineString') {
-      makeLine(geom.coordinates);
-    } else if (geom.type === 'MultiLineString') {
-      geom.coordinates.forEach((seg: number[][]) => makeLine(seg));
-    } else if (geom.type === 'Polygon') {
-      geom.coordinates.forEach((ring: number[][]) => makeLine(ring));
+    if (geom.type === 'Polygon') {
+      geom.coordinates.forEach((ring: number[][]) => makePolygon(ring));
     } else if (geom.type === 'MultiPolygon') {
       geom.coordinates.forEach((poly: number[][][]) =>
-        poly.forEach((ring: number[][]) => makeLine(ring))
+        poly.forEach((ring: number[][]) => makePolygon(ring))
       );
     }
   }
@@ -119,42 +159,41 @@ export default function Globe() {
     controls.rotateSpeed = 0.8;
     controls.target.set(0, 0, 0);
 
-    // Invert rotation by rotating the entire globe scene
+    // NO rotation inversion - keep globe right-side up
     const globeGroup = new THREE.Group();
-    globeGroup.rotation.x = Math.PI;
     scene.add(globeGroup);
 
-    // Globe sphere
+    // Globe sphere (semi-transparent background)
     const sphereGeo = new THREE.SphereGeometry(1, 128, 128);
     const sphereMat = new THREE.MeshStandardMaterial({
-      color: darkMode ? 0x1a2a4a : 0xe8f0ff,
-      emissive: darkMode ? 0x0a1a2a : 0xc0d0ff,
-      emissiveIntensity: 0.1,
-      metalness: 0.2,
-      roughness: 0.5,
+      color: darkMode ? 0x0a1a2a : 0xc8d8f0,
+      emissive: darkMode ? 0x051015 : 0x90a8c0,
+      emissiveIntensity: 0.05,
+      metalness: 0.1,
+      roughness: 0.6,
       transparent: true,
-      opacity: darkMode ? 0.25 : 0.2,
+      opacity: 0.15,
     });
     const sphere = new THREE.Mesh(sphereGeo, sphereMat);
     globeGroup.add(sphere);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
+    const ambientLight = new THREE.AmbientLight(0x404060, 0.6);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
 
-    const backLight = new THREE.DirectionalLight(0x88aaff, 0.4);
+    const backLight = new THREE.DirectionalLight(0x88aaff, 0.5);
     backLight.position.set(-3, -2, -4);
     scene.add(backLight);
 
-    // Grid lines - Deep black on light theme, bright white on dark theme
+    // Grid lines - subtle
     const gridMat = new THREE.LineBasicMaterial({
-      color: darkMode ? 0xffffff : 0x000000, // White in dark mode, Black in light mode
+      color: darkMode ? 0xffffff : 0x000000,
       transparent: true,
-      opacity: darkMode ? 0.35 : 0.25, // Slightly higher opacity for visibility
+      opacity: darkMode ? 0.2 : 0.15,
     });
 
     // Latitude lines
@@ -187,12 +226,13 @@ export default function Globe() {
       globeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), gridMat));
     }
 
-    // Country outlines
+    // Country outlines with solid fill
     fetch('/geojson/ne_110m_land.json')
       .then(r => r.json())
       .then(data => {
-        const countries = drawThreeGeo({ json: data, radius: 1.002, darkMode });
+        const countries = drawThreeGeo({ json: data, radius: 1.001, darkMode });
         globeGroup.add(countries);
+        console.log('Land masses loaded successfully!');
       })
       .catch(err => console.error('GeoJSON load error:', err));
 
